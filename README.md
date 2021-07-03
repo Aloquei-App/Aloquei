@@ -26,6 +26,8 @@ Aplicativo para estudantes que buscam locações
 
 ## Primeira execução
 
+- extrair o arquivo google-services.json dentro do zip com o mesmo nome no caminho `android/app`
+
 - flutter pub get
 
 ## Estrutura de arquivos
