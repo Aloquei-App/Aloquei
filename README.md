@@ -39,5 +39,5 @@ Aplicativo para estudantes que buscam locações
     - screens, core -> componentes compartilhados exemplo, botão que pode ser utilizado em mais de uma tela
 
 - assets
-    - logo -> logo do banco do tempo
+    - logo -> logo do app
     - images -> imagens disponíveis no aplicativo.
