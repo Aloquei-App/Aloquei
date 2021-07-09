@@ -20,7 +20,7 @@ class Run extends StatelessWidget {
       title: 'Aloquei',
       home: MyHomePage(),
       routes: {
-        '/explore': (context) => ExplorePage(),
+        '/explore': (context) => Home(),
         '/wishlists': (context) => WishlistsPage(),
         '/trips': (context) => TripsPage(),
         '/inbox': (context) => InboxPage(),
