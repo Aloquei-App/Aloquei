@@ -1,7 +1,10 @@
 part of 'auth_bloc.dart';
 
 @immutable
-abstract class AuthState {}
+abstract class AuthState extends Equatable {
+  @override
+  List<Object> get props => null;
+}
 
 class AuthInitial extends AuthState {}
 
@@ -9,6 +12,9 @@ class AuthenticatedState extends AuthState {
   final User user;
   final UserModel userModel;
   AuthenticatedState({this.userModel, this.user});
+
+  @override
+  List<Object> get props => [user, userModel];
 }
 
 class UnauthenticatedState extends AuthState {}

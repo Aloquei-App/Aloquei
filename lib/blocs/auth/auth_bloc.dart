@@ -19,13 +19,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(AuthInitial());
   User user;
   UserModel userModel;
-  StreamSubscription _subscription;
-
-  @override
-  Future<void> close() {
-    if (_subscription != null) _subscription.cancel();
-    return super.close();
-  }
 
   @override
   Stream<AuthState> mapEventToState(
@@ -80,7 +73,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         user = await _authRepository.createUserWithEmailPass(
             event.email, event.senha);
 
-        await user.updateProfile(displayName: event.nome);
+        await user.updateDisplayName(event.nome);
         userModel = await _usersRepository.insertUser(
           user.uid,
           event.email,
@@ -95,6 +88,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       } else if (event is ToWelcomeEvent) {
         yield WelcomeState();
       }
-    } catch (e) {}
+    } catch (e, stack) {
+      print(e);
+      print(stack);
+    }
   }
 }
