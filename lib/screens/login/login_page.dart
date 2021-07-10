@@ -2,12 +2,45 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginPage extends StatefulWidget {
-  static final String routeName = '/loginPageRoute';
-
-  LoginPage({Key key}) : super(key: key);
-
   @override
   _LoginPageState createState() => _LoginPageState();
+}
+
+//Button Contructor, quando tiver onPressed, remover ou adicionar oque os comentarios dizem onde necessário dentro da função
+class DefaultButton extends StatelessWidget {
+  final String text;
+  final Icon icon;
+  //final Function function; //Adicionar isso
+  const DefaultButton(this.text, this.icon); //Remover isso
+  //const DefaultButton(this.text, this.icon, this.function); //Adicionar isso
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+        padding: const EdgeInsets.only(
+            left: 25.0, right: 25.0, top: 3.0, bottom: 12),
+        child: ElevatedButton(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              icon,
+              SizedBox(width: 62),
+              Text(
+                text,
+                style: TextStyle(fontSize: 15.0, color: Colors.black),
+              )
+            ],
+          ),
+          style: ElevatedButton.styleFrom(
+              side: BorderSide(width: 0.7, color: Colors.black),
+              minimumSize: Size(400.0, 47.0),
+              primary: Colors.white,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(7.0))),
+          onPressed: () {}, //Remover isso
+          //onPressed: function // Adicionar isso
+        ));
+  }
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -19,37 +52,40 @@ class _LoginPageState extends State<LoginPage> {
         children: [
           Center(
             child: Column(
-              children: <Widget>[
+              children: [
+                //Exit Button
                 Container(
-                    height: MediaQuery.of(context).size.width * 0.20,
-                    width: MediaQuery.of(context).size.width * 0.98,
-                    child: Align(
-                      alignment: Alignment.bottomLeft,
-                      child: IconButton(
-                        icon: const Icon(Icons.close_rounded),
-                        color: Colors.black,
-                        onPressed: () {},
-                      ),
-                    )),
+                  alignment: Alignment.centerLeft,
+                  height: MediaQuery.of(context).size.width * 0.15,
+                  width: MediaQuery.of(context).size.width * 0.95,
+                  child: IconButton(
+                    splashRadius: 20,
+                    icon: const Icon(Icons.close_rounded),
+                    color: Colors.black,
+                    onPressed: () {},
+                  ),
+                ),
+                //Title
                 Container(
-                    height: MediaQuery.of(context).size.width * 0.10,
-                    width: MediaQuery.of(context).size.width * 0.90,
-                    child: const Align(
-                      alignment: Alignment.bottomLeft,
-                      child: const Text(
-                        'Entre ou cadastre-se no Aloquei',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            fontFamily: 'Arial'),
-                      ),
-                    )),
+                  alignment: Alignment.centerLeft,
+                  height: MediaQuery.of(context).size.width * 0.09,
+                  width: MediaQuery.of(context).size.width * 0.88,
+                  child: const Text(
+                    'Entre ou cadastre-se no Aloquei',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        fontFamily: 'Arial'),
+                  ),
+                ),
                 Form(
                     key: _formKey,
                     child: Padding(
-                      padding: const EdgeInsets.all(25.0),
-                      child: Column(children: <Widget>[
+                      padding: const EdgeInsets.only(
+                          left: 25.0, right: 25.0, top: 10.0, bottom: 25),
+                      child: Column(children: [
                         SizedBox(height: 10),
+                        //Email Input
                         TextFormField(
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
@@ -65,6 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                                 return 'Email inválido';
                               }
                             }),
+                        //Password Input
                         TextFormField(
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(),
@@ -80,6 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                             })
                       ]),
                     )),
+                //Continue Button
                 Padding(
                   padding: const EdgeInsets.only(left: 25.0, right: 25.0),
                   child: MaterialButton(
@@ -90,11 +128,11 @@ class _LoginPageState extends State<LoginPage> {
                           color: Colors.white,
                         ),
                       ),
-                      color: Colors.pink,
+                      color: Color(0xFFe61d53),
                       height: MediaQuery.of(context).size.width * 0.12,
                       minWidth: double.infinity,
                       shape: RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(7)),
+                          borderRadius: BorderRadius.circular(7)),
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
                           ScaffoldMessenger.of(context).showSnackBar(
@@ -103,9 +141,10 @@ class _LoginPageState extends State<LoginPage> {
                         }
                       }),
                 ),
-                Row(children: <Widget>[
+                //Line divider with text in the middle
+                Row(children: [
                   Expanded(
-                    child: new Container(
+                    child: Container(
                         margin: const EdgeInsets.only(left: 10.0, right: 20.0),
                         child: Divider(
                           color: Colors.black,
@@ -113,9 +152,9 @@ class _LoginPageState extends State<LoginPage> {
                         )),
                   ),
                   Text("ou",
-                      style: TextStyle(fontSize: 15, color: Colors.grey[700])),
+                      style: TextStyle(fontSize: 15, color: Color(0xFF999999))),
                   Expanded(
-                    child: new Container(
+                    child: Container(
                         margin: const EdgeInsets.only(left: 20.0, right: 10.0),
                         child: Divider(
                           color: Colors.black,
@@ -123,81 +162,21 @@ class _LoginPageState extends State<LoginPage> {
                         )),
                   ),
                 ]),
-                Padding(
-                    padding: const EdgeInsets.only(
-                        left: 25.0, right: 25.0, top: 3.0, bottom: 12),
-                    child: ElevatedButton(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Icon(Icons.email_outlined,
-                              color: Colors.black, size: 22.0),
-                          SizedBox(width: 62),
-                          Text(
-                            'Continuar com Email',
-                            style:
-                                TextStyle(fontSize: 15.0, color: Colors.black),
-                          )
-                        ],
-                      ),
-                      style: ElevatedButton.styleFrom(
-                          side: BorderSide(width: 0.7, color: Colors.black),
-                          minimumSize: Size(400.0, 47.0),
-                          primary: Colors.white,
-                          shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(7.0))),
-                      onPressed: () {},
-                    )),
-                Padding(
-                    padding: const EdgeInsets.only(
-                        left: 25.0, right: 25.0, top: 3.0, bottom: 12),
-                    child: ElevatedButton(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Icon(FontAwesomeIcons.google,
-                              color: Colors.black, size: 20.0),
-                          SizedBox(width: 60),
-                          Text(
-                            'Continuar com Google',
-                            style:
-                                TextStyle(fontSize: 15.0, color: Colors.black),
-                          )
-                        ],
-                      ),
-                      style: ElevatedButton.styleFrom(
-                          side: BorderSide(width: 0.7, color: Colors.black),
-                          minimumSize: Size(400.0, 47.0),
-                          primary: Colors.white,
-                          shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(7.0))),
-                      onPressed: () {},
-                    )),
-                Padding(
-                    padding: const EdgeInsets.only(
-                        left: 25.0, right: 25.0, top: 3.0, bottom: 12),
-                    child: ElevatedButton(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Icon(FontAwesomeIcons.apple,
-                              color: Colors.black, size: 24.0),
-                          SizedBox(width: 64),
-                          Text(
-                            'Continuar com Apple',
-                            style:
-                                TextStyle(fontSize: 15.0, color: Colors.black),
-                          )
-                        ],
-                      ),
-                      style: ElevatedButton.styleFrom(
-                          side: BorderSide(width: 0.7, color: Colors.black),
-                          minimumSize: Size(400.0, 47.0),
-                          primary: Colors.white,
-                          shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(7.0))),
-                      onPressed: () {},
-                    )),
+                //Continue with Email Button
+                DefaultButton(
+                    'Continuar com Email',
+                    Icon(Icons.email_outlined,
+                        color: Colors.black, size: 22.0)),
+                //Continue with Google Button
+                DefaultButton(
+                    'Continuar com Google',
+                    Icon(FontAwesomeIcons.google,
+                        color: Colors.black, size: 20.0)),
+                //Continue with Apple Button
+                DefaultButton(
+                    'Continuar com Apple',
+                    Icon(FontAwesomeIcons.apple,
+                        color: Colors.black, size: 24.0))
               ],
             ),
           ),
