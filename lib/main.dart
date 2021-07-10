@@ -1,12 +1,19 @@
-import 'package:aloquei_app/screens/app.dart';
-import 'package:aloquei_app/screens/explore/explore.dart';
-import 'package:aloquei_app/screens/inbox/inbox.dart';
-import 'package:aloquei_app/screens/profile/profile.dart';
-import 'package:aloquei_app/screens/trips/trips.dart';
-import 'package:aloquei_app/screens/wishlists/wishlists.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-void main() {
+import 'screens/app.dart';
+import 'screens/explore/explore.dart';
+import 'screens/inbox/inbox.dart';
+import 'screens/profile/profile.dart';
+import 'screens/trips/trips.dart';
+import 'screens/wishlists/wishlists.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(Run());
 }
 
