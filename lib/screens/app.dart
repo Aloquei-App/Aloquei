@@ -5,6 +5,7 @@ import 'package:aloquei_app/screens/inbox/inbox.dart';
 import 'package:aloquei_app/screens/profile/profile.dart';
 import 'package:aloquei_app/screens/trips/trips.dart';
 import 'package:aloquei_app/screens/wishlists/wishlists.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class Run extends StatelessWidget {
   Run({Key key}) : super(key: key);
@@ -13,6 +14,11 @@ class Run extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+      supportedLocales: [const Locale('pt', 'BR')],
       title: 'Aloquei',
       home: SignupPage(),
       routes: {
