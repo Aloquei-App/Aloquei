@@ -1,4 +1,5 @@
 import 'package:aloquei_app/screens/signup/signup.dart';
+import 'package:aloquei_app/screens/personal_info/personal_info.dart';
 import 'package:flutter/material.dart';
 import 'package:aloquei_app/screens/explore/explore.dart';
 import 'package:aloquei_app/screens/inbox/inbox.dart';
@@ -20,7 +21,7 @@ class Run extends StatelessWidget {
       ],
       supportedLocales: [const Locale('pt', 'BR')],
       title: 'Aloquei',
-      home: SignupPage(),
+      home: PersonalInfoPage(),
       routes: {
         '/explore': (context) => ExplorePage(),
         '/wishlists': (context) => WishlistsPage(),
