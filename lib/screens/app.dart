@@ -34,7 +34,8 @@ class Run extends StatelessWidget {
         fontFamily: 'Roboto',
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginPage(),
+      home: ExplorePage(),
+      //LoginPage(),
       routes: {
         '/explore': (context) => ExplorePage(),
         '/wishlists': (context) => WishlistsPage(),
