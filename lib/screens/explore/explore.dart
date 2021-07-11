@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key key}) : super(key: key);
+class ExplorePage extends StatefulWidget {
+  ExplorePage({Key key}) : super(key: key);
+
   @override
-  _HomeState createState() => _HomeState();
+  _ExplorePageState createState() => _ExplorePageState();
 }
 
-class _HomeState extends State<Home> {
-
+class _ExplorePageState extends State<ExplorePage> {
   var search = TextEditingController();
 
-  int _currentIndex =0;
+  int _currentIndex = 0;
   final tabs = [
     Center(child: Text('Home')),
     Center(child: Text('User')),
@@ -22,13 +22,13 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(0, 0, 0, 0.5),
-        toolbarHeight: MediaQuery.of(context).size.height*0.09,
+        toolbarHeight: MediaQuery.of(context).size.height * 0.09,
         title: TextField(
           controller: search,
           style: TextStyle(
             color: Colors.white,
           ),
-          decoration: InputDecoration (
+          decoration: InputDecoration(
             filled: true,
             fillColor: Colors.white,
             border: OutlineInputBorder(
@@ -38,7 +38,7 @@ class _HomeState extends State<Home> {
             ),
             hintText: 'Search',
             hintStyle: TextStyle(
-              color:Colors.black,
+              color: Colors.black,
             ),
           ),
         ),
@@ -47,11 +47,10 @@ class _HomeState extends State<Home> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
-        items:[
+        items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: ('Home'),
-
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
@@ -66,8 +65,8 @@ class _HomeState extends State<Home> {
             label: ('Favorite'),
           ),
         ],
-        onTap: (index){
-          setState((){
+        onTap: (index) {
+          setState(() {
             _currentIndex = index;
           });
         },
