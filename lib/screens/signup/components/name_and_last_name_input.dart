@@ -16,6 +16,7 @@ class NameAndLastNameInput extends StatelessWidget {
       child: Column(
         children: [
           TextFormField(
+            cursorColor: Colors.black,
             controller: nameController,
             decoration: InputDecoration(
                 border: OutlineInputBorder(
