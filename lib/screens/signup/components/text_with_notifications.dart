@@ -11,9 +11,7 @@ class TextWithNotifications extends StatelessWidget {
       padding: const EdgeInsets.only(top: 8.0),
       child: Text(
         'O aloquei enviará notificações push,ideias inspiradoras,emails promocionais e ofertas exclusivas para membros.Você pode cancelar o recebimento dessas mensagens quando quiser ao acessar as configurações da sua conta ou diretamente nas notificações promocionais.',
-        style: TextStyle(
-          color: Colors.black,
-        ),
+        style: TextStyle(color: Colors.black, fontSize: 16),
       ),
     );
   }

@@ -9,10 +9,29 @@ class TextButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0),
-      child: Text(
-        'Ao selecionar Concordar e continuar abaixo, eu concordo com os Tempo de Serviço, Termos de Serviço de pagamentos, Política de Privacidade e Política de Não Discriminação do Aloquei.',
-        style: TextStyle(
-          color: Colors.black,
+      child: RichText(
+        text: TextSpan(
+          style: TextStyle(
+            fontSize: 16.0,
+            color: Colors.black,
+          ),
+          children: [
+            TextSpan(text: 'Ao selecionar '),
+            TextSpan(
+              text: 'Concordar e continuar',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            TextSpan(text: ' abaixo,eu concordo com os '),
+            TextSpan(
+              text:
+                  'Termos de Serviço, Termos de Serviço de pagamentos, Política de Privacidade e Política de Não Discriminação ',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                decoration: TextDecoration.underline,
+              ),
+            ),
+            TextSpan(text: 'do Aloquei.'),
+          ],
         ),
       ),
     );
