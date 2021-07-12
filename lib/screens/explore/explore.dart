@@ -1,90 +1,16 @@
-import 'package:aloquei_app/screens/core/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class ExplorePage extends StatefulWidget {
-  ExplorePage({Key key}) : super(key: key);
+import '../core/colors.dart';
 
-  @override
-  _ExplorePageState createState() => _ExplorePageState();
-}
-
-class _ExplorePageState extends State<ExplorePage> {
-  var search = TextEditingController();
-  int _currentIndex = 0;
+class ExplorePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: tabs[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search,
-              size: 30,
-            ),
-            label: ('Explorar'),
-            activeIcon: Icon(
-              Icons.search,
-              size: 30,
-              color: redAirbnb,
-            ),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              FontAwesomeIcons.airbnb,
-              size: 30,
-            ),
-            label: ('Moradias'),
-            activeIcon: Icon(
-              FontAwesomeIcons.airbnb,
-              size: 30,
-              color: redAirbnb,
-            ),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              FontAwesomeIcons.peopleCarry,
-              size: 26,
-            ),
-            label: ('Pessoas'),
-            activeIcon: Icon(
-              Icons.search,
-              size: 26,
-              color: redAirbnb,
-            ),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              FontAwesomeIcons.userCircle,
-              size: 30,
-            ),
-            label: ('Perfil'),
-            activeIcon: Icon(
-              FontAwesomeIcons.userCircle,
-              size: 30,
-              color: redAirbnb,
-            ),
-          ),
-        ],
-        onTap: (index) {
-          setState(
-            () {
-              _currentIndex = index;
-            },
-          );
-        },
-      ),
-    );
-  }
-
-  final tabs = [
-    Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         toolbarHeight: 80,
+        centerTitle: true,
+        leadingWidth: 0,
         elevation: 0,
         title: InkWell(
           onTap: () {},
@@ -116,9 +42,6 @@ class _ExplorePageState extends State<ExplorePage> {
           ),
         ),
       ),
-    ),
-    Center(child: Text('User')),
-    Center(child: Text('Trip')),
-    Center(child: Text('Favorites')),
-  ];
+    );
+  }
 }
