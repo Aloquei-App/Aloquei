@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class DefaultButton extends StatelessWidget {
+class DefaultLoginButton extends StatelessWidget {
   final String text;
   final VoidCallback onpressed;
   final IconData icon;
   final double size;
 
-  const DefaultButton(
+  const DefaultLoginButton(
       {Key key, this.text, this.onpressed, this.icon, this.size})
       : super(key: key);
 
@@ -19,7 +19,7 @@ class DefaultButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Icon(icon, color: Colors.black, size: size),
-            SizedBox(width: 62),
+            SizedBox(width: MediaQuery.of(context).size.width * 0.2),
             Text(
               text,
               style: TextStyle(fontSize: 15.0, color: Colors.black),

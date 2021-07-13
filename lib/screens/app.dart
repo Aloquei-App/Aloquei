@@ -8,7 +8,6 @@ import 'trips/trips.dart';
 import 'wishlists/wishlists.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-
 class Run extends StatelessWidget {
   Run({Key key}) : super(key: key);
 
@@ -34,7 +33,6 @@ class Run extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Roboto',
         visualDensity: VisualDensity.adaptivePlatformDensity,
-
       ),
       home: LoginPage(),
       routes: {

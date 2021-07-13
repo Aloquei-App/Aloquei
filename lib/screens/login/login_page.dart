@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'components/continue_button.dart';
-import 'components/default_button.dart';
+import 'components/default_login_button.dart';
 import 'components/default_input.dart';
 import 'components/divider_with_text.dart';
 import 'components/login_app_bar.dart';
@@ -40,17 +40,17 @@ class _LoginPageState extends State<LoginPage> {
             onPressed: () {},
           ),
           DividerWithText(),
-          DefaultButton(
+          DefaultLoginButton(
               text: 'Continuar com Email',
               icon: Icons.email_outlined,
               size: 22.0,
               onpressed: () {}),
-          DefaultButton(
+          DefaultLoginButton(
               text: 'Continuar com Google',
               icon: FontAwesomeIcons.google,
               size: 20.0,
               onpressed: () {}),
-          DefaultButton(
+          DefaultLoginButton(
               text: 'Continuar com Apple',
               icon: FontAwesomeIcons.apple,
               size: 24.0,

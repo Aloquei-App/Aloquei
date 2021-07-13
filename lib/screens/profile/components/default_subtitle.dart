@@ -8,9 +8,14 @@ class DefaultSubtitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 15, bottom: 5, left: 20),
-      child:
-          Text(text, style: TextStyle(fontSize: 15, color: Color(0xFF7f7f7f))),
+      padding: EdgeInsets.only(top: 20, bottom: 5, left: 28),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: 17,
+          color: Color(0xFF7f7f7f),
+        ),
+      ),
     );
   }
 }

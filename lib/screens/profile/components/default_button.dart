@@ -4,35 +4,40 @@ class DefaultButton extends StatelessWidget {
   final String text;
   final VoidCallback onpressed;
   final IconData icon;
-  final double size;
 
-  const DefaultButton(
-      {Key key, this.text, this.onpressed, this.icon, this.size})
+  const DefaultButton({Key key, this.text, this.onpressed, this.icon})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 7),
-        child: DecoratedBox(
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(color: Color(0xFFebebeb)),
-              ),
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      child: TextButton(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  text,
+                  style: TextStyle(
+                      fontSize: 22.0,
+                      color: Color(0xFF494949),
+                      fontWeight: FontWeight.w600),
+                ),
+                Icon(icon, color: Color(0xFF494949), size: 23),
+              ],
             ),
-            child: TextButton(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    text,
-                    style: TextStyle(fontSize: 20.0, color: Color(0xFF494949)),
-                  ),
-                  SizedBox(width: 50),
-                  Icon(icon, color: Color(0xFF494949), size: size),
-                ],
-              ),
-              onPressed: () {},
-            )));
+            SizedBox(
+              height: 10,
+            ),
+            Divider(
+              color: Color(0xFF7f7f7f),
+            )
+          ],
+        ),
+        onPressed: onpressed,
+      ),
+    );
   }
 }
