@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../core/app_bars/default_app_bar.dart';
 import 'components/personal_info_title.dart';
 import 'components/personal_info_name_and_lastname.dart';
+import 'components/personal_info_gender.dart';
 
 
 
@@ -20,7 +21,8 @@ class _PersonalInfoPageState extends State<PersonalInfoPage>{
         padding: EdgeInsets.symmetric(horizontal: 25),
         children: [
           PersonalInfoTitle(),                  
-          PersonalInfoNameAndLastname(),          
+          PersonalInfoNameAndLastname(),
+          GenderInput(),          
         ],
       ),
     );
