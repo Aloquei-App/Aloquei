@@ -1,32 +1,13 @@
-import 'package:aloquei_app/screens/app.dart';
-import 'package:aloquei_app/screens/explore/explore.dart';
-import 'package:aloquei_app/screens/inbox/inbox.dart';
-import 'package:aloquei_app/screens/profile/profile.dart';
-import 'package:aloquei_app/screens/trips/trips.dart';
-import 'package:aloquei_app/screens/wishlists/wishlists.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-void main() {
+import 'screens/app.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(Run());
-}
-
-class Run extends StatelessWidget {
-  Run({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Aloquei',
-      home: MyHomePage(),
-      routes: {
-        '/explore': (context) => ExplorePage(),
-        '/wishlists': (context) => WishlistsPage(),
-        '/trips': (context) => TripsPage(),
-        '/inbox': (context) => InboxPage(),
-        '/profile': (context) => ProfilePage(),
-      },
-      initialRoute: '/',
-    );
-  }
 }
