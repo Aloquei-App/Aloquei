@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class OffersModel {
   String key;
   String city;
+  String state;
   String mail;
   String observations;
   String phone;
@@ -14,6 +15,7 @@ class OffersModel {
 
   OffersModel({
     this.city,
+    this.state,
     this.mail,
     this.observations,
     this.phone,
@@ -25,6 +27,7 @@ class OffersModel {
 
   OffersModel.fromJson(Map<String, dynamic> json) {
     city = json['city'] ?? "";
+    state = json['state'] ?? "";
     mail = json['mail'] ?? "";
     observations = json['observations'];
     phone = json['phone'] ?? "";
@@ -37,13 +40,13 @@ class OffersModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['city'] = this.city;
+    data['state'] = this.state;
     data['mail'] = this.mail;
     data['observations'] = this.observations;
     data['phone'] = this.phone;
     data['postUserId'] = this.postUserId;
     data['postUserName'] = this.postUserName;
     data['qtdRooms'] = this.qtdRooms;
-
     data['type'] = this.type;
 
     return data;
