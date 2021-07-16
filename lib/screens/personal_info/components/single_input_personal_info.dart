@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class PersonalInfoNameAndLastname extends StatelessWidget {
+class SingleInputPersonalInfo extends StatelessWidget {
   final TextEditingController nameController;
   final String labelText;
   final String initialValue;
-  const PersonalInfoNameAndLastname({
+  const SingleInputPersonalInfo({
     Key key,
     this.nameController,
     this.labelText,
