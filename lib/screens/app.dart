@@ -1,3 +1,4 @@
+import 'package:aloquei_app/screens/personal_info/personal_info.dart';
 import 'package:flutter/material.dart';
 
 import 'explore/explore.dart';
@@ -34,7 +35,7 @@ class Run extends StatelessWidget {
         fontFamily: 'Roboto',
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginPage(),
+      home: PersonalInfoPage(),
       routes: {
         '/explore': (context) => ExplorePage(),
         '/wishlists': (context) => WishlistsPage(),
