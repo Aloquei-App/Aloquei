@@ -1,3 +1,4 @@
+import 'package:aloquei_app/screens/terms_of_service/terms_of_service.dart';
 import 'package:flutter/material.dart';
 
 import 'explore/explore.dart';
@@ -63,7 +64,7 @@ class _AppPageState extends State<AppPage> {
         fontFamily: 'Roboto',
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginPage(authBloc: authBloc),
+      home: TermsOfService(authBloc: authBloc),
       routes: {
         '/explore': (context) => ExplorePage(),
         '/wishlists': (context) => WishlistsPage(),
