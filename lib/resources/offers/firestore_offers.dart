@@ -43,6 +43,20 @@ class OffersRepository {
     }
   }
 
+  Future<bool> updateOffer(String docId, InterestModel model) async {
+    try {
+      await _firestoreInstance
+          .collection('offers')
+          .doc(docId)
+          .update(model.toJson());
+      return true;
+    } catch (e, stack) {
+      print(e);
+      print(stack);
+      throw e;
+    }
+  }
+
   Future<bool> removeOffer(String docId) async {
     await _firestoreInstance.collection('offers').doc(docId).delete();
     return true;
