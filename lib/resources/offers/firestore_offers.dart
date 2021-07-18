@@ -26,6 +26,20 @@ class OffersRepository {
     }
   }
 
+  Future<bool> updateInterest(String docId, InterestModel model) async {
+    try {
+      await _firestoreInstance
+          .collection('offers')
+          .doc(docId)
+          .update(model.toJson());
+      return true;
+    } catch (e, stack) {
+      print(e);
+      print(stack);
+      throw e;
+    }
+  }
+
   Future<HouseOfferModel> insertHouse(HouseOfferModel model) async {
     try {
       DocumentReference doc =
@@ -43,7 +57,7 @@ class OffersRepository {
     }
   }
 
-  Future<bool> updateOffer(String docId, InterestModel model) async {
+  Future<bool> updateHouse(String docId, HouseOfferModel model) async {
     try {
       await _firestoreInstance
           .collection('offers')
