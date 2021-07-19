@@ -68,11 +68,6 @@ class LoginPage extends StatelessWidget {
               icon: FontAwesomeIcons.google,
               size: 20.0,
               onpressed: () {}),
-          DefaultLoginButton(
-              text: 'Continuar com Apple',
-              icon: FontAwesomeIcons.apple,
-              size: 24.0,
-              onpressed: () {}),
         ],
       ),
     );

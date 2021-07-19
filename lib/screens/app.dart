@@ -1,15 +1,16 @@
 import 'package:aloquei_app/screens/search/search.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
+import '../blocs/auth/auth_bloc.dart';
 import 'explore/explore.dart';
 import 'inbox/inbox.dart';
 import 'login/login_page.dart';
 import 'profile/profile.dart';
 import 'trips/trips.dart';
 import 'wishlists/wishlists.dart';
-import 'package:responsive_framework/responsive_framework.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../blocs/auth/auth_bloc.dart';
 
 class Run extends StatelessWidget {
   @override
@@ -44,6 +45,11 @@ class _AppPageState extends State<AppPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+      supportedLocales: [const Locale('pt', 'BR')],
       builder: (context, widget) => ResponsiveWrapper.builder(
         BouncingScrollWrapper.builder(context, widget),
         maxWidth: 1200,
