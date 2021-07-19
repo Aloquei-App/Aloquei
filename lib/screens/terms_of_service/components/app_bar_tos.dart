@@ -15,7 +15,7 @@ class TOAAppBar extends StatelessWidget implements PreferredSizeWidget {
             color: Colors.black, fontWeight: FontWeight.w500, fontSize: 25),
       ),
       backgroundColor: Colors.white,
-      elevation: 0,
+      elevation: 1,
       leading: Padding(
         padding: EdgeInsets.only(left: 10.0),
         child: IconButton(
