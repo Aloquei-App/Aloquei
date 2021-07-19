@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/models/estados_model.dart';
-import 'state_selection_card.dart';
+import 'selection.dart';
 
 class StateListView extends StatelessWidget {
   const StateListView(
@@ -24,14 +24,18 @@ class StateListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       flex: 3,
-      child: ListView.builder(
+      child: ListView.separated(
+          separatorBuilder: (BuildContext context, int index) => const Divider(
+                thickness: 2,
+              ),
           itemCount: _estadosList.length,
           controller: _scrollController,
           itemBuilder: (context, index) {
             return ListTile(
-                title: StateSelection(
+                title: Selection(
                   color: _colorsList[index],
-                  estadosModel: _estadosList[index],
+                  sigla: _estadosList[index].sigla,
+                  nome: _estadosList[index].nome,
                 ),
                 onTap: () => _onTap(_estadosList[index]));
           }),

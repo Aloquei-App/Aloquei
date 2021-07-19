@@ -64,14 +64,14 @@ class _AppPageState extends State<AppPage> {
         fontFamily: 'Roboto',
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      //home: LoginPage(authBloc: authBloc),
-      home: Search(),
+      home: LoginPage(authBloc: authBloc),
       routes: {
         '/explore': (context) => ExplorePage(),
         '/wishlists': (context) => WishlistsPage(),
         '/trips': (context) => TripsPage(),
         '/inbox': (context) => InboxPage(),
         '/profile': (context) => ProfilePage(),
+        '/search': (context) => Search(),
       },
       initialRoute: '/',
     );

@@ -4,10 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../blocs/search/search_bloc.dart';
 import '../core/loading.dart';
 import 'components/background.dart';
+import 'components/city_listview.dart';
 import 'components/draggable_background.dart';
 import 'components/search_header.dart';
-import 'components/search_listview.dart';
+import 'components/state_listview.dart';
 import 'components/top_text.dart';
+import 'components/type_header.dart';
+import 'components/type_listview.dart';
 
 class Search extends StatelessWidget {
   const Search({Key key}) : super(key: key);
@@ -46,19 +49,27 @@ class _SearchPageState extends State<SearchPage> {
     return Scaffold(
       body: BackGround(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          BlocBuilder<SearchBloc, SearchState>(
+          BlocConsumer<SearchBloc, SearchState>(
+            listenWhen: (previous, current) => current is GoToMap,
+            listener: (context, state) {
+              if (state is GoToMap) {
+                // TODO navigate to map
+              }
+            },
+            buildWhen: (previous, current) => current is! GoToMap,
             builder: (context, state) {
               return TopText(text: _searchBloc.text, visible: _searchBloc.show);
             },
           ),
           Expanded(
             child: DraggableScrollableSheet(
-                initialChildSize: 0.8,
+                initialChildSize: 0.95,
                 minChildSize: 0.8,
                 maxChildSize: 0.95,
                 builder: (context, scrollController) {
                   return DraggableBackground(
                     child: BlocBuilder<SearchBloc, SearchState>(
+                      buildWhen: (previous, current) => current is! GoToMap,
                       builder: (context, state) {
                         if (state is ShowAvailableStates) {
                           return Column(children: [
@@ -68,12 +79,13 @@ class _SearchPageState extends State<SearchPage> {
                                 Navigator.of(context).pop();
                               },
                               onChanged: (value) {
-                                // TODO evento de busca de estados
+                                _searchBloc
+                                    .add(EstadoSearchEvent(termo: value));
                               },
                             ),
                             StateListView(
                                 colorsList: _searchBloc.colors,
-                                estadosList: _searchBloc.estados,
+                                estadosList: state.estadosList,
                                 scrollController: scrollController,
                                 onTap: (value) {
                                   _searchBloc
@@ -85,17 +97,38 @@ class _SearchPageState extends State<SearchPage> {
                             SearchHeader(
                               hint: 'Para qual cidade está indo?',
                               onBackPress: () {
-                                // TODO evento para voltar para a escolha do estado
+                                _searchBloc.add(BackToEstadoEvent());
                               },
                               onChanged: (value) {
-                                // TODO evento de busca de cidades
+                                _searchBloc.add(CitySearchEvent(termo: value));
                               },
                             ),
-                            // TODO mostrar os cards das cidades
+                            CityListView(
+                                colorsList: _searchBloc.colors,
+                                cityList: state.cidadesList,
+                                scrollController: scrollController,
+                                onTap: (value) {
+                                  _searchBloc
+                                      .add(CitySelectedEvent(cidade: value));
+                                }),
                           ]);
                         } else if (state is ShowAvailableTypes) {
-                          // mostrar os tipos moradia/interesse
-                          return Container();
+                          return Column(
+                            children: [
+                              TypeHeader(
+                                onBackPress: () {
+                                  _searchBloc.add(BackToCityEvent());
+                                },
+                                cityName: state.city,
+                              ),
+                              TypeListView(
+                                  scrollController: scrollController,
+                                  onTap: (value) {
+                                    _searchBloc
+                                        .add(TypeSelectedEvent(tipo: value));
+                                  }),
+                            ],
+                          );
                         } else if (state is LoadingState) {
                           return Loading();
                         }

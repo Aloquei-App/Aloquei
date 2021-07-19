@@ -35,3 +35,25 @@ class TypeSelectedEvent extends SearchEvent {
   @override
   List<Object> get props => [tipo];
 }
+
+class EstadoSearchEvent extends SearchEvent {
+  final String termo;
+
+  EstadoSearchEvent({this.termo});
+
+  @override
+  List<Object> get props => [termo];
+}
+
+class BackToEstadoEvent extends SearchEvent {}
+
+class CitySearchEvent extends SearchEvent {
+  final String termo;
+
+  CitySearchEvent({this.termo});
+
+  @override
+  List<Object> get props => [termo];
+}
+
+class BackToCityEvent extends SearchEvent {}

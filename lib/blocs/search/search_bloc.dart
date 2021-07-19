@@ -6,6 +6,7 @@ import 'package:aloquei_app/core/models/estados_model.dart';
 import 'package:aloquei_app/resources/apis/ibge.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:meta/meta.dart';
 import 'package:random_color/random_color.dart';
 
 part 'search_event.dart';
@@ -33,21 +34,36 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
   int _selectedType;
 
-  List<EstadosModel> get estados => _estadosList;
-
-  List<CitiesModel> get cidades => _cidadesList;
-
   List<Color> get colors => _colorList;
 
   String get text => _topText;
 
   bool get show => _showTopWidget;
 
-  set estado(value) => _selectedState = value;
+  List<EstadosModel> _buildFilteredStateList(String search) {
+    List<String> filtro = search.toLowerCase().split(' ');
+    List<EstadosModel> lista = [];
+    for (var i = 0; i < _estadosList.length; i++) {
+      if ((filtro
+              .where((x) => _estadosList[i].nome.toLowerCase().contains(x))
+              .isNotEmpty ||
+          filtro
+              .where((x) => _estadosList[i].sigla.toLowerCase().contains(x))
+              .isNotEmpty)) lista.add(_estadosList[i]);
+    }
+    return lista;
+  }
 
-  set cidade(value) => _selectedCity = value;
-
-  set type(value) => _selectedType = value;
+  List<CitiesModel> _buildFilteredCityList(String search) {
+    List<String> filtro = search.toLowerCase().split(' ');
+    List<CitiesModel> lista = [];
+    for (var i = 0; i < _cidadesList.length; i++) {
+      if ((filtro
+          .where((x) => _cidadesList[i].nome.toLowerCase().contains(x))
+          .isNotEmpty)) lista.add(_cidadesList[i]);
+    }
+    return lista;
+  }
 
   @override
   Stream<SearchState> mapEventToState(
@@ -61,9 +77,23 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           _estadosList.length,
           (index) => _randomColor.randomColor(
               colorSaturation: ColorSaturation.highSaturation));
-      yield ShowAvailableStates();
+      yield ShowAvailableStates(estadosList: _estadosList);
+    } else if (event is EstadoSearchEvent) {
+      if (event.termo.isNotEmpty) {
+        yield SearchInitial();
+        List<EstadosModel> filtered = _buildFilteredStateList(event.termo);
+        yield ShowAvailableStates(estadosList: filtered);
+      } else
+        yield ShowAvailableStates(estadosList: _estadosList);
+    } else if (event is BackToEstadoEvent) {
+      _topText = '';
+      _showTopWidget = false;
+      _selectedCity = null;
+      _selectedState = null;
+      yield ShowAvailableStates(estadosList: _estadosList);
     } else if (event is StateSelectedEvent) {
       if (event.estado != null) {
+        yield LoadingState();
         _topText = "Qual cidade?";
         _showTopWidget = true;
         _selectedState = event.estado;
@@ -74,22 +104,32 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             _cidadesList.length,
             (index) => _randomColor.randomColor(
                 colorSaturation: ColorSaturation.highSaturation));
-
-        yield ShowAvailableCities();
+        yield ShowAvailableCities(cidadesList: _cidadesList);
       }
+    } else if (event is CitySearchEvent) {
+      if (event.termo.isNotEmpty) {
+        yield SearchInitial();
+        List<CitiesModel> filtered = _buildFilteredCityList(event.termo);
+        yield ShowAvailableCities(cidadesList: filtered);
+      } else
+        yield ShowAvailableCities(cidadesList: _cidadesList);
+    } else if (event is BackToCityEvent) {
+      _topText = "Qual cidade?";
+      _showTopWidget = true;
+      _selectedCity = null;
+      yield ShowAvailableCities(cidadesList: _cidadesList);
     } else if (event is CitySelectedEvent) {
       if (event.cidade != null) {
         _topText = "Qual tipo de busca?";
         _showTopWidget = true;
         _selectedCity = event.cidade;
-        yield ShowAvailableTypes();
+        yield ShowAvailableTypes(city: _selectedCity.nome);
       }
     } else if (event is TypeSelectedEvent) {
       if (event.tipo != null) {
-        _topText = "";
-        _showTopWidget = false;
         _selectedType = event.tipo;
-        yield GoToMap();
+        yield GoToMap(
+            city: _selectedCity, estado: _selectedState, type: _selectedType);
       }
     }
   }
