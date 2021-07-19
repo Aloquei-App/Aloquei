@@ -1,5 +1,5 @@
-import 'package:aloquei_app/core/models/cities_model.dart';
-import 'package:aloquei_app/core/models/estados_model.dart';
+import 'cities_model.dart';
+import 'estados_model.dart';
 
 class SearchModel {
   const SearchModel({this.estado, this.cidade, this.tipo});

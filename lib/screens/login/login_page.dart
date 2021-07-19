@@ -1,11 +1,11 @@
-import 'package:aloquei_app/blocs/auth/auth_bloc.dart';
-import 'package:aloquei_app/core/validations.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../blocs/auth/auth_bloc.dart';
+import '../../core/validations.dart';
 import 'components/continue_button.dart';
-import 'components/default_login_button.dart';
 import 'components/default_input.dart';
+import 'components/default_login_button.dart';
 import 'components/divider_with_text.dart';
 import 'components/login_app_bar.dart';
 import 'components/title_login.dart';

@@ -1,4 +1,3 @@
-import 'package:aloquei_app/screens/search/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -9,6 +8,7 @@ import 'explore/explore.dart';
 import 'inbox/inbox.dart';
 import 'login/login_page.dart';
 import 'profile/profile.dart';
+import 'search/search.dart';
 import 'trips/trips.dart';
 import 'wishlists/wishlists.dart';
 
