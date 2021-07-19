@@ -12,10 +12,9 @@ class UsersRepository {
   Future<UserModel> insertUser(
       String userId, String email, String nome, String gender) async {
     return await firestoreInstance.collection('users').doc(userId).set({
-      'horas': 4,
       'email': email,
-      'is_admin': false,
-      'nome': nome,
+      'isAdmin': false,
+      'name': nome,
       'gender': gender,
     }).then((value) {
       return UserModel(
