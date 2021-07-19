@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TOAAppBar extends StatelessWidget implements PreferredSizeWidget {
-  TOAAppBar({
+class TOSAppBar extends StatelessWidget implements PreferredSizeWidget {
+  TOSAppBar({
     Key key,
   }) : super(key: key);
 

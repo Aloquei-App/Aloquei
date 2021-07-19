@@ -10,7 +10,7 @@ class WarningCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 13),
+      padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 13),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.black26),
         borderRadius: BorderRadius.circular(10),
