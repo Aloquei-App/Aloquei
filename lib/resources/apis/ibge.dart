@@ -10,8 +10,8 @@ class IbgeRepository {
   String _urlCities =
       'https://servicodados.ibge.gov.br/api/v1/localidades/estados/{state}/municipios';
 
-  Future<List<CitiesModel>> getCitiesFromState(String state) async {
-    String temp = _urlCities.replaceFirst("{state}", state);
+  Future<List<CitiesModel>> getCitiesFromState(int state) async {
+    String temp = _urlCities.replaceFirst("{state}", state.toString());
     HttpClient client = new HttpClient();
     client.badCertificateCallback =
         ((X509Certificate cert, String host, int port) => true);

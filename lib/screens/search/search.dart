@@ -1,114 +1,109 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../blocs/search/search_bloc.dart';
+import '../core/loading.dart';
+import 'components/background.dart';
+import 'components/draggable_background.dart';
+import 'components/search_header.dart';
+import 'components/search_listview.dart';
+import 'components/top_text.dart';
 
 class Search extends StatelessWidget {
+  const Search({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => SearchBloc()..add(SearchStartedEvent()),
+      child: SearchPage(),
+    );
+  }
+}
+
+class SearchPage extends StatefulWidget {
+  @override
+  _SearchPageState createState() => _SearchPageState();
+}
+
+class _SearchPageState extends State<SearchPage> {
+  SearchBloc _searchBloc;
+
+  @override
+  void initState() {
+    super.initState();
+    _searchBloc = BlocProvider.of<SearchBloc>(context);
+  }
+
+  @override
+  void dispose() {
+    _searchBloc.close();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        margin:
-            EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.001),
-        decoration: new BoxDecoration(
-          gradient: new LinearGradient(
-            colors: [
-              Colors.purple[900],
-              Colors.pink,
-            ],
-            begin: const FractionalOffset(0.0, 0.0),
-            end: const FractionalOffset(1.0, 0.0),
-            stops: [0.0, 1.0],
-          ),
-        ),
+      body: BackGround(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Visibility(
-            visible: true,
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.7,
-              padding: EdgeInsets.only(top: 90, left: 20),
-              child: Text(
-                'What are you looking for?',
-                maxLines: 2,
-                style: TextStyle(color: Colors.white, fontSize: 30),
-              ),
-            ),
+          BlocBuilder<SearchBloc, SearchState>(
+            builder: (context, state) {
+              return TopText(text: _searchBloc.text, visible: _searchBloc.show);
+            },
           ),
           Expanded(
             child: DraggableScrollableSheet(
-              initialChildSize: 0.8,
-              minChildSize: 0.7,
-              maxChildSize: 0.95,
-              builder: (context, scrollController) {
-                return Container(
-                  height: MediaQuery.of(context).size.height * 0.9,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(25),
-                        topRight: Radius.circular(25)),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  padding: EdgeInsets.only(top: 20),
-                  child: Column(children: [
-                    Row(
-                      children: [
-                        IconButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            icon: Icon(Icons.arrow_back)),
-                        Expanded(
-                          child: TextFormField(
-                            cursorColor: Colors.black,
-                            keyboardType: TextInputType.text,
-                            //controller: controller,
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                enabledBorder: InputBorder.none,
-                                errorBorder: InputBorder.none,
-                                disabledBorder: InputBorder.none,
-                                contentPadding: EdgeInsets.only(
-                                    left: 15, bottom: 11, top: 11, right: 15),
-                                hintText: "Where are you going"),
-                            //validator: validator,
-                          ),
-                        ),
-                      ],
+                initialChildSize: 0.8,
+                minChildSize: 0.8,
+                maxChildSize: 0.95,
+                builder: (context, scrollController) {
+                  return DraggableBackground(
+                    child: BlocBuilder<SearchBloc, SearchState>(
+                      builder: (context, state) {
+                        if (state is ShowAvailableStates) {
+                          return Column(children: [
+                            SearchHeader(
+                              hint: 'Para qual estado está indo?',
+                              onBackPress: () {
+                                Navigator.of(context).pop();
+                              },
+                              onChanged: (value) {
+                                // TODO evento de busca de estados
+                              },
+                            ),
+                            StateListView(
+                                colorsList: _searchBloc.colors,
+                                estadosList: _searchBloc.estados,
+                                scrollController: scrollController,
+                                onTap: (value) {
+                                  _searchBloc
+                                      .add(StateSelectedEvent(estado: value));
+                                }),
+                          ]);
+                        } else if (state is ShowAvailableCities) {
+                          return Column(children: [
+                            SearchHeader(
+                              hint: 'Para qual cidade está indo?',
+                              onBackPress: () {
+                                // TODO evento para voltar para a escolha do estado
+                              },
+                              onChanged: (value) {
+                                // TODO evento de busca de cidades
+                              },
+                            ),
+                            // TODO mostrar os cards das cidades
+                          ]);
+                        } else if (state is ShowAvailableTypes) {
+                          // mostrar os tipos moradia/interesse
+                          return Container();
+                        } else if (state is LoadingState) {
+                          return Loading();
+                        }
+                        return Container();
+                      },
                     ),
-                    Expanded(
-                      flex: 3,
-                      child: ListView.separated(
-                          itemCount: 5,
-                          controller: scrollController,
-                          separatorBuilder: (BuildContext context, int index) =>
-                              const Divider(
-                                thickness: 5,
-                              ),
-                          itemBuilder: (context, index) {
-                            return Container(
-                              margin: EdgeInsets.all(10),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Icon(Icons.location_city),
-                                  Text('Chyupisco'),
-                                ],
-                              ),
-                            );
-                          }),
-                    ),
-                  ]),
-                );
-              },
-            ),
+                  );
+                }),
           ),
         ]),
       ),
