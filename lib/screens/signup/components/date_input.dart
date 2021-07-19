@@ -25,7 +25,7 @@ class DateInput extends StatelessWidget {
             format: format,
             onShowPicker: (context, currentValue) {
               return showDatePicker(
-                //locale: Locale("pt", "BR"),
+                locale: Locale("pt", "BR"),
                 context: context,
                 firstDate: DateTime(1900),
                 initialDate: currentValue ?? DateTime.now(),
