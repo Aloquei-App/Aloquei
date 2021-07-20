@@ -1,5 +1,6 @@
 import 'package:aloquei_app/blocs/auth/auth_bloc.dart';
 import 'package:aloquei_app/screens/terms_of_service/components/app_bar_tos.dart';
+import 'package:aloquei_app/screens/terms_of_service/components/european_warning.dart';
 import 'package:aloquei_app/screens/terms_of_service/components/title_terms_of_service.dart';
 import 'package:aloquei_app/screens/terms_of_service/components/warning_card.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,8 @@ class TermsOfService extends StatelessWidget {
       body: ListView(
         children: [
           WarningCard(),
-          TOSTitle()
+          TOSTitle(),
+          EuropeanWarningCard(),
 
         ],
       ),
