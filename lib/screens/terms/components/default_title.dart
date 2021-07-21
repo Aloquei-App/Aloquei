@@ -8,13 +8,14 @@ class DefaultTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.all(20),
-        child: Text(
-          text,
-          style: TextStyle(
-              color: Color(0xFF4e4e4e),
-              fontSize: 31,
-              fontWeight: FontWeight.bold),
-        ));
+      padding: EdgeInsets.symmetric(vertical: 20),
+      child: Text(
+        text,
+        style: TextStyle(
+            color: Color(0xFF4e4e4e),
+            fontSize: 31,
+            fontWeight: FontWeight.bold),
+      ),
+    );
   }
 }

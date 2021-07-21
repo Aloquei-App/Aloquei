@@ -8,13 +8,14 @@ class DefaultText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
-        child: Text(
-          text,
-          style: TextStyle(
-            color: Color(0xFF585858),
-            fontSize: 16,
-          ),
-        ));
+      padding: EdgeInsets.only(bottom: 10),
+      child: Text(
+        text,
+        style: TextStyle(
+          color: Color(0xFF585858),
+          fontSize: 16,
+        ),
+      ),
+    );
   }
 }
