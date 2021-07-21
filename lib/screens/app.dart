@@ -9,6 +9,7 @@ import 'explore/explore.dart';
 import 'inbox/inbox.dart';
 import 'login/login_page.dart';
 import 'profile/profile.dart';
+import 'search/search.dart';
 import 'trips/trips.dart';
 import 'wishlists/wishlists.dart';
 
@@ -77,6 +78,7 @@ class _AppPageState extends State<AppPage> {
         '/trips': (context) => TripsPage(),
         '/inbox': (context) => InboxPage(),
         '/profile': (context) => ProfilePage(),
+        '/search': (context) => Search(),
       },
       initialRoute: '/',
     );

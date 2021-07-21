@@ -45,7 +45,9 @@ dependencies:
   url_launcher: ^5.4.0
   font_awesome_flutter: ^9.1.0
   responsive_framework: ^0.1.0
-
+  random_color: ^1.0.5
+  flow_builder: ^0.0.3
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -63,6 +65,8 @@ flutter:
 
   assets:
     - assets/prof.png
+    - assets/oferta.jpg
+    - assets/procura.jpg
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

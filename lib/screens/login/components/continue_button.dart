@@ -1,5 +1,6 @@
-import 'package:aloquei_app/screens/core/colors.dart';
 import 'package:flutter/material.dart';
+
+import '../../core/colors.dart';
 
 class ContinueButton extends StatelessWidget {
   final VoidCallback onPressed;
