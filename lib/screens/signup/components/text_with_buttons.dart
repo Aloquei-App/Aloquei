@@ -28,7 +28,8 @@ class TextButtons extends StatelessWidget {
               text: 'Termos de Serviço, ',
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  launch('https://tenor.com/view/kid-thumbs-up-approve-computer-gif-11224142');
+                  launch(
+                      'https://tenor.com/view/kid-thumbs-up-approve-computer-gif-11224142');
                 },
               // Termos de Serviço de pagamentos, Política de Privacidade e Política de Não Discriminação
               style: TextStyle(
@@ -40,7 +41,8 @@ class TextButtons extends StatelessWidget {
               text: ' Termos de Serviço de pagamentos, ',
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  launch('https://tenor.com/view/kid-thumbs-up-approve-computer-gif-11224142');
+                  launch(
+                      'https://tenor.com/view/kid-thumbs-up-approve-computer-gif-11224142');
                 },
               // Política de Privacidade e Política de Não Discriminação
               style: TextStyle(
@@ -49,11 +51,11 @@ class TextButtons extends StatelessWidget {
               ),
             ),
             TextSpan(
-              text:
-                  ' Política de Privacidade ',
+              text: ' Política de Privacidade ',
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  launch('https://tenor.com/view/kid-thumbs-up-approve-computer-gif-11224142');
+                  launch(
+                      'https://tenor.com/view/kid-thumbs-up-approve-computer-gif-11224142');
                 },
               // Termos de Serviço de pagamentos, Política de Privacidade e Política de Não Discriminação
               style: TextStyle(
@@ -62,12 +64,12 @@ class TextButtons extends StatelessWidget {
               ),
             ),
             TextSpan(text: 'e'),
-                        TextSpan(
-              text:
-                  ' Política de Não Discriminação',
+            TextSpan(
+              text: ' Política de Não Discriminação',
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  launch('https://tenor.com/view/kid-thumbs-up-approve-computer-gif-11224142');
+                  launch(
+                      'https://tenor.com/view/kid-thumbs-up-approve-computer-gif-11224142');
                 },
               // Termos de Serviço de pagamentos, Política de Privacidade e Política de Não Discriminação
               style: TextStyle(
