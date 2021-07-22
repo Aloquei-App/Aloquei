@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:aloquei_app/core/errors/auth_error.dart';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 
+import '../../core/errors/auth_error.dart';
 import '../../core/models/user_model.dart';
 import '../../resources/auth/firebase_auth.dart';
 import '../../resources/tokens/firestore_tokens.dart';
