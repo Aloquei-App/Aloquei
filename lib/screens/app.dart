@@ -40,8 +40,13 @@ class _AppPageState extends State<AppPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
     authBloc = BlocProvider.of<AuthBloc>(context);
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
