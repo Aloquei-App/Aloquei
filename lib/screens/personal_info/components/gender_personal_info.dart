@@ -1,4 +1,3 @@
-import 'package:aloquei_app/core/definitions.dart';
 import 'package:flutter/material.dart';
 
 enum Genders { Masculino, Feminino, Outro }
@@ -32,7 +31,6 @@ class _GenderInputState extends State<GenderInput> {
             },
             readOnly: true,
             initialValue: gender,
-            
           ),
         ],
       ),
