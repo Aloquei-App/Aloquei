@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 
 import '../../core/errors/auth_error.dart';
 import '../../core/models/user_model.dart';
-import '../../resources/auth/auth_firestore.dart';
+import '../../resources/auth/firebase_auth.dart';
 
 part 'profile_event.dart';
 part 'profile_state.dart';

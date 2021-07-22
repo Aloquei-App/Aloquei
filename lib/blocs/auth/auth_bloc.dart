@@ -1,12 +1,14 @@
 import 'dart:async';
 
+import 'package:aloquei_app/core/errors/auth_error.dart';
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 
 import '../../core/models/user_model.dart';
-import '../../resources/auth/auth_firestore.dart';
+import '../../resources/auth/firebase_auth.dart';
 import '../../resources/tokens/firestore_tokens.dart';
 import '../../resources/user/firebase_user.dart';
 
@@ -15,83 +17,80 @@ part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository _authRepository = AuthRepository();
-  final UsersRepository _usersRepository = UsersRepository();
+  final UsersRepository _usersRepo = UsersRepository();
   TokenRepository tokenRepository = TokenRepository();
   AuthBloc() : super(AuthInitial());
-  User user;
-  UserModel userModel;
+  User _user;
+  UserModel _userModel;
 
   @override
-  Stream<AuthState> mapEventToState(
-    AuthEvent event,
-  ) async* {
+  Future<void> close() {
+    if (_userModelSub != null) _userModelSub.cancel();
+    return super.close();
+  }
+
+  User get getUser => _user;
+  StreamSubscription<DocumentSnapshot> _userModelSub;
+  UserModel get getUserModel => _userModel;
+
+  @override
+  Stream<AuthState> mapEventToState(AuthEvent event) async* {
     try {
       if (event is AppStartedEvent) {
         yield LoadingState();
 
-        user = await _authRepository.getUser();
-        if (user != null) {
-          add(LoginSuccessEvent(user: user));
-        } else {
-          add(ToWelcomeEvent());
-        }
+        _user = _authRepository.getUser();
+        Future.delayed(const Duration(seconds: 2), () {
+          if (_user != null) {
+            add(LoginSuccessEvent());
+          } else {
+            add(ExitEvent());
+          }
+        });
       } else if (event is LoginEmailEvent) {
-        user = await _authRepository.signInEmailAndPassword(
+        _user = await _authRepository.signInEmailAndPassword(
             event.email, event.senha);
-        userModel = await _usersRepository.getUserById(user.uid);
-        if (userModel == null) {
-          yield UnauthenticatedState();
-        } else {
-          yield AuthenticatedState(user: user, userModel: userModel);
-        }
+        add(LoginSuccessEvent());
       } else if (event is LogoutEvent) {
         await _authRepository.signOut();
         yield UnauthenticatedState();
       } else if (event is ExitEvent) {
         yield UnauthenticatedState();
-      } else if (event is SignupEvent) {
-        yield SignupState();
-      } else if (event is LoginEvent) {
-        yield LoginState();
+      } else if (event is SignupPressedEvent) {
+        yield SignupPressedState();
       } else if (event is LoginSuccessEvent) {
-        user = event.user;
-        userModel = await _usersRepository.getUserById(user.uid);
-        if (userModel == null) {
-          yield UnauthenticatedState();
+        _userModel = await _usersRepo.getUser(_user.uid);
+        _userModelSub = _usersRepo.getStreamUser(_user.uid).listen((event) {
+          _userModel = UserModel.fromSnapshot(event.data(), event.id);
+        });
+        if (_userModel != null) {
+          yield AuthenticatedState(user: _user, userModel: _userModel);
+        } else if (_user.displayName.isNotEmpty) {
+          _userModel = UserModel(
+              key: _user.uid, email: _user.email, nome: _user.displayName);
+          bool success = await _usersRepo.insertUser(_userModel);
+          if (success) {
+            yield AuthenticatedState(user: _user, userModel: _userModel);
+          } else {
+            yield UnauthenticatedState();
+          }
         } else {
-          yield AuthenticatedState(user: user, userModel: userModel);
-        }
-      } else if (event is ForgotEvent) {
-        yield ForgotState();
-      } else if (event is RequestNewPasswordEvent) {
-        bool success = await _authRepository.requestNewPassword(event.email);
-        if (success) {
           yield UnauthenticatedState();
-          yield ExceptionState(
-              message: "Um e-mail foi enviado para a recuperação da senha");
         }
-      } else if (event is CreateLoginEmailEvent) {
-        user = await _authRepository.createUserWithEmailPass(
-            event.email, event.senha);
-
-        await user.updateDisplayName(event.nome);
-        userModel = await _usersRepository.insertUser(
-          user.uid,
-          event.email,
-          event.nome,
-          event.gender,
-        );
-        if (userModel == null) {
-          yield UnauthenticatedState();
-        } else {
-          yield AuthenticatedState(user: user, userModel: userModel);
-        }
-      } else if (event is ToWelcomeEvent) {
-        yield WelcomeState();
+      } else if (event is SignupSuccessEvent) {
+        _user = event.user;
+        _userModel = event.userModel;
+        yield AuthenticatedState(user: _user, userModel: _userModel);
       }
-    } catch (e, stack) {
-      print(e);
-      print(stack);
+    } catch (e) {
+      if (e is FirebaseAuthException) {
+        yield ExceptionState(message: authErrorHandler(e));
+        yield UnauthenticatedState();
+      } else {
+        print(e.toString());
+        yield ExceptionState(message: "Algo saiu errado");
+        yield UnauthenticatedState();
+      }
     }
   }
 }

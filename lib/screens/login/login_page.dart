@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../blocs/auth/auth_bloc.dart';
@@ -11,19 +12,14 @@ import 'components/login_app_bar.dart';
 import 'components/title_login.dart';
 
 class LoginPage extends StatelessWidget {
-  final TextEditingController emailCntrlr = TextEditingController();
-  final TextEditingController passCntrlr = TextEditingController();
+  final TextEditingController _emailCntrlr = TextEditingController();
+  final TextEditingController _passCntrlr = TextEditingController();
 
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final AuthBloc authBloc;
-
-  LoginPage({
-    Key key,
-    @required this.authBloc,
-  }) : super(key: key);
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
     return Scaffold(
       appBar: LoginAppBar(
         onPressed: () {},
@@ -33,7 +29,7 @@ class LoginPage extends StatelessWidget {
         children: [
           TitleLogin(),
           Form(
-            key: formKey,
+            key: _formKey,
             child: Padding(
               padding: EdgeInsets.only(top: 10.0, bottom: 25),
               child: Column(
@@ -41,20 +37,20 @@ class LoginPage extends StatelessWidget {
                   SizedBox(height: 10),
                   DefaultInput(
                       text: "Email",
-                      controller: emailCntrlr,
+                      controller: _emailCntrlr,
                       validator: validateSenha),
                   DefaultInput(
                       text: "Senha",
-                      controller: passCntrlr,
+                      controller: _passCntrlr,
                       validator: validateSenha),
                 ],
               ),
             ),
           ),
           ContinueButton(onPressed: () {
-            if (validateAndSave(formKey)) {
+            if (validateAndSave(_formKey)) {
               authBloc.add(LoginEmailEvent(
-                  email: emailCntrlr.text, senha: passCntrlr.text));
+                  email: _emailCntrlr.text, senha: _passCntrlr.text));
             }
           }),
           DividerWithText(),

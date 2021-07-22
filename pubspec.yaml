@@ -29,6 +29,7 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
+  google_sign_in: ^5.0.1
   email_validator: ^1.0.6
   flutter_local_notifications: ^6.0.0
   cupertino_icons: ^1.0.3

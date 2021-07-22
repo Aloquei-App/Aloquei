@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../blocs/auth/auth_bloc.dart';
-import 'core/ui.dart';
+import 'core/snack_bar.dart';
 import 'explore/explore.dart';
 import 'login/login_page.dart';
-import 'signup/signup.dart';
 import 'splash/splash.dart';
 
 class App extends StatelessWidget {
@@ -43,29 +42,32 @@ class _AppPageState extends State<AppPage> {
   Widget build(BuildContext context) {
     authBloc = BlocProvider.of<AuthBloc>(context);
     return Scaffold(
-      body: BlocListener<AuthBloc, AuthState>(
+      body: BlocConsumer<AuthBloc, AuthState>(
         listener: (contextListener, state) {
           if (state is AuthenticatedState) {
             if (state.user != null) {
-              widget.setUser(state.user, state.userModel);
+              buildSuccesSnackBar(
+                  contextListener, "Login realizado com sucesso");
             }
           } else if (state is ExceptionState) {
-            buildSnackBarUi(context, state.message);
+            buildWarningSnackBar(contextListener, state.message);
           }
         },
-        child: BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
+        buildWhen: (previous, current) {
+          if (current is ExceptionState) {
+            return false;
+          }
+          return true;
+        },
+        builder: (context, state) {
           if (state is AuthenticatedState) {
             return ExplorePage();
-          } else if (state is SignupState) {
-            return SignupPage();
-          } else if (state is LoginState) {
-            return LoginPage(authBloc: authBloc);
-          } else if (state is ForgotState) {
-            return ExplorePage();
+          } else if (state is UnauthenticatedState) {
+            return LoginPage();
           } else {
             return Splash();
           }
-        }),
+        },
       ),
     );
   }
