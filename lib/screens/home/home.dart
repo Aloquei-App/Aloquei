@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
             ),
             label: ('Pessoas'),
             activeIcon: Icon(
-              Icons.search,
+              FontAwesomeIcons.peopleCarry,
               size: 26,
               color: redAirbnb,
             ),
