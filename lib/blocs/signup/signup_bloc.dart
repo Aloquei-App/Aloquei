@@ -29,7 +29,7 @@ class SignupBloc extends Bloc<SignupEvent, SignupStateRegister> {
         yield SignupLoadingState();
         user = await _authRepository.createUserWithEmailPass(
             event.email, event.senha);
-        await user.updateProfile(displayName: event.nome);
+        await user.updateDisplayName(event.nome);
         UserModel userModel = UserModel(
             email: event.email,
             key: user.uid,
