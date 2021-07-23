@@ -14,7 +14,7 @@ class EmailInput extends StatelessWidget {
       child: Column(
         children: [
           TextFormField(
-            controller: null,
+            controller: controller,
             decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(
