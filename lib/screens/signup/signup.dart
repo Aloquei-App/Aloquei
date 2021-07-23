@@ -70,18 +70,13 @@ class _SignupPageState extends State<SignupPage> {
         child: BlocConsumer<SignupBloc, SignupStateRegister>(
             listener: (contextListener, state) {
           if (state is UserRegisterSuccessState) {
-            Timer(const Duration(seconds: 5), () {
+            Timer(const Duration(seconds: 3), () {
               widget.authBloc.add(SignupSuccessEvent(
                   user: state.user, userModel: state.userModel));
             });
           } else if (state is UserRegisterFailState) {
             buildWarningSnackBar(contextListener, state.message);
           }
-        }, buildWhen: (previous, current) {
-          if (current is UserRegisterFailState) {
-            return false;
-          }
-          return true;
         }, builder: (context, state) {
           if (state is SignupLoadingState) {
             return Loading();
