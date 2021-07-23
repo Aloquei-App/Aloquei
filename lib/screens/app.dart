@@ -5,6 +5,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import '../blocs/auth/auth_bloc.dart';
 import 'explore/explore.dart';
+import 'help/help_page.dart';
 import 'inbox/inbox.dart';
 import 'login/login_page.dart';
 import 'profile/profile.dart';
@@ -69,7 +70,7 @@ class _AppPageState extends State<AppPage> {
         fontFamily: 'Roboto',
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginPage(authBloc: authBloc),
+      home: HelpPage(),
       routes: {
         '/explore': (context) => ExplorePage(),
         '/wishlists': (context) => WishlistsPage(),

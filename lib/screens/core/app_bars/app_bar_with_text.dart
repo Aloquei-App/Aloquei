@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
-class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
-  DefaultAppBar({Key key}) : super(key: key);
+class AppBarWithText extends StatelessWidget implements PreferredSizeWidget {
+  final String text;
+
+  AppBarWithText({Key key, this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      centerTitle: true,
       backgroundColor: Colors.white,
       elevation: 0,
       leading: Padding(
@@ -19,6 +22,10 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
             color: Colors.black,
           ),
         ),
+      ),
+      title: Text(
+        text,
+        style: TextStyle(color: Colors.black),
       ),
     );
   }

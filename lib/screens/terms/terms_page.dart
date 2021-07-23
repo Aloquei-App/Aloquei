@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../core/app_bars/app_bar_with_text%20.dart';
+import '../core/app_bars/app_bar_with_text.dart';
 import 'components/default_pre_text.dart';
 import 'components/default_subtitle.dart';
 import 'components/default_text.dart';

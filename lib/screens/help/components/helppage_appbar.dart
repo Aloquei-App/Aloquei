@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'helppage_tabbar.dart';
+
 import '../../core/colors.dart';
 
 class HelpPageAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -14,15 +14,16 @@ class HelpPageAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: TextField(
         textAlignVertical: TextAlignVertical.bottom,
         decoration: InputDecoration(
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10.0),
-              borderSide: BorderSide(color: Colors.grey, width: 0.2),
-            ),
-            hintText: "Busque por artigos",
-            prefixIcon: IconButton(
-              icon: Icon(Icons.search),
-              onPressed: onpressed,
-            )),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: BorderSide(color: Colors.grey, width: 0.2),
+          ),
+          hintText: "Busque por artigos",
+          prefixIcon: IconButton(
+            icon: Icon(Icons.search),
+            onPressed: onpressed,
+          ),
+        ),
         style: TextStyle(
             color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold),
       ),
@@ -42,14 +43,27 @@ class HelpPageAppBar extends StatelessWidget implements PreferredSizeWidget {
         labelColor: Colors.black,
         unselectedLabelColor: lightgreyAirbnb,
         indicator: UnderlineTabIndicator(
-            borderSide: BorderSide(color: lightblueAirbnb, width: 3.0),
-            insets: EdgeInsets.symmetric(horizontal: 80.0)),
-        tabs: <Widget>[
-          HelpPageTab(
-            text: 'Moradias',
+          borderSide: BorderSide(color: lightblueAirbnb, width: 3.0),
+          insets: EdgeInsets.symmetric(horizontal: 80.0),
+        ),
+        tabs: [
+          Tab(
+            child: Text(
+              'Moradias',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold),
+            ),
           ),
-          HelpPageTab(
-            text: 'Interesses',
+          Tab(
+            child: Text(
+              'Interesses',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold),
+            ),
           ),
         ],
       ),
