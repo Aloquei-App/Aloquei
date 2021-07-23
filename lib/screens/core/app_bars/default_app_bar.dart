@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String text;
+  final VoidCallback action;
 
-  DefaultAppBar({Key key, this.text}) : super(key: key);
+  DefaultAppBar({Key key, @required this.action}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +13,7 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: Padding(
         padding: EdgeInsets.only(left: 10.0),
         child: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: action,
           icon: Icon(
             Icons.arrow_back,
             color: Colors.black,

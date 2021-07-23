@@ -64,7 +64,9 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppBar(),
+      appBar: DefaultAppBar(
+        action: () => widget.authBloc.add(ExitEvent()),
+      ),
       body: Form(
         key: _formKey,
         child: BlocConsumer<SignupBloc, SignupStateRegister>(
