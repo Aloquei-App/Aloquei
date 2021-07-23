@@ -8,7 +8,7 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey[50],
       elevation: 0,
       leading: Padding(
         padding: EdgeInsets.only(left: 10.0),
