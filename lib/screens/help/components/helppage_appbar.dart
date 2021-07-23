@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'default_tab.dart';
+import 'helppage_tabbar.dart';
+import '../../core/colors.dart';
 
-class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
+class HelpPageAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String text;
   final VoidCallback onpressed;
-  final VoidCallback onpressed2;
 
-  DefaultAppBar({Key key, this.text, this.onpressed, this.onpressed2})
-      : super(key: key);
+  HelpPageAppBar({Key key, this.text, this.onpressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,21 +32,23 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
         padding: EdgeInsets.only(left: 8.0),
         child: IconButton(
           icon: Icon(Icons.arrow_back),
-          color: Color(0xFF474747),
-          onPressed: onpressed2,
+          color: greyAirbnb,
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
       ),
       bottom: TabBar(
-        labelColor: Color(0xFF222222),
-        unselectedLabelColor: Color(0xFF6f6f6f),
+        labelColor: Colors.black,
+        unselectedLabelColor: lightgreyAirbnb,
         indicator: UnderlineTabIndicator(
-            borderSide: BorderSide(color: Color(0xFF097d7e), width: 3.0),
+            borderSide: BorderSide(color: lightblueAirbnb, width: 3.0),
             insets: EdgeInsets.symmetric(horizontal: 80.0)),
         tabs: <Widget>[
-          DefaultTab(
+          HelpPageTab(
             text: 'Moradias',
           ),
-          DefaultTab(
+          HelpPageTab(
             text: 'Interesses',
           ),
         ],

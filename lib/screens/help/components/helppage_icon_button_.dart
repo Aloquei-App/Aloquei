@@ -1,11 +1,12 @@
+import 'package:aloquei_app/screens/core/colors.dart';
 import 'package:flutter/material.dart';
 
-class DefaultIconHelpButton extends StatelessWidget {
+class HelpPageIconButton extends StatelessWidget {
   final String text;
   final VoidCallback onpressed;
   final IconData icon;
 
-  const DefaultIconHelpButton({Key key, this.text, this.onpressed, this.icon})
+  const HelpPageIconButton({Key key, this.text, this.onpressed, this.icon})
       : super(key: key);
 
   @override
@@ -13,6 +14,8 @@ class DefaultIconHelpButton extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: TextButton(
+        style: ButtonStyle(
+            overlayColor: MaterialStateProperty.all(Colors.grey[100])),
         child: Column(
           children: [
             Row(
@@ -23,7 +26,7 @@ class DefaultIconHelpButton extends StatelessWidget {
                 Text(text,
                     style: TextStyle(
                       fontSize: 17.0,
-                      color: Color(0xFF3e3e3e),
+                      color: greyAirbnb,
                     )),
               ],
             ),
@@ -31,7 +34,7 @@ class DefaultIconHelpButton extends StatelessWidget {
               height: 10,
             ),
             Divider(
-              color: Color(0xFFd4d4d4),
+              color: lightgreyAirbnb,
             )
           ],
         ),

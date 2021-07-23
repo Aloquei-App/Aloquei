@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class DefaultTab extends StatelessWidget {
+class HelpPageTab extends StatelessWidget {
   final String text;
 
-  const DefaultTab({Key key, this.text}) : super(key: key);
+  const HelpPageTab({Key key, this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class DefaultHelpSubtitle extends StatelessWidget {
+class HelpPageSubtitle extends StatelessWidget {
   final String text;
 
-  const DefaultHelpSubtitle({this.text});
+  const HelpPageSubtitle({this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class DefaultHelpSubtitle extends StatelessWidget {
           text,
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            color: Color(0xFF212121),
+            color: Colors.black,
             fontSize: 17,
           ),
         ));
