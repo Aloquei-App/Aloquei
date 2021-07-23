@@ -1,11 +1,16 @@
+import 'dart:math';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthRepository {
   FirebaseAuth _firebaseAuth;
+  GoogleSignIn _googleSignIn;
 
   AuthRepository() {
     this._firebaseAuth = FirebaseAuth.instance;
+    this._googleSignIn = GoogleSignIn(scopes: ['email']);
   }
   Future<User> createUserWithEmailPass(String email, String pass) async {
     try {
@@ -17,7 +22,7 @@ class AuthRepository {
       authResult.user.sendEmailVerification();
       return authResult.user;
     } on PlatformException catch (e) {
-      throw e;
+      throw Exception(e);
     }
   }
 
@@ -30,7 +35,7 @@ class AuthRepository {
       );
       return authresult.user;
     } on PlatformException catch (e) {
-      throw e;
+      throw Exception(e);
     }
   }
 
@@ -38,13 +43,8 @@ class AuthRepository {
     await _firebaseAuth.signOut();
   }
 
-  Future<bool> requestNewPassword(String email) async {
-    try {
-      await _firebaseAuth.sendPasswordResetEmail(email: email);
-      return true;
-    } on PlatformException catch (e) {
-      throw e;
-    }
+  Future<void> requestNewPassword(String email) async {
+    await _firebaseAuth.sendPasswordResetEmail(email: email);
   }
 
   Future<UserCredential> signInWithCredential(AuthCredential credential) =>
@@ -52,9 +52,30 @@ class AuthRepository {
 
   Stream<User> getCurrentUser() => _firebaseAuth.authStateChanges();
 
-  Future<User> getUser() async {
-    //Stream stream = _firebaseAuth.userChanges();
+  User getUser() {
     User user = _firebaseAuth.currentUser;
     return user;
+  }
+
+  Future<UserCredential> signInGoogle() async {
+    try {
+      GoogleSignInAccount googleSignInAccount = await _googleSignIn.signIn();
+      GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.authentication;
+      AuthCredential authCredential = GoogleAuthProvider.credential(
+          idToken: googleSignInAuthentication.idToken,
+          accessToken: googleSignInAuthentication.accessToken);
+      return await signInWithCredential(authCredential);
+    } on PlatformException catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  String generateNonce([int length = 32]) {
+    final charset =
+        '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
+    final random = Random.secure();
+    return List.generate(length, (_) => charset[random.nextInt(charset.length)])
+        .join();
   }
 }
