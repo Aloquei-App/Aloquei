@@ -101,10 +101,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         _cidadesList =
             await _ibgeRepository.getCitiesFromState(event.estado.id);
         _cidadesList.sort((eleA, eleB) => eleA.nome.compareTo(eleB.nome));
-        _colorList = List.generate(
-            _cidadesList.length,
-            (index) => _randomColor.randomColor(
-                colorSaturation: ColorSaturation.highSaturation));
+        if (_cidadesList.length > _colorList.length) {
+          _colorList = List.generate(
+              _cidadesList.length,
+              (index) => _randomColor.randomColor(
+                  colorSaturation: ColorSaturation.highSaturation));
+        }
         yield ShowAvailableCities(cidadesList: _cidadesList);
       }
     } else if (event is CitySearchEvent) {
