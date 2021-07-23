@@ -44,8 +44,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           if (_user != null) {
             add(LoginSuccessEvent());
           } else {
-            add(SignupPressedEvent());
-            //add(ExitEvent());
+            add(ExitEvent());
           }
         });
       } else if (event is LoginEmailEvent) {
