@@ -161,11 +161,12 @@ class SignupBody extends StatelessWidget {
             }
           },
         ),
-        TextWithNotifications(),
-        NotificationButton(
+        //TextWithNotifications(),
+        /*NotificationButton(
           onPressed: () {},
           status: true,
         )
+        */
       ],
     );
   }

@@ -29,10 +29,11 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
           GenderInput(
             gender: "Masculino",
           ),
-          DateInput(
+          /*DateInput(
             onChanged: null,
             bday: "06-06-2006",
           ),
+          */
           SingleInputPersonalInfo(
             labelText: "Email",
             initialValue: "example@email.com",
