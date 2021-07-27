@@ -13,11 +13,9 @@ import '../core/success.dart';
 import 'components/accept_button.dart';
 import 'components/email_input.dart';
 import 'components/name_and_last_name_input.dart';
-import 'components/notification_button.dart';
 import 'components/password_input.dart';
 import 'components/signup_title.dart';
 import 'components/text_with_buttons.dart';
-import 'components/text_with_notifications.dart';
 
 class Signup extends StatelessWidget {
   @override
@@ -39,13 +37,9 @@ class SignupPage extends StatefulWidget {
 
 class _SignupPageState extends State<SignupPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   final TextEditingController _nomeCntrlr = TextEditingController();
-
   final TextEditingController _ultimoNomeCntrlr = TextEditingController();
-
   final TextEditingController _emailCntrlr = TextEditingController();
-
   final TextEditingController _passCntrlr = TextEditingController();
 
   SignupBloc _signupBloc;
@@ -134,9 +128,6 @@ class SignupBody extends StatelessWidget {
           nameController: _nomeCntrlr,
           lastNameController: _ultimoNomeCntrlr,
         ),
-        /* DateInput(
-          onChanged: null,
-        ),*/
         EmailInput(
           controller: _emailCntrlr,
         ),
@@ -161,12 +152,6 @@ class SignupBody extends StatelessWidget {
             }
           },
         ),
-        //TextWithNotifications(),
-        /*NotificationButton(
-          onPressed: () {},
-          status: true,
-        )
-        */
       ],
     );
   }
