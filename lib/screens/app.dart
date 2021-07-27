@@ -1,4 +1,3 @@
-import 'package:aloquei_app/screens/explore_list/explore_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -98,7 +97,7 @@ class _AppPageState extends State<AppPage> {
             } else if (state is SignupPressedState) {
               return Signup();
             } else if (state is UnauthenticatedState) {
-              return ExploreList();
+              return LoginPage();
             } else {
               return Splash();
             }
