@@ -68,6 +68,15 @@ flutter:
     - assets/prof.png
     - assets/oferta.jpg
     - assets/procura.jpg
+    - assets/apartment.jpg
+    - assets/bed.jpg
+    - assets/boutiqueHotel.jpg
+    - assets/cellphonePhoto.jpg
+    - assets/house.jpg
+    - assets/insideHouse.jpg
+    - assets/secondaryUnit.jpg
+    - assets/uniqueSpace.jpg
+    - assets/woodenHouse.jpg
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
