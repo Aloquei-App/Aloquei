@@ -58,7 +58,9 @@ class LoginPage extends StatelessWidget {
               text: 'Continuar com Email',
               icon: Icons.email_outlined,
               size: 22.0,
-              onpressed: () {}),
+              onpressed: () {
+                authBloc.add(SignupPressedEvent());
+              }),
           DefaultLoginButton(
               text: 'Continuar com Google',
               icon: FontAwesomeIcons.google,
