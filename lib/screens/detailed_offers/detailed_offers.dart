@@ -1,4 +1,5 @@
 import 'package:aloquei_app/screens/core/colors.dart';
+import 'package:aloquei_app/screens/detailed_offers/components/row_components.dart';
 import 'package:aloquei_app/screens/login/components/title_offers.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +9,7 @@ import 'components/description_offers.dart';
 import 'components/description_offers_grey.dart';
 import 'components/divide.dart';
 import 'components/text_offers.dart';
+import 'components/row_components.dart';
 
 class DetaildePage extends StatelessWidget {
   final List<String> imageList = [
@@ -18,7 +20,12 @@ class DetaildePage extends StatelessWidget {
   ];
   final String title = "Tunico House seu espaco de paz";
   final String text = 'Entire residential home hosted by Adriane';
+  final String text_desc = 'Entire residential home';
   final String description = 'Oriental, Rio Grande do Sul Brasil';
+  final int guests = 2;
+  final int bedroom = 2;
+  final int beds = 2;
+  final int bath = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +44,9 @@ class DetaildePage extends StatelessWidget {
             DescriptionOffersGrey(description),
             Divide(),
             TextOffers(text),
-            DescriptionOffers(text),
+            DescriptionOffers(text_desc),
+            Components(guests, bedroom, beds, bedroom),
+            Divide(),
           ],
         ));
   }
