@@ -47,6 +47,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             add(ExitEvent());
           }
         });
+      } else if (event is LoginGoogleEvent) {
+        yield LoadingState();
+        UserCredential userCredential = await _authRepository.signInGoogle();
+        if (userCredential.user != null) {
+          _user = userCredential.user;
+          add(LoginSuccessEvent());
+        } else {
+          yield ExceptionState(message: 'Não autenticado');
+          yield UnauthenticatedState();
+        }
       } else if (event is LoginEmailEvent) {
         _user = await _authRepository.signInEmailAndPassword(
             event.email, event.senha);
@@ -67,7 +77,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           yield AuthenticatedState(user: _user, userModel: _userModel);
         } else if (_user.displayName.isNotEmpty) {
           _userModel = UserModel(
-              key: _user.uid, email: _user.email, nome: _user.displayName);
+              key: _user.uid,
+              email: _user.email,
+              nome: _user.displayName,
+              isAdmin: false);
           bool success = await _usersRepo.insertUser(_userModel);
           if (success) {
             yield AuthenticatedState(user: _user, userModel: _userModel);
