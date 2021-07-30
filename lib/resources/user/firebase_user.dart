@@ -9,31 +9,33 @@ class UsersRepository {
     this.firestoreInstance = FirebaseFirestore.instance;
   }
 
-  Future<UserModel> insertUser(
-      String userId, String email, String nome, String gender) async {
-    return await firestoreInstance.collection('users').doc(userId).set({
-      'horas': 4,
-      'email': email,
-      'is_admin': false,
-      'nome': nome,
-      'gender': gender,
-    }).then((value) {
-      return UserModel(
-          email: email, isAdmin: false, nome: nome, gender: gender);
+  Future<bool> insertUser(UserModel userModel) async {
+    return await firestoreInstance
+        .collection('users')
+        .doc(userModel.key)
+        .set(userModel.toMap())
+        .then((value) {
+      return true;
     }).catchError((error) => throw error);
   }
 
-  Future<UserModel> getUserById(String id) async {
+  Future<UserModel> getUser(String userId) async {
     UserModel model;
     try {
-      DocumentSnapshot snapshot =
-          await firestoreInstance.collection('users').doc(id).get();
-      if (snapshot.exists) {
-        model = UserModel.fromSnapshot(snapshot.data(), snapshot.id);
+      DocumentSnapshot querySnapshot =
+          await firestoreInstance.collection('users').doc(userId).get();
+      if (querySnapshot.exists) {
+        model = UserModel.fromSnapshot(querySnapshot.data(), querySnapshot.id);
+        return model;
       }
     } catch (error) {
-      throw error;
+      print(error.toString());
+      return null;
     }
-    return model;
+    return null;
+  }
+
+  Stream<DocumentSnapshot> getStreamUser(String userId) {
+    return firestoreInstance.collection('users').doc(userId).snapshots();
   }
 }

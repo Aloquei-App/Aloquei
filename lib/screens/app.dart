@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 import 'explore/explore.dart';
-import 'home/home.dart';
 import 'inbox/inbox.dart';
 import 'login/login_page.dart';
 import 'profile/profile.dart';
 import 'trips/trips.dart';
 import 'wishlists/wishlists.dart';
+import 'package:responsive_framework/responsive_framework.dart';
+
 
 class Run extends StatelessWidget {
   Run({Key key}) : super(key: key);
@@ -34,10 +34,10 @@ class Run extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Roboto',
         visualDensity: VisualDensity.adaptivePlatformDensity,
+
       ),
       home: LoginPage(),
       routes: {
-        '/home': (context) => HomePage(),
         '/explore': (context) => ExplorePage(),
         '/wishlists': (context) => WishlistsPage(),
         '/trips': (context) => TripsPage(),

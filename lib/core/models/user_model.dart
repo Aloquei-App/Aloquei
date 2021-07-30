@@ -20,4 +20,8 @@ class UserModel {
     isAdmin = data['isAdmin'] != null ? data['isAdmin'] : false;
     gender = data['gender'] != null ? data['gender'] : '';
   }
+
+  Map<String, dynamic> toMap() {
+    return {'name': nome, 'email': email, 'isAdmin': isAdmin, 'gender': gender};
+  }
 }

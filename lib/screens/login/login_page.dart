@@ -1,9 +1,8 @@
+import 'package:aloquei_app/screens/profile/components/default_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../core/navigation.dart';
 import 'components/continue_button.dart';
-import 'components/default_button.dart';
 import 'components/default_input.dart';
 import 'components/divider_with_text.dart';
 import 'components/login_app_bar.dart';
@@ -38,25 +37,20 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           ContinueButton(
-            onPressed: () {
-              navigateToHome(context);
-            },
+            onPressed: () {},
           ),
           DividerWithText(),
           DefaultButton(
               text: 'Continuar com Email',
               icon: Icons.email_outlined,
-              size: 22.0,
               onpressed: () {}),
           DefaultButton(
               text: 'Continuar com Google',
               icon: FontAwesomeIcons.google,
-              size: 20.0,
               onpressed: () {}),
           DefaultButton(
               text: 'Continuar com Apple',
               icon: FontAwesomeIcons.apple,
-              size: 24.0,
               onpressed: () {}),
         ],
       ),

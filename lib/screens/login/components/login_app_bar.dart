@@ -9,7 +9,7 @@ class LoginAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey[50],
       leading: Padding(
         padding: EdgeInsets.only(left: 8.0),
         child: IconButton(
