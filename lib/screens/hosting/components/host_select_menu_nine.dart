@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class HostSelectMenuEight extends StatelessWidget {
+class HostSelectMenuNine extends StatelessWidget {
   final VoidCallback onpressed;
 
-  const HostSelectMenuEight({Key key, this.onpressed}) : super(key: key);
+  const HostSelectMenuNine({Key key, this.onpressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,19 +13,19 @@ class HostSelectMenuEight extends StatelessWidget {
             children: [
           Container(
               margin: EdgeInsets.all(15),
-              height: 150,
+              height: 200,
               child: TextField(
                 maxLines: 7,
                 style: TextStyle(
                     color: Colors.black,
-                    fontSize: 30,
+                    fontSize: 17,
                     fontWeight: FontWeight.w800),
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Lovely 1-bedroom rental unit in Varanasi',
+                  hintText: 'Give a brief description of your page',
                   hintStyle: TextStyle(
                       color: Colors.grey,
-                      fontSize: 30,
+                      fontSize: 17,
                       fontWeight: FontWeight.w800),
                 ),
               ))

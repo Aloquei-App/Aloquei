@@ -1,11 +1,13 @@
 import 'package:aloquei_app/screens/hosting/components/host_bottombar.dart';
 import 'package:aloquei_app/screens/hosting/components/host_select_menu_eight.dart';
+import 'package:aloquei_app/screens/hosting/components/host_select_menu_nine.dart';
 import 'package:aloquei_app/screens/hosting/components/hot_top_menu_image.dart';
-import 'package:aloquei_app/screens/hosting/host_menu_nine.dart';
+import 'package:aloquei_app/screens/hosting/host_page_five.dart';
+
 import 'package:flutter/material.dart';
 
-class HostPageEight extends StatelessWidget {
-  const HostPageEight({Key key}) : super(key: key);
+class HostPageNine extends StatelessWidget {
+  const HostPageNine({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class HostPageEight extends StatelessWidget {
           onpressedNext: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => HostPageNine()),
+              MaterialPageRoute(builder: (context) => HostPageFive()),
             );
           },
         ),
@@ -26,11 +28,11 @@ class HostPageEight extends StatelessWidget {
             child: Column(
               children: [
                 HostTopMenuImage(
-                  image1: "assets/woodenHouse.jpg",
-                  text1: 'Lets give your place a',
-                  text2: 'name',
+                  image1: "assets/insideHouse.jpg",
+                  text1: 'Now, lets describe your',
+                  text2: 'place',
                 ),
-                HostSelectMenuEight(
+                HostSelectMenuNine(
                   onpressed: () {},
                 ),
               ],
