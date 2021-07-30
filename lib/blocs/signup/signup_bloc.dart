@@ -34,6 +34,7 @@ class SignupBloc extends Bloc<SignupEvent, SignupStateRegister> {
             email: event.email,
             key: user.uid,
             nome: event.nome,
+            sobrenome: event.sobrenome,
             isAdmin: false);
         await _usersRepo.insertUser(userModel);
 
