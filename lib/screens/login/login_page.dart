@@ -65,7 +65,9 @@ class LoginPage extends StatelessWidget {
               text: 'Continuar com Google',
               icon: FontAwesomeIcons.google,
               size: 20.0,
-              onpressed: () {}),
+              onpressed: () {
+                authBloc.add(LoginGoogleEvent());
+              }),
         ],
       ),
     );

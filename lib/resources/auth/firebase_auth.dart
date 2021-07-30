@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -12,6 +13,23 @@ class AuthRepository {
     this._firebaseAuth = FirebaseAuth.instance;
     this._googleSignIn = GoogleSignIn(scopes: ['email']);
   }
+
+  Stream<User> getAuthStates() {
+    return _firebaseAuth.authStateChanges();
+  }
+
+  Future<User> login({
+    @required AuthCredential credential,
+  }) async {
+    UserCredential userCredential =
+        await _firebaseAuth.signInWithCredential(credential);
+    return userCredential.user;
+  }
+
+  Future<void> logout() async {
+    await _firebaseAuth.signOut();
+  }
+
   Future<User> createUserWithEmailPass(String email, String pass) async {
     try {
       UserCredential authResult =

@@ -65,3 +65,5 @@ class SignupSuccessEvent extends AuthEvent {
 
   SignupSuccessEvent({@required this.userModel, @required this.user});
 }
+
+class LoginGoogleEvent extends AuthEvent {}
