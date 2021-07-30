@@ -1,7 +1,6 @@
 import 'package:aloquei_app/screens/hosting/components/host_bottombar.dart';
 import 'package:aloquei_app/screens/hosting/components/host_select_menu_two.dart';
-import 'package:aloquei_app/screens/hosting/components/host_top_menu.dart';
-import 'package:aloquei_app/screens/hosting/host_page_one.dart';
+import 'package:aloquei_app/screens/hosting/components/host_top_menu_gradient.dart';
 import 'package:aloquei_app/screens/hosting/host_page_three.dart';
 import 'package:flutter/material.dart';
 
@@ -13,10 +12,7 @@ class HostPageTwo extends StatelessWidget {
     return Scaffold(
         bottomNavigationBar: HostBottomBar(
           onPressedBack: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HostPageOne()),
-            );
+            Navigator.pop(context);
           },
           onpressedNext: () {
             Navigator.push(
@@ -27,7 +23,7 @@ class HostPageTwo extends StatelessWidget {
         ),
         body: Column(
           children: [
-            HostTopMenu(
+            HostTopMenuGradient(
               color1: 0xFFda1364,
               color2: 0xFF931da2,
               text1: 'Qual desses melhor',

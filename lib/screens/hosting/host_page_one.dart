@@ -1,6 +1,6 @@
 import 'package:aloquei_app/screens/hosting/components/host_bottombar.dart';
 import 'package:aloquei_app/screens/hosting/components/host_select_menu_one.dart';
-import 'package:aloquei_app/screens/hosting/components/host_top_menu.dart';
+import 'package:aloquei_app/screens/hosting/components/host_top_menu_gradient.dart';
 import 'package:aloquei_app/screens/hosting/host_page_two.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +20,7 @@ class HostPageOne extends StatelessWidget {
         }),
         body: Column(
           children: [
-            HostTopMenu(
+            HostTopMenuGradient(
               color1: 0xFF7b22b0,
               color2: 0xFF8621ab,
               text1: 'Que tipo de local você',

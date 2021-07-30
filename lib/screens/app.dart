@@ -1,3 +1,6 @@
+import 'package:aloquei_app/screens/hosting/host_page_one.dart';
+import 'package:aloquei_app/screens/hosting/host_page_seven.dart';
+import 'package:aloquei_app/screens/hosting/host_page_two.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -95,9 +98,9 @@ class _AppPageState extends State<AppPage> {
             if (state is AuthenticatedState) {
               return ExplorePage();
             } else if (state is SignupPressedState) {
-              return Signup();
+              return HostPageTwo();
             } else if (state is UnauthenticatedState) {
-              return LoginPage();
+              return HostPageTwo();
             } else {
               return Splash();
             }

@@ -7,6 +7,7 @@ class HostAppBar extends StatelessWidget {
   final VoidCallback onpressed;
 
   HostAppBar({Key key, this.text, this.onpressed}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return AppBar(

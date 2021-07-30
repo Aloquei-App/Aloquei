@@ -1,25 +1,19 @@
 import 'package:flutter/material.dart';
 
-class HostTopMenu extends StatelessWidget {
+class HostTopMenuImage extends StatelessWidget {
   final String text1;
   final String text2;
-  final int color1;
-  final int color2;
+  final String image1;
 
-  const HostTopMenu({Key key, this.text1, this.text2, this.color1, this.color2})
+  const HostTopMenuImage({Key key, this.text1, this.text2, this.image1})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.width * 0.5,
+      height: MediaQuery.of(context).size.width * 0.7,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-            colors: [Color(color1), Color(color2)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            stops: [0.0, 1.0]),
-      ),
+          image: DecorationImage(image: AssetImage(image1), fit: BoxFit.cover)),
       child: Column(children: [
         Container(
             padding: EdgeInsets.only(top: 30, left: 10, right: 10),
@@ -51,9 +45,10 @@ class HostTopMenu extends StatelessWidget {
                 ),
               ],
             )),
+        Expanded(child: SizedBox()),
         Container(
             alignment: Alignment.bottomLeft,
-            padding: EdgeInsets.only(top: 40, right: 20, left: 20),
+            padding: EdgeInsets.only(right: 20, left: 20),
             child: Column(
               children: [
                 Text(text1,
@@ -61,6 +56,13 @@ class HostTopMenu extends StatelessWidget {
                         color: Colors.white,
                         fontSize: 30,
                         fontWeight: FontWeight.w500)),
+              ],
+            )),
+        Container(
+            alignment: Alignment.bottomLeft,
+            padding: EdgeInsets.only(right: 20, left: 20, bottom: 10),
+            child: Column(
+              children: [
                 Text(text2,
                     style: TextStyle(
                         color: Colors.white,

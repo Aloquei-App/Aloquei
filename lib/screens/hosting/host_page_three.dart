@@ -1,10 +1,7 @@
 import 'package:aloquei_app/screens/hosting/components/host_bottombar.dart';
 import 'package:aloquei_app/screens/hosting/components/host_select_menu_three.dart';
-import 'package:aloquei_app/screens/hosting/components/host_select_menu_two.dart';
-import 'package:aloquei_app/screens/hosting/components/host_top_menu.dart';
+import 'package:aloquei_app/screens/hosting/components/host_top_menu_gradient.dart';
 import 'package:aloquei_app/screens/hosting/host_page_four.dart';
-import 'package:aloquei_app/screens/hosting/host_page_one.dart';
-import 'package:aloquei_app/screens/hosting/host_page_two.dart';
 import 'package:flutter/material.dart';
 
 class HostPageThree extends StatelessWidget {
@@ -15,10 +12,7 @@ class HostPageThree extends StatelessWidget {
     return Scaffold(
         bottomNavigationBar: HostBottomBar(
           onPressedBack: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HostPageTwo()),
-            );
+            Navigator.pop(context);
           },
           onpressedNext: () {
             Navigator.push(
@@ -29,7 +23,7 @@ class HostPageThree extends StatelessWidget {
         ),
         body: Column(
           children: [
-            HostTopMenu(
+            HostTopMenuGradient(
               color1: 0xFFae1a88,
               color2: 0xFF8b1fa6,
               text1: 'Que tipo de espaço os',
