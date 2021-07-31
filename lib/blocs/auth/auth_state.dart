@@ -34,3 +34,5 @@ class ForgotState extends AuthState {}
 class LoginState extends AuthState {}
 
 class WelcomeState extends AuthState {}
+
+class SignupPressedState extends AuthState {}
