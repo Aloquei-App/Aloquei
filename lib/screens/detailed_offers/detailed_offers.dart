@@ -4,6 +4,7 @@ import 'package:aloquei_app/screens/login/components/title_offers.dart';
 import 'package:flutter/material.dart';
 
 import 'components/bottom_navigation.dart';
+import 'components/card_image.dart';
 import 'components/carousel_options.dart';
 import 'components/custom_app_bar.dart';
 import 'components/description.dart';
@@ -34,6 +35,10 @@ class DetaildePage extends StatelessWidget {
   final String dateFinal = 'Out 2';
   final String description =
       'Local tranquilo junto a natureza. Simples mais confortavel';
+  final String imgBedroom =
+      'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/edc020121toolbox-001-1607447196.jpg';
+  final String textBedroom = '1 cama king, 1 sofa cama';
+  final String textRoom = '1 cama';
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +72,16 @@ class DetaildePage extends StatelessWidget {
             Description(description),
             Divide(),
             TextOffers('Onde você vai dormir'),
+            Padding(
+              padding: EdgeInsets.only(
+                  top: 15.0, bottom: 10.0, left: 30.0, right: 30.0),
+              child: Row(
+                children: [
+                  CardImage(imgBedroom, textBedroom),
+                  CardImage(imgBedroom, textRoom)
+                ],
+              ),
+            )
           ],
         ),
         bottomNavigationBar: BottomNavigation(value, dateInit, dateFinal));
