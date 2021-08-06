@@ -9,6 +9,7 @@ abstract class SignupEvent extends Equatable {
 
 class SubmitUserDataEvent extends SignupEvent {
   final String nome;
+  final String sobrenome;
   final String email;
   final String senha;
   final bool isAdmin;
@@ -16,6 +17,7 @@ class SubmitUserDataEvent extends SignupEvent {
 
   SubmitUserDataEvent({
     @required this.nome,
+    @required this.sobrenome,
     @required this.email,
     @required this.senha,
     this.isAdmin,

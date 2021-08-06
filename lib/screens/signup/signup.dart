@@ -38,7 +38,7 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _nomeCntrlr = TextEditingController();
-  final TextEditingController _ultimoNomeCntrlr = TextEditingController();
+  final TextEditingController _sobrenomeCntrlr = TextEditingController();
   final TextEditingController _emailCntrlr = TextEditingController();
   final TextEditingController _passCntrlr = TextEditingController();
 
@@ -85,7 +85,7 @@ class _SignupPageState extends State<SignupPage> {
               passCntrlr: _passCntrlr,
               signupBloc: _signupBloc,
               formKey: _formKey,
-              ultimoNomeCntrlr: _ultimoNomeCntrlr,
+              sobrenomeCntrlr: _sobrenomeCntrlr,
             );
           }
         }),
@@ -97,13 +97,13 @@ class _SignupPageState extends State<SignupPage> {
 class SignupBody extends StatelessWidget {
   const SignupBody({
     Key key,
-    @required TextEditingController ultimoNomeCntrlr,
+    @required TextEditingController sobrenomeCntrlr,
     @required TextEditingController nomeCntrlr,
     @required TextEditingController emailCntrlr,
     @required TextEditingController passCntrlr,
     @required GlobalKey<FormState> formKey,
     @required SignupBloc signupBloc,
-  })  : _ultimoNomeCntrlr = ultimoNomeCntrlr,
+  })  : _sobrenomeCntrlr = sobrenomeCntrlr,
         _nomeCntrlr = nomeCntrlr,
         _emailCntrlr = emailCntrlr,
         _passCntrlr = passCntrlr,
@@ -111,7 +111,7 @@ class SignupBody extends StatelessWidget {
         _signupBloc = signupBloc,
         super(key: key);
 
-  final TextEditingController _ultimoNomeCntrlr;
+  final TextEditingController _sobrenomeCntrlr;
   final TextEditingController _nomeCntrlr;
   final TextEditingController _emailCntrlr;
   final TextEditingController _passCntrlr;
@@ -126,7 +126,7 @@ class SignupBody extends StatelessWidget {
         SignupTitle(),
         NameAndLastNameInput(
           nameController: _nomeCntrlr,
-          lastNameController: _ultimoNomeCntrlr,
+          lastNameController: _sobrenomeCntrlr,
         ),
         EmailInput(
           controller: _emailCntrlr,
@@ -145,6 +145,7 @@ class SignupBody extends StatelessWidget {
               _signupBloc.add(
                 SubmitUserDataEvent(
                   nome: _nomeCntrlr.text.trim(),
+                  sobrenome: _sobrenomeCntrlr.text.trim(),
                   email: _emailCntrlr.text.trim(),
                   senha: _passCntrlr.text.trim(),
                 ),
