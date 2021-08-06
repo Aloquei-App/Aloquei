@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class Moradia extends StatefulWidget {
   // const Moradia({Key? key}) : super(key: key);
 
-
   @override
   _MoradiaState createState() => _MoradiaState();
 }

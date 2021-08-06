@@ -152,9 +152,7 @@ class _ExplorePageState extends State<ExplorePage> {
                 ),
               ),
 
-              Moradia(
-                  // 'Casa', 'https://img.icons8.com/material-sharp/452/home.png'
-              ),
+              Moradia(),
 
               Padding(
                 padding: EdgeInsets.only(top: 20, bottom: 20),
@@ -218,9 +216,7 @@ class _ExplorePageState extends State<ExplorePage> {
                 ),
               ),
 
-              Moradia(
-                  // 'Republica', 'https://i.pinimg.com/originals/7c/5d/74/7c5d7421753b2ef8221e778e77a89943.jpg'
-              ),
+              Moradia(),
 
               Padding(
                 padding: EdgeInsets.only(top: 20, bottom: 20),
