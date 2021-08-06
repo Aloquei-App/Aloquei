@@ -9,6 +9,7 @@ import 'components/custom_app_bar.dart';
 import 'components/description_offers.dart';
 import 'components/description_offers_grey.dart';
 import 'components/divide.dart';
+import 'components/elements.dart';
 import 'components/text_offers.dart';
 import 'components/row_components.dart';
 
@@ -51,6 +52,14 @@ class DetaildePage extends StatelessWidget {
             DescriptionOffers(text_desc),
             Components(guests, bedroom, beds, bedroom),
             Divide(),
+            Elements(Icons.house_outlined, 'Casa inteira',
+                'Voce tem a casa inteira'),
+            Elements(Icons.house_outlined, 'Casa inteira',
+                'Voce tem a casa inteira'),
+            Elements(Icons.house_outlined, 'Casa inteira',
+                'Voce tem a casa inteira'),
+            Elements(
+                Icons.house_outlined, 'Casa inteira', 'Voce tem a casa inteira')
           ],
         ),
         bottomNavigationBar: BottomNavigation(value, dateInit, dateFinal));
