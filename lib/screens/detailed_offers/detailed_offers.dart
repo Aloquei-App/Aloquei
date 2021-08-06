@@ -3,6 +3,7 @@ import 'package:aloquei_app/screens/detailed_offers/components/row_components.da
 import 'package:aloquei_app/screens/login/components/title_offers.dart';
 import 'package:flutter/material.dart';
 
+import 'components/bottom_navigation.dart';
 import 'components/carousel_options.dart';
 import 'components/custom_app_bar.dart';
 import 'components/description_offers.dart';
@@ -26,6 +27,9 @@ class DetaildePage extends StatelessWidget {
   final int bedroom = 2;
   final int beds = 2;
   final int bath = 1;
+  final int value = 1846;
+  final String date_init = 'Set 1';
+  final String date_final = 'Out 2';
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +52,7 @@ class DetaildePage extends StatelessWidget {
             Components(guests, bedroom, beds, bedroom),
             Divide(),
           ],
-        ));
+        ),
+        bottomNavigationBar: BottomNavigation(value, date_init, date_final));
   }
 }
