@@ -36,7 +36,7 @@ class HostSelectMenuEleven extends StatelessWidget {
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                Text('Descrição Anuncio',
+                Text('Tipo do Anuncio',
                     style: TextStyle(
                         color: Colors.grey[900],
                         fontWeight: FontWeight.w600,
@@ -47,7 +47,42 @@ class HostSelectMenuEleven extends StatelessWidget {
                   width: 50,
                 )
               ])),
-          Divider(),
+          Divider(
+            thickness: 1,
+          ),
+          Container(
+              padding: EdgeInsets.only(bottom: 20, top: 10),
+              child: Text(
+                'Detalhes anuncio',
+                style: TextStyle(
+                    color: Colors.grey[800],
+                    fontWeight: FontWeight.w500,
+                    fontSize: 15),
+              )),
+          Divider(
+            thickness: 1,
+          ),
+          Container(
+              padding: EdgeInsets.only(bottom: 20, top: 10),
+              child: Text(
+                'Descrição anuncio',
+                style: TextStyle(
+                    color: Colors.grey[800],
+                    fontWeight: FontWeight.w500,
+                    fontSize: 15),
+              )),
+          Divider(
+            thickness: 1,
+          ),
+          Container(
+              padding: EdgeInsets.only(bottom: 20, top: 30),
+              child: Text(
+                'Localização anuncio',
+                style: TextStyle(
+                    color: Colors.grey[800],
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18),
+              )),
         ]));
   }
 }
