@@ -34,7 +34,7 @@ class Elements extends StatelessWidget {
                     Text(
                       this.text,
                       style: TextStyle(
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w300,
                           fontSize: 16,
                           fontFamily: 'Arial'),
                     )
