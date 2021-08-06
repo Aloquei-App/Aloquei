@@ -2,7 +2,6 @@ import 'package:aloquei_app/screens/hosting/components/host_bottombar.dart';
 import 'package:aloquei_app/screens/hosting/components/host_select_menu_eight.dart';
 import 'package:aloquei_app/screens/hosting/components/host_select_menu_nine.dart';
 import 'package:aloquei_app/screens/hosting/components/hot_top_menu_image.dart';
-import 'package:aloquei_app/screens/hosting/host_page_five.dart';
 import 'package:aloquei_app/screens/hosting/host_page_ten.dart';
 
 import 'package:flutter/material.dart';
@@ -14,6 +13,8 @@ class HostPageNine extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         bottomNavigationBar: HostBottomBar(
+          text: 'Next',
+          color: Colors.grey[900],
           onPressedBack: () {
             Navigator.pop(context);
           },

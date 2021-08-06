@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 class HostBottomBar extends StatelessWidget {
   final VoidCallback onPressedBack;
   final VoidCallback onpressedNext;
+  final String text;
+  final Color color;
 
-  const HostBottomBar({Key key, this.onPressedBack, this.onpressedNext})
+  const HostBottomBar(
+      {Key key, this.onPressedBack, this.onpressedNext, this.text, this.color})
       : super(key: key);
 
   @override
@@ -29,13 +32,13 @@ class HostBottomBar extends StatelessWidget {
               TextButton(
                 style: TextButton.styleFrom(
                   minimumSize: Size(90, 50),
-                  backgroundColor: Colors.grey[900],
+                  backgroundColor: color,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(7))),
                 ),
                 child: Text(
-                  'Next',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  text,
+                  style: TextStyle(color: Colors.white, fontSize: 17),
                 ),
                 onPressed: onpressedNext,
               ),

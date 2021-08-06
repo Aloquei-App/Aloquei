@@ -10,14 +10,18 @@ class HostPageOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: HostBottomBar(onPressedBack: () {
-          Navigator.pop(context);
-        }, onpressedNext: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => HostPageTwo()),
-          );
-        }),
+        bottomNavigationBar: HostBottomBar(
+            text: 'Next',
+            color: Colors.grey[900],
+            onPressedBack: () {
+              Navigator.pop(context);
+            },
+            onpressedNext: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HostPageTwo()),
+              );
+            }),
         body: Column(
           children: [
             HostTopMenuGradient(

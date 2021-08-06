@@ -11,6 +11,8 @@ class HostPageThree extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         bottomNavigationBar: HostBottomBar(
+          text: 'Next',
+          color: Colors.grey[900],
           onPressedBack: () {
             Navigator.pop(context);
           },
