@@ -28,8 +28,8 @@ class DetaildePage extends StatelessWidget {
   final int beds = 2;
   final int bath = 1;
   final int value = 1846;
-  final String date_init = 'Set 1';
-  final String date_final = 'Out 2';
+  final String dateInit = 'Set 1';
+  final String dateFinal = 'Out 2';
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +53,6 @@ class DetaildePage extends StatelessWidget {
             Divide(),
           ],
         ),
-        bottomNavigationBar: BottomNavigation(value, date_init, date_final));
+        bottomNavigationBar: BottomNavigation(value, dateInit, dateFinal));
   }
 }
