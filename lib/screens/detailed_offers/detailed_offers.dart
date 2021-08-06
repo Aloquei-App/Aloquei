@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'components/bottom_navigation.dart';
 import 'components/carousel_options.dart';
 import 'components/custom_app_bar.dart';
+import 'components/description.dart';
 import 'components/description_offers.dart';
 import 'components/description_offers_grey.dart';
 import 'components/divide.dart';
@@ -22,8 +23,8 @@ class DetaildePage extends StatelessWidget {
   ];
   final String title = "Tunico House seu espaco de paz";
   final String text = 'Entire residential home hosted by Adriane';
-  final String text_desc = 'Entire residential home';
-  final String description = 'Oriental, Rio Grande do Sul Brasil';
+  final String textDesc = 'Entire residential home';
+  final String descriptionOffer = 'Oriental, Rio Grande do Sul Brasil';
   final int guests = 2;
   final int bedroom = 2;
   final int beds = 2;
@@ -31,6 +32,8 @@ class DetaildePage extends StatelessWidget {
   final int value = 1846;
   final String dateInit = 'Set 1';
   final String dateFinal = 'Out 2';
+  final String description =
+      'Local tranquilo junto a natureza. Simples mais confortavel';
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +49,10 @@ class DetaildePage extends StatelessWidget {
               ],
             ),
             TitleOffers(title),
-            DescriptionOffersGrey(description),
+            DescriptionOffersGrey(descriptionOffer),
             Divide(),
             TextOffers(text),
-            DescriptionOffers(text_desc),
+            DescriptionOffers(textDesc),
             Components(guests, bedroom, beds, bedroom),
             Divide(),
             Elements(Icons.house_outlined, 'Casa inteira',
@@ -58,8 +61,12 @@ class DetaildePage extends StatelessWidget {
                 'Voce tem a casa inteira'),
             Elements(Icons.house_outlined, 'Casa inteira',
                 'Voce tem a casa inteira'),
-            Elements(
-                Icons.house_outlined, 'Casa inteira', 'Voce tem a casa inteira')
+            Elements(Icons.house_outlined, 'Casa inteira',
+                'Voce tem a casa inteira'),
+            Divide(),
+            Description(description),
+            Divide(),
+            TextOffers('Onde você vai dormir'),
           ],
         ),
         bottomNavigationBar: BottomNavigation(value, dateInit, dateFinal));
