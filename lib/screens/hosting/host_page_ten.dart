@@ -1,9 +1,6 @@
 import 'package:aloquei_app/screens/hosting/components/host_bottombar.dart';
-import 'package:aloquei_app/screens/hosting/components/host_select_menu_eight.dart';
-import 'package:aloquei_app/screens/hosting/components/host_select_menu_nine.dart';
 import 'package:aloquei_app/screens/hosting/components/host_select_menu_ten.dart';
 import 'package:aloquei_app/screens/hosting/components/host_top_menu_gradient.dart';
-import 'package:aloquei_app/screens/hosting/components/hot_top_menu_image.dart';
 import 'package:aloquei_app/screens/hosting/host_page_five.dart';
 
 import 'package:flutter/material.dart';

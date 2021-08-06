@@ -1,10 +1,13 @@
-import 'package:aloquei_app/screens/hosting/components/host_counter.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class HostSelectMenuTen extends StatelessWidget {
   final VoidCallback onpressed;
 
   const HostSelectMenuTen({Key key, this.onpressed}) : super(key: key);
+
+  Pattern get whitelistedPattern => null;
 
   @override
   Widget build(BuildContext context) {
@@ -12,42 +15,35 @@ class HostSelectMenuTen extends StatelessWidget {
         child: ListView(
             padding: EdgeInsets.only(left: 20, right: 20, top: 20),
             children: [
-          Padding(
-              padding: EdgeInsets.only(bottom: 25),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Guests',
-                    style: TextStyle(fontSize: 22),
+          Container(
+              padding: EdgeInsets.only(top: 25, bottom: 5, left: 90, right: 90),
+              child: TextField(
+                textAlign: TextAlign.center,
+                keyboardType: TextInputType.number,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 30,
+                    fontWeight: FontWeight.w900),
+                decoration: InputDecoration(
+                  isDense: true,
+                  contentPadding: EdgeInsets.all(40),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black, width: 2.0),
                   ),
-                  CounterView()
-                ],
-              )),
-          Padding(
-              padding: EdgeInsets.only(bottom: 25),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Beds',
-                    style: TextStyle(fontSize: 22),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 0.5),
                   ),
-                  CounterView()
-                ],
+                  hintText: 'R\$ Preço',
+                ),
               )),
-          Padding(
-              padding: EdgeInsets.only(bottom: 25),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Bedrooms',
-                    style: TextStyle(fontSize: 22),
-                  ),
-                  CounterView()
-                ],
-              )),
+          Container(
+            child: Center(
+                child: Text(
+              '\$ por noite',
+              style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.w800),
+            )),
+          )
         ]));
   }
 }
