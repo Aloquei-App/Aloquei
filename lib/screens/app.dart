@@ -1,3 +1,4 @@
+import 'package:aloquei_app/screens/home/home.dart';
 import 'package:flutter/material.dart';
 
 import 'explore/explore.dart';
@@ -36,7 +37,7 @@ class Run extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
 
       ),
-      home: ExplorePage(),
+      home: HomePage(),
       routes: {
         '/explore': (context) => ExplorePage(),
         '/wishlists': (context) => WishlistsPage(),
