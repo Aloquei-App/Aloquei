@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'components/bottom_navigation.dart';
 import 'components/card_image.dart';
 import 'components/carousel_options.dart';
+import 'components/contain_element.dart';
 import 'components/custom_app_bar.dart';
 import 'components/description.dart';
 import 'components/description_offers.dart';
@@ -81,7 +82,11 @@ class DetaildePage extends StatelessWidget {
                   CardImage(imgBedroom, textRoom)
                 ],
               ),
-            )
+            ),
+            Divide(),
+            ContaimElement(Icons.wifi, 'Wifi'),
+            ContaimElement(Icons.kitchen, 'Cozinha'),
+            ContaimElement(Icons.tv, 'TV')
           ],
         ),
         bottomNavigationBar: BottomNavigation(value, dateInit, dateFinal));
