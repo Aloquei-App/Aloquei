@@ -1,13 +1,15 @@
 import 'package:aloquei_app/screens/hosting/components/host_bottombar.dart';
 import 'package:aloquei_app/screens/hosting/components/host_select_menu_eight.dart';
 import 'package:aloquei_app/screens/hosting/components/host_select_menu_nine.dart';
+import 'package:aloquei_app/screens/hosting/components/host_select_menu_ten.dart';
+import 'package:aloquei_app/screens/hosting/components/host_top_menu_gradient.dart';
 import 'package:aloquei_app/screens/hosting/components/hot_top_menu_image.dart';
 import 'package:aloquei_app/screens/hosting/host_page_five.dart';
 
 import 'package:flutter/material.dart';
 
-class HostPageNine extends StatelessWidget {
-  const HostPageNine({Key key}) : super(key: key);
+class HostPageTen extends StatelessWidget {
+  const HostPageTen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +29,13 @@ class HostPageNine extends StatelessWidget {
             color: Colors.white,
             child: Column(
               children: [
-                HostTopMenuImage(
-                  image1: "assets/insideHouse.jpg",
-                  text1: 'Now, lets describe your',
-                  text2: 'place',
+                HostTopMenuGradient(
+                  color1: 0xFFae1a88,
+                  color2: 0xFF8b1fa6,
+                  text1: 'Now for the fun part, set',
+                  text2: 'your price',
                 ),
-                HostSelectMenuNine(
+                HostSelectMenuTen(
                   onpressed: () {},
                 ),
               ],
