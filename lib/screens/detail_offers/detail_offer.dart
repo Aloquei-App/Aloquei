@@ -1,5 +1,5 @@
 import 'package:aloquei_app/screens/core/colors.dart';
-import 'package:aloquei_app/screens/detailed_offers/components/row_components.dart';
+
 import 'package:aloquei_app/screens/login/components/title_offers.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +16,7 @@ import 'components/elements.dart';
 import 'components/text_offers.dart';
 import 'components/row_components.dart';
 
-class DetaildePage extends StatelessWidget {
+class DetailPage extends StatelessWidget {
   final List<String> imageList = [
     "https://www.voltaaomundo.pt/files/2017/07/da6741e5_original-741x486_c.jpg",
     "https://www.voltaaomundo.pt/files/2017/07/1-18-741x486_c.jpg",
