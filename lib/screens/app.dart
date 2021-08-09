@@ -98,7 +98,7 @@ class _AppPageState extends State<AppPage> {
             } else if (state is SignupPressedState) {
               return Signup();
             } else if (state is UnauthenticatedState) {
-              return ExplorePage();
+              return HomePage();
             } else {
               return Splash();
             }

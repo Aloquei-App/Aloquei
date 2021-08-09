@@ -19,7 +19,7 @@ class PersonsGridView extends StatelessWidget {
             crossAxisSpacing: 5.0,
             mainAxisSpacing: 10.0),
         scrollDirection: Axis.horizontal,
-        itemCount: 3,
+        itemCount: 6,
         itemBuilder: (context, index) {
           return PersonItem(
             image:
