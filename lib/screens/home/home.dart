@@ -1,11 +1,11 @@
-import 'package:aloquei_app/screens/core/colors.dart';
-import 'package:aloquei_app/screens/explore/explore.dart';
-import 'package:aloquei_app/screens/profile/profile.dart';
-import 'package:aloquei_app/screens/trips/trips.dart';
-import 'package:aloquei_app/screens/wishlists/wishlists.dart';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../core/colors.dart';
+import '../explore/explore.dart';
+import '../profile/profile.dart';
+import '../trips/trips.dart';
+import '../wishlists/wishlists.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -19,6 +19,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: greyAirbnb,
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
         items: [
@@ -31,6 +32,18 @@ class _HomePageState extends State<HomePage> {
             activeIcon: Icon(
               Icons.search,
               size: 30,
+              color: redAirbnb,
+            ),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              FontAwesomeIcons.heart,
+              size: 26,
+            ),
+            label: ('Favoritos'),
+            activeIcon: Icon(
+              FontAwesomeIcons.heart,
+              size: 26,
               color: redAirbnb,
             ),
           ),
@@ -84,6 +97,7 @@ class _HomePageState extends State<HomePage> {
 
   final tabs = [
     ExplorePage(),
+    WishlistsPage(),
     TripsPage(),
     WishlistsPage(),
     ProfilePage(),

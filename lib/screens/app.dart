@@ -1,14 +1,16 @@
-import 'package:aloquei_app/screens/home/home.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:responsive_framework/responsive_framework.dart';
+import '../blocs/auth/auth_bloc.dart';
+import 'core/snack_bar.dart';
 import 'explore/explore.dart';
+import 'home/home.dart';
 import 'inbox/inbox.dart';
-import 'login/login_page.dart';
 import 'profile/profile.dart';
+import 'signup/signup.dart';
+import 'splash/splash.dart';
 import 'trips/trips.dart';
 import 'wishlists/wishlists.dart';
-import 'package:responsive_framework/responsive_framework.dart';
-
 
 class Run extends StatelessWidget {
   Run({Key key}) : super(key: key);
@@ -35,9 +37,38 @@ class Run extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Roboto',
         visualDensity: VisualDensity.adaptivePlatformDensity,
-
       ),
-      home: HomePage(),
+      home: Scaffold(
+        body: BlocConsumer<AuthBloc, AuthState>(
+          listener: (contextListener, state) {
+            if (state is AuthenticatedState) {
+              if (state.user != null) {
+                buildSuccesSnackBar(
+                    contextListener, "Login realizado com sucesso");
+              }
+            } else if (state is ExceptionState) {
+              buildWarningSnackBar(contextListener, state.message);
+            }
+          },
+          buildWhen: (previous, current) {
+            if (current is ExceptionState) {
+              return false;
+            }
+            return true;
+          },
+          builder: (context, state) {
+            if (state is AuthenticatedState) {
+              return ExplorePage();
+            } else if (state is SignupPressedState) {
+              return Signup();
+            } else if (state is UnauthenticatedState) {
+              return HomePage();
+            } else {
+              return Splash();
+            }
+          },
+        ),
+      ),
       routes: {
         '/explore': (context) => ExplorePage(),
         '/wishlists': (context) => WishlistsPage(),

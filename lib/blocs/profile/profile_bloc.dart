@@ -19,6 +19,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     return user.nome;
   }
 
+  String getLastName() {
+    return user.sobrenome;
+  }
+
   String getMail() {
     return user.email;
   }

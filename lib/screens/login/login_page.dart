@@ -1,7 +1,10 @@
-import 'package:aloquei_app/screens/profile/components/default_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../blocs/auth/auth_bloc.dart';
+import '../../core/validations.dart';
+import '../profile/components/default_button.dart';
 import 'components/continue_button.dart';
 import 'components/default_input.dart';
 import 'components/divider_with_text.dart';
@@ -14,8 +17,13 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final TextEditingController _emailCntrlr = TextEditingController();
+  final TextEditingController _passCntrlr = TextEditingController();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
     return Scaffold(
       appBar: LoginAppBar(
         onPressed: () {},
@@ -36,9 +44,12 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-          ContinueButton(
-            onPressed: () {},
-          ),
+          ContinueButton(onPressed: () {
+            if (validateAndSave(_formKey)) {
+              authBloc.add(LoginEmailEvent(
+                  email: _emailCntrlr.text, senha: _passCntrlr.text));
+            }
+          }),
           DividerWithText(),
           DefaultButton(
               text: 'Continuar com Email',
