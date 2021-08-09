@@ -6,6 +6,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 import '../blocs/auth/auth_bloc.dart';
 import 'core/snack_bar.dart';
 import 'explore/explore.dart';
+import 'home/home.dart';
 import 'inbox/inbox.dart';
 import 'login/login_page.dart';
 import 'profile/profile.dart';
@@ -97,7 +98,7 @@ class _AppPageState extends State<AppPage> {
             } else if (state is SignupPressedState) {
               return Signup();
             } else if (state is UnauthenticatedState) {
-              return LoginPage();
+              return HomePage();
             } else {
               return Splash();
             }
@@ -105,6 +106,7 @@ class _AppPageState extends State<AppPage> {
         ),
       ),
       routes: {
+        '/home': (context) => HomePage(),
         '/explore': (context) => ExplorePage(),
         '/wishlists': (context) => WishlistsPage(),
         '/trips': (context) => TripsPage(),

@@ -19,3 +19,7 @@ void navigateToInbox(BuildContext context) {
 void navigateToProfile(BuildContext context) {
   Navigator.of(context).pushNamed('/profile');
 }
+
+void navigateToHome(BuildContext context) {
+  Navigator.of(context).pushNamed('/home');
+}
