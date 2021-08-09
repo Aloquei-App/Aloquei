@@ -94,11 +94,11 @@ class _AppPageState extends State<AppPage> {
           },
           builder: (context, state) {
             if (state is AuthenticatedState) {
-              return ExplorePage();
+              return HomePage();
             } else if (state is SignupPressedState) {
               return Signup();
             } else if (state is UnauthenticatedState) {
-              return HomePage();
+              return LoginPage();
             } else {
               return Splash();
             }
