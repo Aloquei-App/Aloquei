@@ -1,3 +1,4 @@
+import 'package:aloquei_app/screens/core/navigation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +33,9 @@ class _ExplorePageState extends State<ExplorePage> {
         extendBodyBehindAppBar: true,
         appBar: ExploreAppBar(
           opc: _opc,
-          onTap: () {},
+          onTap: () {
+            navigateToSearch(context);
+          },
         ),
         body: SingleChildScrollView(
           controller: _scrollController,

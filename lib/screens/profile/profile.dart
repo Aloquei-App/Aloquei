@@ -1,4 +1,6 @@
+import 'package:aloquei_app/blocs/auth/auth_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'components/default_button.dart';
@@ -10,6 +12,7 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
     return Scaffold(
       body: ListView(
         children: [
@@ -78,7 +81,9 @@ class ProfilePage extends StatelessWidget {
           DefaultButton(
             text: 'Sair da conta',
             icon: null,
-            onpressed: () {},
+            onpressed: () {
+              authBloc.add(LogoutEvent());
+            },
           ),
           Padding(
             padding: EdgeInsets.only(top: 10, bottom: 15),
