@@ -99,7 +99,7 @@ class _HomePageState extends State<HomePage> {
     ExplorePage(),
     WishlistsPage(),
     TripsPage(),
-    WishlistsPage(),
+    TripsPage(),
     ProfilePage(),
   ];
 }

@@ -4,9 +4,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../blocs/auth/auth_bloc.dart';
 import '../../core/validations.dart';
-import '../profile/components/default_button.dart';
+
 import 'components/continue_button.dart';
 import 'components/default_input.dart';
+import 'components/default_login_button.dart';
 import 'components/divider_with_text.dart';
 import 'components/login_app_bar.dart';
 import 'components/title_login.dart';
@@ -51,15 +52,15 @@ class _LoginPageState extends State<LoginPage> {
             }
           }),
           DividerWithText(),
-          DefaultButton(
+          DefaultLoginButton(
               text: 'Continuar com Email',
               icon: Icons.email_outlined,
               onpressed: () {}),
-          DefaultButton(
+          DefaultLoginButton(
               text: 'Continuar com Google',
               icon: FontAwesomeIcons.google,
               onpressed: () {}),
-          DefaultButton(
+          DefaultLoginButton(
               text: 'Continuar com Apple',
               icon: FontAwesomeIcons.apple,
               onpressed: () {}),
