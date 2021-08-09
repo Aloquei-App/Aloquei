@@ -45,6 +45,7 @@ class HouseOfferModel extends OffersModel {
       this.valueMonth,
       this.zipCode,
       String cidade,
+      String estado,
       String email,
       String obs,
       String tele,
@@ -53,6 +54,7 @@ class HouseOfferModel extends OffersModel {
       int qtdRoom,
       int tipo}) {
     city = cidade;
+    state = estado;
     mail = email;
     observations = obs;
     phone = tele;
@@ -75,6 +77,8 @@ class HouseOfferModel extends OffersModel {
     includedOnValue = json['includedOnValue'].cast<String>() ?? [];
     kitchen = json['kitchen'] ?? 0;
     livinRoom = json['livinRoom'] ?? 0;
+    city = json['city'] ?? "";
+    state = json['state'] ?? "";
     mail = json['mail'] ?? "";
     maxTenants = json['maxTenants'] ?? 0;
     name = json['name'] ?? "";
@@ -100,6 +104,8 @@ class HouseOfferModel extends OffersModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['city'] = this.city;
+    data['state'] = this.state;
     data['address'] = this.address;
     data['courtyard'] = this.courtyard;
     data['furnished'] = this.furnished;

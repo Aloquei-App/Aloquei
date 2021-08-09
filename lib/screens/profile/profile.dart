@@ -1,8 +1,8 @@
-import 'package:aloquei_app/screens/profile/components/default_subtitle.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'components/default_button.dart';
+import 'components/default_subtitle.dart';
 import 'components/username_and_profile_button.dart';
 
 class ProfilePage extends StatelessWidget {

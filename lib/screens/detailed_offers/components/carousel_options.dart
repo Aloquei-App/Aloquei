@@ -11,21 +11,17 @@ class CarouselOffers extends StatelessWidget {
       options: CarouselOptions(
         viewportFraction: 1,
         enableInfiniteScroll: true,
-        height: MediaQuery.of(context).size.height / 3.2,
+        height: MediaQuery.of(context).size.height * 0.38,
       ),
       items: imageList
-          .map((e) => ClipRRect(
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: <Widget>[
-                    Image.network(
-                      e,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
-                    )
-                  ],
-                ),
-              ))
+          .map(
+            (e) => ClipRRect(
+                child: Image.network(
+              e,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            )),
+          )
           .toList(),
     );
   }

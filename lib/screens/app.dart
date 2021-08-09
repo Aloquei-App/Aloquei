@@ -4,10 +4,15 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import '../blocs/auth/auth_bloc.dart';
+import 'core/snack_bar.dart';
 import 'explore/explore.dart';
+import 'home/home.dart';
 import 'inbox/inbox.dart';
 import 'login/login_page.dart';
 import 'profile/profile.dart';
+import 'search/search.dart';
+import 'signup/signup.dart';
+import 'splash/splash.dart';
 import 'trips/trips.dart';
 import 'wishlists/wishlists.dart';
 
@@ -37,8 +42,8 @@ class _AppPageState extends State<AppPage> {
 
   @override
   void initState() {
-    super.initState();
     authBloc = BlocProvider.of<AuthBloc>(context);
+    super.initState();
   }
 
   @override
@@ -69,13 +74,45 @@ class _AppPageState extends State<AppPage> {
         fontFamily: 'Roboto',
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginPage(authBloc: authBloc),
+      home: Scaffold(
+        body: BlocConsumer<AuthBloc, AuthState>(
+          listener: (contextListener, state) {
+            if (state is AuthenticatedState) {
+              if (state.user != null) {
+                buildSuccesSnackBar(
+                    contextListener, "Login realizado com sucesso");
+              }
+            } else if (state is ExceptionState) {
+              buildWarningSnackBar(contextListener, state.message);
+            }
+          },
+          buildWhen: (previous, current) {
+            if (current is ExceptionState) {
+              return false;
+            }
+            return true;
+          },
+          builder: (context, state) {
+            if (state is AuthenticatedState) {
+              return ExplorePage();
+            } else if (state is SignupPressedState) {
+              return Signup();
+            } else if (state is UnauthenticatedState) {
+              return HomePage();
+            } else {
+              return Splash();
+            }
+          },
+        ),
+      ),
       routes: {
+        '/home': (context) => HomePage(),
         '/explore': (context) => ExplorePage(),
         '/wishlists': (context) => WishlistsPage(),
         '/trips': (context) => TripsPage(),
         '/inbox': (context) => InboxPage(),
         '/profile': (context) => ProfilePage(),
+        '/search': (context) => Search(),
       },
       initialRoute: '/',
     );

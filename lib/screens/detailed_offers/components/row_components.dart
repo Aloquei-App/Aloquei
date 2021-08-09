@@ -14,10 +14,10 @@ class Components extends StatelessWidget {
             EdgeInsets.only(top: 15.0, bottom: 15.0, left: 30.0, right: 30.0),
         child: Row(
           children: [
-            Component(guests.toString() + ' guests'),
-            Component('  •  ' + bedroom.toString() + ' bedroom'),
-            Component('  •  ' + beds.toString() + ' beds'),
-            Component('  •  ' + bath.toString() + ' bath'),
+            Component(guests.toString() + ' hóspedes'),
+            Component('  •  ' + bedroom.toString() + ' quartos'),
+            Component('  •  ' + beds.toString() + ' camas'),
+            Component('  •  ' + bath.toString() + ' banheiros'),
           ],
         ));
   }

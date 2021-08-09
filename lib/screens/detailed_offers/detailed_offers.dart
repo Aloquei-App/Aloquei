@@ -24,7 +24,7 @@ class DetaildePage extends StatelessWidget {
     "https://www.voltaaomundo.pt/files/2017/07/3-17-741x486_c.jpg"
   ];
   final String title = "Tunico House seu espaco de paz";
-  final String text = 'Entire residential home hosted by Adriane';
+  final String text = 'Tunico house (hospedado por Tunico)';
   final String textDesc = 'Entire residential home';
   final String descriptionOffer = 'Oriental, Rio Grande do Sul Brasil';
   final int guests = 2;
@@ -46,48 +46,51 @@ class DetaildePage extends StatelessWidget {
     return Scaffold(
         backgroundColor: backgroundColor,
         extendBodyBehindAppBar: true,
-        body: ListView(
-          children: [
-            Stack(
-              children: <Widget>[
-                CarouselOffers(imageList),
-                CustomAppBar(),
-              ],
-            ),
-            TitleOffers(title),
-            DescriptionOffersGrey(descriptionOffer),
-            Divide(),
-            TextOffers(text),
-            DescriptionOffers(textDesc),
-            Components(guests, bedroom, beds, bedroom),
-            Divide(),
-            Elements(Icons.house_outlined, 'Casa inteira',
-                'Voce tem a casa inteira'),
-            Elements(Icons.house_outlined, 'Casa inteira',
-                'Voce tem a casa inteira'),
-            Elements(Icons.house_outlined, 'Casa inteira',
-                'Voce tem a casa inteira'),
-            Elements(Icons.house_outlined, 'Casa inteira',
-                'Voce tem a casa inteira'),
-            Divide(),
-            Description(description),
-            Divide(),
-            TextOffers('Onde você vai dormir'),
-            Padding(
-              padding: EdgeInsets.only(
-                  top: 15.0, bottom: 10.0, left: 30.0, right: 30.0),
-              child: Row(
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Stack(
                 children: [
-                  CardImage(imgBedroom, textBedroom),
-                  CardImage(imgBedroom, textRoom)
+                  CarouselOffers(imageList),
+                  CustomAppBar(),
                 ],
               ),
-            ),
-            Divide(),
-            ContaimElement(Icons.wifi, 'Wifi'),
-            ContaimElement(Icons.kitchen, 'Cozinha'),
-            ContaimElement(Icons.tv, 'TV')
-          ],
+              TitleOffers(title),
+              DescriptionOffersGrey(descriptionOffer),
+              Divide(),
+              TextOffers(text),
+              DescriptionOffers(textDesc),
+              Components(guests, bedroom, beds, bedroom),
+              Divide(),
+              Elements(Icons.house_outlined, 'Casa inteira',
+                  'Voce tem a casa inteira'),
+              Elements(Icons.house_outlined, 'Casa inteira',
+                  'Voce tem a casa inteira'),
+              Elements(Icons.house_outlined, 'Casa inteira',
+                  'Voce tem a casa inteira'),
+              Elements(Icons.house_outlined, 'Casa inteira',
+                  'Voce tem a casa inteira'),
+              Divide(),
+              Description(description),
+              Divide(),
+              TextOffers('Onde você vai dormir'),
+              Padding(
+                padding: EdgeInsets.only(
+                    top: 15.0, bottom: 10.0, left: 30.0, right: 30.0),
+                child: Row(
+                  children: [
+                    CardImage(imgBedroom, textBedroom),
+                    CardImage(imgBedroom, textRoom)
+                  ],
+                ),
+              ),
+              Divide(),
+              ContaimElement(Icons.wifi, 'Wifi'),
+              ContaimElement(Icons.kitchen, 'Cozinha'),
+              ContaimElement(Icons.tv, 'TV')
+            ],
+          ),
         ),
         bottomNavigationBar: BottomNavigation(value, dateInit, dateFinal));
   }
