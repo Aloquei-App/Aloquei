@@ -17,14 +17,19 @@ class Search extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Function onSelectedCompleted =
+        ModalRoute.of(context).settings.arguments;
     return BlocProvider(
       create: (context) => SearchBloc()..add(SearchStartedEvent()),
-      child: SearchPage(),
+      child: SearchPage(onSelectedCompleted: onSelectedCompleted),
     );
   }
 }
 
 class SearchPage extends StatefulWidget {
+  final Function onSelectedCompleted;
+
+  const SearchPage({Key key, this.onSelectedCompleted}) : super(key: key);
   @override
   _SearchPageState createState() => _SearchPageState();
 }
@@ -53,7 +58,8 @@ class _SearchPageState extends State<SearchPage> {
             listenWhen: (previous, current) => current is GoToMap,
             listener: (context, state) {
               if (state is GoToMap) {
-                // TODO navigate to map
+                widget.onSelectedCompleted(state.explore);
+                Navigator.of(context).pop();
               }
             },
             buildWhen: (previous, current) => current is! GoToMap,

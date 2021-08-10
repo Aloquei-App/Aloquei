@@ -1,4 +1,4 @@
-import 'package:aloquei_app/core/models/interest_offer_model.dart';
+import '../../../core/models/interest_offer_model.dart';
 import 'package:flutter/material.dart';
 
 import 'person_item.dart';

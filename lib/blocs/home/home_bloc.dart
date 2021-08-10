@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import '../../core/models/explore_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
@@ -76,6 +77,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           _exploring = false;
           yield ExploreState();
         }
+      } else if (event is SearchFromSelectedEvent) {
+        _currentTab = 0;
+        _exploring = true;
+        yield ExploreListState(exploreModel: event.exploreModel);
       }
     } catch (e) {
       yield FailState(message: "Algo saiu errado, tente mais tarde");

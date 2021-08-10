@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
+import '../../core/models/explore_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
@@ -132,7 +133,10 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       if (event.tipo != null) {
         _selectedType = event.tipo;
         yield GoToMap(
-            city: _selectedCity, estado: _selectedState, type: _selectedType);
+            explore: ExploreModel(
+                city: _selectedCity,
+                estado: _selectedState,
+                type: _selectedType));
       }
     }
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-void navigateToSearch(BuildContext context) {
-  Navigator.of(context).pushNamed('/search');
+void navigateToSearch(BuildContext context, Function func) {
+  Navigator.of(context).pushNamed('/search', arguments: func);
 }
 
 void navigateToWishlists(BuildContext context) {

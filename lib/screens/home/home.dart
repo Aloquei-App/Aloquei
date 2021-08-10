@@ -1,15 +1,15 @@
-import 'package:aloquei_app/blocs/home/home_bloc.dart';
-import 'package:aloquei_app/screens/core/loading.dart';
-import 'package:aloquei_app/screens/core/snack_bar.dart';
-import 'package:aloquei_app/screens/explore_list/explore_list.dart';
-import 'package:aloquei_app/screens/home/components/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import "components/explore/explore.dart";
+import '../../blocs/home/home_bloc.dart';
+import '../core/loading.dart';
+import '../core/snack_bar.dart';
+import '../explore/explore.dart';
+import '../explore_list/explore_list.dart';
 import '../profile/profile.dart';
 import '../trips/trips.dart';
 import '../wishlists/wishlists.dart';
+import 'components/bottom_bar.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -64,9 +64,12 @@ class _HomePageState extends State<HomePage> {
             } else if (state is ProfileState) {
               return ProfilePage();
             } else if (state is ExploreListState) {
-              return ExploreList(onBackPress: () {
-                _homeBloc.add(OnTabChange(index: -1));
-              });
+              return ExploreList(
+                onBackPress: () {
+                  _homeBloc.add(OnTabChange(index: -1));
+                },
+                exploreModel: state.exploreModel,
+              );
             } else {
               return Loading();
             }

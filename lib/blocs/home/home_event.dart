@@ -14,3 +14,9 @@ class OnTabChange extends HomeEvent {
 
   OnTabChange({this.index});
 }
+
+class SearchFromSelectedEvent extends HomeEvent {
+  final ExploreModel exploreModel;
+
+  SearchFromSelectedEvent({this.exploreModel});
+}

@@ -1,5 +1,5 @@
-import 'package:aloquei_app/blocs/home/home_bloc.dart';
-import 'package:aloquei_app/screens/core/navigation.dart';
+import '../../blocs/home/home_bloc.dart';
+import '../core/navigation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,7 +38,9 @@ class _ExplorePageState extends State<ExplorePage> {
         appBar: ExploreAppBar(
           opc: _opc,
           onTap: () {
-            navigateToSearch(context);
+            navigateToSearch(context, (value) {
+              _homeBloc.add(SearchFromSelectedEvent(exploreModel: value));
+            });
           },
         ),
         body: SingleChildScrollView(
@@ -64,7 +66,9 @@ class _ExplorePageState extends State<ExplorePage> {
                     'Ganhe dinheiro e descubra novas oportunidades ao compartilhar seu espaço.',
                 img:
                     'https://diplomathotelbrasilia.com.br/wp-content/uploads/2019/12/4-motivos-para-se-hospedar-no-hotel-diplomat-em-brasilia.jpg',
-                onTap: () {},
+                onTap: () {
+                  // TODO DIRECIONAR PARA TELA DE CADASTRO
+                },
               ),
               TitleModel(
                 title: "More em uma república",
@@ -78,7 +82,9 @@ class _ExplorePageState extends State<ExplorePage> {
                     'Adicione o perfil da pessoa que está procurando para dividir um espaço.',
                 img:
                     'https://blog.viasul.com/wp-content/uploads/2021/06/post_thumbnail-74170fbba571538e195e61dd0aef1a82.jpeg',
-                onTap: () {},
+                onTap: () {
+                  // TODO DIRECIONAR PARA TELA DE CADASTRO
+                },
               ),
             ],
           ),

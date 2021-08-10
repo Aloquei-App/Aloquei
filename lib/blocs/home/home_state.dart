@@ -21,7 +21,14 @@ class InterestsState extends HomeState {}
 
 class ProfileState extends HomeState {}
 
-class ExploreListState extends HomeState {}
+class ExploreListState extends HomeState {
+  final ExploreModel exploreModel;
+
+  ExploreListState({this.exploreModel});
+
+  @override
+  List<Object> get props => [exploreModel];
+}
 
 class FailState extends HomeState {
   final String message;
