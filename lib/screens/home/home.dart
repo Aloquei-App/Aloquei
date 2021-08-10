@@ -1,10 +1,12 @@
 import 'package:aloquei_app/blocs/home/home_bloc.dart';
 import 'package:aloquei_app/screens/core/loading.dart';
+import 'package:aloquei_app/screens/core/snack_bar.dart';
+import 'package:aloquei_app/screens/explore_list/explore_list.dart';
 import 'package:aloquei_app/screens/home/components/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../explore/explore.dart';
+import "components/explore/explore.dart";
 import '../profile/profile.dart';
 import '../trips/trips.dart';
 import '../wishlists/wishlists.dart';
@@ -43,7 +45,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: BlocConsumer<HomeBloc, HomeState>(
-          listener: (contextListener, state) {},
+          listenWhen: (previous, current) => current is FailState,
+          listener: (contextListener, state) {
+            if (state is FailState) {
+              buildWarningSnackBar(context, state.message);
+            }
+          },
+          buildWhen: (previous, current) => current is! FailState,
           builder: (context, state) {
             if (state is ExploreState) {
               return ExplorePage();
@@ -55,6 +63,10 @@ class _HomePageState extends State<HomePage> {
               return TripsPage();
             } else if (state is ProfileState) {
               return ProfilePage();
+            } else if (state is ExploreListState) {
+              return ExploreList(onBackPress: () {
+                _homeBloc.add(OnTabChange(index: -1));
+              });
             } else {
               return Loading();
             }

@@ -20,3 +20,14 @@ class HousesState extends HomeState {}
 class InterestsState extends HomeState {}
 
 class ProfileState extends HomeState {}
+
+class ExploreListState extends HomeState {}
+
+class FailState extends HomeState {
+  final String message;
+
+  FailState({@required this.message});
+
+  @override
+  List<Object> get props => [message];
+}

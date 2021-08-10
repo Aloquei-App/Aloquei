@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
-class FirstButton extends StatelessWidget {
-  const FirstButton({
+class FlexibilitieButton extends StatelessWidget {
+  final VoidCallback onPressed;
+  const FlexibilitieButton({
     Key key,
+    this.onPressed,
   }) : super(key: key);
 
   @override
@@ -36,7 +38,7 @@ class FirstButton extends StatelessWidget {
               height: 100,
               width: 250,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () => onPressed(),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.white),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(

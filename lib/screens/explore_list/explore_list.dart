@@ -4,7 +4,8 @@ import 'components/explore_app_bar.dart';
 import 'components/list_places.dart';
 
 class ExploreList extends StatelessWidget {
-  const ExploreList({Key key}) : super(key: key);
+  final VoidCallback onBackPress;
+  const ExploreList({Key key, @required this.onBackPress}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,8 @@ class ExploreList extends StatelessWidget {
       length: 4,
       child: Scaffold(
         appBar: ExploreAppBar(
-          action: null,
+          action: () {},
+          onBackPress: onBackPress,
         ),
         body: TabBarView(
           children: [

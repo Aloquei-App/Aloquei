@@ -6,7 +6,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ExploreAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback action;
-  ExploreAppBar({Key key, @required this.action}) : super(key: key);
+  final VoidCallback onBackPress;
+  ExploreAppBar({Key key, @required this.action, this.onBackPress})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +18,7 @@ class ExploreAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: Padding(
         padding: EdgeInsets.only(left: 10.0),
         child: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: () => onBackPress(),
           icon: Icon(
             Icons.arrow_back,
             color: Colors.black,

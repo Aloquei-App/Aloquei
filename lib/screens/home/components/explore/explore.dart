@@ -1,10 +1,12 @@
+import 'package:aloquei_app/blocs/home/home_bloc.dart';
 import 'package:aloquei_app/screens/core/navigation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'components/announcement.dart';
 import 'components/explore_app_bar.dart';
-import 'components/first_button.dart';
+import 'components/flexibilitie_button.dart';
 import 'components/house_list_view.dart';
 import 'components/persons_grid_view.dart';
 import 'components/title_model.dart';
@@ -16,6 +18,7 @@ class ExplorePage extends StatefulWidget {
 
 class _ExplorePageState extends State<ExplorePage> {
   ScrollController _scrollController = ScrollController();
+  HomeBloc _homeBloc;
   double _opc = 0.0;
   @override
   void initState() {
@@ -24,6 +27,7 @@ class _ExplorePageState extends State<ExplorePage> {
         _opc = (_scrollController.offset / 100.0).clamp(0.0, 1.0);
       });
     });
+    _homeBloc = BlocProvider.of<HomeBloc>(context);
     super.initState();
   }
 
@@ -41,14 +45,18 @@ class _ExplorePageState extends State<ExplorePage> {
           controller: _scrollController,
           child: Column(
             children: [
-              FirstButton(),
+              FlexibilitieButton(
+                onPressed: () {
+                  _homeBloc.add(OnTabChange(index: 5));
+                },
+              ),
               TitleModel(
                 title: 'Encontre pessoas legais',
               ),
-              PersonsGridView(),
+              PersonsGridView(interestsList: _homeBloc.getInterest),
               TitleModel(title: 'Encontre uma casa'),
               HouseListView(
-                isRepublic: false,
+                houseList: _homeBloc.getApCasa,
               ),
               Announcement(
                 title: 'Experimente hospedar',
@@ -62,7 +70,7 @@ class _ExplorePageState extends State<ExplorePage> {
                 title: "More em uma república",
               ),
               HouseListView(
-                isRepublic: true,
+                houseList: _homeBloc.getRepub,
               ),
               Announcement(
                 title: 'Encontre pessoas',

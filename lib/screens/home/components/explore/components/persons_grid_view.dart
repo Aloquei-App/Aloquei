@@ -1,10 +1,13 @@
+import 'package:aloquei_app/core/models/interest_offer_model.dart';
 import 'package:flutter/material.dart';
 
 import 'person_item.dart';
 
 class PersonsGridView extends StatelessWidget {
+  final List<InterestModel> interestsList;
   const PersonsGridView({
     Key key,
+    this.interestsList,
   }) : super(key: key);
 
   @override
@@ -19,12 +22,12 @@ class PersonsGridView extends StatelessWidget {
             crossAxisSpacing: 5.0,
             mainAxisSpacing: 10.0),
         scrollDirection: Axis.horizontal,
-        itemCount: 6,
+        itemCount: interestsList.length,
         itemBuilder: (context, index) {
           return PersonItem(
             image:
                 'https://img.ibxk.com.br/2017/06/22/22100428046161.jpg?w=1200&h=675&mode=crop&scale=both',
-            name: "Nome da pessoa",
+            name: interestsList[index].postUserName,
           );
         },
       ),

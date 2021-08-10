@@ -13,7 +13,6 @@ import 'search/search.dart';
 import 'signup/signup.dart';
 import 'splash/splash.dart';
 import 'trips/trips.dart';
-import 'wishlists/wishlists.dart';
 
 class Run extends StatelessWidget {
   @override
@@ -105,7 +104,6 @@ class _AppPageState extends State<AppPage> {
         ),
       ),
       routes: {
-        '/wishlists': (context) => WishlistsPage(),
         '/trips': (context) => TripsPage(),
         '/inbox': (context) => InboxPage(),
         '/profile': (context) => ProfilePage(),
