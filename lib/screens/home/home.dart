@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../core/colors.dart';
+import '../../blocs/home/home_bloc.dart';
+import '../core/loading.dart';
+import '../core/snack_bar.dart';
 import '../explore/explore.dart';
+import '../explore_list/explore_list.dart';
 import '../profile/profile.dart';
 import '../trips/trips.dart';
 import '../wishlists/wishlists.dart';
+import 'components/bottom_bar.dart';
+
+class Home extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => HomeBloc()..add(HomeStartedEvent()),
+      child: HomePage(),
+    );
+  }
+}
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,93 +27,63 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
+  HomeBloc _homeBloc;
+
+  @override
+  void dispose() {
+    _homeBloc.close();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    _homeBloc = BlocProvider.of<HomeBloc>(context);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: tabs[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: greyAirbnb,
-        currentIndex: _currentIndex,
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search,
-              size: 30,
-            ),
-            label: ('Explorar'),
-            activeIcon: Icon(
-              Icons.search,
-              size: 30,
-              color: redAirbnb,
-            ),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              FontAwesomeIcons.heart,
-              size: 26,
-            ),
-            label: ('Favoritos'),
-            activeIcon: Icon(
-              FontAwesomeIcons.heart,
-              size: 26,
-              color: redAirbnb,
-            ),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              FontAwesomeIcons.airbnb,
-              size: 30,
-            ),
-            label: ('Moradias'),
-            activeIcon: Icon(
-              FontAwesomeIcons.airbnb,
-              size: 30,
-              color: redAirbnb,
-            ),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              FontAwesomeIcons.peopleCarry,
-              size: 26,
-            ),
-            label: ('Pessoas'),
-            activeIcon: Icon(
-              FontAwesomeIcons.peopleCarry,
-              size: 26,
-              color: redAirbnb,
-            ),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              FontAwesomeIcons.userCircle,
-              size: 30,
-            ),
-            label: ('Perfil'),
-            activeIcon: Icon(
-              FontAwesomeIcons.userCircle,
-              size: 30,
-              color: redAirbnb,
-            ),
-          ),
-        ],
-        onTap: (index) {
-          setState(
-            () {
-              _currentIndex = index;
-            },
-          );
-        },
-      ),
-    );
+        body: BlocConsumer<HomeBloc, HomeState>(
+          listenWhen: (previous, current) => current is FailState,
+          listener: (contextListener, state) {
+            if (state is FailState) {
+              buildWarningSnackBar(context, state.message);
+            }
+          },
+          buildWhen: (previous, current) => current is! FailState,
+          builder: (context, state) {
+            if (state is ExploreState) {
+              return ExplorePage();
+            } else if (state is WhishListState) {
+              return WishlistsPage();
+            } else if (state is HousesState) {
+              return TripsPage();
+            } else if (state is InterestsState) {
+              return TripsPage();
+            } else if (state is ProfileState) {
+              return ProfilePage();
+            } else if (state is ExploreListState) {
+              return ExploreList(
+                onBackPress: () {
+                  _homeBloc.add(OnTabChange(index: -1));
+                },
+                exploreModel: state.exploreModel,
+              );
+            } else {
+              return Loading();
+            }
+          },
+        ),
+        bottomNavigationBar: BlocBuilder<HomeBloc, HomeState>(
+          builder: (context, state) {
+            return HomeNavigationBottomBar(
+              currentIndex: _homeBloc.getTab,
+              onChangeTab: (index) {
+                _homeBloc.add(OnTabChange(index: index));
+              },
+            );
+          },
+        ));
   }
-
-  final tabs = [
-    ExplorePage(),
-    WishlistsPage(),
-    TripsPage(),
-    TripsPage(),
-    ProfilePage(),
-  ];
 }

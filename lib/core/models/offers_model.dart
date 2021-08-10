@@ -11,19 +11,20 @@ class OffersModel {
   String postUserName;
   int qtdRooms;
   int type;
+  int includedAt;
   DocumentReference doc;
 
-  OffersModel({
-    this.city,
-    this.state,
-    this.mail,
-    this.observations,
-    this.phone,
-    this.postUserId,
-    this.postUserName,
-    this.qtdRooms,
-    this.type,
-  });
+  OffersModel(
+      {this.city,
+      this.state,
+      this.mail,
+      this.observations,
+      this.phone,
+      this.postUserId,
+      this.postUserName,
+      this.qtdRooms,
+      this.type,
+      this.includedAt});
 
   OffersModel.fromJson(Map<String, dynamic> json) {
     city = json['city'] ?? "";
@@ -35,6 +36,7 @@ class OffersModel {
     postUserName = json['postUserName'] ?? "";
     qtdRooms = json['qtdRooms'] ?? 0;
     type = json['type'] ?? 0;
+    includedAt = json['includedAt'] ?? 0;
   }
 
   Map<String, dynamic> toJson() {
@@ -48,7 +50,7 @@ class OffersModel {
     data['postUserName'] = this.postUserName;
     data['qtdRooms'] = this.qtdRooms;
     data['type'] = this.type;
-
+    data['includedAt'] = this.includedAt;
     return data;
   }
 }

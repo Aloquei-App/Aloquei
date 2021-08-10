@@ -1,12 +1,15 @@
-import 'package:aloquei_app/screens/core/colors.dart';
-import 'package:aloquei_app/screens/explore_list/components/tab_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../core/colors.dart';
+import 'tab_model.dart';
+
 class ExploreAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback action;
-  ExploreAppBar({Key key, @required this.action}) : super(key: key);
+  final VoidCallback onBackPress;
+  ExploreAppBar({Key key, @required this.action, this.onBackPress})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +19,7 @@ class ExploreAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: Padding(
         padding: EdgeInsets.only(left: 10.0),
         child: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: () => onBackPress(),
           icon: Icon(
             Icons.arrow_back,
             color: Colors.black,

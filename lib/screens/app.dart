@@ -5,7 +5,6 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import '../blocs/auth/auth_bloc.dart';
 import 'core/snack_bar.dart';
-import 'explore/explore.dart';
 import 'home/home.dart';
 import 'inbox/inbox.dart';
 import 'login/login_page.dart';
@@ -14,7 +13,6 @@ import 'search/search.dart';
 import 'signup/signup.dart';
 import 'splash/splash.dart';
 import 'trips/trips.dart';
-import 'wishlists/wishlists.dart';
 
 class Run extends StatelessWidget {
   @override
@@ -94,7 +92,7 @@ class _AppPageState extends State<AppPage> {
           },
           builder: (context, state) {
             if (state is AuthenticatedState) {
-              return HomePage();
+              return Home();
             } else if (state is SignupPressedState) {
               return Signup();
             } else if (state is UnauthenticatedState) {
@@ -106,9 +104,6 @@ class _AppPageState extends State<AppPage> {
         ),
       ),
       routes: {
-        '/home': (context) => HomePage(),
-        '/explore': (context) => ExplorePage(),
-        '/wishlists': (context) => WishlistsPage(),
         '/trips': (context) => TripsPage(),
         '/inbox': (context) => InboxPage(),
         '/profile': (context) => ProfilePage(),
