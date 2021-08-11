@@ -2,6 +2,7 @@ import 'package:aloquei_app/blocs/auth/auth_bloc.dart';
 import 'package:aloquei_app/screens/core/app_bars/default_app_bar.dart';
 import 'package:flutter/material.dart';
 
+import 'components/rental_present_card.dart';
 import 'components/rental_title.dart';
 
 class RentalList extends StatelessWidget {
@@ -20,7 +21,7 @@ class RentalList extends StatelessWidget {
         child: ListView(
           children: [
             RentalTitle(),
-            // RentalPresentCard(),
+            RentalPresentCard(),
             // RentalSubtitle(),
             // RentalUnitCards(),
           ],

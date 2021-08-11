@@ -1,3 +1,4 @@
+import 'package:aloquei_app/screens/rental_list/rental_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -93,13 +94,13 @@ class _AppPageState extends State<AppPage> {
           },
           builder: (context, state) {
             if (state is AuthenticatedState) {
-              return ExplorePage();
+              return RentalList();
             } else if (state is SignupPressedState) {
-              return Signup();
+              return RentalList();
             } else if (state is UnauthenticatedState) {
-              return LoginPage();
+              return RentalList();
             } else {
-              return Splash();
+              return RentalList();
             }
           },
         ),
@@ -111,6 +112,7 @@ class _AppPageState extends State<AppPage> {
         '/inbox': (context) => InboxPage(),
         '/profile': (context) => ProfilePage(),
         '/search': (context) => Search(),
+        '/rental_list': (context) => RentalList(),
       },
       initialRoute: '/',
     );
