@@ -1,3 +1,5 @@
+import 'package:aloquei_app/screens/rental_list/components/subtitle_rental_present_card.dart';
+import 'package:aloquei_app/screens/rental_list/components/title_rental_present_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -23,31 +25,9 @@ class RentalPresentCard extends StatelessWidget {
               color: Colors.pinkAccent,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-            child: Text(
-              "Chegou a hora de alugar a sua moradia!",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 27,
-                fontFamily: 'Roboto',
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-            child: Text(
-              "Tenha uma experiência incrível! Hospede hoje mesmo e tenha benefícios no app.",
-              textAlign: TextAlign.center,
-              softWrap: true,
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.black38,
-                fontFamily: 'Roboto',
-              ),
-            ),
-          ),
+          TitleRentalPresentCard("Chegou a hora de alugar a sua moradia!"),
+          SubtitleRentalPresentCard(
+              "Tenha uma experiência incrível! Hospede hoje mesmo e tenha benefícios no app."),
         ],
       ),
     );

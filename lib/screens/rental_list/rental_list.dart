@@ -20,7 +20,7 @@ class RentalList extends StatelessWidget {
       body: Container(
         child: ListView(
           children: [
-            RentalTitle(),
+            RentalTitle("Moradias"),
             RentalPresentCard(),
             // RentalSubtitle(),
             // RentalUnitCards(),
