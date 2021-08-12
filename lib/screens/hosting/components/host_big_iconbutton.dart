@@ -34,6 +34,7 @@ class HostBigIconButton extends StatelessWidget {
                     SizedBox(height: 10),
                     Text(
                       title1,
+                      textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.black),
                     )
                   ],
@@ -49,6 +50,7 @@ class HostBigIconButton extends StatelessWidget {
                     SizedBox(height: 10),
                     Text(
                       title2,
+                      textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.black),
                     )
                   ],

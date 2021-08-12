@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../core/colors.dart';
-
 class HostContinueButton extends StatelessWidget {
   final VoidCallback onPressed;
 
@@ -16,7 +14,7 @@ class HostContinueButton extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: 20),
                 child: MaterialButton(
                   child: Text(
-                    'Continuar',
+                    'Tudo certo',
                     style: TextStyle(
                       fontSize: 17,
                       color: Colors.white,

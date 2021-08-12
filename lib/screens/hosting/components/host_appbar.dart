@@ -1,5 +1,4 @@
-import 'package:aloquei_app/screens/hosting/components/host_title_button.dart';
-import 'package:aloquei_app/screens/hosting/host_page_three.dart';
+import 'package:aloquei_app/screens/hosting/host_page_type_size.dart';
 import 'package:flutter/material.dart';
 
 class HostAppBar extends StatelessWidget {
@@ -25,7 +24,7 @@ class HostAppBar extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => HostPageThree()),
+              MaterialPageRoute(builder: (context) => HostPageTypeSize()),
             );
           },
         ),

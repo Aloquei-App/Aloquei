@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class HostSelectMenuNine extends StatelessWidget {
+class HostSelectMenuDescription extends StatelessWidget {
   final VoidCallback onpressed;
 
-  const HostSelectMenuNine({Key key, this.onpressed}) : super(key: key);
+  const HostSelectMenuDescription({Key key, this.onpressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class HostSelectMenuNine extends StatelessWidget {
                     fontWeight: FontWeight.w800),
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Give a brief description of your page',
+                  hintText: 'Escreva uma breve descrição do seu local',
                   hintStyle: TextStyle(
                       color: Colors.grey,
                       fontSize: 17,

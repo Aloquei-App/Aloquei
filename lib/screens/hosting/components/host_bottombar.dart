@@ -20,7 +20,7 @@ class HostBottomBar extends StatelessWidget {
             children: [
               InkWell(
                 child: Text(
-                  'Back',
+                  'Voltar',
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 20,
