@@ -7,6 +7,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 import '../blocs/auth/auth_bloc.dart';
 import 'core/snack_bar.dart';
 import 'explore/explore.dart';
+import 'home/home.dart';
 import 'inbox/inbox.dart';
 import 'login/login_page.dart';
 import 'profile/profile.dart';
@@ -94,13 +95,13 @@ class _AppPageState extends State<AppPage> {
           },
           builder: (context, state) {
             if (state is AuthenticatedState) {
-              return RentalList();
+              return Home();
             } else if (state is SignupPressedState) {
-              return RentalList();
+              return Signup();
             } else if (state is UnauthenticatedState) {
-              return RentalList();
+              return LoginPage();
             } else {
-              return RentalList();
+              return Splash();
             }
           },
         ),

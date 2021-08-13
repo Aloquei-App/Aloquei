@@ -39,12 +39,10 @@ class ShowAvailableTypes extends SearchState {
 }
 
 class GoToMap extends SearchState {
-  final CitiesModel city;
-  final EstadosModel estado;
-  final int type;
+  final ExploreModel explore;
 
-  GoToMap({this.city, this.estado, this.type});
+  GoToMap({this.explore});
 
   @override
-  List<Object> get props => [city, estado, type];
+  List<Object> get props => [explore];
 }

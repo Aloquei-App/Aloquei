@@ -52,7 +52,8 @@ class HouseOfferModel extends OffersModel {
       String userId,
       String userName,
       int qtdRoom,
-      int tipo}) {
+      int tipo,
+      int incluido}) {
     city = cidade;
     state = estado;
     mail = email;
@@ -62,6 +63,7 @@ class HouseOfferModel extends OffersModel {
     postUserName = userName;
     qtdRooms = qtdRoom;
     type = tipo;
+    includedAt = incluido;
   }
 
   HouseOfferModel.fromJson(DocumentSnapshot doc) {
@@ -88,7 +90,8 @@ class HouseOfferModel extends OffersModel {
     observations = json['observations'] ?? "";
     phone = json['phone'] ?? "";
     if (json['position'] != null) {
-      position = Position.fromMap(json['position']);
+      // TODO alterar para quando estiver funcionando o cadastro
+      //position = Position.fromMap(json['position']);
     }
     postUserId = json['postUserId'] ?? "";
     postUserName = json['postUserName'] ?? "";
@@ -97,8 +100,8 @@ class HouseOfferModel extends OffersModel {
     roomUsersQtd = json['roomUsersQtd'] ?? 0;
     type = json['type'] ?? 0;
     typeRoom = json['typeRoom'] ?? "";
-    valueCondominium = json['valueCondominium'] ?? 0;
-    valueMonth = json['valueMonth'] ?? 0;
+    valueCondominium = json['valueCondominium'].toDouble() ?? 0;
+    valueMonth = json['valueMonth'].toDouble() ?? 0;
     zipCode = json['zipCode'] ?? "";
   }
 
@@ -148,7 +151,8 @@ class NearUniversities {
 
   NearUniversities.fromJson(Map<String, dynamic> json) {
     if (json['location'] != null) {
-      location = Position.fromMap(json['location']);
+      // TODO alterar para quando estiver funcionando o cadastro
+      //location = Position.fromMap(json['location']);
     }
     name = json['name'] ?? '';
   }

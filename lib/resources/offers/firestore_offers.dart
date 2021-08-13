@@ -118,4 +118,46 @@ class OffersRepository {
     }
     return list;
   }
+
+  Future<List<InterestModel>> getInterestLastSix() async {
+    List<InterestModel> list = [];
+    try {
+      QuerySnapshot snapshot = await _firestoreInstance
+          .collection('offers')
+          .where('type', isEqualTo: 0)
+          .limit(6)
+          .orderBy('includedAt', descending: true)
+          .get();
+      snapshot.docs.forEach((element) {
+        list.add(InterestModel.fromJson(element));
+      });
+    } catch (e, stack) {
+      print(e);
+      print(stack);
+      throw e;
+    }
+    return list;
+  }
+
+  Future<List<HouseOfferModel>> getHousesLastFourByHouseType(
+      List<int> houseTipoList) async {
+    List<HouseOfferModel> list = [];
+    try {
+      QuerySnapshot snapshot = await _firestoreInstance
+          .collection('offers')
+          .where('type', isEqualTo: 1)
+          .where('houseType', whereIn: houseTipoList)
+          .limit(4)
+          .orderBy('includedAt', descending: true)
+          .get();
+      snapshot.docs.forEach((element) {
+        list.add(HouseOfferModel.fromJson(element));
+      });
+    } catch (e, stack) {
+      print(e);
+      print(stack);
+      throw e;
+    }
+    return list;
+  }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-void navigateToExplore(BuildContext context) {
-  Navigator.of(context).pushNamed('/explore');
+void navigateToSearch(BuildContext context, Function func) {
+  Navigator.of(context).pushNamed('/search', arguments: func);
 }
 
 void navigateToWishlists(BuildContext context) {
@@ -18,4 +18,8 @@ void navigateToInbox(BuildContext context) {
 
 void navigateToProfile(BuildContext context) {
   Navigator.of(context).pushNamed('/profile');
+}
+
+void navigateToHome(BuildContext context) {
+  Navigator.of(context).pushNamed('/home');
 }
