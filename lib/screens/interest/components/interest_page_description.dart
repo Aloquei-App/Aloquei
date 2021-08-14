@@ -1,12 +1,11 @@
-import 'package:aloquei_app/screens/hosting/components/host_bottombar.dart';
-import 'package:aloquei_app/screens/hosting/components/host_select_menu_nine.dart';
-import 'package:aloquei_app/screens/core/forms/top_menu_image.dart';
-import 'package:aloquei_app/screens/hosting/host_page_price.dart';
-
 import 'package:flutter/material.dart';
 
-class HostPageDescription extends StatelessWidget {
-  const HostPageDescription({Key key}) : super(key: key);
+import '../../hosting/components/host_bottombar.dart';
+import '../../core/forms/top_menu_image.dart';
+import 'interest_select_menu_nine.dart';
+
+class InterestPageDescription extends StatelessWidget {
+  const InterestPageDescription({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +16,12 @@ class HostPageDescription extends StatelessWidget {
           onPressedBack: () {
             Navigator.pop(context);
           },
-          onpressedNext: () {
+          /*onpressedNext: () {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => HostPagePrice()),
             );
-          },
+          },*/
         ),
         body: Container(
             color: Colors.white,
@@ -30,10 +29,10 @@ class HostPageDescription extends StatelessWidget {
               children: [
                 TopMenuImage(
                   image1: "assets/insideHouse.jpg",
-                  text1: 'Agora vamos ser mais',
-                  text2: 'específicos',
+                  text1: 'Alguma',
+                  text2: 'observação?',
                 ),
-                HostSelectMenuDescription(
+                InterestSelectMenuDescription(
                   onpressed: () {},
                 ),
               ],

@@ -1,11 +1,12 @@
-import 'package:aloquei_app/screens/core/forms/host_top_menu_gradient.dart';
-import 'package:aloquei_app/screens/hosting/components/host_bottombar.dart';
-import 'package:aloquei_app/screens/hosting/components/host_select_menu_desc_house.dart';
-import 'package:aloquei_app/screens/hosting/host_page_type_size.dart';
 import 'package:flutter/material.dart';
 
-class HostPageDesc extends StatelessWidget {
-  const HostPageDesc({Key key}) : super(key: key);
+import '../hosting/components/host_bottombar.dart';
+import 'package:aloquei_app/screens/core/forms/host_top_menu_gradient.dart';
+import 'components/interest_page_description.dart';
+import 'components/interest_select_menu_pet.dart';
+
+class InterestPagePet extends StatelessWidget {
+  const InterestPagePet({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,8 @@ class HostPageDesc extends StatelessWidget {
           onpressedNext: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => HostPageTypeSize()),
+              MaterialPageRoute(
+                  builder: (context) => InterestPageDescription()),
             );
           },
         ),
@@ -28,10 +30,10 @@ class HostPageDesc extends StatelessWidget {
             TopMenuGradient(
               color1: 0xFFda1364,
               color2: 0xFF931da2,
-              text1: 'Qual desses melhor',
-              text2: 'descreve o seu local?',
+              text1: 'Preferência ',
+              text2: 'por pets no ambiente?',
             ),
-            HostSelectMenuDescHouse(
+            InterestSelectPet(
               onpressed: () {},
             )
           ],

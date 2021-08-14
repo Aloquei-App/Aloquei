@@ -1,6 +1,6 @@
 import 'package:aloquei_app/screens/hosting/components/host_bottombar.dart';
 import 'package:aloquei_app/screens/hosting/components/host_select_menu_price.dart';
-import 'package:aloquei_app/screens/hosting/components/host_top_menu_gradient.dart';
+import 'package:aloquei_app/screens/core/forms/host_top_menu_gradient.dart';
 import 'package:aloquei_app/screens/hosting/host_page_review.dart';
 
 import 'package:flutter/material.dart';
@@ -28,7 +28,7 @@ class HostPagePrice extends StatelessWidget {
             color: Colors.white,
             child: Column(
               children: [
-                HostTopMenuGradient(
+                TopMenuGradient(
                   color1: 0xFFae1a88,
                   color2: 0xFF8b1fa6,
                   text1: 'Agora vem a parte',

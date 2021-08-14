@@ -1,4 +1,4 @@
-import 'package:aloquei_app/screens/hosting/components/host_title_subtitle_button.dart';
+import 'package:aloquei_app/screens/core/forms/title_subtitle_button.dart';
 import 'package:flutter/material.dart';
 
 class HostSelectMenuDescUnit extends StatelessWidget {
@@ -12,17 +12,17 @@ class HostSelectMenuDescUnit extends StatelessWidget {
         child: ListView(
             padding: EdgeInsets.only(left: 20, right: 20, top: 20),
             children: [
-          HostTitleSubtitleButton(
+          TitleSubtitleButton(
               title: 'Casa de hóspedes',
               subtitle:
                   'Um lugar alugado que faz parte de um prédio ou complexo residencial com várias unidades.',
               onpressed: () {}),
-          HostTitleSubtitleButton(
+          TitleSubtitleButton(
               title: 'Suíte de hóspedes',
               subtitle:
                   'Um espaço com uma entrada privada dentro de uma estrutura maior ou anexada a ela.',
               onpressed: () {}),
-          HostTitleSubtitleButton(
+          TitleSubtitleButton(
               title: 'Hotel-fazenda',
               subtitle:
                   'Uma acomodação rural onde os hóspedes podem interagir com animais ou fazer caminhadas e artesanato.',

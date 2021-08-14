@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class HostTopMenuImage extends StatelessWidget {
+class TopMenuImage extends StatelessWidget {
   final String text1;
   final String text2;
   final String image1;
 
-  const HostTopMenuImage({Key key, this.text1, this.text2, this.image1})
+  const TopMenuImage({Key key, this.text1, this.text2, this.image1})
       : super(key: key);
 
   @override

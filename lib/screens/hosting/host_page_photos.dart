@@ -1,6 +1,6 @@
 import 'package:aloquei_app/screens/hosting/components/host_bottombar.dart';
 import 'package:aloquei_app/screens/hosting/components/host_select_menu_photos.dart';
-import 'package:aloquei_app/screens/hosting/components/hot_top_menu_image.dart';
+import 'package:aloquei_app/screens/core/forms/top_menu_image.dart';
 import 'package:aloquei_app/screens/hosting/host_page_title.dart';
 
 import 'package:flutter/material.dart';
@@ -28,7 +28,7 @@ class HostPagePhotos extends StatelessWidget {
             color: Colors.white,
             child: Column(
               children: [
-                HostTopMenuImage(
+                TopMenuImage(
                   image1: "assets/cellphonePhoto.jpg",
                   text1: 'A seguir, vamos adicionar',
                   text2: 'algumas fotos do seu espaço',

@@ -1,6 +1,3 @@
-import 'package:aloquei_app/screens/hosting/host_page_one.dart';
-import 'package:aloquei_app/screens/hosting/host_page_seven.dart';
-import 'package:aloquei_app/screens/hosting/host_page_two.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -9,7 +6,9 @@ import 'package:responsive_framework/responsive_framework.dart';
 import '../blocs/auth/auth_bloc.dart';
 import 'core/snack_bar.dart';
 import 'explore/explore.dart';
+import 'hosting/host_page_desc.dart';
 import 'inbox/inbox.dart';
+import 'interest/interest_page_desc.dart';
 import 'login/login_page.dart';
 import 'profile/profile.dart';
 import 'search/search.dart';
@@ -96,11 +95,11 @@ class _AppPageState extends State<AppPage> {
           },
           builder: (context, state) {
             if (state is AuthenticatedState) {
-              return ExplorePage();
+              return InterestPageDesc();
             } else if (state is SignupPressedState) {
-              return HostPageTwo();
+              return InterestPageDesc();
             } else if (state is UnauthenticatedState) {
-              return HostPageTwo();
+              return LoginPage();
             } else {
               return Splash();
             }

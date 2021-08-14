@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class HostTopMenuGradient extends StatelessWidget {
+class TopMenuGradient extends StatelessWidget {
   final String text1;
   final String text2;
   final int color1;
   final int color2;
 
-  const HostTopMenuGradient(
+  const TopMenuGradient(
       {Key key, this.text1, this.text2, this.color1, this.color2})
       : super(key: key);
 

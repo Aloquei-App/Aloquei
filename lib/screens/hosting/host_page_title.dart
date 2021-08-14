@@ -1,6 +1,6 @@
 import 'package:aloquei_app/screens/hosting/components/host_bottombar.dart';
 import 'package:aloquei_app/screens/hosting/components/host_select_menu_title.dart';
-import 'package:aloquei_app/screens/hosting/components/hot_top_menu_image.dart';
+import 'package:aloquei_app/screens/core/forms/top_menu_image.dart';
 import 'package:aloquei_app/screens/hosting/host_page_description.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +27,7 @@ class HostPageTitle extends StatelessWidget {
             color: Colors.white,
             child: Column(
               children: [
-                HostTopMenuImage(
+                TopMenuImage(
                   image1: "assets/woodenHouse.jpg",
                   text1: 'Vamos dar um nome ao',
                   text2: 'seu espaço',

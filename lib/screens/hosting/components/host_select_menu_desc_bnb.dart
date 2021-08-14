@@ -1,4 +1,4 @@
-import 'package:aloquei_app/screens/hosting/components/host_title_subtitle_button.dart';
+import 'package:aloquei_app/screens/core/forms/title_subtitle_button.dart';
 import 'package:flutter/material.dart';
 
 class HostSelectMenuDescBnb extends StatelessWidget {
@@ -12,32 +12,32 @@ class HostSelectMenuDescBnb extends StatelessWidget {
         child: ListView(
             padding: EdgeInsets.only(left: 20, right: 20, top: 20),
             children: [
-          HostTitleSubtitleButton(
+          TitleSubtitleButton(
               title: 'Pousada',
               subtitle:
                   'Uma empresa de hospitalidade que oferece café da manhã aos hóspedes com um anfitrião no local.',
               onpressed: () {}),
-          HostTitleSubtitleButton(
+          TitleSubtitleButton(
               title: 'Alojamento ecológico',
               subtitle:
                   'Uma empresa que oferece acomodações perto de ambientes naturais, como florestas ou montanhas.',
               onpressed: () {}),
-          HostTitleSubtitleButton(
+          TitleSubtitleButton(
               title: 'Hotel-fazenda',
               subtitle:
                   'Uma acomodação rural onde os hóspedes podem interagir com animais ou fazer caminhadas e artesanato.',
               onpressed: () {}),
-          HostTitleSubtitleButton(
+          TitleSubtitleButton(
               title: 'Minsu',
               subtitle:
                   'Uma empresa de hospitalidade que oferece quartos inteiros aos hóspedes em Taiwan.',
               onpressed: () {}),
-          HostTitleSubtitleButton(
+          TitleSubtitleButton(
               title: 'Casa particular',
               subtitle:
                   'Um quarto inteiro em uma casa que parece uma pousada em Cuba.',
               onpressed: () {}),
-          HostTitleSubtitleButton(
+          TitleSubtitleButton(
               title: 'Ryokan',
               subtitle:
                   'Uma pequena hospedaria que oferece aos hóspedes uma experiência cultural única no Japão.',

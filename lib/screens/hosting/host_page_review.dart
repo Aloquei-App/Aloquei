@@ -1,6 +1,6 @@
 import 'package:aloquei_app/screens/hosting/components/host_bottombar.dart';
 import 'package:aloquei_app/screens/hosting/components/host_select_menu_review.dart';
-import 'package:aloquei_app/screens/hosting/components/host_top_menu_gradient.dart';
+import 'package:aloquei_app/screens/core/forms/host_top_menu_gradient.dart';
 import 'package:flutter/material.dart';
 
 class HostPageReview extends StatelessWidget {
@@ -24,7 +24,7 @@ class HostPageReview extends StatelessWidget {
         ),
         body: Column(
           children: [
-            HostTopMenuGradient(
+            TopMenuGradient(
               color1: 0xFF6b26c1,
               color2: 0xFF6d29be,
               text1: 'Confira seu anúncio!',

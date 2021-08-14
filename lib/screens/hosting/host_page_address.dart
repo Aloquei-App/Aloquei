@@ -1,5 +1,5 @@
+import 'package:aloquei_app/screens/core/forms/input_value.dart';
 import 'package:aloquei_app/screens/hosting/components/host_continue_button.dart';
-import 'package:aloquei_app/screens/hosting/components/host_input_text.dart';
 import 'package:aloquei_app/screens/hosting/host_page_guest_number.dart';
 import 'package:flutter/material.dart';
 
@@ -32,12 +32,12 @@ class HostPageAddress extends StatelessWidget {
           padding: EdgeInsets.only(top: 30),
           child: Column(
             children: [
-              HostInputText(text: 'País/Região'),
-              HostInputText(text: 'Rua'),
-              HostInputText(text: 'Apt, suíte, etc.(Opcional)'),
-              HostInputText(text: 'Cidade'),
-              HostInputText(text: 'Estado'),
-              HostInputText(text: 'Código postal'),
+              InputValue(text: 'País/Região'),
+              InputValue(text: 'Rua'),
+              InputValue(text: 'Apt, suíte, etc.(Opcional)'),
+              InputValue(text: 'Cidade'),
+              InputValue(text: 'Estado'),
+              InputValue(text: 'Código postal'),
               HostContinueButton(onPressed: () {
                 Navigator.push(
                   context,

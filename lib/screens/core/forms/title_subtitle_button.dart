@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class HostTitleSubtitleButton extends StatelessWidget {
+class TitleSubtitleButton extends StatelessWidget {
   final VoidCallback onpressed;
   final String title;
   final String subtitle;
 
-  const HostTitleSubtitleButton(
+  const TitleSubtitleButton(
       {Key key, this.onpressed, this.title, this.subtitle})
       : super(key: key);
 
