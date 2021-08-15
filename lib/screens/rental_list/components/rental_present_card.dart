@@ -4,6 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class RentalPresentCard extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String subtitle;
+
+  const RentalPresentCard({Key key, this.title, this.subtitle, this.icon})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,14 +26,13 @@ class RentalPresentCard extends StatelessWidget {
             padding: const EdgeInsets.only(top: 30),
             child: Icon(
               // Icons.wallet_travel_sharp,
-              FontAwesomeIcons.suitcase,
+              icon,
               size: 70,
               color: Colors.pinkAccent,
             ),
           ),
-          TitleRentalPresentCard("Chegou a hora de alugar a sua moradia!"),
-          SubtitleRentalPresentCard(
-              "Tenha uma experiência incrível! Hospede hoje mesmo e tenha benefícios no app."),
+          TitleRentalPresentCard(title),
+          SubtitleRentalPresentCard(subtitle),
         ],
       ),
     );

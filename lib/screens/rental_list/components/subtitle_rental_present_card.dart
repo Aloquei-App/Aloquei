@@ -9,7 +9,7 @@ class SubtitleRentalPresentCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
       child: Text(
-        "Tenha uma experiência incrível! Hospede hoje mesmo e tenha benefícios no app.",
+        text,
         textAlign: TextAlign.center,
         softWrap: true,
         style: TextStyle(
