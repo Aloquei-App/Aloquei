@@ -1,3 +1,4 @@
+import 'package:aloquei_app/screens/person_list/person_list.dart';
 import 'package:aloquei_app/screens/rental_list/rental_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +15,6 @@ import 'profile/profile.dart';
 import 'search/search.dart';
 import 'signup/signup.dart';
 import 'splash/splash.dart';
-import 'trips/trips.dart';
 import 'wishlists/wishlists.dart';
 
 class Run extends StatelessWidget {
@@ -109,7 +109,7 @@ class _AppPageState extends State<AppPage> {
       routes: {
         '/explore': (context) => ExplorePage(),
         '/wishlists': (context) => WishlistsPage(),
-        '/trips': (context) => TripsPage(),
+        '/person_list': (context) => PersonList(),
         '/inbox': (context) => InboxPage(),
         '/profile': (context) => ProfilePage(),
         '/search': (context) => Search(),

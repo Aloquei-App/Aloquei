@@ -34,13 +34,22 @@ class _LoginPageState extends State<LoginPage> {
         children: [
           TitleLogin(),
           Form(
+            key: _formKey,
             child: Padding(
               padding: EdgeInsets.only(top: 10.0, bottom: 25),
               child: Column(
                 children: [
                   SizedBox(height: 10),
-                  DefaultInput(text: "Email"),
-                  DefaultInput(text: "Senha"),
+                  DefaultInput(
+                    text: "Email",
+                    validator: validateEmail,
+                    controller: _emailCntrlr,
+                  ),
+                  DefaultInput(
+                    text: "Senha",
+                    validator: validateSenha,
+                    controller: _passCntrlr,
+                  ),
                 ],
               ),
             ),

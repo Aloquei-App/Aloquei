@@ -6,8 +6,8 @@ import 'components/rental_present_card.dart';
 import 'components/rental_title.dart';
 import 'components/rental_unit_card.dart';
 
-class RentalList extends StatelessWidget {
-  const RentalList({Key key}) : super(key: key);
+class PersonList extends StatelessWidget {
+  const PersonList({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class RentalList extends StatelessWidget {
       body: Container(
         child: ListView(
           children: [
-            RentalTitle("Moradias "),
+            RentalTitle("Pessoas"),
             RentalPresentCard(),
             Padding(
               padding: const EdgeInsets.only(top: 30),
@@ -23,19 +23,7 @@ class RentalList extends StatelessWidget {
             ),
             RentalUnitCard(
               "https://upload.wikimedia.org/wikipedia/commons/e/ed/112_Ocean_Avenue_%281973%29_2.jpg",
-              "Amytivylle",
-              "Ronald DeFeo Jr.",
-              "09/fev/2020 - 15/fev/2020",
-            ),
-            RentalUnitCard(
-              "https://upload.wikimedia.org/wikipedia/commons/e/ed/112_Ocean_Avenue_%281973%29_2.jpg",
-              "Amytivylle",
-              "Ronald DeFeo Jr.",
-              "09/fev/2020 - 15/fev/2020",
-            ),
-            RentalUnitCard(
-              "https://upload.wikimedia.org/wikipedia/commons/e/ed/112_Ocean_Avenue_%281973%29_2.jpg",
-              "Amytivylle",
+              "Amytivylle", 
               "Ronald DeFeo Jr.",
               "09/fev/2020 - 15/fev/2020",
             ),
