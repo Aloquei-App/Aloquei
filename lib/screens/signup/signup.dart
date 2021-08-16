@@ -64,31 +64,33 @@ class _SignupPageState extends State<SignupPage> {
       body: Form(
         key: _formKey,
         child: BlocConsumer<SignupBloc, SignupStateRegister>(
-            listener: (contextListener, state) {
-          if (state is UserRegisterSuccessState) {
-            Timer(const Duration(seconds: 3), () {
-              widget.authBloc.add(SignupSuccessEvent(
-                  user: state.user, userModel: state.userModel));
-            });
-          } else if (state is UserRegisterFailState) {
-            buildWarningSnackBar(contextListener, state.message);
-          }
-        }, builder: (context, state) {
-          if (state is SignupLoadingState) {
-            return Loading();
-          } else if (state is UserRegisterSuccessState) {
-            return Success();
-          } else {
-            return SignupBody(
-              nomeCntrlr: _nomeCntrlr,
-              emailCntrlr: _emailCntrlr,
-              passCntrlr: _passCntrlr,
-              signupBloc: _signupBloc,
-              formKey: _formKey,
-              sobrenomeCntrlr: _sobrenomeCntrlr,
-            );
-          }
-        }),
+          listener: (contextListener, state) {
+            if (state is UserRegisterSuccessState) {
+              Timer(const Duration(seconds: 3), () {
+                widget.authBloc.add(SignupSuccessEvent(
+                    user: state.user, userModel: state.userModel));
+              });
+            } else if (state is UserRegisterFailState) {
+              buildWarningSnackBar(contextListener, state.message);
+            }
+          },
+          builder: (context, state) {
+            if (state is SignupLoadingState) {
+              return Loading();
+            } else if (state is UserRegisterSuccessState) {
+              return Success();
+            } else {
+              return SignupBody(
+                nomeCntrlr: _nomeCntrlr,
+                emailCntrlr: _emailCntrlr,
+                passCntrlr: _passCntrlr,
+                signupBloc: _signupBloc,
+                formKey: _formKey,
+                sobrenomeCntrlr: _sobrenomeCntrlr,
+              );
+            }
+          },
+        ),
       ),
     );
   }

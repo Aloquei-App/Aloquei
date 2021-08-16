@@ -2,13 +2,13 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class RentalUnitCard extends StatelessWidget {
+class ModelItemCard extends StatelessWidget {
   final String imgUrl;
   final String city;
   final String host; //Rental unit host
   final String timePeriod;
 
-  const RentalUnitCard(
+  const ModelItemCard(
     this.imgUrl,
     this.city,
     this.host,

@@ -3,8 +3,8 @@ import 'package:aloquei_app/screens/core/app_bars/default_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'components/rental_present_card.dart';
-import 'components/rental_title.dart';
+import 'components/present_card.dart';
+import 'components/list_title.dart';
 import 'components/rental_unit_card.dart';
 
 class RentalList extends StatelessWidget {
@@ -13,36 +13,30 @@ class RentalList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-
+        child: ListView(
           children: [
-            RentalTitle("Moradias "),
-            RentalPresentCard(
+            ListTitle("Moradias "),
+            PresentCard(
               icon: FontAwesomeIcons.suitcase,
               title: "Chegou a hora de alugar a sua moradia!",
-              subtitle: "Compartilhe seus espaço e tenha benefícios dentro do app." ,
+              subtitle:
+                  "Compartilhe seus espaço e tenha benefícios dentro do app.",
             ),
             Padding(
               padding: const EdgeInsets.only(top: 30),
-              child: RentalTitle("Suas Moradias"),
+              child: ListTitle("Suas Moradias"),
             ),
             Expanded(
               child: ListView.builder(
                 itemCount: 10,
-                
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
-                  return SingleChildScrollView(
-                    physics: ScrollPhysics(),
-                    child: RentalUnitCard(
-                      "https://upload.wikimedia.org/wikipedia/commons/e/ed/112_Ocean_Avenue_%281973%29_2.jpg",
-                      "Amytivylle",
-                      "Ronald DeFeo Jr.",
-                      "09/fev/2020 - 15/fev/2020",
-                    ),
+                  return ModelItemCard(
+                    "https://upload.wikimedia.org/wikipedia/commons/e/ed/112_Ocean_Avenue_%281973%29_2.jpg",
+                    "Amytivylle",
+                    "Ronald DeFeo Jr.",
+                    "09/fev/2020 - 15/fev/2020",
                   );
                 },
               ),

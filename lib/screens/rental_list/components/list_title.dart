@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class RentalTitle extends StatelessWidget {
+class ListTitle extends StatelessWidget {
   final String text;
 
-  const RentalTitle(this.text);
+  const ListTitle(this.text);
   @override
   Widget build(BuildContext context) {
     return Padding(
