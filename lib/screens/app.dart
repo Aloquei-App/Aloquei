@@ -1,3 +1,5 @@
+import 'package:aloquei_app/screens/person_list/person_list.dart';
+import 'package:aloquei_app/screens/rental_list/rental_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -5,6 +7,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import '../blocs/auth/auth_bloc.dart';
 import 'core/snack_bar.dart';
+import 'explore/explore.dart';
 import 'home/home.dart';
 import 'inbox/inbox.dart';
 import 'login/login_page.dart';
@@ -12,7 +15,7 @@ import 'profile/profile.dart';
 import 'search/search.dart';
 import 'signup/signup.dart';
 import 'splash/splash.dart';
-import 'trips/trips.dart';
+import 'wishlists/wishlists.dart';
 
 class Run extends StatelessWidget {
   @override
@@ -104,10 +107,13 @@ class _AppPageState extends State<AppPage> {
         ),
       ),
       routes: {
-        '/trips': (context) => TripsPage(),
+        '/explore': (context) => ExplorePage(),
+        '/wishlists': (context) => WishlistsPage(),
+        '/person_list': (context) => PersonList(),
         '/inbox': (context) => InboxPage(),
         '/profile': (context) => ProfilePage(),
         '/search': (context) => Search(),
+        '/rental_list': (context) => RentalList(),
       },
       initialRoute: '/',
     );

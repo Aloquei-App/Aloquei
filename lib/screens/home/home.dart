@@ -1,3 +1,5 @@
+import 'package:aloquei_app/screens/person_list/person_list.dart';
+import 'package:aloquei_app/screens/rental_list/rental_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,7 +9,6 @@ import '../core/snack_bar.dart';
 import '../explore/explore.dart';
 import '../explore_list/explore_list.dart';
 import '../profile/profile.dart';
-import '../trips/trips.dart';
 import '../wishlists/wishlists.dart';
 import 'components/bottom_bar.dart';
 
@@ -58,9 +59,9 @@ class _HomePageState extends State<HomePage> {
             } else if (state is WhishListState) {
               return WishlistsPage();
             } else if (state is HousesState) {
-              return TripsPage();
+              return RentalList();
             } else if (state is InterestsState) {
-              return TripsPage();
+              return PersonList();
             } else if (state is ProfileState) {
               return ProfilePage();
             } else if (state is ExploreListState) {

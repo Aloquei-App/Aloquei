@@ -8,7 +8,6 @@ import 'components/continue_button.dart';
 import 'components/default_input.dart';
 import 'components/default_login_button.dart';
 import 'components/divider_with_text.dart';
-
 import 'components/title_login.dart';
 
 class LoginPage extends StatefulWidget {
