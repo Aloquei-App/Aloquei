@@ -8,7 +8,14 @@ import 'tab_model.dart';
 class ExploreAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback action;
   final VoidCallback onBackPress;
-  ExploreAppBar({Key key, @required this.action, this.onBackPress})
+  final TabController tabController;
+  final Function onTextChanged;
+  ExploreAppBar(
+      {Key key,
+      @required this.action,
+      @required this.onBackPress,
+      @required this.tabController,
+      @required this.onTextChanged})
       : super(key: key);
 
   @override
@@ -31,7 +38,10 @@ class ExploreAppBar extends StatelessWidget implements PreferredSizeWidget {
         decoration: BoxDecoration(
             color: Colors.grey.withOpacity(.1),
             borderRadius: BorderRadius.circular(20)),
-        child: TextFormField(
+        child: TextField(
+          onChanged: (value) {
+            onTextChanged(value);
+          },
           decoration: InputDecoration(
             labelText: "Insira uma moradia ou interesse",
             labelStyle: TextStyle(fontSize: 20),
@@ -50,6 +60,7 @@ class ExploreAppBar extends StatelessWidget implements PreferredSizeWidget {
         )
       ],
       bottom: TabBar(
+        controller: tabController,
         isScrollable: true,
         labelColor: greyAirbnb,
         unselectedLabelColor: greyAirbnb,
@@ -58,12 +69,12 @@ class ExploreAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         tabs: [
           TabModel(
-            text: "Aptos",
-            icon: FontAwesomeIcons.houseUser,
-          ),
-          TabModel(
             text: "Quartos",
             icon: FontAwesomeIcons.bed,
+          ),
+          TabModel(
+            text: "Aptos",
+            icon: FontAwesomeIcons.building,
           ),
           TabModel(
             text: "Repúblicas",

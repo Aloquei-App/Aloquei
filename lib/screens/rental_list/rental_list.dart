@@ -1,5 +1,3 @@
-import 'package:aloquei_app/blocs/auth/auth_bloc.dart';
-import 'package:aloquei_app/screens/core/app_bars/default_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
