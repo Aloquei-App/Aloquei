@@ -50,6 +50,7 @@ dependencies:
   flow_builder: ^0.0.3
   flutter_image_slideshow: ^0.1.1
   simple_gradient_text: ^1.2.2
+  flutter_slidable: ^0.5.7
  
   
 dev_dependencies:
