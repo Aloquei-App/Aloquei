@@ -1,18 +1,35 @@
 import 'dart:async';
 
+import 'package:aloquei_app/resources/favorites/firestore_favorites.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 part 'wishlist_event.dart';
 part 'wishlist_state.dart';
 
 class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
-  WishlistBloc() : super(WishlistInitial());
+  final FavoritesRepository _favoritesRepository = FavoritesRepository();
+  final User user;
+  List whishList = [];
+  WishlistBloc(this.user) : super(WishlistInitial());
 
   @override
   Stream<WishlistState> mapEventToState(
     WishlistEvent event,
   ) async* {
-    // TODO: implement mapEventToState
+    try {
+      if (event is WishlistStartedEvent) {
+        yield LoadingWishlistState();
+        whishList = await _favoritesRepository.getFavorites(user.uid);
+        yield ShowWishlistState();
+      } else if (event is NewWishlistState) {
+        result = await _favoritesRepository.addFavorite(user.uid, favorites);
+        yield LoadingWishlistState();
+      }
+    } catch (e) {
+      print(e.toString());
+      yield ShowWishlistState();
+    }
   }
 }
