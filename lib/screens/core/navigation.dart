@@ -19,3 +19,19 @@ void navigateToInbox(BuildContext context) {
 void navigateToProfile(BuildContext context) {
   Navigator.of(context).pushNamed('/profile');
 }
+
+void navigateToHelp(BuildContext context) {
+  Navigator.of(context).pushNamed('/help');
+}
+
+void navigateToInterestPage(BuildContext context) {
+  Navigator.of(context).pushNamed('/interestPage');
+}
+
+void navigateToInterestPet(BuildContext context) {
+  Navigator.of(context).pushNamed('/interestPet');
+}
+
+void navigateToHostPage(BuildContext context) {
+  Navigator.of(context).pushNamed('/hostPage');
+}

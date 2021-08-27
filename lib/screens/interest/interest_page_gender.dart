@@ -1,3 +1,4 @@
+import 'package:aloquei_app/screens/core/navigation.dart';
 import 'package:flutter/material.dart';
 
 import '../hosting/components/host_bottombar.dart';
@@ -18,10 +19,7 @@ class InterestPageGender extends StatelessWidget {
             Navigator.pop(context);
           },
           onpressedNext: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => InterestPagePet()),
-            );
+            navigateToInterestPet(context);
           },
         ),
         body: Column(

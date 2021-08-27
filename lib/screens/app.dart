@@ -6,13 +6,16 @@ import 'package:responsive_framework/responsive_framework.dart';
 import '../blocs/auth/auth_bloc.dart';
 import 'core/snack_bar.dart';
 import 'explore/explore.dart';
+import 'help/help_page.dart';
+import 'hosting/host_page_address.dart';
 import 'hosting/host_page_desc.dart';
 import 'inbox/inbox.dart';
+import 'interest/components/interest_page_description.dart';
 import 'interest/interest_page_desc.dart';
+import 'interest/interest_page_pet.dart';
 import 'login/login_page.dart';
 import 'profile/profile.dart';
 import 'search/search.dart';
-import 'signup/signup.dart';
 import 'splash/splash.dart';
 import 'trips/trips.dart';
 import 'wishlists/wishlists.dart';
@@ -113,6 +116,10 @@ class _AppPageState extends State<AppPage> {
         '/inbox': (context) => InboxPage(),
         '/profile': (context) => ProfilePage(),
         '/search': (context) => Search(),
+        '/help': (context) => HelpPage(),
+        '/interestPage': (context) => InterestPageDescription(),
+        '/interestPet': (context) => InterestPagePet(),
+        '/hostPage': (context) => HostPageAddress(),
       },
       initialRoute: '/',
     );

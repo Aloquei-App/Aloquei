@@ -1,8 +1,8 @@
+import 'package:aloquei_app/screens/core/navigation.dart';
 import 'package:aloquei_app/screens/hosting/components/host_bottombar.dart';
 import 'package:aloquei_app/screens/core/forms/host_top_menu_gradient.dart';
 import 'package:flutter/material.dart';
 
-import 'components/interest_page_data.dart';
 import 'components/interest_select_menu_desc_house.dart';
 
 class InterestPageDesc extends StatelessWidget {
@@ -18,10 +18,7 @@ class InterestPageDesc extends StatelessWidget {
             Navigator.pop(context);
           },
           onpressedNext: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HostPageAddress()),
-            );
+            navigateToHostPage(context);
           },
         ),
         body: Column(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../navigation.dart';
+
 class TopMenuImage extends StatelessWidget {
   final String text1;
   final String text2;
@@ -41,7 +43,9 @@ class TopMenuImage extends StatelessWidget {
                           borderRadius: BorderRadius.all(Radius.circular(40)))),
                   child: Text('Ajuda',
                       style: TextStyle(fontSize: 17, color: Colors.white)),
-                  onPressed: () {},
+                  onPressed: () {
+                    navigateToHelp(context);
+                  },
                 ),
               ],
             )),
