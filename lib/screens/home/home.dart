@@ -6,7 +6,7 @@ import '../core/loading.dart';
 import '../core/snack_bar.dart';
 import '../explore/explore.dart';
 import '../explore_list/explore_list.dart';
-import '../explore_person/explore_person.dart';
+import '../explore_people/explore_people.dart';
 import '../person_list/person_list.dart';
 import '../profile/profile.dart';
 import '../rental_list/rental_list.dart';
@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                 exploreModel: state.exploreModel,
               );
             } else if (state is ExplorePeopleState) {
-              return ExplorePerson(
+              return ExplorePeople(
                 onBackPress: () {
                   _homeBloc.add(OnTabChange(index: -1));
                 },

@@ -9,8 +9,9 @@ import 'components/list_places.dart';
 
 class ExploreList extends StatelessWidget {
   final VoidCallback onBackPress;
-  final ExploreModel exploreModel; // ele pode vir como null
-  const ExploreList({Key key, @required this.onBackPress, this.exploreModel});
+  final ExploreModel exploreModel;
+  const ExploreList(
+      {Key key, @required this.onBackPress, @required this.exploreModel});
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +45,7 @@ class _ExploreListState extends State<ExploreListPage>
   void initState() {
     super.initState();
     _exploreListBloc = BlocProvider.of<ExploreListBloc>(context);
-    _tabController = TabController(
-        initialIndex: _exploreListBloc.getInitialTab, length: 4, vsync: this);
+    _tabController = TabController(initialIndex: 0, length: 4, vsync: this);
     _defScrollController.addListener(_scrollListener);
   }
 

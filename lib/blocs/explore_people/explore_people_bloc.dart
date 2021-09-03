@@ -6,16 +6,16 @@ import 'package:meta/meta.dart';
 
 import '../../core/models/explore_model.dart';
 
-part 'explore_list_event.dart';
-part 'explore_list_state.dart';
+part 'explore_people_event.dart';
+part 'explore_people_state.dart';
 
-class ExploreListBloc extends Bloc<ExploreListEvent, ExploreListState> {
+class ExplorePeopleBloc extends Bloc<ExplorePeopleEvent, ExplorePeopleState> {
   final ExploreModel exploreModel;
-  ExploreListBloc({this.exploreModel}) : super(ExploreListInitial());
+  ExplorePeopleBloc({this.exploreModel}) : super(ExplorePeopleInitial());
 
   @override
-  Stream<ExploreListState> mapEventToState(
-    ExploreListEvent event,
+  Stream<ExplorePeopleState> mapEventToState(
+    ExplorePeopleEvent event,
   ) async* {
     try {
       if (event is ExploreListStartedEvent) {
@@ -24,15 +24,7 @@ class ExploreListBloc extends Bloc<ExploreListEvent, ExploreListState> {
         yield ShowListState();
       } else if (event is GetMoreItensEvent) {
         yield UpdateListState();
-        if (event.tabIndex == 0) {
-          // TODO obter mais interesses
-        } else if (event.tabIndex == 1) {
-          // TODO obter mais apts
-        } else if (event.tabIndex == 2) {
-          // TODO obter mais repúblicas
-        } else if (event.tabIndex == 3) {
-          // TODO obter mais casas
-        }
+
         yield ShowListState();
       } else if (event is SearchEvent) {
         yield UpdateListState();
