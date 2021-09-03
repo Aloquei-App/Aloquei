@@ -61,6 +61,9 @@ class _ExplorePeoplePageState extends State<ExplorePeoplePage> {
     return Scaffold(
       appBar: ExploreAppBar(
         action: () {},
+        onTextChanged: (val) {
+          _explorePeopleBloc.add(SearchEvent(search: val));
+        },
         onBackPress: widget.onBackPress,
       ),
       body: Padding(

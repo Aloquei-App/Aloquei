@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:random_color/random_color.dart';
 
 import '../../../core/models/interest_offer_model.dart';
 
@@ -11,10 +10,6 @@ class PlaceItem extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    RandomColor _randomColor = RandomColor();
-    Color _color = _randomColor.randomColor(
-      colorBrightness: ColorBrightness.light,
-    );
     var nameInit = model.postUserName[0].toUpperCase();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,7 +18,7 @@ class PlaceItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CircleAvatar(
-              backgroundColor: _color,
+              backgroundColor: model.color,
               foregroundColor: Colors.black,
               //backgroundImage: AssetImage(img),
               radius: 40,

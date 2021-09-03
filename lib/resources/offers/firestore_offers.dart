@@ -16,7 +16,7 @@ class OffersRepository {
           await _firestoreInstance.collection('offers').add(model.toJson());
       if (doc != null) {
         model.key = doc.id;
-        model.doc = doc;
+        //model.doc = doc;
         return model;
       }
       return model;
@@ -47,7 +47,7 @@ class OffersRepository {
           await _firestoreInstance.collection('offers').add(model.toJson());
       if (doc != null) {
         model.key = doc.id;
-        model.doc = doc;
+        //model.doc = doc;
         return model;
       }
       return model;
@@ -86,6 +86,30 @@ class OffersRepository {
           .where('type', isEqualTo: 0)
           .where('state', isEqualTo: estadoSigla)
           .where('city', isEqualTo: cidade)
+          .limit(10)
+          .get();
+      snapshot.docs.forEach((element) {
+        list.add(InterestModel.fromJson(element));
+      });
+    } catch (e, stack) {
+      print(e);
+      print(stack);
+      throw e;
+    }
+    return list;
+  }
+
+  Future<List<InterestModel>> getInterestsFilteredMore(
+      String estadoSigla, String cidade, DocumentSnapshot doc) async {
+    List<InterestModel> list = [];
+    try {
+      QuerySnapshot snapshot = await _firestoreInstance
+          .collection('offers')
+          .where('type', isEqualTo: 0)
+          .where('state', isEqualTo: estadoSigla)
+          .where('city', isEqualTo: cidade)
+          .startAfterDocument(doc)
+          .limit(10)
           .get();
       snapshot.docs.forEach((element) {
         list.add(InterestModel.fromJson(element));
@@ -107,6 +131,30 @@ class OffersRepository {
           .where('type', isEqualTo: 1)
           .where('state', isEqualTo: estadoSigla)
           .where('city', isEqualTo: cidade)
+          .limit(10)
+          .get();
+      snapshot.docs.forEach((element) {
+        list.add(HouseOfferModel.fromJson(element));
+      });
+    } catch (e, stack) {
+      print(e);
+      print(stack);
+      throw e;
+    }
+    return list;
+  }
+
+  Future<List<HouseOfferModel>> getHousesFilteredMore(
+      String estadoSigla, String cidade, DocumentSnapshot doc) async {
+    List<HouseOfferModel> list = [];
+    try {
+      QuerySnapshot snapshot = await _firestoreInstance
+          .collection('offers')
+          .where('type', isEqualTo: 1)
+          .where('state', isEqualTo: estadoSigla)
+          .where('city', isEqualTo: cidade)
+          .startAfterDocument(doc)
+          .limit(10)
           .get();
       snapshot.docs.forEach((element) {
         list.add(HouseOfferModel.fromJson(element));
