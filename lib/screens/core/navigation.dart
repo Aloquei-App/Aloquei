@@ -35,3 +35,19 @@ void navigateToInterestPet(BuildContext context) {
 void navigateToHostPage(BuildContext context) {
   Navigator.of(context).pushNamed('/hostPage');
 }
+
+void navigateToHome(BuildContext context) {
+  Navigator.of(context).pushNamed('/home');
+}
+
+void navigateToPersonalData(BuildContext context) {
+  Navigator.of(context).pushNamed('/personalData');
+}
+
+void navigateToTerms(BuildContext context) {
+  Navigator.of(context).pushNamed('/termsData');
+}
+
+void navigateToHelpPage(BuildContext context) {
+  Navigator.of(context).pushNamed('/helpPage');
+}

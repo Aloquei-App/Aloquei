@@ -8,17 +8,20 @@ import 'core/snack_bar.dart';
 import 'explore/explore.dart';
 import 'help/help_page.dart';
 import 'home/home.dart';
+import 'hosting/host_page_type.dart';
 import 'hosting/host_page_address.dart';
 import 'inbox/inbox.dart';
-import 'interest/components/interest_page_description.dart';
+import 'interest/components/interest_page_data.dart';
 import 'interest/interest_page_desc.dart';
 import 'interest/interest_page_pet.dart';
 import 'login/login_page.dart';
 import 'person_list/person_list.dart';
+import 'personal_info/personal_info.dart';
 import 'profile/profile.dart';
 import 'rental_list/rental_list.dart';
 import 'search/search.dart';
 import 'splash/splash.dart';
+import 'terms/terms_page.dart';
 import 'wishlists/wishlists.dart';
 
 class Run extends StatelessWidget {
@@ -118,10 +121,13 @@ class _AppPageState extends State<AppPage> {
         '/profile': (context) => ProfilePage(),
         '/search': (context) => Search(),
         '/help': (context) => HelpPage(),
-        '/interestPage': (context) => InterestPageDescription(),
+        '/interestPage': (context) => InterestPageAddress(),
         '/interestPet': (context) => InterestPagePet(),
-        '/hostPage': (context) => HostPageAddress(),
+        '/hostPage': (context) => HostPageType(),
         '/rental_list': (context) => RentalList(),
+        '/personalData': (context) => PersonalInfoPage(),
+        '/termsData': (context) => TermsofServicePage(),
+        '/helpPage': (context) => HelpPage(),
       },
       initialRoute: '/',
     );
