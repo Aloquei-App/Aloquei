@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
+
+import '../core/forms/host_top_menu_gradient.dart';
 import 'components/host_bottombar.dart';
 import 'components/host_select_menu_type.dart';
-import '../core/forms/host_top_menu_gradient.dart';
 import 'host_page_desc.dart';
-import 'package:flutter/material.dart';
 
 class HostPageType extends StatelessWidget {
   const HostPageType({Key key}) : super(key: key);

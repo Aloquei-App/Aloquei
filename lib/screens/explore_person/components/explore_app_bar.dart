@@ -29,7 +29,7 @@ class ExploreAppBar extends StatelessWidget implements PreferredSizeWidget {
             borderRadius: BorderRadius.circular(20)),
         child: TextFormField(
           decoration: InputDecoration(
-            labelText: "Insira uma moradia ou interesse",
+            labelText: "Busque um interesse",
             labelStyle: TextStyle(fontSize: 20),
             border: InputBorder.none,
             contentPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 1),

@@ -43,7 +43,7 @@ class ExploreAppBar extends StatelessWidget implements PreferredSizeWidget {
             onTextChanged(value);
           },
           decoration: InputDecoration(
-            labelText: "Insira uma moradia ou interesse",
+            labelText: "Busque uma moradia",
             labelStyle: TextStyle(fontSize: 20),
             border: InputBorder.none,
             contentPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 1),

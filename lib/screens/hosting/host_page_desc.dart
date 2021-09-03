@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
+
 import '../core/forms/host_top_menu_gradient.dart';
 import 'components/host_bottombar.dart';
 import 'components/host_select_menu_desc_house.dart';
 import 'host_page_type_size.dart';
-import 'package:flutter/material.dart';
 
 class HostPageDesc extends StatelessWidget {
   const HostPageDesc({Key key}) : super(key: key);
