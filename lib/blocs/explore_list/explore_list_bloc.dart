@@ -5,6 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 import '../../core/models/explore_model.dart';
+import '../../core/models/house_offer_model.dart';
 
 part 'explore_list_event.dart';
 part 'explore_list_state.dart';
@@ -12,6 +13,16 @@ part 'explore_list_state.dart';
 class ExploreListBloc extends Bloc<ExploreListEvent, ExploreListState> {
   final ExploreModel exploreModel;
   ExploreListBloc({this.exploreModel}) : super(ExploreListInitial());
+
+  List<HouseOfferModel> _republicList = [];
+  List<HouseOfferModel> _casaList = [];
+  List<HouseOfferModel> _apList = [];
+  List<HouseOfferModel> _quartoList = [];
+
+  List<HouseOfferModel> get republic => _republicList;
+  List<HouseOfferModel> get casa => _casaList;
+  List<HouseOfferModel> get ap => _apList;
+  List<HouseOfferModel> get quarto => _quartoList;
 
   @override
   Stream<ExploreListState> mapEventToState(

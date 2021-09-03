@@ -69,20 +69,20 @@ class ExploreAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         tabs: [
           TabModel(
-            text: "Quartos",
-            icon: FontAwesomeIcons.bed,
-          ),
-          TabModel(
-            text: "Aptos",
-            icon: FontAwesomeIcons.building,
-          ),
-          TabModel(
             text: "Repúblicas",
             icon: Icons.home_filled,
           ),
           TabModel(
             text: "Casas",
             icon: FontAwesomeIcons.home,
+          ),
+          TabModel(
+            text: "Aptos",
+            icon: FontAwesomeIcons.building,
+          ),
+          TabModel(
+            text: "Quartos",
+            icon: FontAwesomeIcons.bed,
           ),
         ],
       ),

@@ -1,17 +1,13 @@
+import '../../../core/models/house_offer_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 
 class PlaceItem extends StatefulWidget {
-  final String name;
-  final double cost;
-  final double dist;
-  final List<Widget> imgs;
+  final HouseOfferModel model;
+
   const PlaceItem({
     Key key,
-    this.imgs,
-    this.name,
-    this.cost,
-    this.dist,
+    this.model,
   }) : super(key: key);
 
   @override
@@ -25,13 +21,14 @@ class _PlaceItemState extends State<PlaceItem> {
       _isFavorited = !_isFavorited;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Stack(
-          children:[
+          children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
               child: ImageSlideshow(
@@ -40,14 +37,14 @@ class _PlaceItemState extends State<PlaceItem> {
                 initialPage: 0,
                 indicatorColor: Colors.grey,
                 indicatorBackgroundColor: Colors.grey[300],
-                children: widget.imgs,
+                children: List.generate(widget.model.images.length,
+                    (i) => Image.network(widget.model.images[i])),
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
-
                   iconSize: 75,
                   icon: (_isFavorited
                       ? const Icon(Icons.favorite)
@@ -65,7 +62,7 @@ class _PlaceItemState extends State<PlaceItem> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                widget.name,
+                widget.model.name,
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -78,7 +75,7 @@ class _PlaceItemState extends State<PlaceItem> {
                       fontWeight: FontWeight.bold,
                       fontSize: 20),
                   children: [
-                    TextSpan(text: 'R\$${widget.cost}'),
+                    TextSpan(text: 'R\$${widget.model.valueMonth}'),
                     TextSpan(
                         text: ' / mês',
                         style: TextStyle(
@@ -94,7 +91,7 @@ class _PlaceItemState extends State<PlaceItem> {
         Padding(
           padding: EdgeInsets.only(left: 5.0, top: 3, bottom: 20),
           child: Text(
-            "${widget.dist} km de distância",
+            "${widget.model.position.speed} km de distância",
             style: TextStyle(
                 color: Colors.black54,
                 fontWeight: FontWeight.normal,

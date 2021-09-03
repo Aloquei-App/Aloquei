@@ -89,10 +89,18 @@ class _ExploreListState extends State<ExploreListPage>
               return TabBarView(
                 controller: _tabController,
                 children: [
-                  ListPlaces(scrollController: _defScrollController),
-                  ListPlaces(scrollController: _defScrollController),
-                  ListPlaces(scrollController: _defScrollController),
-                  ListPlaces(scrollController: _defScrollController),
+                  ListPlaces(
+                      scrollController: _defScrollController,
+                      modelList: _exploreListBloc.republic),
+                  ListPlaces(
+                      scrollController: _defScrollController,
+                      modelList: _exploreListBloc.casa),
+                  ListPlaces(
+                      scrollController: _defScrollController,
+                      modelList: _exploreListBloc.ap),
+                  ListPlaces(
+                      scrollController: _defScrollController,
+                      modelList: _exploreListBloc.quarto),
                 ],
               );
             }

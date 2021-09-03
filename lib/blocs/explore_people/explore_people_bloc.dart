@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:aloquei_app/core/models/interest_offer_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
@@ -12,6 +13,10 @@ part 'explore_people_state.dart';
 class ExplorePeopleBloc extends Bloc<ExplorePeopleEvent, ExplorePeopleState> {
   final ExploreModel exploreModel;
   ExplorePeopleBloc({this.exploreModel}) : super(ExplorePeopleInitial());
+
+  List<InterestModel> _interestList = [];
+
+  List<InterestModel> get interest => _interestList;
 
   @override
   Stream<ExplorePeopleState> mapEventToState(
