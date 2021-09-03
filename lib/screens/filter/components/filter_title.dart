@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class FilterTitle extends StatelessWidget {
-  const FilterTitle({Key key}) : super(key: key);
+  final String titleText;
+
+  const FilterTitle({Key key, this.titleText}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +11,7 @@ class FilterTitle extends StatelessWidget {
         alignment: Alignment.centerLeft,
         padding: EdgeInsets.all(20),
         child: Text(
-          'Filtros populares',
+          titleText,
           style: TextStyle(
               color: Colors.black, fontSize: 25, fontWeight: FontWeight.w600),
         ));
