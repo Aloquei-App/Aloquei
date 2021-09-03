@@ -17,6 +17,8 @@ import 'signup/signup.dart';
 import 'splash/splash.dart';
 import 'wishlists/wishlists.dart';
 
+import 'explore_person/explore_person.dart';
+
 class Run extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -94,15 +96,15 @@ class _AppPageState extends State<AppPage> {
             return true;
           },
           builder: (context, state) {
-            if (state is AuthenticatedState) {
-              return Home();
-            } else if (state is SignupPressedState) {
-              return Signup();
-            } else if (state is UnauthenticatedState) {
-              return LoginPage();
-            } else {
-              return Splash();
-            }
+            // if (state is AuthenticatedState) {
+              return ExplorePerson();
+            // } else if (state is SignupPressedState) {
+            //   return Signup();
+            // } else if (state is UnauthenticatedState) {
+            //   return LoginPage();
+            // } else {
+            //   return Splash();
+            // }
           },
         ),
       ),
