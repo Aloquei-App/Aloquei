@@ -1,3 +1,5 @@
+import 'package:aloquei_app/screens/person_list/person_list.dart';
+import 'package:aloquei_app/screens/rental_list/rental_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -9,6 +11,7 @@ import 'explore/explore.dart';
 import 'help/help_page.dart';
 import 'hosting/host_page_address.dart';
 import 'hosting/host_page_desc.dart';
+import 'home/home.dart';
 import 'inbox/inbox.dart';
 import 'interest/components/interest_page_description.dart';
 import 'interest/interest_page_desc.dart';
@@ -17,7 +20,6 @@ import 'login/login_page.dart';
 import 'profile/profile.dart';
 import 'search/search.dart';
 import 'splash/splash.dart';
-import 'trips/trips.dart';
 import 'wishlists/wishlists.dart';
 
 class Run extends StatelessWidget {
@@ -98,7 +100,8 @@ class _AppPageState extends State<AppPage> {
           },
           builder: (context, state) {
             if (state is AuthenticatedState) {
-              return InterestPageDesc();
+              return Home();
+             // return InterestPageDesc();
             } else if (state is SignupPressedState) {
               return InterestPageDesc();
             } else if (state is UnauthenticatedState) {
@@ -112,7 +115,7 @@ class _AppPageState extends State<AppPage> {
       routes: {
         '/explore': (context) => ExplorePage(),
         '/wishlists': (context) => WishlistsPage(),
-        '/trips': (context) => TripsPage(),
+        '/person_list': (context) => PersonList(),
         '/inbox': (context) => InboxPage(),
         '/profile': (context) => ProfilePage(),
         '/search': (context) => Search(),
@@ -120,6 +123,7 @@ class _AppPageState extends State<AppPage> {
         '/interestPage': (context) => InterestPageDescription(),
         '/interestPet': (context) => InterestPagePet(),
         '/hostPage': (context) => HostPageAddress(),
+        '/rental_list': (context) => RentalList(),
       },
       initialRoute: '/',
     );

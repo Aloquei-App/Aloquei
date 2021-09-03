@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'components/app_bar_personal_info.dart';
-import 'components/date_input_personal_info.dart';
 import 'components/gender_personal_info.dart';
 import 'components/single_input_personal_info.dart';
 import 'components/title_personal_info.dart';
@@ -28,10 +27,6 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
           ),
           GenderInput(
             gender: "Masculino",
-          ),
-          DateInput(
-            onChanged: null,
-            bday: "06-06-2006",
           ),
           SingleInputPersonalInfo(
             labelText: "Email",

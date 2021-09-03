@@ -22,16 +22,18 @@ class CreateLoginEmailEvent extends AuthEvent {
   final String email;
   final String senha;
   final String nome;
+  final String sobrenome;
   final String gender;
 
   CreateLoginEmailEvent(
       {@required this.email,
       @required this.senha,
       @required this.nome,
+      @required this.sobrenome,
       @required this.gender});
 
   @override
-  List<Object> get props => [nome, email, senha, gender];
+  List<Object> get props => [nome, sobrenome, email, senha, gender];
 }
 
 class LogoutEvent extends AuthEvent {}
@@ -65,3 +67,5 @@ class SignupSuccessEvent extends AuthEvent {
 
   SignupSuccessEvent({@required this.userModel, @required this.user});
 }
+
+class LoginGoogleEvent extends AuthEvent {}

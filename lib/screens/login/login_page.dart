@@ -8,63 +8,69 @@ import 'components/continue_button.dart';
 import 'components/default_input.dart';
 import 'components/default_login_button.dart';
 import 'components/divider_with_text.dart';
-import 'components/login_app_bar.dart';
 import 'components/title_login.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailCntrlr = TextEditingController();
   final TextEditingController _passCntrlr = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
     return Scaffold(
-      appBar: LoginAppBar(
-        onPressed: () {},
-      ),
-      body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 25),
-        children: [
-          TitleLogin(),
-          Form(
-            key: _formKey,
-            child: Padding(
-              padding: EdgeInsets.only(top: 10.0, bottom: 25),
-              child: Column(
-                children: [
-                  SizedBox(height: 10),
-                  DefaultInput(
+      body: SafeArea(
+        child: ListView(
+          padding: EdgeInsets.only(left: 25, right: 25, top: 40),
+          children: [
+            TitleLogin(),
+            Form(
+              key: _formKey,
+              child: Padding(
+                padding: EdgeInsets.only(top: 10.0, bottom: 25),
+                child: Column(
+                  children: [
+                    SizedBox(height: 10),
+                    DefaultInput(
                       text: "Email",
+                      validator: validateEmail,
                       controller: _emailCntrlr,
-                      validator: validateSenha),
-                  DefaultInput(
+                    ),
+                    DefaultInput(
                       text: "Senha",
+                      validator: validateSenha,
                       controller: _passCntrlr,
-                      validator: validateSenha),
-                ],
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          ContinueButton(onPressed: () {
-            if (validateAndSave(_formKey)) {
-              authBloc.add(LoginEmailEvent(
-                  email: _emailCntrlr.text, senha: _passCntrlr.text));
-            }
-          }),
-          DividerWithText(),
-          DefaultLoginButton(
-              text: 'Continuar com Email',
-              icon: Icons.email_outlined,
-              size: 22.0,
-              onpressed: () {}),
-          DefaultLoginButton(
-              text: 'Continuar com Google',
-              icon: FontAwesomeIcons.google,
-              size: 20.0,
-              onpressed: () {}),
-        ],
+            ContinueButton(onPressed: () {
+              if (validateAndSave(_formKey)) {
+                authBloc.add(LoginEmailEvent(
+                    email: _emailCntrlr.text, senha: _passCntrlr.text));
+              }
+            }),
+            DividerWithText(),
+            DefaultLoginButton(
+                text: 'Continuar com Email',
+                icon: Icons.email_outlined,
+                onpressed: () {
+                  authBloc.add(SignupPressedEvent());
+                }),
+            DefaultLoginButton(
+                text: 'Continuar com Google',
+                icon: FontAwesomeIcons.google,
+                onpressed: () {
+                  authBloc.add(LoginGoogleEvent());
+                }),
+          ],
+        ),
       ),
     );
   }

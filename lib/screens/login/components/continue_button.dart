@@ -12,12 +12,12 @@ class ContinueButton extends StatelessWidget {
       child: Text(
         'Continuar',
         style: TextStyle(
-          fontSize: 17,
+          fontSize: 18,
           color: Colors.white,
         ),
       ),
       color: redAirbnb,
-      height: MediaQuery.of(context).size.width * 0.12,
+      height: 55,
       minWidth: double.infinity,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
       onPressed: onPressed,

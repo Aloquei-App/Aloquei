@@ -13,11 +13,9 @@ import '../core/success.dart';
 import 'components/accept_button.dart';
 import 'components/email_input.dart';
 import 'components/name_and_last_name_input.dart';
-import 'components/notification_button.dart';
 import 'components/password_input.dart';
 import 'components/signup_title.dart';
 import 'components/text_with_buttons.dart';
-import 'components/text_with_notifications.dart';
 
 class Signup extends StatelessWidget {
   @override
@@ -39,13 +37,9 @@ class SignupPage extends StatefulWidget {
 
 class _SignupPageState extends State<SignupPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   final TextEditingController _nomeCntrlr = TextEditingController();
-
-  final TextEditingController _ultimoNomeCntrlr = TextEditingController();
-
+  final TextEditingController _sobrenomeCntrlr = TextEditingController();
   final TextEditingController _emailCntrlr = TextEditingController();
-
   final TextEditingController _passCntrlr = TextEditingController();
 
   SignupBloc _signupBloc;
@@ -70,31 +64,33 @@ class _SignupPageState extends State<SignupPage> {
       body: Form(
         key: _formKey,
         child: BlocConsumer<SignupBloc, SignupStateRegister>(
-            listener: (contextListener, state) {
-          if (state is UserRegisterSuccessState) {
-            Timer(const Duration(seconds: 3), () {
-              widget.authBloc.add(SignupSuccessEvent(
-                  user: state.user, userModel: state.userModel));
-            });
-          } else if (state is UserRegisterFailState) {
-            buildWarningSnackBar(contextListener, state.message);
-          }
-        }, builder: (context, state) {
-          if (state is SignupLoadingState) {
-            return Loading();
-          } else if (state is UserRegisterSuccessState) {
-            return Success();
-          } else {
-            return SignupBody(
-              nomeCntrlr: _nomeCntrlr,
-              emailCntrlr: _emailCntrlr,
-              passCntrlr: _passCntrlr,
-              signupBloc: _signupBloc,
-              formKey: _formKey,
-              ultimoNomeCntrlr: _ultimoNomeCntrlr,
-            );
-          }
-        }),
+          listener: (contextListener, state) {
+            if (state is UserRegisterSuccessState) {
+              Timer(const Duration(seconds: 3), () {
+                widget.authBloc.add(SignupSuccessEvent(
+                    user: state.user, userModel: state.userModel));
+              });
+            } else if (state is UserRegisterFailState) {
+              buildWarningSnackBar(contextListener, state.message);
+            }
+          },
+          builder: (context, state) {
+            if (state is SignupLoadingState) {
+              return Loading();
+            } else if (state is UserRegisterSuccessState) {
+              return Success();
+            } else {
+              return SignupBody(
+                nomeCntrlr: _nomeCntrlr,
+                emailCntrlr: _emailCntrlr,
+                passCntrlr: _passCntrlr,
+                signupBloc: _signupBloc,
+                formKey: _formKey,
+                sobrenomeCntrlr: _sobrenomeCntrlr,
+              );
+            }
+          },
+        ),
       ),
     );
   }
@@ -103,13 +99,13 @@ class _SignupPageState extends State<SignupPage> {
 class SignupBody extends StatelessWidget {
   const SignupBody({
     Key key,
-    @required TextEditingController ultimoNomeCntrlr,
+    @required TextEditingController sobrenomeCntrlr,
     @required TextEditingController nomeCntrlr,
     @required TextEditingController emailCntrlr,
     @required TextEditingController passCntrlr,
     @required GlobalKey<FormState> formKey,
     @required SignupBloc signupBloc,
-  })  : _ultimoNomeCntrlr = ultimoNomeCntrlr,
+  })  : _sobrenomeCntrlr = sobrenomeCntrlr,
         _nomeCntrlr = nomeCntrlr,
         _emailCntrlr = emailCntrlr,
         _passCntrlr = passCntrlr,
@@ -117,7 +113,7 @@ class SignupBody extends StatelessWidget {
         _signupBloc = signupBloc,
         super(key: key);
 
-  final TextEditingController _ultimoNomeCntrlr;
+  final TextEditingController _sobrenomeCntrlr;
   final TextEditingController _nomeCntrlr;
   final TextEditingController _emailCntrlr;
   final TextEditingController _passCntrlr;
@@ -132,11 +128,8 @@ class SignupBody extends StatelessWidget {
         SignupTitle(),
         NameAndLastNameInput(
           nameController: _nomeCntrlr,
-          lastNameController: _ultimoNomeCntrlr,
+          lastNameController: _sobrenomeCntrlr,
         ),
-        /* DateInput(
-          onChanged: null,
-        ),*/
         EmailInput(
           controller: _emailCntrlr,
         ),
@@ -154,6 +147,7 @@ class SignupBody extends StatelessWidget {
               _signupBloc.add(
                 SubmitUserDataEvent(
                   nome: _nomeCntrlr.text.trim(),
+                  sobrenome: _sobrenomeCntrlr.text.trim(),
                   email: _emailCntrlr.text.trim(),
                   senha: _passCntrlr.text.trim(),
                 ),
@@ -161,11 +155,6 @@ class SignupBody extends StatelessWidget {
             }
           },
         ),
-        TextWithNotifications(),
-        NotificationButton(
-          onPressed: () {},
-          status: true,
-        )
       ],
     );
   }

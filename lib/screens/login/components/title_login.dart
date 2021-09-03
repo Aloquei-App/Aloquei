@@ -7,8 +7,7 @@ class TitleLogin extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 10.0),
       child: Text(
         'Entre ou cadastre-se no Aloquei',
-        style: TextStyle(
-            fontWeight: FontWeight.w600, fontSize: 20, fontFamily: 'Arial'),
+        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 25),
       ),
     );
   }

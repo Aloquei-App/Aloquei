@@ -29,7 +29,8 @@ class InterestModel extends OffersModel {
       String userId,
       String userName,
       int qtdRoom,
-      int tipo}) {
+      int tipo,
+      int incluido}) {
     city = cidade;
     state = estado;
     mail = email;
@@ -39,6 +40,7 @@ class InterestModel extends OffersModel {
     postUserName = userName;
     qtdRooms = qtdRoom;
     type = tipo;
+    includedAt = incluido;
   }
 
   InterestModel.fromJson(DocumentSnapshot doc) {
