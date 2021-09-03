@@ -1,6 +1,6 @@
-import 'package:aloquei_app/screens/core/colors.dart';
-import 'package:aloquei_app/screens/rental_list/components/list_title.dart';
-import 'package:aloquei_app/screens/rental_list/components/present_card.dart';
+import '../core/colors.dart';
+import '../rental_list/components/list_title.dart';
+import '../rental_list/components/present_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

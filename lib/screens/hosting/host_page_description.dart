@@ -1,7 +1,7 @@
-import 'package:aloquei_app/screens/hosting/components/host_bottombar.dart';
-import 'package:aloquei_app/screens/hosting/components/host_select_menu_nine.dart';
-import 'package:aloquei_app/screens/core/forms/top_menu_image.dart';
-import 'package:aloquei_app/screens/hosting/host_page_price.dart';
+import 'components/host_bottombar.dart';
+import 'components/host_select_menu_nine.dart';
+import '../core/forms/top_menu_image.dart';
+import 'host_page_price.dart';
 
 import 'package:flutter/material.dart';
 

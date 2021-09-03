@@ -1,5 +1,5 @@
-import 'package:aloquei_app/screens/person_list/person_list.dart';
-import 'package:aloquei_app/screens/rental_list/rental_list.dart';
+import '../person_list/person_list.dart';
+import '../rental_list/rental_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,4 +1,4 @@
-import 'package:aloquei_app/screens/core/forms/title_subtitle_button.dart';
+import '../../core/forms/title_subtitle_button.dart';
 import 'package:flutter/material.dart';
 
 class HostSelectMenuDescUnique extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:aloquei_app/screens/hosting/components/host_counter.dart';
+import 'host_counter.dart';
 import 'package:flutter/material.dart';
 
 class HostSelectMenuGuestNum extends StatelessWidget {
