@@ -9,7 +9,7 @@ class FavoritesRepository {
   Future<void> addFavorite(String userId, List<String> favorites) async {
     try {
       await firestoreInstance
-          .collection('favorites')
+          .collection('users')
           .doc(userId)
           .set({'favList': favorites});
     } catch (error, stack) {

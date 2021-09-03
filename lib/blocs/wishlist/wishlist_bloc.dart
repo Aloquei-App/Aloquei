@@ -24,7 +24,7 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
         whishList = await _favoritesRepository.getFavorites(user.uid);
         yield ShowWishlistState();
       } else if (event is NewWishlistState) {
-        result = await _favoritesRepository.addFavorite(user.uid, favorites);
+        await _favoritesRepository.addFavorite(user.uid, whishList);
         yield LoadingWishlistState();
       }
     } catch (e) {
