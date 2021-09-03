@@ -1,5 +1,3 @@
-import 'package:aloquei_app/screens/person_list/person_list.dart';
-import 'package:aloquei_app/screens/rental_list/rental_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -9,15 +7,16 @@ import '../blocs/auth/auth_bloc.dart';
 import 'core/snack_bar.dart';
 import 'explore/explore.dart';
 import 'help/help_page.dart';
-import 'hosting/host_page_address.dart';
-import 'hosting/host_page_desc.dart';
 import 'home/home.dart';
+import 'hosting/host_page_address.dart';
 import 'inbox/inbox.dart';
 import 'interest/components/interest_page_description.dart';
 import 'interest/interest_page_desc.dart';
 import 'interest/interest_page_pet.dart';
 import 'login/login_page.dart';
+import 'person_list/person_list.dart';
 import 'profile/profile.dart';
+import 'rental_list/rental_list.dart';
 import 'search/search.dart';
 import 'splash/splash.dart';
 import 'wishlists/wishlists.dart';
@@ -101,7 +100,6 @@ class _AppPageState extends State<AppPage> {
           builder: (context, state) {
             if (state is AuthenticatedState) {
               return Home();
-             // return InterestPageDesc();
             } else if (state is SignupPressedState) {
               return InterestPageDesc();
             } else if (state is UnauthenticatedState) {

@@ -1,4 +1,4 @@
-import 'package:aloquei_app/screens/hosting/components/host_title_button.dart';
+import 'host_title_button.dart';
 import 'package:flutter/material.dart';
 import 'host_title_button.dart';
 

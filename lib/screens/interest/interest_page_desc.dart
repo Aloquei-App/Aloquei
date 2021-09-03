@@ -1,6 +1,6 @@
-import 'package:aloquei_app/screens/core/navigation.dart';
-import 'package:aloquei_app/screens/hosting/components/host_bottombar.dart';
-import 'package:aloquei_app/screens/core/forms/host_top_menu_gradient.dart';
+import '../core/navigation.dart';
+import '../hosting/components/host_bottombar.dart';
+import '../core/forms/host_top_menu_gradient.dart';
 import 'package:flutter/material.dart';
 
 import 'components/interest_select_menu_desc_house.dart';

@@ -1,6 +1,6 @@
-import 'package:aloquei_app/screens/core/colors.dart';
+import '../core/colors.dart';
 
-import 'package:aloquei_app/screens/login/components/title_offers.dart';
+import '../login/components/title_offers.dart';
 import 'package:flutter/material.dart';
 
 import 'components/bottom_navigation.dart';

@@ -1,7 +1,7 @@
-import 'package:aloquei_app/screens/hosting/components/host_bottombar.dart';
-import 'package:aloquei_app/screens/hosting/components/host_select_menu_type_size.dart';
-import 'package:aloquei_app/screens/core/forms/host_top_menu_gradient.dart';
-import 'package:aloquei_app/screens/hosting/host_page_address.dart';
+import 'components/host_bottombar.dart';
+import 'components/host_select_menu_type_size.dart';
+import '../core/forms/host_top_menu_gradient.dart';
+import 'host_page_address.dart';
 import 'package:flutter/material.dart';
 
 class HostPageTypeSize extends StatelessWidget {

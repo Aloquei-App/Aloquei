@@ -1,4 +1,4 @@
-import 'package:aloquei_app/screens/hosting/host_page_type_size.dart';
+import '../host_page_type_size.dart';
 import 'package:flutter/material.dart';
 
 class HostAppBar extends StatelessWidget {
