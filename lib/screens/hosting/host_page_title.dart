@@ -1,7 +1,7 @@
-import 'package:aloquei_app/screens/hosting/components/host_bottombar.dart';
-import 'package:aloquei_app/screens/hosting/components/host_select_menu_title.dart';
-import 'package:aloquei_app/screens/core/forms/top_menu_image.dart';
-import 'package:aloquei_app/screens/hosting/host_page_description.dart';
+import 'components/host_bottombar.dart';
+import 'components/host_select_menu_title.dart';
+import '../core/forms/top_menu_image.dart';
+import 'host_page_description.dart';
 import 'package:flutter/material.dart';
 
 class HostPageTitle extends StatelessWidget {

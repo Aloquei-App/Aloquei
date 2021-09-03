@@ -9,6 +9,7 @@ import 'explore/explore.dart';
 import 'help/help_page.dart';
 import 'home/home.dart';
 import 'hosting/host_page_type.dart';
+import 'hosting/host_page_address.dart';
 import 'inbox/inbox.dart';
 import 'interest/components/interest_page_data.dart';
 import 'interest/interest_page_desc.dart';
@@ -102,7 +103,6 @@ class _AppPageState extends State<AppPage> {
           builder: (context, state) {
             if (state is AuthenticatedState) {
               return Home();
-              // return InterestPageDesc();
             } else if (state is SignupPressedState) {
               return InterestPageDesc();
             } else if (state is UnauthenticatedState) {

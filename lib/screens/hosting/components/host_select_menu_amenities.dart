@@ -1,4 +1,4 @@
-import 'package:aloquei_app/screens/hosting/components/host_big_iconbutton.dart';
+import 'host_big_iconbutton.dart';
 import 'package:flutter/material.dart';
 
 class HostSelectMenuAmenities extends StatelessWidget {

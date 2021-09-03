@@ -1,4 +1,4 @@
-import 'package:aloquei_app/screens/core/forms/input_value.dart';
+import '../../core/forms/input_value.dart';
 import 'package:flutter/material.dart';
 
 import '../../hosting/components/host_continue_button.dart';

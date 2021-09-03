@@ -1,6 +1,6 @@
-import 'package:aloquei_app/screens/core/forms/input_value.dart';
-import 'package:aloquei_app/screens/hosting/components/host_continue_button.dart';
-import 'package:aloquei_app/screens/hosting/host_page_guest_number.dart';
+import '../core/forms/input_value.dart';
+import 'components/host_continue_button.dart';
+import 'host_page_guest_number.dart';
 import 'package:flutter/material.dart';
 
 class HostPageAddress extends StatelessWidget {

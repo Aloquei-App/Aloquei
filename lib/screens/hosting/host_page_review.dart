@@ -1,6 +1,6 @@
-import 'package:aloquei_app/screens/hosting/components/host_bottombar.dart';
-import 'package:aloquei_app/screens/hosting/components/host_select_menu_review.dart';
-import 'package:aloquei_app/screens/core/forms/host_top_menu_gradient.dart';
+import 'components/host_bottombar.dart';
+import 'components/host_select_menu_review.dart';
+import '../core/forms/host_top_menu_gradient.dart';
 import 'package:flutter/material.dart';
 
 class HostPageReview extends StatelessWidget {
