@@ -1,8 +1,8 @@
-import '../../blocs/auth/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../blocs/auth/auth_bloc.dart';
 import 'components/default_button.dart';
 import 'components/default_subtitle.dart';
 import 'components/username_and_profile_button.dart';
