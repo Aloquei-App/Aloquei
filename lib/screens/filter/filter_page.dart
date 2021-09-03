@@ -1,12 +1,9 @@
-import 'dart:developer';
-
 import 'package:aloquei_app/screens/filter/components/app_bar_content.dart';
 import 'package:aloquei_app/screens/filter/components/filter_appbar.dart';
 import 'package:aloquei_app/screens/filter/components/filter_checkbox.dart';
 import 'package:aloquei_app/screens/filter/components/filter_checkbox_text.dart';
 import 'package:aloquei_app/screens/filter/components/filter_counter_container.dart';
 import 'package:aloquei_app/screens/filter/components/filter_slider.dart';
-import 'package:aloquei_app/screens/filter/components/filter_subtittle.dart';
 import 'package:aloquei_app/screens/filter/components/filter_title.dart';
 import 'package:flutter/material.dart';
 
@@ -24,25 +21,6 @@ class FilterPage extends StatelessWidget {
       body: ListView(
         children: [
           FilterAppBar(onpressed: () {}),
-          FilterTitle(titleText: 'Filtros Populares'),
-          FilterSubTitle(
-              subTitleText:
-                  'Estes são alguns dos filtros que as pessoas que viajam para esse local usam com mais frequência'),
-          FilterCheckBox(
-            checkBoxTitle: 'Cozinha',
-          ),
-          FilterCheckBox(
-            checkBoxTitle: 'Wi-Fi',
-          ),
-          FilterCheckBox(
-            checkBoxTitle: 'Espaço inteiro',
-          ),
-          FilterCheckBox(
-            checkBoxTitle: 'Ar-condicionado',
-          ),
-          FilterCheckBox(
-            checkBoxTitle: 'Máquina de Lavar',
-          ),
           FilterTitle(titleText: 'Tipo de lugar'),
           FilterCheckBoxText(
               checkBoxTitle: 'Espaço Inteiro',
