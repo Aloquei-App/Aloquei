@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import '../../hosting/components/host_continue_button.dart';
 import '../interest_page_gender.dart';
 
-class HostPageAddress extends StatelessWidget {
-  const HostPageAddress({Key key}) : super(key: key);
+class InterestPageAddress extends StatelessWidget {
+  const InterestPageAddress({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

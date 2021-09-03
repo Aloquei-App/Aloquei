@@ -1,3 +1,4 @@
+import 'package:aloquei_app/screens/core/navigation.dart';
 import 'package:flutter/material.dart';
 
 class UsernameAndProfileButton extends StatelessWidget {
@@ -51,7 +52,7 @@ class UsernameAndProfileButton extends StatelessWidget {
                       color: Color(0xFF227874),
                     ),
                   ),
-                  onTap: onTap,
+                  onTap: () => navigateToPersonalData(context),
                 )
               ],
             )

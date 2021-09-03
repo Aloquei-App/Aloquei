@@ -1,3 +1,5 @@
+import 'package:aloquei_app/screens/core/navigation.dart';
+
 import '../../blocs/auth/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,7 +29,9 @@ class ProfilePage extends StatelessWidget {
           DefaultButton(
             text: 'Informações pessoais',
             icon: FontAwesomeIcons.user,
-            onpressed: () {},
+            onpressed: () {
+              navigateToPersonalData(context);
+            },
           ),
           DefaultButton(
             text: 'Notificações',
@@ -45,12 +49,16 @@ class ProfilePage extends StatelessWidget {
           DefaultButton(
             text: 'Listar seu espaço',
             icon: FontAwesomeIcons.houseUser,
-            onpressed: () {},
+            onpressed: () {
+              navigateToHostPage(context);
+            },
           ),
           DefaultButton(
             text: 'Publicando um interesse',
             icon: FontAwesomeIcons.peopleArrows,
-            onpressed: () {},
+            onpressed: () {
+              navigateToInterestPage(context);
+            },
           ),
           DefaultSubtitle(
             text: 'ATENDIMENTO',
@@ -63,7 +71,9 @@ class ProfilePage extends StatelessWidget {
           DefaultButton(
             text: 'Obtenha ajuda',
             icon: FontAwesomeIcons.question,
-            onpressed: () {},
+            onpressed: () {
+              navigateToHelpPage(context);
+            },
           ),
           DefaultButton(
             text: 'Envie-nos seu feedback',
@@ -76,7 +86,9 @@ class ProfilePage extends StatelessWidget {
           DefaultButton(
             text: 'Termos do Serviço',
             icon: FontAwesomeIcons.fileAlt,
-            onpressed: () {},
+            onpressed: () {
+              navigateToTerms(context);
+            },
           ),
           DefaultButton(
             text: 'Sair da conta',
