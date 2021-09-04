@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:ui';
 
-import '../../core/models/explore_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
@@ -9,6 +8,7 @@ import 'package:random_color/random_color.dart';
 
 import '../../core/models/cities_model.dart';
 import '../../core/models/estados_model.dart';
+import '../../core/models/explore_model.dart';
 import '../../resources/apis/ibge.dart';
 
 part 'search_event.dart';

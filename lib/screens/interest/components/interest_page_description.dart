@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../hosting/components/host_bottombar.dart';
 import '../../core/forms/top_menu_image.dart';
+import '../../hosting/components/host_bottombar.dart';
 import 'interest_select_menu_nine.dart';
 
 class InterestPageDescription extends StatelessWidget {

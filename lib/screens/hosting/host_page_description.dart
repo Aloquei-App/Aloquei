@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
+
+import '../core/forms/top_menu_image.dart';
 import 'components/host_bottombar.dart';
 import 'components/host_select_menu_nine.dart';
-import '../core/forms/top_menu_image.dart';
 import 'host_page_price.dart';
-
-import 'package:flutter/material.dart';
 
 class HostPageDescription extends StatelessWidget {
   const HostPageDescription({Key key}) : super(key: key);

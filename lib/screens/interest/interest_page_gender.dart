@@ -1,8 +1,8 @@
-import '../core/navigation.dart';
 import 'package:flutter/material.dart';
 
-import '../hosting/components/host_bottombar.dart';
 import '../core/forms/host_top_menu_gradient.dart';
+import '../core/navigation.dart';
+import '../hosting/components/host_bottombar.dart';
 import 'components/interest_select_menu_gender.dart';
 
 class InterestPageGender extends StatelessWidget {

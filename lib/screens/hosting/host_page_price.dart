@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
+
+import '../core/forms/host_top_menu_gradient.dart';
 import 'components/host_bottombar.dart';
 import 'components/host_select_menu_price.dart';
-import '../core/forms/host_top_menu_gradient.dart';
 import 'host_page_review.dart';
-
-import 'package:flutter/material.dart';
 
 class HostPagePrice extends StatelessWidget {
   const HostPagePrice({Key key}) : super(key: key);

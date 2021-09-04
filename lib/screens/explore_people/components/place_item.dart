@@ -1,23 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:random_color/random_color.dart';
+
+import '../../../core/models/interest_offer_model.dart';
 
 class PlaceItem extends StatelessWidget {
-  final String name;
-  final String descricao;
-  final String img;
+  final InterestModel model;
   const PlaceItem({
     Key key,
-    this.img,
-    this.name,
-    this.descricao,
+    this.model,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    RandomColor _randomColor = RandomColor();
-    Color _color = _randomColor.randomColor(
-      colorBrightness: ColorBrightness.light,
-    );
-    var nameInit = name[0].toUpperCase();
+    var nameInit = model.postUserName[0].toUpperCase();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -25,7 +18,7 @@ class PlaceItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CircleAvatar(
-              backgroundColor: _color,
+              backgroundColor: model.color,
               foregroundColor: Colors.black,
               //backgroundImage: AssetImage(img),
               radius: 40,
@@ -41,7 +34,7 @@ class PlaceItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    name,
+                    model.postUserName,
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -57,7 +50,7 @@ class PlaceItem extends StatelessWidget {
                           style: DefaultTextStyle.of(context).style,
                           children: <TextSpan>[
                             TextSpan(
-                                text: descricao,
+                                text: model.observations,
                                 style: TextStyle(fontSize: 15)),
                           ],
                         ),

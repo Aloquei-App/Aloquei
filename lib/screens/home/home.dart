@@ -1,5 +1,4 @@
-import '../person_list/person_list.dart';
-import '../rental_list/rental_list.dart';
+import 'package:aloquei_app/core/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,15 +7,21 @@ import '../core/loading.dart';
 import '../core/snack_bar.dart';
 import '../explore/explore.dart';
 import '../explore_list/explore_list.dart';
+import '../explore_people/explore_people.dart';
+import '../person_list/person_list.dart';
 import '../profile/profile.dart';
+import '../rental_list/rental_list.dart';
 import '../wishlists/wishlists.dart';
 import 'components/bottom_bar.dart';
 
 class Home extends StatelessWidget {
+  final UserModel user;
+
+  const Home({Key key, @required this.user}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeBloc()..add(HomeStartedEvent()),
+      create: (context) => HomeBloc(user: user)..add(HomeStartedEvent()),
       child: HomePage(),
     );
   }
@@ -66,6 +71,14 @@ class _HomePageState extends State<HomePage> {
               return ProfilePage();
             } else if (state is ExploreListState) {
               return ExploreList(
+                onBackPress: () {
+                  _homeBloc.add(OnTabChange(index: -1));
+                },
+                user: _homeBloc.user,
+                exploreModel: state.exploreModel,
+              );
+            } else if (state is ExplorePeopleState) {
+              return ExplorePeople(
                 onBackPress: () {
                   _homeBloc.add(OnTabChange(index: -1));
                 },

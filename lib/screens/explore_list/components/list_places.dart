@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/models/house_offer_model.dart';
 import 'place_item.dart';
 
 class ListPlaces extends StatelessWidget {
+  final ScrollController scrollController;
+  final List<HouseOfferModel> modelList;
   const ListPlaces({
     Key key,
+    this.scrollController,
+    this.modelList,
   }) : super(key: key);
 
   @override
@@ -12,27 +17,10 @@ class ListPlaces extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 20.0, right: 25, left: 25),
       child: ListView.builder(
-        itemCount: 3,
+        controller: scrollController,
+        itemCount: modelList.length,
         itemBuilder: (context, index) {
-          return PlaceItem(
-            name: "República XY",
-            cost: 9.613,
-            dist: 5.561,
-            imgs: [
-              Image.asset(
-                'assets/images/a.jpg',
-                fit: BoxFit.cover,
-              ),
-              Image.asset(
-                'assets/images/b.jpg',
-                fit: BoxFit.cover,
-              ),
-              Image.asset(
-                'assets/images/c.jpg',
-                fit: BoxFit.cover,
-              ),
-            ],
-          );
+          return PlaceItem(model: modelList[index]);
         },
       ),
     );
