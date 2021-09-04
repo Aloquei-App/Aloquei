@@ -17,17 +17,15 @@ class ExplorePeople extends StatelessWidget {
     return BlocProvider(
       create: (context) => ExplorePeopleBloc(exploreModel: exploreModel)
         ..add(ExploreListStartedEvent()),
-      child: ExplorePeoplePage(
-          onBackPress: onBackPress, exploreModel: exploreModel),
+      child: ExplorePeoplePage(onBackPress: onBackPress),
     );
   }
 }
 
 class ExplorePeoplePage extends StatefulWidget {
   final VoidCallback onBackPress;
-  final ExploreModel exploreModel;
-  const ExplorePeoplePage(
-      {Key key, @required this.onBackPress, this.exploreModel});
+
+  const ExplorePeoplePage({Key key, @required this.onBackPress});
   @override
   _ExplorePeoplePageState createState() => _ExplorePeoplePageState();
 }

@@ -87,6 +87,7 @@ class OffersRepository {
           .where('state', isEqualTo: estadoSigla)
           .where('city', isEqualTo: cidade)
           .limit(10)
+          .orderBy('includedAt', descending: true)
           .get();
       snapshot.docs.forEach((element) {
         list.add(InterestModel.fromJson(element));
@@ -110,6 +111,7 @@ class OffersRepository {
           .where('city', isEqualTo: cidade)
           .startAfterDocument(doc)
           .limit(10)
+          .orderBy('includedAt', descending: true)
           .get();
       snapshot.docs.forEach((element) {
         list.add(InterestModel.fromJson(element));
@@ -123,7 +125,7 @@ class OffersRepository {
   }
 
   Future<List<HouseOfferModel>> getHousesFiltered(
-      String estadoSigla, String cidade) async {
+      String estadoSigla, String cidade, int houseType) async {
     List<HouseOfferModel> list = [];
     try {
       QuerySnapshot snapshot = await _firestoreInstance
@@ -131,7 +133,9 @@ class OffersRepository {
           .where('type', isEqualTo: 1)
           .where('state', isEqualTo: estadoSigla)
           .where('city', isEqualTo: cidade)
+          .where('houseType', isEqualTo: houseType)
           .limit(10)
+          .orderBy('includedAt', descending: true)
           .get();
       snapshot.docs.forEach((element) {
         list.add(HouseOfferModel.fromJson(element));
@@ -144,8 +148,8 @@ class OffersRepository {
     return list;
   }
 
-  Future<List<HouseOfferModel>> getHousesFilteredMore(
-      String estadoSigla, String cidade, DocumentSnapshot doc) async {
+  Future<List<HouseOfferModel>> getHousesFilteredMore(String estadoSigla,
+      String cidade, int houseType, DocumentSnapshot doc) async {
     List<HouseOfferModel> list = [];
     try {
       QuerySnapshot snapshot = await _firestoreInstance
@@ -153,8 +157,10 @@ class OffersRepository {
           .where('type', isEqualTo: 1)
           .where('state', isEqualTo: estadoSigla)
           .where('city', isEqualTo: cidade)
+          .where('houseType', isEqualTo: houseType)
           .startAfterDocument(doc)
           .limit(10)
+          .orderBy('includedAt', descending: true)
           .get();
       snapshot.docs.forEach((element) {
         list.add(HouseOfferModel.fromJson(element));

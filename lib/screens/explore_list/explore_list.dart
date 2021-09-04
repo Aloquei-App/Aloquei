@@ -1,3 +1,4 @@
+import 'package:aloquei_app/core/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,25 +11,28 @@ import 'components/list_places.dart';
 class ExploreList extends StatelessWidget {
   final VoidCallback onBackPress;
   final ExploreModel exploreModel;
+  final UserModel user;
   const ExploreList(
-      {Key key, @required this.onBackPress, @required this.exploreModel});
+      {Key key,
+      @required this.onBackPress,
+      @required this.exploreModel,
+      @required this.user});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ExploreListBloc(exploreModel: exploreModel)
-        ..add(ExploreListStartedEvent()),
-      child:
-          ExploreListPage(onBackPress: onBackPress, exploreModel: exploreModel),
+      create: (context) =>
+          ExploreListBloc(exploreModel: exploreModel, user: user)
+            ..add(ExploreListStartedEvent()),
+      child: ExploreListPage(onBackPress: onBackPress),
     );
   }
 }
 
 class ExploreListPage extends StatefulWidget {
   final VoidCallback onBackPress;
-  final ExploreModel exploreModel;
-  const ExploreListPage(
-      {Key key, @required this.onBackPress, this.exploreModel})
+
+  const ExploreListPage({Key key, @required this.onBackPress})
       : super(key: key);
 
   @override

@@ -23,6 +23,10 @@ class ExplorePeopleBloc extends Bloc<ExplorePeopleEvent, ExplorePeopleState> {
 
   List<InterestModel> get interest => _interestList;
 
+  bool _noMore = false;
+
+  bool _running = false;
+
   List<InterestModel> _buildFilteredList(String search) {
     List<String> filtro = search.toLowerCase().split(' ');
     List<InterestModel> lista = [];
@@ -48,11 +52,19 @@ class ExplorePeopleBloc extends Bloc<ExplorePeopleEvent, ExplorePeopleState> {
         yield ShowListState();
       } else if (event is GetMoreItensEvent) {
         yield UpdateListState();
-        _interestBaseList += await _offersRepository.getInterestsFilteredMore(
-            exploreModel.estado.sigla,
-            exploreModel.city.nome,
-            _interestBaseList.last.doc);
-        _interestList = _interestBaseList;
+        int ini = _interestBaseList.length;
+        if (!_noMore && !_running) {
+          _running = true;
+          _interestBaseList += await _offersRepository.getInterestsFilteredMore(
+              exploreModel.estado.sigla,
+              exploreModel.city.nome,
+              _interestBaseList.last.doc);
+          _interestList = _interestBaseList;
+          if (_interestBaseList.length == ini) {
+            _noMore = true;
+          }
+          _running = false;
+        }
         yield ShowListState();
       } else if (event is SearchEvent) {
         yield UpdateListState();
@@ -62,8 +74,9 @@ class ExplorePeopleBloc extends Bloc<ExplorePeopleEvent, ExplorePeopleState> {
         }
         yield ShowListState();
       }
-    } catch (e) {
+    } catch (e, stack) {
       print(e);
+      print(stack);
       yield FailState(message: e.toString());
     }
   }

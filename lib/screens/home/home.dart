@@ -1,3 +1,4 @@
+import 'package:aloquei_app/core/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,10 +15,13 @@ import '../wishlists/wishlists.dart';
 import 'components/bottom_bar.dart';
 
 class Home extends StatelessWidget {
+  final UserModel user;
+
+  const Home({Key key, @required this.user}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeBloc()..add(HomeStartedEvent()),
+      create: (context) => HomeBloc(user: user)..add(HomeStartedEvent()),
       child: HomePage(),
     );
   }
@@ -70,6 +74,7 @@ class _HomePageState extends State<HomePage> {
                 onBackPress: () {
                   _homeBloc.add(OnTabChange(index: -1));
                 },
+                user: _homeBloc.user,
                 exploreModel: state.exploreModel,
               );
             } else if (state is ExplorePeopleState) {

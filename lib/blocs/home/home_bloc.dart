@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:aloquei_app/core/models/user_model.dart';
+
 import '../../core/models/cities_model.dart';
 import '../../core/models/estados_model.dart';
 import '../../resources/apis/ibge.dart';
@@ -16,7 +18,8 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc() : super(HomeInitial());
+  final UserModel user;
+  HomeBloc({@required this.user}) : super(HomeInitial());
 
   OffersRepository _offersRepository = OffersRepository();
   IbgeRepository _ibgeRepository = IbgeRepository();
@@ -83,7 +86,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           _currentTab = 0;
           _exploring = true;
           _isInterest = false;
-          if (_exploreModel != null) {
+          if (_exploreModel == null) {
             EstadosModel eModel = await _ibgeRepository.getRandomState();
             CitiesModel cModel = await _ibgeRepository.getRandomCity(eModel.id);
             _exploreModel = ExploreModel(

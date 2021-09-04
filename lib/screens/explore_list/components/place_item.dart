@@ -91,7 +91,7 @@ class _PlaceItemState extends State<PlaceItem> {
         Padding(
           padding: EdgeInsets.only(left: 5.0, top: 3, bottom: 20),
           child: Text(
-            "${widget.model.position.speed} km de distância",
+            "? km de distância",
             style: TextStyle(
                 color: Colors.black54,
                 fontWeight: FontWeight.normal,
