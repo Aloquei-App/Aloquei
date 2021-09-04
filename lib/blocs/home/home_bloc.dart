@@ -112,8 +112,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           yield ExplorePeopleState(exploreModel: _exploreModel);
         }
       }
-    } catch (e) {
+    } catch (e, stack) {
       print(e);
+      print(stack);
       yield FailState(message: "Algo saiu errado, tente mais tarde");
     }
   }

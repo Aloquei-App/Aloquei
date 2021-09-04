@@ -23,7 +23,7 @@ class UserModel {
     email = data['email'] != null ? data['email'] : '';
     isAdmin = data['isAdmin'] != null ? data['isAdmin'] : false;
     gender = data['gender'] != null ? data['gender'] : '';
-    favList = data['favList'].cast<String>() ?? [];
+    favList = data['favList'] != null ? data['favList'].cast<String>() : [];
   }
 
   Map<String, dynamic> toMap() {
