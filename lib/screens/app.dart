@@ -10,8 +10,9 @@ import 'help/help_page.dart';
 import 'home/home.dart';
 import 'hosting/host_page_type.dart';
 import 'inbox/inbox.dart';
+
 import 'interest/components/interest_page_data.dart';
-import 'interest/interest_page_desc.dart';
+
 import 'interest/interest_page_pet.dart';
 import 'login/login_page.dart';
 import 'person_list/person_list.dart';
@@ -19,6 +20,7 @@ import 'personal_info/personal_info.dart';
 import 'profile/profile.dart';
 import 'rental_list/rental_list.dart';
 import 'search/search.dart';
+import 'signup/signup.dart';
 import 'splash/splash.dart';
 import 'terms/terms_page.dart';
 import 'wishlists/wishlists.dart';
@@ -101,9 +103,9 @@ class _AppPageState extends State<AppPage> {
           },
           builder: (context, state) {
             if (state is AuthenticatedState) {
-              return Home();
+              return Home(user: state.userModel);
             } else if (state is SignupPressedState) {
-              return InterestPageDesc();
+              return Signup();
             } else if (state is UnauthenticatedState) {
               return LoginPage();
             } else {

@@ -4,7 +4,12 @@ import 'package:flutter/material.dart';
 class ExploreAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback action;
   final VoidCallback onBackPress;
-  ExploreAppBar({Key key, @required this.action, this.onBackPress})
+  final Function onTextChanged;
+  ExploreAppBar(
+      {Key key,
+      @required this.action,
+      @required this.onBackPress,
+      @required this.onTextChanged})
       : super(key: key);
 
   @override
@@ -29,11 +34,14 @@ class ExploreAppBar extends StatelessWidget implements PreferredSizeWidget {
             borderRadius: BorderRadius.circular(20)),
         child: TextFormField(
           decoration: InputDecoration(
-            labelText: "Insira uma moradia ou interesse",
+            labelText: "Busque um interesse",
             labelStyle: TextStyle(fontSize: 20),
             border: InputBorder.none,
             contentPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 1),
           ),
+          onChanged: (value) {
+            onTextChanged(value);
+          },
         ),
       ),
       actions: [

@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:random_color/random_color.dart';
 
 import 'offers_model.dart';
 
@@ -11,6 +14,7 @@ class InterestModel extends OffersModel {
   bool likesPets;
   String socialNetworkLink;
   String university;
+  Color color;
 
   InterestModel(
       {this.desiredCourse,
@@ -45,6 +49,10 @@ class InterestModel extends OffersModel {
 
   InterestModel.fromJson(DocumentSnapshot doc) {
     Map<String, dynamic> json = doc.data();
+    RandomColor _randomColor = RandomColor();
+    color = _randomColor.randomColor(
+      colorBrightness: ColorBrightness.light,
+    );
     doc = doc;
     key = doc.id;
     city = json['city'] ?? "";
