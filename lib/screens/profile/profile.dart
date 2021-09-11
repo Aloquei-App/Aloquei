@@ -1,14 +1,18 @@
-import 'package:aloquei_app/screens/core/navigation.dart';
-import '../../blocs/auth/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../../blocs/auth/auth_bloc.dart';
+import '../../core/models/user_model.dart';
+import '../core/navigation.dart';
 import 'components/default_button.dart';
 import 'components/default_subtitle.dart';
 import 'components/username_and_profile_button.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key key}) : super(key: key);
+  final UserModel user;
+
+  const ProfilePage({Key key, this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +21,9 @@ class ProfilePage extends StatelessWidget {
       body: ListView(
         children: [
           UsernameAndProfileButton(
-            onTap: () {},
+            onTap: () => navigateToPersonalData(context),
             urlImage: 'assets/prof.png',
-            username: "Username",
+            username: user.nome,
           ),
           DefaultSubtitle(
             text: 'CONFIGURAÇÕES DE CONTA',
@@ -30,16 +34,6 @@ class ProfilePage extends StatelessWidget {
             onpressed: () {
               navigateToPersonalData(context);
             },
-          ),
-          DefaultButton(
-            text: 'Notificações',
-            icon: FontAwesomeIcons.bell,
-            onpressed: () {},
-          ),
-          DefaultButton(
-            text: 'Viajar para o trabalho',
-            icon: FontAwesomeIcons.building,
-            onpressed: () {},
           ),
           DefaultSubtitle(
             text: 'HOSPEDAGEM',
@@ -58,25 +52,12 @@ class ProfilePage extends StatelessWidget {
               navigateToInterestPage(context);
             },
           ),
-          DefaultSubtitle(
-            text: 'ATENDIMENTO',
-          ),
-          DefaultButton(
-            text: 'Como funciona o Aloquei',
-            icon: FontAwesomeIcons.globe,
-            onpressed: () {},
-          ),
           DefaultButton(
             text: 'Obtenha ajuda',
             icon: FontAwesomeIcons.question,
             onpressed: () {
               navigateToHelpPage(context);
             },
-          ),
-          DefaultButton(
-            text: 'Envie-nos seu feedback',
-            icon: FontAwesomeIcons.commentAlt,
-            onpressed: () {},
           ),
           DefaultSubtitle(
             text: 'JURÍDICO',

@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:aloquei_app/resources/user/firebase_user.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 
 import '../../core/errors/auth_error.dart';
@@ -12,30 +14,20 @@ part 'profile_event.dart';
 part 'profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
+  final User user;
+  final UserModel userModel;
+  ProfileBloc({this.userModel, this.user}) : super(ProfileInitial());
+
+  final UsersRepository usersRepository = UsersRepository();
   final AuthRepository authRepository = AuthRepository();
-  final UserModel user;
 
-  String getName() {
-    return user.nome;
-  }
+  String get getEmail => userModel.email;
 
-  String getLastName() {
-    return user.sobrenome;
-  }
+  String get getNome => userModel.nome;
 
-  String getMail() {
-    return user.email;
-  }
+  String get getLastName => userModel.sobrenome;
 
-  bool getIsAdmin() {
-    return user.isAdmin;
-  }
-
-  String getGender() {
-    return user.gender;
-  }
-
-  ProfileBloc({this.user}) : super(ProfileInitial());
+  String get getGender => userModel.gender;
 
   @override
   Stream<ProfileState> mapEventToState(

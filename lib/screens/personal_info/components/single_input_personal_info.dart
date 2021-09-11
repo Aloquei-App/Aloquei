@@ -4,12 +4,16 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class SingleInputPersonalInfo extends StatelessWidget {
   final TextEditingController nameController;
   final String labelText;
+  final Function onChanged;
   final String initialValue;
+  final Function validator;
   const SingleInputPersonalInfo({
     Key key,
     this.nameController,
     this.labelText,
     this.initialValue,
+    this.onChanged,
+    this.validator,
   }) : super(key: key);
 
   @override
@@ -21,6 +25,8 @@ class SingleInputPersonalInfo extends StatelessWidget {
         children: [
           Text(labelText),
           TextFormField(
+            onChanged: onChanged,
+            validator: validator,
             controller: nameController,
             initialValue: initialValue,
             //Mudar a string para o nome que estiver no banco de dados.
