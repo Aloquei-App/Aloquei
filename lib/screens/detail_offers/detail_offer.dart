@@ -1,3 +1,5 @@
+import 'package:aloquei_app/core/models/house_offer_model.dart';
+
 import '../core/colors.dart';
 
 import '../login/components/title_offers.dart';
@@ -16,14 +18,7 @@ import 'components/elements.dart';
 import 'components/text_offers.dart';
 import 'components/row_components.dart';
 
-class DetailPage extends StatelessWidget {
-  final List<String> imageList = [
-    "https://www.voltaaomundo.pt/files/2017/07/da6741e5_original-741x486_c.jpg",
-    "https://www.voltaaomundo.pt/files/2017/07/1-18-741x486_c.jpg",
-    "https://www.voltaaomundo.pt/files/2017/07/2-18-741x486_c.jpg",
-    "https://www.voltaaomundo.pt/files/2017/07/3-17-741x486_c.jpg"
-  ];
-  final String title = "Tunico House seu espaco de paz";
+class OfferDetail extends StatelessWidget {
   final String text = 'Tunico house (hospedado por Tunico)';
   final String textDesc = 'Entire residential home';
   final String descriptionOffer = 'Oriental, Rio Grande do Sul Brasil';
@@ -43,6 +38,8 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final HouseOfferModel houseModel =
+        ModalRoute.of(context).settings.arguments;
     return Scaffold(
         backgroundColor: backgroundColor,
         extendBodyBehindAppBar: true,
@@ -52,12 +49,12 @@ class DetailPage extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  CarouselOffers(imageList),
+                  CarouselOffers(houseModel.images),
                   CustomAppBar(),
                 ],
               ),
-              TitleOffers(title),
-              DescriptionOffersGrey(descriptionOffer),
+              TitleOffers(houseModel.name),
+              DescriptionOffersGrey(houseModel.address),
               Divide(),
               TextOffers(text),
               DescriptionOffers(textDesc),

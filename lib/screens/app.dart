@@ -5,6 +5,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import '../blocs/auth/auth_bloc.dart';
 import 'core/snack_bar.dart';
+import 'detail_offers/detail_offer.dart';
 import 'explore/explore.dart';
 import 'help/help_page.dart';
 import 'home/home.dart';
@@ -129,6 +130,7 @@ class _AppPageState extends State<AppPage> {
         '/personalData': (context) => PersonalInfoPage(),
         '/termsData': (context) => TermsofServicePage(),
         '/helpPage': (context) => HelpPage(),
+        '/offerDetail': (context) => OfferDetail()
       },
       initialRoute: '/',
     );
