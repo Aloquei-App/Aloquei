@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SingleInputPersonalInfo extends StatelessWidget {
-  final TextEditingController nameController;
   final String labelText;
+  final bool readOnly;
   final Function onChanged;
   final String initialValue;
   final Function validator;
   const SingleInputPersonalInfo({
     Key key,
-    this.nameController,
     this.labelText,
     this.initialValue,
     this.onChanged,
     this.validator,
+    this.readOnly = false,
   }) : super(key: key);
 
   @override
@@ -25,6 +25,7 @@ class SingleInputPersonalInfo extends StatelessWidget {
         children: [
           Text(labelText),
           TextFormField(
+            readOnly: readOnly,
             onChanged: onChanged,
             validator: validator,
             initialValue: initialValue,

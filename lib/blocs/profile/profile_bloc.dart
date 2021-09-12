@@ -20,20 +20,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final UsersRepository usersRepository = UsersRepository();
   final AuthRepository authRepository = AuthRepository();
 
-  String _name, _lastname, _email, _gender = '';
-
-  String get getEmail => userModel.email;
-
-  String get getName => userModel.name;
-
-  String get getLastname => userModel.name;
-
-  String get getGender => userModel.gender;
-
-  setName(String value) => _name = value.trim();
-  setEmail(String value) => _email = value.trim();
-  setLastname(String value) => _lastname = value.trim();
-  setGender(String value) => _gender = value.trim();
+  setName(String value) => userModel.name = value.trim();
+  setEmail(String value) => userModel.email = value.trim();
+  setLastname(String value) => userModel.lastname = value.trim();
+  setGender(String value) => userModel.gender = value.trim();
 
   @override
   Stream<ProfileState> mapEventToState(
@@ -45,9 +35,13 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     } else if (event is SubmitEvent) {
       yield LoadingState();
       try {
-        await user.updateDisplayName(_name);
+        await user.updateDisplayName(userModel.name);
         bool inserted = await usersRepository.updateUser(
-            user.uid, _name, _lastname, _email, _gender);
+            user.uid,
+            userModel.name,
+            userModel.lastname,
+            userModel.email,
+            userModel.gender);
         if (inserted) {
           yield LoadingEndState();
           yield SuccessState(message: 'Dados atualizados');

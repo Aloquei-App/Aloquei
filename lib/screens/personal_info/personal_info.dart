@@ -106,28 +106,30 @@ class ProfileEditingForm extends StatelessWidget {
           PersonalInfoTitle(),
           SingleInputPersonalInfo(
             labelText: "Nome",
-            initialValue: profileBloc.getName,
+            initialValue: profileBloc.userModel.name,
             onChanged: (value) {
               profileBloc.setName(value);
             },
           ),
           SingleInputPersonalInfo(
             labelText: "Sobrenome",
-            initialValue: profileBloc.getLastname,
+            initialValue: profileBloc.userModel.lastname,
             onChanged: (value) {
               profileBloc.setLastname(value);
             },
           ),
           GenderInput(
-            initGender: profileBloc.getGender,
+            initGender: profileBloc.userModel.gender,
             onChanged: (value) {
               profileBloc.setGender(value);
               Navigator.pop(context);
+              profileBloc.add(ScreenStarded());
             },
           ),
           SingleInputPersonalInfo(
+            readOnly: true,
             labelText: "Email",
-            initialValue: profileBloc.getEmail,
+            initialValue: profileBloc.userModel.email,
             onChanged: (value) {
               profileBloc.setEmail(value);
             },

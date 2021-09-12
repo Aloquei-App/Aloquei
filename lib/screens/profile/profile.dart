@@ -11,7 +11,6 @@ import 'components/username_and_profile_button.dart';
 
 class ProfilePage extends StatelessWidget {
   final UserModel user;
-
   const ProfilePage({Key key, this.user}) : super(key: key);
 
   @override
