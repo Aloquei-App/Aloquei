@@ -43,16 +43,16 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
             userModel.email,
             userModel.gender);
         if (inserted) {
-          yield LoadingEndState();
+          yield LoadingState();
           yield SuccessState(message: 'Dados atualizados');
         } else {
-          yield LoadingEndState();
+          yield LoadingState();
           yield FailState(
               message:
                   'Seu usuário não foi atualizado, entre em contato com o suporte!');
         }
       } catch (e) {
-        yield LoadingEndState();
+        yield LoadingState();
         yield FailState(message: authErrorHandler(e));
       }
     } else if (event is SendPasswordRecover) {

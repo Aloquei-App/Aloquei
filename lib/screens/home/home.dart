@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
             } else if (state is InterestsState) {
               return PersonList();
             } else if (state is ProfileState) {
-              return ProfilePage(user: _homeBloc.user);
+              return ProfilePage();
             } else if (state is ExploreListState) {
               return ExploreList(
                 onBackPress: () {

@@ -3,26 +3,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../blocs/auth/auth_bloc.dart';
-import '../../core/models/user_model.dart';
 import '../core/navigation.dart';
 import 'components/default_button.dart';
 import 'components/default_subtitle.dart';
 import 'components/username_and_profile_button.dart';
 
 class ProfilePage extends StatelessWidget {
-  final UserModel user;
-  const ProfilePage({Key key, this.user}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
+    AuthBloc profileBloc = BlocProvider.of<AuthBloc>(context);
     return Scaffold(
       body: ListView(
         children: [
           UsernameAndProfileButton(
             onTap: () => navigateToPersonalData(context),
             urlImage: 'assets/prof.png',
-            username: user.name,
+            username: profileBloc.getUserModel.name,
           ),
           DefaultSubtitle(
             text: 'CONFIGURAÇÕES DE CONTA',
