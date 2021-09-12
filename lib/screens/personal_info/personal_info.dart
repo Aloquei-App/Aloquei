@@ -1,9 +1,12 @@
-import 'package:aloquei_app/blocs/profile/profile_bloc.dart';
-import 'package:aloquei_app/core/models/user_model.dart';
+import 'package:aloquei_app/core/validations.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../blocs/profile/profile_bloc.dart';
+import '../../core/models/user_model.dart';
+import '../core/loading.dart';
+import '../core/snack_bar.dart';
 import 'components/app_bar_personal_info.dart';
 import 'components/gender_personal_info.dart';
 import 'components/single_input_personal_info.dart';
@@ -45,26 +48,89 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
   @override
   Widget build(BuildContext context) {
     profileBloc = BlocProvider.of<ProfileBloc>(context);
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
     return Scaffold(
-      appBar: PersonalInfoAppBar(),
-      body: ListView(
+      appBar: PersonalInfoAppBar(
+        onTap: () {
+          if (validateAndSave(formKey)) {
+            profileBloc.add(SubmitEvent());
+          }
+        },
+      ),
+      body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 25),
+        child: SingleChildScrollView(
+          child: BlocListener<ProfileBloc, ProfileState>(
+            listener: (contextListener, state) {
+              if (state is SuccessState) {
+                buildSuccesSnackBar(contextListener, state.message);
+              } else if (state is FailState) {
+                buildWarningSnackBar(contextListener, state.message);
+              }
+            },
+            child: BlocBuilder<ProfileBloc, ProfileState>(
+              builder: (context, state) {
+                if (state is LoadingState) {
+                  return Loading();
+                } else {
+                  return ProfileEditingForm(
+                    formKey: formKey,
+                    profileBloc: profileBloc,
+                  );
+                }
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ProfileEditingForm extends StatelessWidget {
+  const ProfileEditingForm({
+    Key key,
+    @required this.formKey,
+    @required this.profileBloc,
+  }) : super(key: key);
+
+  final GlobalKey<FormState> formKey;
+  final ProfileBloc profileBloc;
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: formKey,
+      child: Column(
         children: [
           PersonalInfoTitle(),
           SingleInputPersonalInfo(
             labelText: "Nome",
-            initialValue: profileBloc.userModel.nome,
+            initialValue: profileBloc.getName,
+            onChanged: (value) {
+              profileBloc.setName(value);
+            },
           ),
           SingleInputPersonalInfo(
             labelText: "Sobrenome",
-            initialValue: profileBloc.userModel.sobrenome,
+            initialValue: profileBloc.getLastname,
+            onChanged: (value) {
+              profileBloc.setLastname(value);
+            },
           ),
           GenderInput(
-            gender: profileBloc.userModel.gender,
+            initGender: profileBloc.getGender,
+            onChanged: (value) {
+              profileBloc.setGender(value);
+              Navigator.pop(context);
+            },
           ),
           SingleInputPersonalInfo(
             labelText: "Email",
-            initialValue: profileBloc.userModel.email,
+            initialValue: profileBloc.getEmail,
+            onChanged: (value) {
+              profileBloc.setEmail(value);
+            },
           )
         ],
       ),

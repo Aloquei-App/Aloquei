@@ -23,7 +23,7 @@ class ProfilePage extends StatelessWidget {
           UsernameAndProfileButton(
             onTap: () => navigateToPersonalData(context),
             urlImage: 'assets/prof.png',
-            username: user.nome,
+            username: user.name,
           ),
           DefaultSubtitle(
             text: 'CONFIGURAÇÕES DE CONTA',

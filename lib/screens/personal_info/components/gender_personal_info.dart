@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
 
-enum Genders { Masculino, Feminino, Outro }
-
 class GenderInput extends StatefulWidget {
-  final String gender;
-  const GenderInput({Key key, this.gender}) : super(key: key);
+  final String initGender;
+  final Function onChanged;
+
+  const GenderInput({
+    Key key,
+    this.initGender,
+    this.onChanged,
+  }) : super(key: key);
   // @override
-  State<GenderInput> createState() => _GenderInputState(gender);
+  State<GenderInput> createState() => _GenderInputState();
 }
 
 class _GenderInputState extends State<GenderInput> {
-  final String gender;
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
-  Genders _character = Genders.Masculino;
-
-  _GenderInputState(this.gender);
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,7 +27,7 @@ class _GenderInputState extends State<GenderInput> {
               showInformationDialog(context);
             },
             readOnly: true,
-            initialValue: gender,
+            initialValue: widget.initGender,
           ),
         ],
       ),
@@ -42,63 +39,45 @@ class _GenderInputState extends State<GenderInput> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          insetPadding: EdgeInsets.symmetric(vertical: 260),
-          content: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Gênero"),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Masculino"),
-                    Radio<Genders>(
-                      value: Genders.Masculino,
-                      groupValue: _character,
-                      onChanged: (Genders value) {
-                        setState(() {
-                          _character = value;
-                          Navigator.of(context).pop();
-                        });
-                      },
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Feminino"),
-                    Radio<Genders>(
-                      value: Genders.Feminino,
-                      groupValue: _character,
-                      onChanged: (Genders value) {
-                        setState(() {
-                          _character = value;
-                          Navigator.of(context).pop();
-                        });
-                      },
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Outro"),
-                    Radio<Genders>(
-                      value: Genders.Outro,
-                      groupValue: _character,
-                      onChanged: (Genders value) {
-                        setState(() {
-                          _character = value;
-                          Navigator.of(context).pop();
-                        });
-                      },
-                    ),
-                  ],
-                ),
-              ],
-            ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Gênero"),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Masculino"),
+                  Radio(
+                    value: "Masculino",
+                    groupValue: widget.initGender,
+                    onChanged: widget.onChanged,
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Feminino"),
+                  Radio(
+                    value: "Feminino",
+                    groupValue: widget.initGender,
+                    onChanged: widget.onChanged,
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Outro"),
+                  Radio(
+                    value: "Outro",
+                    groupValue: widget.initGender,
+                    onChanged: widget.onChanged,
+                  ),
+                ],
+              ),
+            ],
           ),
         );
       },
