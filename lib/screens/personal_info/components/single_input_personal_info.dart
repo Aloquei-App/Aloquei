@@ -27,7 +27,6 @@ class SingleInputPersonalInfo extends StatelessWidget {
           TextFormField(
             onChanged: onChanged,
             validator: validator,
-            controller: nameController,
             initialValue: initialValue,
             //Mudar a string para o nome que estiver no banco de dados.
             decoration: InputDecoration(
