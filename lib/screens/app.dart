@@ -131,7 +131,8 @@ class _AppPageState extends State<AppPage> {
             ),
         '/termsData': (context) => TermsofServicePage(),
         '/helpPage': (context) => HelpPage(),
-        '/offerDetail': (context) => OfferDetail()
+        '/offerDetail': (context) =>
+            OfferDetail(userModel: authBloc.getUserModel)
       },
       initialRoute: '/',
     );

@@ -1,7 +1,10 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:aloquei_app/blocs/offer_detail/offer_detail_bloc.dart';
+import 'package:aloquei_app/core/models/user_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share/share.dart';
@@ -23,11 +26,48 @@ import 'components/row_components.dart';
 import 'components/text_offers.dart';
 
 class OfferDetail extends StatelessWidget {
-  final ScreenshotController _screenshotController = ScreenshotController();
+  final UserModel userModel;
+  const OfferDetail({Key key, this.userModel}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final HouseOfferModel houseModel =
         ModalRoute.of(context).settings.arguments;
+    return BlocProvider(
+      create: (context) =>
+          OfferDetailBloc(user: userModel, offerKey: houseModel.key)
+            ..add(ScreenStarted()),
+      child: OfferDetailPage(houseModel: houseModel),
+    );
+  }
+}
+
+class OfferDetailPage extends StatefulWidget {
+  final HouseOfferModel houseModel;
+
+  OfferDetailPage({Key key, this.houseModel}) : super(key: key);
+
+  @override
+  _OfferDetailPageState createState() => _OfferDetailPageState();
+}
+
+class _OfferDetailPageState extends State<OfferDetailPage> {
+  final ScreenshotController _screenshotController = ScreenshotController();
+  OfferDetailBloc _detailBloc;
+  @override
+  void initState() {
+    _detailBloc = BlocProvider.of<OfferDetailBloc>(context);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _detailBloc.close();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Screenshot(
       controller: _screenshotController,
       child: Scaffold(
@@ -39,10 +79,8 @@ class OfferDetail extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  CarouselOffers(houseModel.images),
+                  CarouselOffers(widget.houseModel.images),
                   CustomAppBar(
-                    favorite: true,
-                    onFavoritePressed: () {},
                     onSharePressed: () async {
                       await _screenshotController
                           .capture(delay: const Duration(milliseconds: 5))
@@ -62,39 +100,39 @@ class OfferDetail extends StatelessWidget {
                   ),
                 ],
               ),
-              TitleOffers(houseModel.name),
+              TitleOffers(widget.houseModel.name),
               DescriptionOffersGrey(
-                  "${houseModel.address} - ${houseModel.zipCode} - ${houseModel.city} - ${houseModel.state}"),
+                  "${widget.houseModel.address} - ${widget.houseModel.zipCode} - ${widget.houseModel.city} - ${widget.houseModel.state}"),
               Divide(),
               TextOffers(
-                  "${houseModel.descHouseType} alocado por ${houseModel.postUserName}"),
-              DescriptionOffers(
-                  houseModel.descHouseType, houseModel.mail, houseModel.phone),
+                  "${widget.houseModel.descHouseType} alocado por ${widget.houseModel.postUserName}"),
+              DescriptionOffers(widget.houseModel.descHouseType,
+                  widget.houseModel.mail, widget.houseModel.phone),
               Components(
-                houseModel.maxTenants,
-                houseModel.qtdRooms,
-                houseModel.roomUsersQtd,
-                houseModel.restroom,
+                widget.houseModel.maxTenants,
+                widget.houseModel.qtdRooms,
+                widget.houseModel.roomUsersQtd,
+                widget.houseModel.restroom,
               ),
               Divide(),
               Elements(Icons.bed, 'Quarto',
-                  'O quarto ofertado é ${houseModel.typeRoom}'),
-              houseModel.garage > 0
+                  'O quarto ofertado é ${widget.houseModel.typeRoom}'),
+              widget.houseModel.garage > 0
                   ? Elements(Icons.garage, 'Garagem',
-                      'A casa tem garagem com ${houseModel.garage} vaga(s)')
+                      'A casa tem garagem com ${widget.houseModel.garage} vaga(s)')
                   : Container(),
               Elements(Icons.kitchen, 'Cozinha',
-                  'A casa tem ${houseModel.kitchen} cozinha(s)'),
+                  'A casa tem ${widget.houseModel.kitchen} cozinha(s)'),
               Elements(Icons.living_outlined, 'Sala',
-                  'A casa tem ${houseModel.livinRoom} sala(s)'),
-              houseModel.courtyard
+                  'A casa tem ${widget.houseModel.livinRoom} sala(s)'),
+              widget.houseModel.courtyard
                   ? Elements(Icons.grass_sharp, 'Pátio',
                       'Você tem um pátio para apreciar')
                   : Container(),
               Elements(Icons.chair_outlined, 'Mobília',
-                  'A casa se encontra ${houseModel.furnished}'),
+                  'A casa se encontra ${widget.houseModel.furnished}'),
               Divide(),
-              Description(houseModel.observations),
+              Description(widget.houseModel.observations),
               Divide(),
               TextOffers('Universidades próximas'),
               // TODO colocar as universidades próximas listadas
@@ -116,15 +154,15 @@ class OfferDetail extends StatelessWidget {
               TextOffers('Itens inclusos no valor'),
               Column(
                   children: List.generate(
-                      houseModel.includedOnValue.length,
+                      widget.houseModel.includedOnValue.length,
                       (index) => ContaimElement(Icons.star_border,
-                          houseModel.includedOnValue[index])))
+                          widget.houseModel.includedOnValue[index])))
             ],
           ),
         ),
         bottomNavigationBar: BottomNavigation(
-          value: houseModel.valueMonth,
-          condominio: houseModel.valueCondominium,
+          value: widget.houseModel.valueMonth,
+          condominio: widget.houseModel.valueCondominium,
         ),
       ),
     );

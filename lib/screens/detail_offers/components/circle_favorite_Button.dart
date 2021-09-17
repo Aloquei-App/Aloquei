@@ -17,7 +17,7 @@ class CircleFavoriteButton extends StatelessWidget {
               shape: CircleBorder(),
             ),
             child: IconButton(
-              icon: Icon(favState ? Icons.favorite_border : Icons.favorite),
+              icon: Icon(favState ? Icons.favorite : Icons.favorite_border),
               color: Colors.black,
               onPressed: () => onPressed(),
             ),
