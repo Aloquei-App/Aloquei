@@ -1,4 +1,4 @@
-import 'package:aloquei_app/blocs/offer_detail/offer_detail_bloc.dart';
+import '../../../blocs/offer_detail/offer_detail_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

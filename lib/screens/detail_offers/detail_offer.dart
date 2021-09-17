@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:aloquei_app/blocs/offer_detail/offer_detail_bloc.dart';
-import 'package:aloquei_app/core/models/user_model.dart';
+import '../../blocs/offer_detail/offer_detail_bloc.dart';
+import '../../core/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';

@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import '../../core/models/interest_offer_model.dart';
-import '../../resources/offers/firestore_offers.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 import '../../core/models/explore_model.dart';
+import '../../core/models/interest_offer_model.dart';
+import '../../resources/offers/firestore_offers.dart';
 
 part 'explore_people_event.dart';
 part 'explore_people_state.dart';

@@ -1,5 +1,6 @@
-import '../../core/models/house_offer_model.dart';
 import 'package:flutter/material.dart';
+
+import '../../core/models/house_offer_model.dart';
 
 void navigateToSearch(BuildContext context, Function func) {
   Navigator.of(context).pushNamed('/search', arguments: func);
