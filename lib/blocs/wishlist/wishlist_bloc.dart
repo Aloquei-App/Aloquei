@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:aloquei_app/core/models/user_model.dart';
-import 'package:aloquei_app/resources/user/firebase_user.dart';
+import '../../core/models/user_model.dart';
+import '../../resources/user/firebase_user.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';

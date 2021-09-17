@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:aloquei_app/resources/user/firebase_user.dart';
+import '../../resources/user/firebase_user.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';

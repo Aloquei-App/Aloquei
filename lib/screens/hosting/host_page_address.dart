@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+
 import '../core/forms/input_value.dart';
 import 'components/host_continue_button.dart';
 import 'host_page_guest_number.dart';
-import 'package:flutter/material.dart';
 
 class HostPageAddress extends StatelessWidget {
   const HostPageAddress({Key key}) : super(key: key);
