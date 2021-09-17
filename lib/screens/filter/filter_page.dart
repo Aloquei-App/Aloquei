@@ -20,7 +20,9 @@ class FilterPage extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          FilterAppBar(onpressed: () {}),
+          FilterAppBar(onpressed: () {
+            Navigator.pop(context);
+          }),
           FilterTitle(titleText: 'Tipo de lugar'),
           FilterCheckBoxText(
               checkBoxTitle: 'Espaço Inteiro',

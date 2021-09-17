@@ -1,4 +1,5 @@
 import 'package:aloquei_app/core/models/user_model.dart';
+import 'package:aloquei_app/screens/filter/filter_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -68,13 +69,19 @@ class _ExploreListState extends State<ExploreListPage>
     }
   }
 
+  void _show(BuildContext ctx) {
+    showModalBottomSheet(
+        isScrollControlled: true,
+        elevation: 10,
+        context: ctx,
+        builder: (ctx) => FilterPage());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: ExploreAppBar(
-        action: () {
-          // TODO show filter
-        },
+        action: () => _show(context),
         onTextChanged: (value) {
           _exploreListBloc.add(SearchEvent(search: value));
         },
