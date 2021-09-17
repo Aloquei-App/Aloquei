@@ -5,6 +5,13 @@ import 'circle_favorite_Button.dart';
 import 'circle_share_Button.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final VoidCallback onSharePressed;
+  final VoidCallback onFavoritePressed;
+  final bool favorite;
+
+  const CustomAppBar(
+      {Key key, this.onSharePressed, this.onFavoritePressed, this.favorite})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -17,11 +24,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         Padding(
           padding: EdgeInsets.only(right: 10.0),
-          child: CircleShareButton(),
+          child: CircleShareButton(onPressed: onSharePressed),
         ),
         Padding(
           padding: EdgeInsets.only(right: 10.0),
-          child: CircleFavoriteButton(),
+          child: CircleFavoriteButton(
+              favState: favorite, onPressed: onFavoritePressed),
         ),
       ],
     );

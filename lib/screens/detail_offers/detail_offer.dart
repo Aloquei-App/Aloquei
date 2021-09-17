@@ -1,4 +1,10 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:screenshot/screenshot.dart';
+import 'package:share/share.dart';
 
 import '../../core/models/house_offer_model.dart';
 import '../core/colors.dart';
@@ -17,11 +23,14 @@ import 'components/row_components.dart';
 import 'components/text_offers.dart';
 
 class OfferDetail extends StatelessWidget {
+  final ScreenshotController _screenshotController = ScreenshotController();
   @override
   Widget build(BuildContext context) {
     final HouseOfferModel houseModel =
         ModalRoute.of(context).settings.arguments;
-    return Scaffold(
+    return Screenshot(
+      controller: _screenshotController,
+      child: Scaffold(
         backgroundColor: backgroundColor,
         extendBodyBehindAppBar: true,
         body: SingleChildScrollView(
@@ -31,7 +40,26 @@ class OfferDetail extends StatelessWidget {
               Stack(
                 children: [
                   CarouselOffers(houseModel.images),
-                  CustomAppBar(),
+                  CustomAppBar(
+                    favorite: true,
+                    onFavoritePressed: () {},
+                    onSharePressed: () async {
+                      await _screenshotController
+                          .capture(delay: const Duration(milliseconds: 5))
+                          .then((Uint8List image) async {
+                        if (image != null) {
+                          final directory =
+                              await getApplicationDocumentsDirectory();
+                          final imagePath =
+                              await File('${directory.path}/image.png')
+                                  .create();
+                          await imagePath.writeAsBytes(image);
+
+                          await Share.shareFiles([imagePath.path]);
+                        }
+                      });
+                    },
+                  ),
                 ],
               ),
               TitleOffers(houseModel.name),
@@ -97,6 +125,8 @@ class OfferDetail extends StatelessWidget {
         bottomNavigationBar: BottomNavigation(
           value: houseModel.valueMonth,
           condominio: houseModel.valueCondominium,
-        ));
+        ),
+      ),
+    );
   }
 }
