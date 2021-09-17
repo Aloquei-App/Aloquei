@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 
-class GenderInput extends StatefulWidget {
-  final String initGender;
+class GenderInput extends StatelessWidget {
+  final TextEditingController controller;
   final Function onChanged;
 
   const GenderInput({
     Key key,
-    this.initGender,
+    this.controller,
     this.onChanged,
   }) : super(key: key);
-  // @override
-  State<GenderInput> createState() => _GenderInputState();
-}
 
-class _GenderInputState extends State<GenderInput> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,7 +23,7 @@ class _GenderInputState extends State<GenderInput> {
               showInformationDialog(context);
             },
             readOnly: true,
-            initialValue: widget.initGender,
+            controller: controller,
           ),
         ],
       ),
@@ -50,8 +46,8 @@ class _GenderInputState extends State<GenderInput> {
                   Text("Masculino"),
                   Radio(
                     value: "Masculino",
-                    groupValue: widget.initGender,
-                    onChanged: widget.onChanged,
+                    groupValue: controller.text,
+                    onChanged: onChanged,
                   ),
                 ],
               ),
@@ -61,8 +57,8 @@ class _GenderInputState extends State<GenderInput> {
                   Text("Feminino"),
                   Radio(
                     value: "Feminino",
-                    groupValue: widget.initGender,
-                    onChanged: widget.onChanged,
+                    groupValue: controller.text,
+                    onChanged: onChanged,
                   ),
                 ],
               ),
@@ -72,8 +68,8 @@ class _GenderInputState extends State<GenderInput> {
                   Text("Outro"),
                   Radio(
                     value: "Outro",
-                    groupValue: widget.initGender,
-                    onChanged: widget.onChanged,
+                    groupValue: controller.text,
+                    onChanged: onChanged,
                   ),
                 ],
               ),

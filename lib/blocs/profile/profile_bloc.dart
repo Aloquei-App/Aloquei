@@ -20,6 +20,11 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final UsersRepository usersRepository = UsersRepository();
   final AuthRepository authRepository = AuthRepository();
 
+  get name => userModel.name;
+  get email => userModel.email;
+  get lastname => userModel.lastname;
+  get gender => userModel.gender;
+
   setName(String value) => userModel.name = value.trim();
   setEmail(String value) => userModel.email = value.trim();
   setLastname(String value) => userModel.lastname = value.trim();

@@ -88,7 +88,7 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
 }
 
 class ProfileEditingForm extends StatelessWidget {
-  const ProfileEditingForm({
+  ProfileEditingForm({
     Key key,
     @required this.formKey,
     @required this.profileBloc,
@@ -96,9 +96,10 @@ class ProfileEditingForm extends StatelessWidget {
 
   final GlobalKey<FormState> formKey;
   final ProfileBloc profileBloc;
-
+  final TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    _controller.text = profileBloc.gender;
     return Form(
       key: formKey,
       child: Column(
@@ -106,22 +107,23 @@ class ProfileEditingForm extends StatelessWidget {
           PersonalInfoTitle(),
           SingleInputPersonalInfo(
             labelText: "Nome",
-            initialValue: profileBloc.userModel.name,
+            initialValue: profileBloc.name,
             onChanged: (value) {
               profileBloc.setName(value);
             },
           ),
           SingleInputPersonalInfo(
             labelText: "Sobrenome",
-            initialValue: profileBloc.userModel.lastname,
+            initialValue: profileBloc.lastname,
             onChanged: (value) {
               profileBloc.setLastname(value);
             },
           ),
           GenderInput(
-            initGender: profileBloc.userModel.gender,
+            controller: _controller,
             onChanged: (value) {
               profileBloc.setGender(value);
+              _controller.text = value;
               Navigator.pop(context);
               profileBloc.add(ScreenStarded());
             },
@@ -129,7 +131,7 @@ class ProfileEditingForm extends StatelessWidget {
           SingleInputPersonalInfo(
             readOnly: true,
             labelText: "Email",
-            initialValue: profileBloc.userModel.email,
+            initialValue: profileBloc.email,
             onChanged: (value) {
               profileBloc.setEmail(value);
             },
