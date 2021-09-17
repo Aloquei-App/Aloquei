@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:aloquei_app/core/models/user_model.dart';
+import '../../core/models/user_model.dart';
 
 import '../../core/models/cities_model.dart';
 import '../../core/models/estados_model.dart';

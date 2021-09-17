@@ -127,7 +127,10 @@ class _AppPageState extends State<AppPage> {
         '/interestPet': (context) => InterestPagePet(),
         '/hostPage': (context) => HostPageType(),
         '/rental_list': (context) => RentalList(),
-        '/personalData': (context) => PersonalInfoPage(),
+        '/personalData': (context) => PersonalInfo(
+              user: authBloc.getUser,
+              userModel: authBloc.getUserModel,
+            ),
         '/termsData': (context) => TermsofServicePage(),
         '/helpPage': (context) => HelpPage(),
         '/offerDetail': (context) => OfferDetail()

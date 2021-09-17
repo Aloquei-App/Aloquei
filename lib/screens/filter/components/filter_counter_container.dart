@@ -1,4 +1,4 @@
-import 'package:aloquei_app/screens/filter/components/filter_counter.dart';
+import 'filter_counter.dart';
 import 'package:flutter/material.dart';
 
 class FilterCC extends StatelessWidget {

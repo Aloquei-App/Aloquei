@@ -4,8 +4,9 @@ import 'component.dart';
 
 class Components extends StatelessWidget {
   final int guests, bedroom, beds, bath;
+  final String roomtype;
 
-  Components(this.guests, this.bedroom, this.beds, this.bath);
+  Components(this.guests, this.bedroom, this.beds, this.bath, this.roomtype);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,10 @@ class Components extends StatelessWidget {
           children: [
             Component(guests.toString() + ' hóspedes'),
             Component('  •  ' + bedroom.toString() + ' quartos'),
-            Component('  •  ' + beds.toString() + ' camas'),
+            Component('  •  ' + roomtype.toString()),
+            beds > 0
+                ? Component('  •  ' + beds.toString() + ' camas')
+                : Container(),
             Component('  •  ' + bath.toString() + ' banheiros'),
           ],
         ));

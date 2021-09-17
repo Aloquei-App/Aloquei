@@ -1,5 +1,6 @@
-import '../host_page_type_size.dart';
 import 'package:flutter/material.dart';
+
+import '../host_page_type_size.dart';
 
 class HostAppBar extends StatelessWidget {
   final String text;

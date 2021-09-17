@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-class PersonalInfoAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String text;
+class PersonalInfoAppBar extends StatelessWidget
+    implements PreferredSizeWidget {
+  final Function onTap;
 
-  PersonalInfoAppBar({Key key, this.text}) : super(key: key);
+  PersonalInfoAppBar({Key key, this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +24,18 @@ class PersonalInfoAppBar extends StatelessWidget implements PreferredSizeWidget 
         ),
       ),
       actions: [
-        Padding(padding: EdgeInsets.all(15.0),
-        child: GestureDetector(
-          onTap: () {},
-          child: Text("Save", style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.w500),),
-
-        ),
+        Padding(
+          padding: EdgeInsets.all(15.0),
+          child: InkWell(
+            onTap: onTap,
+            child: Text(
+              "Salvar",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500),
+            ),
+          ),
         ),
       ],
     );

@@ -1,10 +1,9 @@
-import 'package:aloquei_app/core/models/house_offer_model.dart';
-
-import '../core/colors.dart';
-
-import '../login/components/title_offers.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/definitions.dart';
+import '../../core/models/house_offer_model.dart';
+import '../core/colors.dart';
+import '../login/components/title_offers.dart';
 import 'components/bottom_navigation.dart';
 import 'components/card_image.dart';
 import 'components/carousel_options.dart';
@@ -15,8 +14,8 @@ import 'components/description_offers.dart';
 import 'components/description_offers_grey.dart';
 import 'components/divide.dart';
 import 'components/elements.dart';
-import 'components/text_offers.dart';
 import 'components/row_components.dart';
+import 'components/text_offers.dart';
 
 class OfferDetail extends StatelessWidget {
   final String text = 'Tunico house (hospedado por Tunico)';
@@ -56,9 +55,14 @@ class OfferDetail extends StatelessWidget {
               TitleOffers(houseModel.name),
               DescriptionOffersGrey(houseModel.address),
               Divide(),
-              TextOffers(text),
-              DescriptionOffers(textDesc),
-              Components(guests, bedroom, beds, bedroom),
+              //TextOffers(houseModel.),
+              DescriptionOffers(houseTypes[houseModel.houseType]),
+              Components(
+                  houseModel.maxTenants,
+                  houseModel.qtdRooms,
+                  houseModel.roomUsersQtd,
+                  houseModel.restroom,
+                  houseModel.typeRoom),
               Divide(),
               Elements(Icons.house_outlined, 'Casa inteira',
                   'Voce tem a casa inteira'),
@@ -89,6 +93,9 @@ class OfferDetail extends StatelessWidget {
             ],
           ),
         ),
-        bottomNavigationBar: BottomNavigation(value, dateInit, dateFinal));
+        bottomNavigationBar: BottomNavigation(
+          value: houseModel.valueMonth,
+          condominio: houseModel.valueCondominium,
+        ));
   }
 }
