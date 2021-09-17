@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../core/definitions.dart';
 import '../../core/models/house_offer_model.dart';
 import '../core/colors.dart';
 import '../login/components/title_offers.dart';
@@ -18,23 +17,6 @@ import 'components/row_components.dart';
 import 'components/text_offers.dart';
 
 class OfferDetail extends StatelessWidget {
-  final String text = 'Tunico house (hospedado por Tunico)';
-  final String textDesc = 'Entire residential home';
-  final String descriptionOffer = 'Oriental, Rio Grande do Sul Brasil';
-  final int guests = 2;
-  final int bedroom = 2;
-  final int beds = 2;
-  final int bath = 1;
-  final int value = 1846;
-  final String dateInit = 'Set 1';
-  final String dateFinal = 'Out 2';
-  final String description =
-      'Local tranquilo junto a natureza. Simples mais confortavel';
-  final String imgBedroom =
-      'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/edc020121toolbox-001-1607447196.jpg';
-  final String textBedroom = '1 cama king, 1 sofa cama';
-  final String textRoom = '1 cama';
-
   @override
   Widget build(BuildContext context) {
     final HouseOfferModel houseModel =
@@ -53,43 +35,62 @@ class OfferDetail extends StatelessWidget {
                 ],
               ),
               TitleOffers(houseModel.name),
-              DescriptionOffersGrey(houseModel.address),
+              DescriptionOffersGrey(
+                  "${houseModel.address} - ${houseModel.zipCode} - ${houseModel.city} - ${houseModel.state}"),
               Divide(),
-              //TextOffers(houseModel.),
-              DescriptionOffers(houseTypes[houseModel.houseType]),
+              TextOffers(
+                  "${houseModel.descHouseType} alocado por ${houseModel.postUserName}"),
+              DescriptionOffers(
+                  houseModel.descHouseType, houseModel.mail, houseModel.phone),
               Components(
-                  houseModel.maxTenants,
-                  houseModel.qtdRooms,
-                  houseModel.roomUsersQtd,
-                  houseModel.restroom,
-                  houseModel.typeRoom),
+                houseModel.maxTenants,
+                houseModel.qtdRooms,
+                houseModel.roomUsersQtd,
+                houseModel.restroom,
+              ),
               Divide(),
-              Elements(Icons.house_outlined, 'Casa inteira',
-                  'Voce tem a casa inteira'),
-              Elements(Icons.house_outlined, 'Casa inteira',
-                  'Voce tem a casa inteira'),
-              Elements(Icons.house_outlined, 'Casa inteira',
-                  'Voce tem a casa inteira'),
-              Elements(Icons.house_outlined, 'Casa inteira',
-                  'Voce tem a casa inteira'),
+              Elements(Icons.bed, 'Quarto',
+                  'O quarto ofertado é ${houseModel.typeRoom}'),
+              houseModel.garage > 0
+                  ? Elements(Icons.garage, 'Garagem',
+                      'A casa tem garagem com ${houseModel.garage} vaga(s)')
+                  : Container(),
+              Elements(Icons.kitchen, 'Cozinha',
+                  'A casa tem ${houseModel.kitchen} cozinha(s)'),
+              Elements(Icons.living_outlined, 'Sala',
+                  'A casa tem ${houseModel.livinRoom} sala(s)'),
+              houseModel.courtyard
+                  ? Elements(Icons.grass_sharp, 'Pátio',
+                      'Você tem um pátio para apreciar')
+                  : Container(),
+              Elements(Icons.chair_outlined, 'Mobília',
+                  'A casa se encontra ${houseModel.furnished}'),
               Divide(),
-              Description(description),
+              Description(houseModel.observations),
               Divide(),
-              TextOffers('Onde você vai dormir'),
+              TextOffers('Universidades próximas'),
+              // TODO colocar as universidades próximas listadas
               Padding(
                 padding: EdgeInsets.only(
                     top: 15.0, bottom: 10.0, left: 30.0, right: 30.0),
                 child: Row(
                   children: [
-                    CardImage(imgBedroom, textBedroom),
-                    CardImage(imgBedroom, textRoom)
+                    CardImage(
+                        "https://sites.usp.br/kidssavelivesbrasil/wp-content/uploads/sites/631/2021/01/logo-furg.png",
+                        "FURG"),
+                    CardImage(
+                        "https://ifrs.edu.br/wp-content/uploads/2017/08/logo_vertical.png",
+                        "IFRS")
                   ],
                 ),
               ),
               Divide(),
-              ContaimElement(Icons.wifi, 'Wifi'),
-              ContaimElement(Icons.kitchen, 'Cozinha'),
-              ContaimElement(Icons.tv, 'TV')
+              TextOffers('Itens inclusos no valor'),
+              Column(
+                  children: List.generate(
+                      houseModel.includedOnValue.length,
+                      (index) => ContaimElement(Icons.star_border,
+                          houseModel.includedOnValue[index])))
             ],
           ),
         ),

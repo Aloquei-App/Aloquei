@@ -23,7 +23,7 @@ class CardImage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(top: 10.0),
               child: Text(
-                'Quarto',
+                'Universidade',
                 style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 16,
