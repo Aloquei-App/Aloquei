@@ -1,10 +1,10 @@
-import '../../core/validations.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../blocs/profile/profile_bloc.dart';
 import '../../core/models/user_model.dart';
+import '../../core/validations.dart';
 import '../core/loading.dart';
 import '../core/snack_bar.dart';
 import 'components/app_bar_personal_info.dart';

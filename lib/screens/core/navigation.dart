@@ -1,4 +1,4 @@
-import 'package:aloquei_app/core/models/house_offer_model.dart';
+import '../../core/models/house_offer_model.dart';
 import 'package:flutter/material.dart';
 
 void navigateToSearch(BuildContext context, Function func) {
