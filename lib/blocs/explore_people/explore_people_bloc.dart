@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:aloquei_app/core/models/interest_offer_model.dart';
-import 'package:aloquei_app/resources/offers/firestore_offers.dart';
+import '../../core/models/interest_offer_model.dart';
+import '../../resources/offers/firestore_offers.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';

@@ -1,9 +1,9 @@
-import '../../blocs/home/home_bloc.dart';
-import '../core/navigation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../blocs/home/home_bloc.dart';
+import '../core/navigation.dart';
 import 'components/announcement.dart';
 import 'components/explore_app_bar.dart';
 import 'components/flexibilitie_button.dart';

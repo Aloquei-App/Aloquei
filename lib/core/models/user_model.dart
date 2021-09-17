@@ -1,7 +1,7 @@
 class UserModel {
   String key;
-  String nome;
-  String sobrenome;
+  String name;
+  String lastname;
   String email;
   bool isAdmin;
   String gender;
@@ -9,17 +9,17 @@ class UserModel {
 
   UserModel(
       {this.key,
-      this.nome,
+      this.name,
       this.email,
       this.isAdmin,
       this.gender,
-      this.sobrenome,
+      this.lastname,
       this.favList});
 
   UserModel.fromSnapshot(Map<String, dynamic> data, String id) {
     key = id;
-    nome = data['name'] != null ? data['name'] : '';
-    sobrenome = data['sobrenome'] != null ? data['sobrenome'] : '';
+    name = data['name'] != null ? data['name'] : '';
+    lastname = data['lastname'] != null ? data['lastname'] : '';
     email = data['email'] != null ? data['email'] : '';
     isAdmin = data['isAdmin'] != null ? data['isAdmin'] : false;
     gender = data['gender'] != null ? data['gender'] : '';
@@ -28,8 +28,8 @@ class UserModel {
 
   Map<String, dynamic> toMap() {
     return {
-      'name': nome,
-      'sobrenome': sobrenome,
+      'name': name,
+      'sobrenome': lastname,
       'email': email,
       'isAdmin': isAdmin,
       'gender': gender,

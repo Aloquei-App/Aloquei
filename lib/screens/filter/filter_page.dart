@@ -1,10 +1,10 @@
-import 'package:aloquei_app/screens/filter/components/app_bar_content.dart';
-import 'package:aloquei_app/screens/filter/components/filter_appbar.dart';
-import 'package:aloquei_app/screens/filter/components/filter_checkbox.dart';
-import 'package:aloquei_app/screens/filter/components/filter_checkbox_text.dart';
-import 'package:aloquei_app/screens/filter/components/filter_counter_container.dart';
-import 'package:aloquei_app/screens/filter/components/filter_slider.dart';
-import 'package:aloquei_app/screens/filter/components/filter_title.dart';
+import 'components/app_bar_content.dart';
+import 'components/filter_appbar.dart';
+import 'components/filter_checkbox.dart';
+import 'components/filter_checkbox_text.dart';
+import 'components/filter_counter_container.dart';
+import 'components/filter_slider.dart';
+import 'components/filter_title.dart';
 import 'package:flutter/material.dart';
 
 class FilterPage extends StatelessWidget {
