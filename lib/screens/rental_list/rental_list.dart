@@ -7,8 +7,9 @@ import 'components/list_title.dart';
 import 'components/present_card.dart';
 import 'components/rental_unit_card.dart';
 
-class RentalList extends StatelessWidget {
-  const RentalList({Key key}) : super(key: key);
+class RentalListPage extends StatelessWidget {
+  
+  const RentalListPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

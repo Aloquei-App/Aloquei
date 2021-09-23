@@ -11,7 +11,11 @@ class RentalListInitial extends RentalListState {}
 
 class LoadingRentalState extends RentalListState {}
 
+class UpdateRentalState extends RentalListState {}
+
 class ShowRentalState extends RentalListState {}
+
+class RentalYetState extends RentalListState {}
 
 class ChangeRentalState extends RentalListState {}
 
