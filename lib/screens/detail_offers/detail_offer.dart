@@ -1,8 +1,7 @@
-import 'package:aloquei_app/screens/core/colors.dart';
-
-import 'package:aloquei_app/screens/login/components/title_offers.dart';
 import 'package:flutter/material.dart';
 
+import '../core/colors.dart';
+import '../login/components/title_offers.dart';
 import 'components/bottom_navigation.dart';
 import 'components/card_image.dart';
 import 'components/carousel_options.dart';
@@ -13,8 +12,8 @@ import 'components/description_offers.dart';
 import 'components/description_offers_grey.dart';
 import 'components/divide.dart';
 import 'components/elements.dart';
-import 'components/text_offers.dart';
 import 'components/row_components.dart';
+import 'components/text_offers.dart';
 
 class DetailPage extends StatelessWidget {
   final List<String> imageList = [

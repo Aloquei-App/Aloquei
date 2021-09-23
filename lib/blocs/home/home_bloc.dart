@@ -1,10 +1,15 @@
 import 'dart:async';
 
-import '../../core/models/explore_model.dart';
+import '../../core/models/user_model.dart';
+
+import '../../core/models/cities_model.dart';
+import '../../core/models/estados_model.dart';
+import '../../resources/apis/ibge.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
+import '../../core/models/explore_model.dart';
 import '../../core/models/house_offer_model.dart';
 import '../../core/models/interest_offer_model.dart';
 import '../../resources/offers/firestore_offers.dart';
@@ -13,9 +18,11 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc() : super(HomeInitial());
+  final UserModel user;
+  HomeBloc({@required this.user}) : super(HomeInitial());
 
   OffersRepository _offersRepository = OffersRepository();
+  IbgeRepository _ibgeRepository = IbgeRepository();
 
   List<InterestModel> _interestList = [];
 
@@ -23,9 +30,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   List<HouseOfferModel> _houseRepList = [];
 
+  ExploreModel _exploreModel;
+
   int _currentTab = 0;
 
   bool _exploring = false;
+
+  bool _isInterest = false;
 
   int get getTab => _currentTab;
 
@@ -55,7 +66,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           yield ExploreState();
         } else if (event.index == 0 && _exploring) {
           _currentTab = 0;
-          yield ExploreListState();
+          if (_isInterest)
+            yield ExplorePeopleState(exploreModel: _exploreModel);
+          else
+            yield ExploreListState(exploreModel: _exploreModel);
         } else if (event.index == 1) {
           _currentTab = 1;
           yield WhishListState();
@@ -71,7 +85,17 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         } else if (event.index == 5) {
           _currentTab = 0;
           _exploring = true;
-          yield ExploreListState();
+          _isInterest = false;
+          if (_exploreModel == null) {
+            EstadosModel eModel = await _ibgeRepository.getRandomState();
+            CitiesModel cModel = await _ibgeRepository.getRandomCity(eModel.id);
+            _exploreModel = ExploreModel(
+              estado: eModel,
+              city: cModel,
+              type: 1,
+            );
+          }
+          yield ExploreListState(exploreModel: _exploreModel);
         } else if (event.index == -1) {
           _currentTab = 0;
           _exploring = false;
@@ -80,9 +104,17 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       } else if (event is SearchFromSelectedEvent) {
         _currentTab = 0;
         _exploring = true;
-        yield ExploreListState(exploreModel: event.exploreModel);
+        _exploreModel = event.exploreModel;
+        if (event.exploreModel.type == 1)
+          yield ExploreListState(exploreModel: _exploreModel);
+        else {
+          _isInterest = true;
+          yield ExplorePeopleState(exploreModel: _exploreModel);
+        }
       }
-    } catch (e) {
+    } catch (e, stack) {
+      print(e);
+      print(stack);
       yield FailState(message: "Algo saiu errado, tente mais tarde");
     }
   }

@@ -30,6 +30,15 @@ class ExploreListState extends HomeState {
   List<Object> get props => [exploreModel];
 }
 
+class ExplorePeopleState extends HomeState {
+  final ExploreModel exploreModel;
+
+  ExplorePeopleState({this.exploreModel});
+
+  @override
+  List<Object> get props => [exploreModel];
+}
+
 class FailState extends HomeState {
   final String message;
 

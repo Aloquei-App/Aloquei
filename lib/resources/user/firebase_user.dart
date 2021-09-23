@@ -35,7 +35,32 @@ class UsersRepository {
     return null;
   }
 
+  Future<bool> updateUser(String userId, String name, String lastname,
+      String email, String gender) async {
+    return await firestoreInstance.collection('users').doc(userId).update({
+      'name': name,
+      'lastname': lastname,
+      'email': email,
+      'gender': gender
+    }).then((value) {
+      return true;
+    }).catchError((error) => throw Exception(error));
+  }
+
   Stream<DocumentSnapshot> getStreamUser(String userId) {
     return firestoreInstance.collection('users').doc(userId).snapshots();
+  }
+
+  Future<void> updateFavorites(String userId, List<String> favorites) async {
+    try {
+      await firestoreInstance
+          .collection('users')
+          .doc(userId)
+          .update({'favList': favorites});
+    } catch (error, stack) {
+      print(error);
+      print(stack);
+      throw error;
+    }
   }
 }

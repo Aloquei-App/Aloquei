@@ -1,5 +1,3 @@
-import 'package:aloquei_app/screens/person_list/person_list.dart';
-import 'package:aloquei_app/screens/rental_list/rental_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -8,13 +6,23 @@ import 'package:responsive_framework/responsive_framework.dart';
 import '../blocs/auth/auth_bloc.dart';
 import 'core/snack_bar.dart';
 import 'explore/explore.dart';
+import 'help/help_page.dart';
 import 'home/home.dart';
+import 'hosting/host_page_type.dart';
 import 'inbox/inbox.dart';
+
+import 'interest/components/interest_page_data.dart';
+
+import 'interest/interest_page_pet.dart';
 import 'login/login_page.dart';
+import 'person_list/person_list.dart';
+import 'personal_info/personal_info.dart';
 import 'profile/profile.dart';
+import 'rental_list/rental_list.dart';
 import 'search/search.dart';
 import 'signup/signup.dart';
 import 'splash/splash.dart';
+import 'terms/terms_page.dart';
 import 'wishlists/wishlists.dart';
 
 class Run extends StatelessWidget {
@@ -95,7 +103,7 @@ class _AppPageState extends State<AppPage> {
           },
           builder: (context, state) {
             if (state is AuthenticatedState) {
-              return Home();
+              return Home(user: state.userModel);
             } else if (state is SignupPressedState) {
               return Signup();
             } else if (state is UnauthenticatedState) {
@@ -113,7 +121,17 @@ class _AppPageState extends State<AppPage> {
         '/inbox': (context) => InboxPage(),
         '/profile': (context) => ProfilePage(),
         '/search': (context) => Search(),
+        '/help': (context) => HelpPage(),
+        '/interestPage': (context) => InterestPageAddress(),
+        '/interestPet': (context) => InterestPagePet(),
+        '/hostPage': (context) => HostPageType(),
         '/rental_list': (context) => RentalList(),
+        '/personalData': (context) => PersonalInfo(
+              user: authBloc.getUser,
+              userModel: authBloc.getUserModel,
+            ),
+        '/termsData': (context) => TermsofServicePage(),
+        '/helpPage': (context) => HelpPage(),
       },
       initialRoute: '/',
     );
