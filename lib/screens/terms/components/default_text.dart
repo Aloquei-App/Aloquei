@@ -11,6 +11,7 @@ class DefaultText extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 10),
       child: Text(
         text,
+        textAlign: TextAlign.justify,
         style: TextStyle(
           color: Color(0xFF585858),
           fontSize: 16,

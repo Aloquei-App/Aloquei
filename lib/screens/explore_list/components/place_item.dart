@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import '../../../blocs/wishlist/wishlist_bloc.dart';
 
 import '../../../core/models/house_offer_model.dart';
 import '../../core/navigation.dart';
