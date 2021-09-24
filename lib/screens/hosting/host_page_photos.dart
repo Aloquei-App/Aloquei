@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
+
+import '../core/forms/top_menu_image.dart';
 import 'components/host_bottombar.dart';
 import 'components/host_select_menu_photos.dart';
-import '../core/forms/top_menu_image.dart';
 import 'host_page_title.dart';
-
-import 'package:flutter/material.dart';
 
 class HostPagePhotos extends StatelessWidget {
   const HostPagePhotos({Key key}) : super(key: key);

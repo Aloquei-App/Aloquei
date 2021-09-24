@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/models/house_offer_model.dart';
+
 void navigateToSearch(BuildContext context, Function func) {
   Navigator.of(context).pushNamed('/search', arguments: func);
 }
@@ -50,4 +52,8 @@ void navigateToTerms(BuildContext context) {
 
 void navigateToHelpPage(BuildContext context) {
   Navigator.of(context).pushNamed('/helpPage');
+}
+
+void navigateToOfferDetail(BuildContext context, HouseOfferModel model) {
+  Navigator.of(context).pushNamed('/offerDetail', arguments: model);
 }

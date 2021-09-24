@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import '../../resources/user/firebase_user.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,6 +8,7 @@ import 'package:meta/meta.dart';
 import '../../core/errors/auth_error.dart';
 import '../../core/models/user_model.dart';
 import '../../resources/auth/firebase_auth.dart';
+import '../../resources/user/firebase_user.dart';
 
 part 'profile_event.dart';
 part 'profile_state.dart';
