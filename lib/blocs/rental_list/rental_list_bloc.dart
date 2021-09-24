@@ -12,15 +12,18 @@ part 'rental_list_event.dart';
 part 'rental_list_state.dart';
 
 class RentalListBloc extends Bloc<RentalListEvent, RentalListState> {
-  RentalListBloc({UserModel user}) : super(RentalListInitial());
-  
+  final UserModel user;
+  RentalListBloc({this.user}) : super(RentalListInitial());
+
   OffersRepository _offersRepository = OffersRepository();
 
   List<HouseOfferModel> _houseApList = [];
 
   List<HouseOfferModel> get getApCasa => _houseApList;
+
+  // get user => null;
+
   
-  get user => null;
 
   @override
   Stream<RentalListState> mapEventToState(
@@ -29,12 +32,10 @@ class RentalListBloc extends Bloc<RentalListEvent, RentalListState> {
     try {
       if (event is RentStartedEvent) {
         yield LoadingRentalState();
-        _houseApList =
-            await _offersRepository.getHousesByIdUserPost(user.uid);
-        
+        _houseApList = await _offersRepository.getHousesByIdUserPost(user.key);
+        yield ShowRentalState();
       }
-    }
-    catch (e) {
+    } catch (e) {
       print(e.toString());
     }
   }

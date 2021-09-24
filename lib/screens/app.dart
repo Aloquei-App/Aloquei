@@ -117,7 +117,9 @@ class _AppPageState extends State<AppPage> {
       routes: {
         '/explore': (context) => ExplorePage(),
         '/wishlists': (context) => WishlistsPage(),
-        '/person_list': (context) => PersonList(),
+        // '/person_list': (context) => PersonList(
+        //       user: authBloc.getUserModel,
+        //     ),
         '/inbox': (context) => InboxPage(),
         '/profile': (context) => ProfilePage(),
         '/search': (context) => Search(),
@@ -125,7 +127,9 @@ class _AppPageState extends State<AppPage> {
         '/interestPage': (context) => InterestPageAddress(),
         '/interestPet': (context) => InterestPagePet(),
         '/hostPage': (context) => HostPageType(),
-        '/rental_list': (context) => RentalList(),
+        // '/rental_list': (context) => RentalList(
+        //       user: authBloc.getUserModel,
+        //     ),
         '/personalData': (context) => PersonalInfo(
               user: authBloc.getUser,
               userModel: authBloc.getUserModel,

@@ -15,7 +15,8 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc({UserModel user}) : super(HomeInitial());
+  final UserModel user;
+  HomeBloc({this.user}) : super(HomeInitial());
 
   OffersRepository _offersRepository = OffersRepository();
 
@@ -37,7 +38,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   List<HouseOfferModel> get getRepub => _houseRepList;
 
-  get user => null;
+  
 
   @override
   Stream<HomeState> mapEventToState(

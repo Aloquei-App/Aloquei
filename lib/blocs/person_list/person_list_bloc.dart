@@ -1,3 +1,4 @@
+import 'package:aloquei_app/core/models/interest_offer_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import '../../core/models/user_model.dart';
@@ -8,15 +9,16 @@ part 'person_list_event.dart';
 part 'person_list_state.dart';
 
 class PersonListBloc extends Bloc<PersonListEvent, PersonListState> {
-  PersonListBloc({UserModel user}) : super(PersonListInitial());
+  final UserModel user;
+  PersonListBloc({this.user}) : super(PersonListInitial());
 
   OffersRepository _offersRepository = OffersRepository();
 
-  List<HouseOfferModel> _houseApList = [];
+  List<InterestModel> _houseApList = [];
 
-  List<HouseOfferModel> get getApCasa => _houseApList;
+  List<InterestModel> get getApCasa => _houseApList;
 
-  get user => null;
+
 
   @override
   Stream<PersonListState> mapEventToState(
@@ -26,7 +28,7 @@ class PersonListBloc extends Bloc<PersonListEvent, PersonListState> {
       if (event is PersonListStartedEvent) {
         yield LoadingPersonListState();
         _houseApList = 
-            await _offersRepository.getInterestByIdPost(user);
+            await _offersRepository.getInterestByIdPost(user.key);
       }
     } catch (e) {
       print(e.toString());

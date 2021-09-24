@@ -64,9 +64,9 @@ class _HomePageState extends State<HomePage> {
             } else if (state is WhishListState) {
               return WishlistsPage();
             } else if (state is HousesState) {
-              return RentalList();
+              return RentalList(user: _homeBloc.user,);
             } else if (state is InterestsState) {
-              return PersonList();
+              return PersonList(user: _homeBloc.user);
             } else if (state is ProfileState) {
               return ProfilePage();
             } else if (state is ExploreListState) {

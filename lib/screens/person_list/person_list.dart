@@ -31,7 +31,7 @@ class PersonListPage extends StatefulWidget{
 }
 
 
-class PersonListPageState extends State<PersonListPage> {
+class _PersonListPageState extends State<PersonListPage> {
   PersonListBloc _personListBloc;
 
   @override
