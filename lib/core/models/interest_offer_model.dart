@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:random_color/random_color.dart';
 
 import 'offers_model.dart';
 
@@ -11,6 +14,7 @@ class InterestModel extends OffersModel {
   bool likesPets;
   String socialNetworkLink;
   String university;
+  Color color;
 
   InterestModel(
       {this.desiredCourse,
@@ -22,14 +26,17 @@ class InterestModel extends OffersModel {
       this.socialNetworkLink,
       this.university,
       String cidade,
+      String estado,
       String email,
       String obs,
       String tele,
       String userId,
       String userName,
       int qtdRoom,
-      int tipo}) {
+      int tipo,
+      int incluido}) {
     city = cidade;
+    state = estado;
     mail = email;
     observations = obs;
     phone = tele;
@@ -37,10 +44,15 @@ class InterestModel extends OffersModel {
     postUserName = userName;
     qtdRooms = qtdRoom;
     type = tipo;
+    includedAt = incluido;
   }
 
   InterestModel.fromJson(DocumentSnapshot doc) {
     Map<String, dynamic> json = doc.data();
+    RandomColor _randomColor = RandomColor();
+    color = _randomColor.randomColor(
+      colorBrightness: ColorBrightness.light,
+    );
     doc = doc;
     key = doc.id;
     city = json['city'] ?? "";
@@ -50,6 +62,8 @@ class InterestModel extends OffersModel {
     desiredStartAge = json['desiredStartAge'] ?? 0;
     hasHouse = json['hasHouse'] ?? false;
     likesPets = json['likesPets'] ?? false;
+    city = json['city'] ?? "";
+    state = json['state'] ?? "";
     mail = json['mail'] ?? "";
     observations = json['observations'];
     phone = json['phone'] ?? "";
@@ -64,6 +78,7 @@ class InterestModel extends OffersModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['city'] = this.city;
+    data['state'] = this.state;
     data['desiredCourse'] = this.desiredCourse;
     data['desiredEndAge'] = this.desiredEndAge;
     data['desiredGender'] = this.desiredGender;

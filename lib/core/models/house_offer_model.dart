@@ -45,14 +45,17 @@ class HouseOfferModel extends OffersModel {
       this.valueMonth,
       this.zipCode,
       String cidade,
+      String estado,
       String email,
       String obs,
       String tele,
       String userId,
       String userName,
       int qtdRoom,
-      int tipo}) {
+      int tipo,
+      int incluido}) {
     city = cidade;
+    state = estado;
     mail = email;
     observations = obs;
     phone = tele;
@@ -60,6 +63,7 @@ class HouseOfferModel extends OffersModel {
     postUserName = userName;
     qtdRooms = qtdRoom;
     type = tipo;
+    includedAt = incluido;
   }
 
   HouseOfferModel.fromJson(DocumentSnapshot doc) {
@@ -75,6 +79,8 @@ class HouseOfferModel extends OffersModel {
     includedOnValue = json['includedOnValue'].cast<String>() ?? [];
     kitchen = json['kitchen'] ?? 0;
     livinRoom = json['livinRoom'] ?? 0;
+    city = json['city'] ?? "";
+    state = json['state'] ?? "";
     mail = json['mail'] ?? "";
     maxTenants = json['maxTenants'] ?? 0;
     name = json['name'] ?? "";
@@ -84,7 +90,8 @@ class HouseOfferModel extends OffersModel {
     observations = json['observations'] ?? "";
     phone = json['phone'] ?? "";
     if (json['position'] != null) {
-      position = Position.fromMap(json['position']);
+      // TODO alterar para quando estiver funcionando o cadastro
+      //position = Position.fromMap(json['position']);
     }
     postUserId = json['postUserId'] ?? "";
     postUserName = json['postUserName'] ?? "";
@@ -93,13 +100,15 @@ class HouseOfferModel extends OffersModel {
     roomUsersQtd = json['roomUsersQtd'] ?? 0;
     type = json['type'] ?? 0;
     typeRoom = json['typeRoom'] ?? "";
-    valueCondominium = json['valueCondominium'] ?? 0;
-    valueMonth = json['valueMonth'] ?? 0;
+    valueCondominium = json['valueCondominium'].toDouble() ?? 0;
+    valueMonth = json['valueMonth'].toDouble() ?? 0;
     zipCode = json['zipCode'] ?? "";
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['city'] = this.city;
+    data['state'] = this.state;
     data['address'] = this.address;
     data['courtyard'] = this.courtyard;
     data['furnished'] = this.furnished;
@@ -142,7 +151,8 @@ class NearUniversities {
 
   NearUniversities.fromJson(Map<String, dynamic> json) {
     if (json['location'] != null) {
-      location = Position.fromMap(json['location']);
+      // TODO alterar para quando estiver funcionando o cadastro
+      //location = Position.fromMap(json['location']);
     }
     name = json['name'] ?? '';
   }
