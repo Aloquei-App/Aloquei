@@ -7,17 +7,19 @@ class FilterAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      elevation: 0,
-      backgroundColor: Colors.grey[50],
-      leading: Padding(
-        padding: EdgeInsets.only(left: 8.0),
-        child: IconButton(
-          icon: Icon(Icons.close_rounded),
-          color: Colors.black,
-          onPressed: onpressed,
-        ),
-      ),
-    );
+    return Container(
+        padding: EdgeInsets.only(top: 20),
+        child: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.grey[50],
+          leading: Padding(
+            padding: EdgeInsets.only(left: 8.0),
+            child: IconButton(
+              icon: Icon(Icons.close_rounded),
+              color: Colors.black,
+              onPressed: onpressed,
+            ),
+          ),
+        ));
   }
 }

@@ -7,6 +7,7 @@ import '../../core/models/user_model.dart';
 import '../core/loading.dart';
 import 'components/explore_app_bar.dart';
 import 'components/list_places.dart';
+import 'package:aloquei_app/screens/filter/filter_page.dart';
 
 class ExploreList extends StatelessWidget {
   final VoidCallback onBackPress;
@@ -68,13 +69,19 @@ class _ExploreListState extends State<ExploreListPage>
     }
   }
 
+  void _show(BuildContext ctx) {
+    showModalBottomSheet(
+        isScrollControlled: true,
+        elevation: 10,
+        context: ctx,
+        builder: (ctx) => FilterPage());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: ExploreAppBar(
-        action: () {
-          // TODO show filter
-        },
+        action: () => _show(context),
         onTextChanged: (value) {
           _exploreListBloc.add(SearchEvent(search: value));
         },
