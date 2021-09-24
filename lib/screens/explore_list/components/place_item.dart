@@ -1,6 +1,12 @@
+import 'package:aloquei_app/blocs/profile/profile_bloc.dart';
+import 'package:aloquei_app/blocs/wishlist/wishlist_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../core/models/house_offer_model.dart';
+import '../../../core/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import '../../../blocs/wishlist/wishlist_bloc.dart';
 
 class PlaceItem extends StatefulWidget {
   final HouseOfferModel model;
@@ -24,6 +30,8 @@ class _PlaceItemState extends State<PlaceItem> {
 
   @override
   Widget build(BuildContext context) {
+    WishlistBloc wishlistBloc = BlocProvider.of<WishlistBloc>(context);
+    ProfileBloc profileBloc = BlocProvider.of<ProfileBloc>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -32,25 +40,25 @@ class _PlaceItemState extends State<PlaceItem> {
             ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
               child: ImageSlideshow(
-                height: 400,
+                height: 300,
                 width: double.infinity,
                 initialPage: 0,
                 indicatorColor: Colors.grey,
                 indicatorBackgroundColor: Colors.grey[300],
                 children: List.generate(widget.model.images.length,
-                    (i) => Image.network(widget.model.images[i])),
+                    (i) => Image.network(widget.model.images[i], fit: BoxFit.fitHeight,)),
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
-                  iconSize: 75,
+                  iconSize: 40,
                   icon: (_isFavorited
-                      ? const Icon(Icons.favorite)
+                      ? const Icon(Icons.favorite, color: Colors.red)
                       : const Icon(Icons.favorite_border)),
                   color: Colors.white,
-                  onPressed: _toggleFavorite,
+                  onPressed: (){},
                 ),
               ],
             ),
