@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'components/app_bar_content.dart';
 import 'components/filter_appbar.dart';
 import 'components/filter_checkbox.dart';
@@ -5,7 +7,6 @@ import 'components/filter_checkbox_text.dart';
 import 'components/filter_counter_container.dart';
 import 'components/filter_slider.dart';
 import 'components/filter_title.dart';
-import 'package:flutter/material.dart';
 
 class FilterPage extends StatelessWidget {
   const FilterPage({Key key}) : super(key: key);

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 class BottomNavigation extends StatelessWidget {
-  final int value;
-  final String dateInit;
-  final String dateFinal;
+  final double value;
+  final double condominio;
 
-  BottomNavigation(this.value, this.dateInit, this.dateFinal);
+  BottomNavigation({this.value, this.condominio});
 
   @override
   Widget build(BuildContext context) {
@@ -13,13 +12,16 @@ class BottomNavigation extends StatelessWidget {
       color: Colors.white,
       child: Container(
           width: double.infinity,
-          child: Row(
+          height:
+              MediaQuery.of(context).size.height * (condominio > 0 ? 1 : 0.08),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: EdgeInsets.only(bottom: 15.0, top: 15.0),
+                padding: EdgeInsets.only(left: 25, bottom: 5.0, top: 10.0),
                 child: Text(
-                  'R\$' + this.value.toString(),
+                  'Aluguel R\$ ${this.value} / mês',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontWeight: FontWeight.w800,
@@ -27,28 +29,19 @@ class BottomNavigation extends StatelessWidget {
                       fontFamily: 'Arial'),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 15.0, top: 15.0),
-                child: Text(
-                  ' / mês            ',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16,
-                      fontFamily: 'Arial'),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 15.0, top: 15.0),
-                child: Text(
-                  this.dateInit + ' - ' + this.dateFinal,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                      fontFamily: 'Arial'),
-                ),
-              )
+              condominio > 0
+                  ? Padding(
+                      padding: EdgeInsets.only(left: 25, top: 5.0),
+                      child: Text(
+                        'Condomínio. R\$ ${this.condominio} / mês',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 16,
+                            fontFamily: 'Arial'),
+                      ),
+                    )
+                  : Container(),
             ],
           )),
       elevation: 0,

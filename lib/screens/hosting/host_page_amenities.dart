@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
+
 import '../core/forms/host_top_menu_gradient.dart';
 import 'components/host_bottombar.dart';
 import 'components/host_select_menu_amenities.dart';
 import 'host_page_photos.dart';
-
-import 'package:flutter/material.dart';
 
 class HostPageAmenities extends StatelessWidget {
   const HostPageAmenities({Key key}) : super(key: key);

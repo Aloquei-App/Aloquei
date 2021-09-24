@@ -14,7 +14,9 @@ class CircleBackButton extends StatelessWidget {
             child: IconButton(
               icon: const Icon(Icons.arrow_back),
               color: Colors.black,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
             ),
           ),
         ));
