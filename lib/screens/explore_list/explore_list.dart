@@ -1,15 +1,13 @@
-
-import 'package:aloquei_app/screens/filter/filter_page.dart';
-import '../../core/models/user_model.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/models/explore_model.dart';
 import '../../blocs/explore_list/explore_list_bloc.dart';
+import '../../core/models/user_model.dart';
 import '../core/loading.dart';
 import 'components/explore_app_bar.dart';
 import 'components/list_places.dart';
+import 'package:aloquei_app/screens/filter/filter_page.dart';
 
 class ExploreList extends StatelessWidget {
   final VoidCallback onBackPress;

@@ -5,9 +5,9 @@ const Map<int, String> houseTypes = {
   3: "Quarto"
 };
 const List<String> furnishedOptions = [
-  "Mobiliado",
-  "Semi-Mobilidado",
-  "Não Mobiliado"
+  "mobiliada",
+  "semi-mobilidada",
+  "não mobiliada"
 ];
 const List<String> roomType = ['Individual', 'Suíte', 'Compartilhado'];
 const List<String> genders = ['Masculino', 'Feminino', 'Outro'];
