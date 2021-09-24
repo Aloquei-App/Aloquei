@@ -1,8 +1,7 @@
 const Map<int, String> houseTypes = {
   0: "República",
   1: "Casa",
-  2: "Apartamento",
-  3: "Quarto"
+  2: "Apartamento"
 };
 const List<String> furnishedOptions = [
   "Mobiliado",

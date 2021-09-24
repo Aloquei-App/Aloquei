@@ -22,13 +22,13 @@ class DefaultLoginButton extends StatelessWidget {
             SizedBox(width: MediaQuery.of(context).size.width * 0.2),
             Text(
               text,
-              style: TextStyle(fontSize: 18.0, color: Colors.black),
+              style: TextStyle(fontSize: 15.0, color: Colors.black),
             )
           ],
         ),
         style: ElevatedButton.styleFrom(
           side: BorderSide(width: 0.7, color: Colors.black),
-          minimumSize: Size(400.0, 55.0),
+          minimumSize: Size(400.0, 47.0),
           primary: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(7.0),

@@ -26,6 +26,8 @@ class FailState extends ProfileState {
   List<Object> get props => [message];
 }
 
+class LoadingEndState extends ProfileState {}
+
 class LoadingState extends ProfileState {}
 
 class ProfileLoadedState extends ProfileState {}

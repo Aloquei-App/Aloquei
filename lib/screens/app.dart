@@ -1,29 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
-import '../blocs/auth/auth_bloc.dart';
-import 'core/snack_bar.dart';
 import 'explore/explore.dart';
-import 'help/help_page.dart';
-import 'home/home.dart';
-import 'hosting/host_page_type.dart';
 import 'inbox/inbox.dart';
-
-import 'interest/components/interest_page_data.dart';
-
-import 'interest/interest_page_pet.dart';
 import 'login/login_page.dart';
-import 'person_list/person_list.dart';
-import 'personal_info/personal_info.dart';
 import 'profile/profile.dart';
-import 'rental_list/rental_list.dart';
-import 'search/search.dart';
-import 'signup/signup.dart';
-import 'splash/splash.dart';
-import 'terms/terms_page.dart';
+import 'trips/trips.dart';
 import 'wishlists/wishlists.dart';
+import 'package:responsive_framework/responsive_framework.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../blocs/auth/auth_bloc.dart';
 
 class Run extends StatelessWidget {
   @override
@@ -51,18 +36,13 @@ class _AppPageState extends State<AppPage> {
 
   @override
   void initState() {
-    authBloc = BlocProvider.of<AuthBloc>(context);
     super.initState();
+    authBloc = BlocProvider.of<AuthBloc>(context);
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate
-      ],
-      supportedLocales: [const Locale('pt', 'BR')],
       builder: (context, widget) => ResponsiveWrapper.builder(
         BouncingScrollWrapper.builder(context, widget),
         maxWidth: 1200,
@@ -83,55 +63,13 @@ class _AppPageState extends State<AppPage> {
         fontFamily: 'Roboto',
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Scaffold(
-        body: BlocConsumer<AuthBloc, AuthState>(
-          listener: (contextListener, state) {
-            if (state is AuthenticatedState) {
-              if (state.user != null) {
-                buildSuccesSnackBar(
-                    contextListener, "Login realizado com sucesso");
-              }
-            } else if (state is ExceptionState) {
-              buildWarningSnackBar(contextListener, state.message);
-            }
-          },
-          buildWhen: (previous, current) {
-            if (current is ExceptionState) {
-              return false;
-            }
-            return true;
-          },
-          builder: (context, state) {
-            if (state is AuthenticatedState) {
-              return Home(user: state.userModel);
-            } else if (state is SignupPressedState) {
-              return Signup();
-            } else if (state is UnauthenticatedState) {
-              return LoginPage();
-            } else {
-              return Splash();
-            }
-          },
-        ),
-      ),
+      home: LoginPage(authBloc: authBloc),
       routes: {
         '/explore': (context) => ExplorePage(),
         '/wishlists': (context) => WishlistsPage(),
-        '/person_list': (context) => PersonList(),
+        '/trips': (context) => TripsPage(),
         '/inbox': (context) => InboxPage(),
         '/profile': (context) => ProfilePage(),
-        '/search': (context) => Search(),
-        '/help': (context) => HelpPage(),
-        '/interestPage': (context) => InterestPageAddress(),
-        '/interestPet': (context) => InterestPagePet(),
-        '/hostPage': (context) => HostPageType(),
-        '/rental_list': (context) => RentalList(),
-        '/personalData': (context) => PersonalInfo(
-              user: authBloc.getUser,
-              userModel: authBloc.getUserModel,
-            ),
-        '/termsData': (context) => TermsofServicePage(),
-        '/helpPage': (context) => HelpPage(),
       },
       initialRoute: '/',
     );

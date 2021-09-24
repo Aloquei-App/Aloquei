@@ -1,6 +1,5 @@
+import 'package:aloquei_app/screens/core/colors.dart';
 import 'package:flutter/material.dart';
-
-import '../../core/colors.dart';
 
 class ContinueButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -12,12 +11,12 @@ class ContinueButton extends StatelessWidget {
       child: Text(
         'Continuar',
         style: TextStyle(
-          fontSize: 18,
+          fontSize: 17,
           color: Colors.white,
         ),
       ),
       color: redAirbnb,
-      height: 55,
+      height: MediaQuery.of(context).size.width * 0.12,
       minWidth: double.infinity,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
       onPressed: onPressed,

@@ -7,7 +7,7 @@ abstract class ProfileEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class SubmitEvent extends ProfileEvent {}
+class SubmitButtonPressed extends ProfileEvent {}
 
 class ScreenStarded extends ProfileEvent {}
 

@@ -1,25 +1,22 @@
+import 'package:aloquei_app/screens/profile/components/default_subtitle.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../blocs/auth/auth_bloc.dart';
-import '../core/navigation.dart';
 import 'components/default_button.dart';
-import 'components/default_subtitle.dart';
 import 'components/username_and_profile_button.dart';
 
 class ProfilePage extends StatelessWidget {
+  const ProfilePage({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
-    AuthBloc profileBloc = BlocProvider.of<AuthBloc>(context);
     return Scaffold(
       body: ListView(
         children: [
           UsernameAndProfileButton(
-            onTap: () => navigateToPersonalData(context),
+            onTap: () {},
             urlImage: 'assets/prof.png',
-            username: profileBloc.getUserModel.name,
+            username: "Username",
           ),
           DefaultSubtitle(
             text: 'CONFIGURAÇÕES DE CONTA',
@@ -27,9 +24,17 @@ class ProfilePage extends StatelessWidget {
           DefaultButton(
             text: 'Informações pessoais',
             icon: FontAwesomeIcons.user,
-            onpressed: () {
-              navigateToPersonalData(context);
-            },
+            onpressed: () {},
+          ),
+          DefaultButton(
+            text: 'Notificações',
+            icon: FontAwesomeIcons.bell,
+            onpressed: () {},
+          ),
+          DefaultButton(
+            text: 'Viajar para o trabalho',
+            icon: FontAwesomeIcons.building,
+            onpressed: () {},
           ),
           DefaultSubtitle(
             text: 'HOSPEDAGEM',
@@ -37,23 +42,30 @@ class ProfilePage extends StatelessWidget {
           DefaultButton(
             text: 'Listar seu espaço',
             icon: FontAwesomeIcons.houseUser,
-            onpressed: () {
-              navigateToHostPage(context);
-            },
+            onpressed: () {},
           ),
           DefaultButton(
             text: 'Publicando um interesse',
             icon: FontAwesomeIcons.peopleArrows,
-            onpressed: () {
-              navigateToInterestPage(context);
-            },
+            onpressed: () {},
+          ),
+          DefaultSubtitle(
+            text: 'ATENDIMENTO',
+          ),
+          DefaultButton(
+            text: 'Como funciona o Aloquei',
+            icon: FontAwesomeIcons.globe,
+            onpressed: () {},
           ),
           DefaultButton(
             text: 'Obtenha ajuda',
             icon: FontAwesomeIcons.question,
-            onpressed: () {
-              navigateToHelpPage(context);
-            },
+            onpressed: () {},
+          ),
+          DefaultButton(
+            text: 'Envie-nos seu feedback',
+            icon: FontAwesomeIcons.commentAlt,
+            onpressed: () {},
           ),
           DefaultSubtitle(
             text: 'JURÍDICO',
@@ -61,16 +73,12 @@ class ProfilePage extends StatelessWidget {
           DefaultButton(
             text: 'Termos do Serviço',
             icon: FontAwesomeIcons.fileAlt,
-            onpressed: () {
-              navigateToTerms(context);
-            },
+            onpressed: () {},
           ),
           DefaultButton(
             text: 'Sair da conta',
             icon: null,
-            onpressed: () {
-              authBloc.add(LogoutEvent());
-            },
+            onpressed: () {},
           ),
           Padding(
             padding: EdgeInsets.only(top: 10, bottom: 15),
