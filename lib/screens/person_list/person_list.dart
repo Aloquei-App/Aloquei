@@ -1,4 +1,7 @@
+import 'package:aloquei_app/blocs/person_list/person_list_bloc.dart';
+import 'package:aloquei_app/core/models/user_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -8,7 +11,42 @@ import '../rental_list/components/present_card.dart';
 import '../rental_list/components/rental_unit_card.dart';
 
 class PersonList extends StatelessWidget {
-  const PersonList({Key key}) : super(key: key);
+  final UserModel user;
+  const PersonList({Key key, @required this.user}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) =>
+          PersonListBloc(user: user)..add(PersonListStartedEvent()),
+      child: PersonListPage(),
+    );
+  }
+}
+
+
+class PersonListPage extends StatefulWidget{
+  @override
+  _PersonListPageState createState() => _PersonListPageState();
+}
+
+
+class PersonListPageState extends State<PersonListPage> {
+  PersonListBloc _personListBloc;
+
+  @override
+  void dispose() {
+    _personListBloc.close();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    _personListBloc = BlocProvider.of<PersonListBloc>(context);
+    super.initState();
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
