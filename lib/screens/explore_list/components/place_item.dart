@@ -46,16 +46,16 @@ class _PlaceItemState extends State<PlaceItem> {
                 indicatorColor: Colors.grey,
                 indicatorBackgroundColor: Colors.grey[300],
                 children: List.generate(widget.model.images.length,
-                    (i) => Image.network(widget.model.images[i], fit: BoxFit.fitHeight,)),
+                    (i) => Image.network(widget.model.images[i])),
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
-                  iconSize: 40,
+                  iconSize: 100,
                   icon: (_isFavorited
-                      ? const Icon(Icons.favorite, color: Colors.red)
+                      ? const Icon(Icons.favorite)
                       : const Icon(Icons.favorite_border)),
                   color: Colors.white,
                   onPressed: (){},
