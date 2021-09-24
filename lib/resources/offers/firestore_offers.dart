@@ -16,14 +16,11 @@ class OffersRepository {
           await _firestoreInstance.collection('offers').add(model.toJson());
       if (doc != null) {
         model.key = doc.id;
-        //model.doc = doc;
         return model;
       }
       return model;
-    } catch (e, stack) {
-      print(e);
-      print(stack);
-      throw e;
+    } catch (e) {
+      throw Exception(e);
     }
   }
 
