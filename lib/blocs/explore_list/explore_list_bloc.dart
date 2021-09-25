@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:aloquei_app/resources/user/firebase_user.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
@@ -19,6 +20,7 @@ class ExploreListBloc extends Bloc<ExploreListEvent, ExploreListState> {
       : super(ExploreListInitial());
 
   OffersRepository _offersRepository = OffersRepository();
+  UsersRepository _usersRepository = UsersRepository();
 
   List<HouseOfferModel> _republicList = [];
   List<HouseOfferModel> _casaList = [];
@@ -29,6 +31,7 @@ class ExploreListBloc extends Bloc<ExploreListEvent, ExploreListState> {
   List<HouseOfferModel> _casaBaseList = [];
   List<HouseOfferModel> _apBaseList = [];
   List<HouseOfferModel> _quartoBaseList = [];
+  List<String> favlist = [];
 
   bool _noMoreRepu = false;
   bool _noMoreCasa = false;
@@ -46,7 +49,14 @@ class ExploreListBloc extends Bloc<ExploreListEvent, ExploreListState> {
   List<HouseOfferModel> get quarto => _quartoList;
 
   void favorite(String postId) {
-    // TODO SAVE FAVORITE ON DB
+    if (favlist.contains(postId)){
+      favlist.remove(postId);
+      _usersRepository.updateFavorites(user.key, favlist);
+    }
+    else{
+      favlist.add(postId);
+      _usersRepository.updateFavorites(user.key, favlist);
+    }
   }
 
   void _buildFilteredList(String search) {
