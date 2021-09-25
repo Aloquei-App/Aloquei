@@ -15,6 +15,5 @@ class UpdateRentalState extends RentalListState {}
 
 class ShowRentalState extends RentalListState {}
 
-class DeleteRentalState extends RentalListState {}
 
 

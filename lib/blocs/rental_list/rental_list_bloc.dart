@@ -23,8 +23,6 @@ class RentalListBloc extends Bloc<RentalListEvent, RentalListState> {
 
   // get user => null;
 
-  
-
   @override
   Stream<RentalListState> mapEventToState(
     RentalListEvent event,
@@ -33,6 +31,14 @@ class RentalListBloc extends Bloc<RentalListEvent, RentalListState> {
       if (event is RentStartedEvent) {
         yield LoadingRentalState();
         _houseApList = await _offersRepository.getHousesByIdUserPost(user.key);
+        yield ShowRentalState();
+      } else if (event is DeleteRentalEvent) {
+        yield UpdateRentalState();
+        await _offersRepository.removeOffer(event.id);
+        int index = _houseApList.indexWhere((element) => element.key == event.id);
+        if(index != -1){
+          _houseApList.removeAt(index);
+        }
         yield ShowRentalState();
       }
     } catch (e) {

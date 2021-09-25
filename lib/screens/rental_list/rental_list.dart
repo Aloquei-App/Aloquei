@@ -56,13 +56,15 @@ class _RentalListPageState extends State<RentalListPage> {
           return Loading();
         } else {
           return ListView.builder(
-            itemCount: _rentalListBloc.getApCasa.length,
+            itemCount: _rentalListBloc.getApCasa.length+1,
             shrinkWrap: true,
             itemBuilder: (context, index) {
               return RentalItem(
                     index: index,
-                    house: _rentalListBloc.getApCasa[index],
-                    
+                    house: _rentalListBloc.getApCasa[index-1],
+                    onDelete: (value){
+                      _rentalListBloc.add(DeleteRentalEvent(value));
+                    },
               );
             },
           );
@@ -75,10 +77,11 @@ class _RentalListPageState extends State<RentalListPage> {
 class RentalItem extends StatelessWidget {
   final int index;
   final HouseOfferModel house;
+  final Function onDelete;
 
 
   const RentalItem({
-    Key key, this.index, this.house,
+    Key key, this.index, this.house, this.onDelete,
   }) : super(key: key);
 
   @override
@@ -120,7 +123,9 @@ class RentalItem extends StatelessWidget {
                 caption: 'Apagar',
                 color: redAirbnb,
                 icon: Icons.delete,
-                onTap: () {}),
+                onTap: () {
+                  onDelete(house.key);
+                }),
           ],
         ),
       ],

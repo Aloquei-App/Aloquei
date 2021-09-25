@@ -11,4 +11,11 @@ class RentStartedEvent extends RentalListEvent {}
 
 class GetMoreRentalEvent extends RentalListEvent {}
 
-class NewRentalEvent extends RentalListEvent {}
+class DeleteRentalEvent extends RentalListEvent {
+  final String id;
+
+  DeleteRentalEvent(this.id);
+    @override
+  List<Object> get props => [id];
+}
+
