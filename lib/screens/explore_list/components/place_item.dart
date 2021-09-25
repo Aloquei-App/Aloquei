@@ -1,5 +1,8 @@
+import 'package:aloquei_app/blocs/explore_list/explore_list_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+
 import '../../../blocs/wishlist/wishlist_bloc.dart';
 
 import '../../../core/models/house_offer_model.dart';
@@ -18,15 +21,10 @@ class PlaceItem extends StatefulWidget {
 }
 
 class _PlaceItemState extends State<PlaceItem> {
-  bool _isFavorited = false;
-  void _toggleFavorite() {
-    setState(() {
-      _isFavorited = !_isFavorited;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    ExploreListBloc exploreList = BlocProvider.of<ExploreListBloc>(context);
+    bool _isfavorited = exploreList.user.favList.contains(widget.model.key);
     return GestureDetector(
       onTap: () {
         navigateToOfferDetail(context, widget.model);
@@ -39,25 +37,30 @@ class _PlaceItemState extends State<PlaceItem> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(20.0),
                 child: ImageSlideshow(
-                  height: 400,
+                  height: 300,
                   width: double.infinity,
                   initialPage: 0,
                   indicatorColor: Colors.grey,
                   indicatorBackgroundColor: Colors.grey[300],
                   children: List.generate(widget.model.images.length,
-                      (i) => Image.network(widget.model.images[i])),
+                      (i) => Image.network(widget.model.images[i], fit: BoxFit.fitHeight)),
                 ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   IconButton(
-                    iconSize: 75,
-                    icon: (_isFavorited
-                        ? const Icon(Icons.favorite)
+                    iconSize: MediaQuery.of(context).size.width*0.08,
+                    icon: (_isfavorited
+                        ? const Icon(Icons.favorite, color: Colors.red)
                         : const Icon(Icons.favorite_border)),
                     color: Colors.white,
-                    onPressed: _toggleFavorite,
+                    onPressed: (){
+                      setState(() {
+                        _isfavorited = !_isfavorited;
+                      });
+                      exploreList.favorite(widget.model.key);
+                    },
                   ),
                 ],
               ),
