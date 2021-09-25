@@ -14,10 +14,8 @@ import 'inbox/inbox.dart';
 import 'interest/components/interest_page_data.dart';
 import 'interest/interest_page_pet.dart';
 import 'login/login_page.dart';
-import 'person_list/person_list.dart';
 import 'personal_info/personal_info.dart';
 import 'profile/profile.dart';
-import 'rental_list/rental_list.dart';
 import 'search/search.dart';
 import 'signup/signup.dart';
 import 'splash/splash.dart';
@@ -116,9 +114,6 @@ class _AppPageState extends State<AppPage> {
       routes: {
         '/explore': (context) => ExplorePage(),
         '/wishlists': (context) => WishlistsPage(),
-        // '/person_list': (context) => PersonList(
-        //       user: authBloc.getUserModel,
-        //     ),
         '/inbox': (context) => InboxPage(),
         '/profile': (context) => ProfilePage(),
         '/search': (context) => Search(),
@@ -126,9 +121,6 @@ class _AppPageState extends State<AppPage> {
         '/interestPage': (context) => InterestPageAddress(),
         '/interestPet': (context) => InterestPagePet(),
         '/hostPage': (context) => HostPageType(),
-        // '/rental_list': (context) => RentalList(
-        //       user: authBloc.getUserModel,
-        //     ),
         '/personalData': (context) => PersonalInfo(
               user: authBloc.getUser,
               userModel: authBloc.getUserModel,

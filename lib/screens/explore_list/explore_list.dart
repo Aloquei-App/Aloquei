@@ -7,7 +7,7 @@ import '../../core/models/user_model.dart';
 import '../core/loading.dart';
 import 'components/explore_app_bar.dart';
 import 'components/list_places.dart';
-import 'package:aloquei_app/screens/filter/filter_page.dart';
+import '../filter/filter_page.dart';
 
 class ExploreList extends StatelessWidget {
   final VoidCallback onBackPress;

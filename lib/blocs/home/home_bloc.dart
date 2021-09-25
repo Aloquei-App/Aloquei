@@ -1,14 +1,13 @@
 import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import '../../core/models/cities_model.dart';
-import '../../core/models/estados_model.dart';
+
 import '../../core/models/explore_model.dart';
 import '../../core/models/house_offer_model.dart';
 import '../../core/models/interest_offer_model.dart';
 import '../../core/models/user_model.dart';
-import '../../resources/apis/ibge.dart';
 import '../../resources/offers/firestore_offers.dart';
 
 part 'home_event.dart';
@@ -37,8 +36,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   List<HouseOfferModel> get getApCasa => _houseApList;
 
   List<HouseOfferModel> get getRepub => _houseRepList;
-
-  
 
   @override
   Stream<HomeState> mapEventToState(

@@ -1,8 +1,8 @@
-import 'package:aloquei_app/blocs/profile/profile_bloc.dart';
-import 'package:aloquei_app/core/errors/auth_error.dart';
-import 'package:aloquei_app/core/models/house_offer_model.dart';
-import 'package:aloquei_app/core/models/interest_offer_model.dart';
-import 'package:aloquei_app/resources/offers/firestore_offers.dart';
+import '../profile/profile_bloc.dart';
+import '../../core/errors/auth_error.dart';
+import '../../core/models/house_offer_model.dart';
+import '../../core/models/interest_offer_model.dart';
+import '../../resources/offers/firestore_offers.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';

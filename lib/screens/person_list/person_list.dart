@@ -1,8 +1,8 @@
-import 'package:aloquei_app/blocs/person_list/person_list_bloc.dart';
-import 'package:aloquei_app/core/models/interest_offer_model.dart';
-import 'package:aloquei_app/core/models/user_model.dart';
-import 'package:aloquei_app/screens/core/loading.dart';
-import 'package:aloquei_app/screens/core/notFound.dart';
+import '../../blocs/person_list/person_list_bloc.dart';
+import '../../core/models/interest_offer_model.dart';
+import '../../core/models/user_model.dart';
+import '../core/loading.dart';
+import '../core/notFound.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -56,20 +56,19 @@ class _PersonListPageState extends State<PersonListPage> {
       builder: (context, state) {
         if (state is LoadingPersonListState) {
           return Loading();
-        } else if(state is NothingToShowState){
+        } else if (state is NothingToShowState) {
           return NotFound();
-        }        
-        else {
+        } else {
           return ListView.builder(
             itemCount: _personListBloc.getApCasa.length,
             shrinkWrap: true,
             itemBuilder: (context, index) {
               return PersonItem(
-                    index: index,
-                    house: _personListBloc.getApCasa[index],
-                    onDelete: (value){
-                      _personListBloc.add(DeletePersonEvent(value));
-                    },                    
+                index: index,
+                house: _personListBloc.getApCasa[index],
+                onDelete: (value) {
+                  _personListBloc.add(DeletePersonEvent(value));
+                },
               );
             },
           );
@@ -84,7 +83,10 @@ class PersonItem extends StatelessWidget {
   final InterestModel house;
   final Function onDelete;
   const PersonItem({
-    Key key, this.index, this.house, this.onDelete, 
+    Key key,
+    this.index,
+    this.house,
+    this.onDelete,
   }) : super(key: key);
 
   @override
@@ -113,13 +115,14 @@ class PersonItem extends StatelessWidget {
           actionPane: SlidableDrawerActionPane(),
           actionExtentRatio: 0.25,
           child: ModelItemCard(
-            '',
-            house.city,
-            house.postUserName,
-            DateFormat("dd/MM/yyyy, HH:mm").format(DateTime.fromMicrosecondsSinceEpoch(house.includedAt)) , 
-            false           
-            // formatDate(DateTime date) => new DateFormat("MMMM d").format(date)
-          ),
+              '',
+              house.city,
+              house.postUserName,
+              DateFormat("dd/MM/yyyy, HH:mm").format(
+                  DateTime.fromMicrosecondsSinceEpoch(house.includedAt)),
+              false
+              // formatDate(DateTime date) => new DateFormat("MMMM d").format(date)
+              ),
           actions: [
             IconSlideAction(
                 caption: 'Apagar',

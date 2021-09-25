@@ -1,8 +1,8 @@
-import 'package:aloquei_app/blocs/rental_list/rental_list_bloc.dart';
-import 'package:aloquei_app/core/models/house_offer_model.dart';
-import 'package:aloquei_app/core/models/user_model.dart';
-import 'package:aloquei_app/screens/core/loading.dart';
-import 'package:aloquei_app/screens/core/notFound.dart';
+import '../../blocs/rental_list/rental_list_bloc.dart';
+import '../../core/models/house_offer_model.dart';
+import '../../core/models/user_model.dart';
+import '../core/loading.dart';
+import '../core/notFound.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -51,12 +51,13 @@ class _RentalListPageState extends State<RentalListPage> {
     return SafeArea(
         child: BlocBuilder<RentalListBloc, RentalListState>(
       buildWhen: (previous, current) =>
-          current is LoadingRentalState || current is ShowRentalState || current is NothingToShowState,
+          current is LoadingRentalState ||
+          current is ShowRentalState ||
+          current is NothingToShowState,
       builder: (context, state) {
         if (state is LoadingRentalState) {
           return Loading();
-          
-        } else if(state is NothingToShowState){
+        } else if (state is NothingToShowState) {
           return NotFound();
         } else {
           return ListView.builder(
@@ -64,11 +65,11 @@ class _RentalListPageState extends State<RentalListPage> {
             shrinkWrap: true,
             itemBuilder: (context, index) {
               return RentalItem(
-                    index: index,
-                    house: _rentalListBloc.getApCasa[index],
-                    onDelete: (value){
-                      _rentalListBloc.add(DeleteRentalEvent(value));
-                    },
+                index: index,
+                house: _rentalListBloc.getApCasa[index],
+                onDelete: (value) {
+                  _rentalListBloc.add(DeleteRentalEvent(value));
+                },
               );
             },
           );
@@ -83,9 +84,11 @@ class RentalItem extends StatelessWidget {
   final HouseOfferModel house;
   final Function onDelete;
 
-
   const RentalItem({
-    Key key, this.index, this.house, this.onDelete,
+    Key key,
+    this.index,
+    this.house,
+    this.onDelete,
   }) : super(key: key);
 
   @override
@@ -114,12 +117,12 @@ class RentalItem extends StatelessWidget {
           actionPane: SlidableDrawerActionPane(),
           actionExtentRatio: 0.25,
           child: ModelItemCard(
-
             house.images[0],
             house.city,
             house.name,
-            DateFormat("dd/MM/yyyy, HH:mm").format(DateTime.fromMicrosecondsSinceEpoch(house.includedAt)),
-            true,            
+            DateFormat("dd/MM/yyyy, HH:mm")
+                .format(DateTime.fromMicrosecondsSinceEpoch(house.includedAt)),
+            true,
             // formatDate(DateTime date) => new DateFormat("MMMM d").format(date)
           ),
           actions: [

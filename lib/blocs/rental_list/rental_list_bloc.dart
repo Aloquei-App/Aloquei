@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:aloquei_app/core/models/house_offer_model.dart';
-import 'package:aloquei_app/resources/offers/firestore_offers.dart';
+import '../../core/models/house_offer_model.dart';
+import '../../resources/offers/firestore_offers.dart';
 
 import '../../core/models/user_model.dart';
 import 'package:bloc/bloc.dart';

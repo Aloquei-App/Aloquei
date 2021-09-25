@@ -1,10 +1,8 @@
-import 'package:aloquei_app/blocs/explore_list/explore_list_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 
-import '../../../blocs/wishlist/wishlist_bloc.dart';
-
+import '../../../blocs/explore_list/explore_list_bloc.dart';
 import '../../../core/models/house_offer_model.dart';
 import '../../core/navigation.dart';
 
@@ -42,20 +40,22 @@ class _PlaceItemState extends State<PlaceItem> {
                   initialPage: 0,
                   indicatorColor: Colors.grey,
                   indicatorBackgroundColor: Colors.grey[300],
-                  children: List.generate(widget.model.images.length,
-                      (i) => Image.network(widget.model.images[i], fit: BoxFit.fitHeight)),
+                  children: List.generate(
+                      widget.model.images.length,
+                      (i) => Image.network(widget.model.images[i],
+                          fit: BoxFit.fitHeight)),
                 ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   IconButton(
-                    iconSize: MediaQuery.of(context).size.width*0.08,
+                    iconSize: MediaQuery.of(context).size.width * 0.08,
                     icon: (_isfavorited
                         ? const Icon(Icons.favorite, color: Colors.red)
                         : const Icon(Icons.favorite_border)),
                     color: Colors.white,
-                    onPressed: (){
+                    onPressed: () {
                       setState(() {
                         _isfavorited = !_isfavorited;
                       });
