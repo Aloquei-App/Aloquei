@@ -15,6 +15,4 @@ class UpdatePersonListState extends PersonListState {}
 
 class ShowPersonListState extends PersonListState {}
 
-class PersonListYetState extends PersonListState {}
-
-class ChangePersonListState extends PersonListState {}
+class NothingToShowState extends PersonListState{}

@@ -13,3 +13,10 @@ class GetMorePersonListEvent extends PersonListEvent {}
 
 class NewPersonListEvent extends PersonListEvent {}
 
+class DeletePersonEvent extends PersonListEvent {
+  final String id;
+
+  DeletePersonEvent(this.id);
+    @override
+  List<Object> get props => [id];
+}

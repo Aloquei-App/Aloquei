@@ -1,8 +1,8 @@
 import 'package:aloquei_app/blocs/person_list/person_list_bloc.dart';
-import 'package:aloquei_app/core/models/house_offer_model.dart';
 import 'package:aloquei_app/core/models/interest_offer_model.dart';
 import 'package:aloquei_app/core/models/user_model.dart';
 import 'package:aloquei_app/screens/core/loading.dart';
+import 'package:aloquei_app/screens/core/notFound.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -56,7 +56,10 @@ class _PersonListPageState extends State<PersonListPage> {
       builder: (context, state) {
         if (state is LoadingPersonListState) {
           return Loading();
-        } else {
+        } else if(state is NothingToShowState){
+          return NotFound();
+        }        
+        else {
           return ListView.builder(
             itemCount: _personListBloc.getApCasa.length,
             shrinkWrap: true,
@@ -64,7 +67,9 @@ class _PersonListPageState extends State<PersonListPage> {
               return PersonItem(
                     index: index,
                     house: _personListBloc.getApCasa[index],
-                    
+                    onDelete: (value){
+                      _personListBloc.add(DeletePersonEvent(value));
+                    },                    
               );
             },
           );
@@ -77,8 +82,9 @@ class _PersonListPageState extends State<PersonListPage> {
 class PersonItem extends StatelessWidget {
   final int index;
   final InterestModel house;
+  final Function onDelete;
   const PersonItem({
-    Key key, this.index, this.house, 
+    Key key, this.index, this.house, this.onDelete, 
   }) : super(key: key);
 
   @override
@@ -119,7 +125,9 @@ class PersonItem extends StatelessWidget {
                 caption: 'Apagar',
                 color: redAirbnb,
                 icon: Icons.delete,
-                onTap: () {}),
+                onTap: () {
+                  onDelete(house.key);
+                }),
           ],
         ),
       ],

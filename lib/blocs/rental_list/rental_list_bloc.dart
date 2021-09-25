@@ -1,6 +1,4 @@
 import 'dart:async';
-
-// import 'package:aloquei_app/core/models/offers_model.dart';
 import 'package:aloquei_app/core/models/house_offer_model.dart';
 import 'package:aloquei_app/resources/offers/firestore_offers.dart';
 
@@ -31,15 +29,24 @@ class RentalListBloc extends Bloc<RentalListEvent, RentalListState> {
       if (event is RentStartedEvent) {
         yield LoadingRentalState();
         _houseApList = await _offersRepository.getHousesByIdUserPost(user.key);
-        yield ShowRentalState();
+        if (_houseApList.length > 0) {
+          yield ShowRentalState();
+        } else {
+          yield NothingToShowState();
+        }
       } else if (event is DeleteRentalEvent) {
         yield UpdateRentalState();
         await _offersRepository.removeOffer(event.id);
-        int index = _houseApList.indexWhere((element) => element.key == event.id);
-        if(index != -1){
+        int index =
+            _houseApList.indexWhere((element) => element.key == event.id);
+        if (index != -1) {
           _houseApList.removeAt(index);
         }
-        yield ShowRentalState();
+        if (_houseApList.length > 0) {
+          yield ShowRentalState();
+        } else {
+          yield NothingToShowState();
+        }
       }
     } catch (e) {
       print(e.toString());

@@ -2,6 +2,7 @@ import 'package:aloquei_app/blocs/rental_list/rental_list_bloc.dart';
 import 'package:aloquei_app/core/models/house_offer_model.dart';
 import 'package:aloquei_app/core/models/user_model.dart';
 import 'package:aloquei_app/screens/core/loading.dart';
+import 'package:aloquei_app/screens/core/notFound.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -50,18 +51,21 @@ class _RentalListPageState extends State<RentalListPage> {
     return SafeArea(
         child: BlocBuilder<RentalListBloc, RentalListState>(
       buildWhen: (previous, current) =>
-          current is LoadingRentalState || current is ShowRentalState,
+          current is LoadingRentalState || current is ShowRentalState || current is NothingToShowState,
       builder: (context, state) {
         if (state is LoadingRentalState) {
           return Loading();
+          
+        } else if(state is NothingToShowState){
+          return NotFound();
         } else {
           return ListView.builder(
-            itemCount: _rentalListBloc.getApCasa.length+1,
+            itemCount: _rentalListBloc.getApCasa.length,
             shrinkWrap: true,
             itemBuilder: (context, index) {
               return RentalItem(
                     index: index,
-                    house: _rentalListBloc.getApCasa[index-1],
+                    house: _rentalListBloc.getApCasa[index],
                     onDelete: (value){
                       _rentalListBloc.add(DeleteRentalEvent(value));
                     },
