@@ -106,7 +106,7 @@ class PersonItem extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 30),
-                    child: ListTitle("Suas Pessoas"),
+                    child: ListTitle("Seus interesses"),
                   ),
                 ],
               )

@@ -42,7 +42,7 @@ class ExploreAppBar extends StatelessWidget implements PreferredSizeWidget {
                 width: 5,
               ),
               Text(
-                "Para onde você vai?",
+                "O que está procurando?",
                 style:
                     TextStyle(color: Colors.black, fontWeight: FontWeight.w700),
               )
