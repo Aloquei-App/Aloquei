@@ -105,6 +105,7 @@ class HouseOfferModel extends OffersModel {
     type = json['type'] ?? 0;
     typeRoom = json['typeRoom'] ?? "";
     valueCondominium = json['valueCondominium'].toDouble() ?? 0;
+    includedAt = json['includedAt'] ?? 0;
     valueMonth = json['valueMonth'].toDouble() ?? 0;
     zipCode = json['zipCode'] ?? "";
   }

@@ -73,6 +73,7 @@ class InterestModel extends OffersModel {
     socialNetworkLink = json['socialNetworkLink'] ?? "";
     type = json['type'] ?? 0;
     university = json['university'] ?? "";
+    includedAt = json['includedAt'] ?? 0;
   }
 
   Map<String, dynamic> toJson() {
@@ -94,6 +95,7 @@ class InterestModel extends OffersModel {
     data['socialNetworkLink'] = this.socialNetworkLink;
     data['type'] = this.type;
     data['university'] = this.university;
+    
     return data;
   }
 }
