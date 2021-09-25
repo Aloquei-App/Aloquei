@@ -1,18 +1,23 @@
 import 'dart:ui';
-
+import 'package:random_color/random_color.dart';
 import 'package:flutter/material.dart';
 
+
+
 class ModelItemCard extends StatelessWidget {
+  final RandomColor _randomColor = RandomColor();
   final String imgUrl;
   final String city;
   final String host; //Rental unit host
   final String timePeriod;
-
-  const ModelItemCard(
+  final bool flag;
+  
+  ModelItemCard(
     this.imgUrl,
     this.city,
     this.host,
     this.timePeriod,
+    this.flag,
   );
 
   @override
@@ -26,6 +31,7 @@ class ModelItemCard extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              flag ?
               Container(
                 height: 90,
                 width: 100,
@@ -38,7 +44,20 @@ class ModelItemCard extends StatelessWidget {
                     image: NetworkImage(imgUrl),
                   ),
                 ),
-              ),
+              ) : 
+                          CircleAvatar(
+              backgroundColor: _randomColor.randomColor(
+      colorBrightness: ColorBrightness.light,
+    ),
+              foregroundColor: Colors.black,
+              //backgroundImage: AssetImage(img),
+              radius: 40,
+              child: Text(host[0].toUpperCase(),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  )),
+            ),
               SizedBox(
                 width: 15,
               ),

@@ -29,6 +29,7 @@ class PersonListBloc extends Bloc<PersonListEvent, PersonListState> {
         yield LoadingPersonListState();
         _houseApList = 
             await _offersRepository.getInterestByIdPost(user.key);
+            yield ShowPersonListState();
       }
     } catch (e) {
       print(e.toString());

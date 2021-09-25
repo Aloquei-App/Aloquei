@@ -107,10 +107,12 @@ class RentalItem extends StatelessWidget {
           actionPane: SlidableDrawerActionPane(),
           actionExtentRatio: 0.25,
           child: ModelItemCard(
+
             house.images[0],
             house.city,
             house.name,
-            DateFormat("dd/MM/yyyy, HH:mm").format(DateTime.fromMicrosecondsSinceEpoch(house.includedAt)) ,            
+            DateFormat("dd/MM/yyyy, HH:mm").format(DateTime.fromMicrosecondsSinceEpoch(house.includedAt)),
+            true,            
             // formatDate(DateTime date) => new DateFormat("MMMM d").format(date)
           ),
           actions: [
