@@ -1,8 +1,8 @@
-import '../../core/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../blocs/home/home_bloc.dart';
+import '../../core/models/user_model.dart';
 import '../core/loading.dart';
 import '../core/snack_bar.dart';
 import '../explore/explore.dart';

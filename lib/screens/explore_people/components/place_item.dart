@@ -29,7 +29,7 @@ class PlaceItem extends StatelessWidget {
                   )),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 5.0, right: 5),
+              padding: EdgeInsets.only(left: 5.0, right: 5, top: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -52,10 +52,22 @@ class PlaceItem extends StatelessWidget {
                             TextSpan(
                                 text: model.observations,
                                 style: TextStyle(fontSize: 15)),
+                            TextSpan(
+                                text: '\nProcura: ',
+                                style: TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.w600)),
+                            TextSpan(
+                                text: model.desiredGender,
+                                style: TextStyle(fontSize: 15)),
+                            TextSpan(
+                                text: ' | ', style: TextStyle(fontSize: 15)),
+                            TextSpan(
+                                text: model.desiredCourse,
+                                style: TextStyle(fontSize: 15)),
                           ],
                         ),
                       ),
-                    )
+                    ),
                   ]),
                 ],
               ),

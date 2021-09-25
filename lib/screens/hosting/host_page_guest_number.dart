@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
+
 import '../core/forms/host_top_menu_gradient.dart';
 import 'components/host_bottombar.dart';
 import 'components/host_select_menu_guest_num.dart';
 import 'host_page_amenities.dart';
-
-import 'package:flutter/material.dart';
 
 class HostPageGuestNum extends StatelessWidget {
   const HostPageGuestNum({Key key}) : super(key: key);

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geolocator/geolocator.dart';
 
+import '../definitions.dart';
 import 'offers_model.dart';
 
 class HouseOfferModel extends OffersModel {
@@ -23,6 +24,7 @@ class HouseOfferModel extends OffersModel {
   double valueCondominium;
   double valueMonth;
   String zipCode;
+  String descHouseType;
 
   HouseOfferModel(
       {this.address,
@@ -44,6 +46,7 @@ class HouseOfferModel extends OffersModel {
       this.valueCondominium,
       this.valueMonth,
       this.zipCode,
+      this.descHouseType,
       String cidade,
       String estado,
       String email,
@@ -75,6 +78,7 @@ class HouseOfferModel extends OffersModel {
     furnished = json['furnished'] ?? "";
     garage = json['garage'] ?? 0;
     houseType = json['houseType'] ?? 0;
+    descHouseType = houseTypes[houseType];
     images = json['images'].cast<String>() ?? [];
     includedOnValue = json['includedOnValue'].cast<String>() ?? [];
     kitchen = json['kitchen'] ?? 0;

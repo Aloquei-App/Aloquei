@@ -19,7 +19,7 @@ class ExploreAppBar extends StatelessWidget implements PreferredSizeWidget {
       : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {  
     return AppBar(
       backgroundColor: Colors.grey[50],
       elevation: 0,
