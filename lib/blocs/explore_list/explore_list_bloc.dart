@@ -31,7 +31,6 @@ class ExploreListBloc extends Bloc<ExploreListEvent, ExploreListState> {
   List<HouseOfferModel> _casaBaseList = [];
   List<HouseOfferModel> _apBaseList = [];
   List<HouseOfferModel> _quartoBaseList = [];
-  List<String> favlist = [];
 
   bool _noMoreRepu = false;
   bool _noMoreCasa = false;
@@ -49,13 +48,13 @@ class ExploreListBloc extends Bloc<ExploreListEvent, ExploreListState> {
   List<HouseOfferModel> get quarto => _quartoList;
 
   void favorite(String postId) {
-    if (favlist.contains(postId)){
-      favlist.remove(postId);
-      _usersRepository.updateFavorites(user.key, favlist);
+    if (user.favList.contains(postId)){
+      user.favList.remove(postId);
+      _usersRepository.updateFavorites(user.key, user.favList);
     }
     else{
-      favlist.add(postId);
-      _usersRepository.updateFavorites(user.key, favlist);
+      user.favList.add(postId);
+      _usersRepository.updateFavorites(user.key, user.favList);
     }
   }
 

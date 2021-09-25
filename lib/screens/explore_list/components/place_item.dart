@@ -21,15 +21,10 @@ class PlaceItem extends StatefulWidget {
 }
 
 class _PlaceItemState extends State<PlaceItem> {
-  bool _isFavorited = false;
   @override
   Widget build(BuildContext context) {
     ExploreListBloc exploreList = BlocProvider.of<ExploreListBloc>(context);
-    for(var i=0;i<exploreList.favlist.length;i++){
-      if (exploreList.favlist[i] == widget.model.key){
-        _isFavorited = true;
-      }
-    }
+    bool _isfavorited = exploreList.user.favList.contains(widget.model.key);
     return GestureDetector(
       onTap: () {
         navigateToOfferDetail(context, widget.model);
@@ -56,11 +51,14 @@ class _PlaceItemState extends State<PlaceItem> {
                 children: [
                   IconButton(
                     iconSize: MediaQuery.of(context).size.width*0.08,
-                    icon: (exploreList.user.favList.contains(widget.model.key)
+                    icon: (_isfavorited
                         ? const Icon(Icons.favorite, color: Colors.red)
                         : const Icon(Icons.favorite_border)),
                     color: Colors.white,
                     onPressed: (){
+                      setState(() {
+                        _isfavorited = !_isfavorited;
+                      });
                       exploreList.favorite(widget.model.key);
                     },
                   ),
