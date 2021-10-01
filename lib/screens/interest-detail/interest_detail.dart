@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:aloquei_app/blocs/interest-detail/interest_detail_bloc.dart';
 import 'package:aloquei_app/core/models/interest_offer_model.dart';
+import 'package:random_color/random_color.dart';
 
 import '../../core/models/user_model.dart';
 import 'package:flutter/material.dart';
@@ -51,6 +52,7 @@ class InterestDetailPage extends StatefulWidget {
 
 class _InterestDetailPageState extends State<InterestDetailPage> {
   final ScreenshotController _screenshotController = ScreenshotController();
+  final RandomColor _randomColor = RandomColor();
   InterestDetailBloc _interestDetailBloc;
   @override
   void initState() {
@@ -98,7 +100,24 @@ class _InterestDetailPageState extends State<InterestDetailPage> {
                   ),
                 ],
               ),
-              TitleOffers(widget.person.postUserName)
+              Row(
+                children: [
+                  CircleAvatar(
+                          backgroundColor: _randomColor.randomColor(
+                            colorBrightness: ColorBrightness.light,
+                          ),
+                          foregroundColor: Colors.black,
+                          //backgroundImage: AssetImage(img),
+                          radius: 40,
+                          child: Text(widget.person.postUserName[0].toUpperCase(),
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              )),
+                        ),
+                  TitleOffers(widget.person.postUserName),
+                ],
+              )
             ],
           ),
         ),
