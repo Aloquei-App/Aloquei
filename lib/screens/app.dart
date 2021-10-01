@@ -11,6 +11,7 @@ import 'help/help_page.dart';
 import 'home/home.dart';
 import 'hosting/host_page_type.dart';
 import 'inbox/inbox.dart';
+import 'interest-detail/interest_detail.dart';
 import 'interest/components/interest_page_data.dart';
 import 'interest/interest_page_pet.dart';
 import 'login/login_page.dart';
@@ -128,7 +129,9 @@ class _AppPageState extends State<AppPage> {
         '/termsData': (context) => TermsofServicePage(),
         '/helpPage': (context) => HelpPage(),
         '/offerDetail': (context) =>
-            OfferDetail(userModel: authBloc.getUserModel)
+            OfferDetail(userModel: authBloc.getUserModel),
+        '/interestDetail': (context) =>
+            InterestDetail(user: authBloc.getUserModel),
       },
       initialRoute: '/',
     );
