@@ -3,7 +3,9 @@ import 'dart:typed_data';
 
 import 'package:aloquei_app/blocs/interest-detail/interest_detail_bloc.dart';
 import 'package:aloquei_app/core/models/interest_offer_model.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:random_color/random_color.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/models/user_model.dart';
 import 'package:flutter/material.dart';
@@ -11,10 +13,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share/share.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../core/colors.dart';
 import '../login/components/title_offers.dart';
 
+import 'components/bottom_navigation.dart';
 import 'components/card_image.dart';
 import 'components/carousel_options.dart';
 import 'components/contain_element.dart';
@@ -102,25 +106,101 @@ class _InterestDetailPageState extends State<InterestDetailPage> {
               ),
               Row(
                 children: [
-                  CircleAvatar(
-                          backgroundColor: _randomColor.randomColor(
-                            colorBrightness: ColorBrightness.light,
-                          ),
-                          foregroundColor: Colors.black,
-                          //backgroundImage: AssetImage(img),
-                          radius: 40,
-                          child: Text(widget.person.postUserName[0].toUpperCase(),
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              )),
-                        ),
-                  TitleOffers(widget.person.postUserName),
+                  Padding(
+                    padding: const EdgeInsets.all(12.5),
+                    child: CircleAvatar(
+                      backgroundColor: _randomColor.randomColor(
+                        colorBrightness: ColorBrightness.light,
+                      ),
+                      foregroundColor: Colors.black,
+                      //backgroundImage: AssetImage(img),
+                      radius: 60,
+                      child: Text(widget.person.postUserName[0].toUpperCase(),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 50,
+                            fontFamily: 'RobotoMono',
+                          )),
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TitleOffers(widget.person.postUserName),
+                      DescriptionOffersGrey(
+                        "${widget.person.city}/${widget.person.state}",
+                      ),
+                      DescriptionOffersGrey("${widget.person.university}"),
+                    ],
+                  ),
+                  IconButton(
+                    onPressed: () async {
+                      final url = widget.person.socialNetworkLink;
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    },
+                    icon: Icon(FontAwesomeIcons.facebookSquare),
+                    alignment: Alignment(-90, 30),
+                    color: Colors.blue,
+                    iconSize: 30,
+                    hoverColor: Colors.black45,
+                  ),
                 ],
-              )
+              ),
+              Divide(),
+              TextOffers('Informações'),
+              DescriptionOffers("", "Email: ${widget.person.mail}",
+                  "\nFone: ${widget.person.phone}"),
+              Divide(),
+
+              TextOffers('Interesses'),
+              Elements(
+                FontAwesomeIcons.houseUser,
+                "        Possui casa:",
+                "        ${widget.person.hasHouse ? 'Sim' : 'Não'}",
+              ),
+              Elements(
+                FontAwesomeIcons.dog,
+                "        Gosta de animais:",
+                "        ${widget.person.likesPets ? 'Sim' : 'Não'}",
+              ),
+              Elements(
+                FontAwesomeIcons.smoking,
+                "        Drogas:",
+                "        ${widget.person.observations}",
+              ),
+              Elements(
+                (FontAwesomeIcons.venusMars),
+                "        Genero preferencial:",
+                "        ${widget.person.desiredGender}",
+              ),
+              Divide(),
+              TextOffers('Universidades próximas'),
+              
+              
+              // TODO colocar as universidades próximas listadas
+              Padding(
+                padding: EdgeInsets.only(
+                    top: 15.0, bottom: 10.0, left: 30.0, right: 30.0),
+                child: Row(
+                  children: [
+                    CardImage(
+                        "https://sites.usp.br/kidssavelivesbrasil/wp-content/uploads/sites/631/2021/01/logo-furg.png",
+                        "FURG"),
+                    CardImage(
+                        "https://ifrs.edu.br/wp-content/uploads/2017/08/logo_vertical.png",
+                        "IFRS")
+                  ],
+                ),
+              ),
+              Divide(),
             ],
           ),
         ),
+        
       ),
     );
   }

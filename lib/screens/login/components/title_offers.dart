@@ -11,7 +11,7 @@ class TitleOffers extends StatelessWidget {
       child: Text(
         this.title,
         style: TextStyle(
-            fontWeight: FontWeight.w600, fontSize: 30, fontFamily: 'Arial'),
+            fontWeight: FontWeight.w600, fontSize: 40, fontFamily: 'Arial'),
       ),
     );
   }
