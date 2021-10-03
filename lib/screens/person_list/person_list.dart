@@ -1,3 +1,5 @@
+import 'package:aloquei_app/screens/core/navigation.dart';
+
 import '../../blocs/person_list/person_list_bloc.dart';
 import '../../core/models/interest_offer_model.dart';
 import '../../core/models/user_model.dart';
@@ -65,7 +67,7 @@ class _PersonListPageState extends State<PersonListPage> {
             itemBuilder: (context, index) {
               return PersonItem(
                 index: index,
-                house: _personListBloc.getApCasa[index],
+                person: _personListBloc.getApCasa[index],
                 onDelete: (value) {
                   _personListBloc.add(DeletePersonEvent(value));
                 },
@@ -80,12 +82,12 @@ class _PersonListPageState extends State<PersonListPage> {
 
 class PersonItem extends StatelessWidget {
   final int index;
-  final InterestModel house;
+  final InterestModel person;
   final Function onDelete;
   const PersonItem({
     Key key,
     this.index,
-    this.house,
+    this.person,
     this.onDelete,
   }) : super(key: key);
 
@@ -116,11 +118,12 @@ class PersonItem extends StatelessWidget {
           actionExtentRatio: 0.25,
           child: ModelItemCard(
               '',
-              house.city,
-              house.postUserName,
+              person.city,
+              person.postUserName,
               DateFormat("dd/MM/yyyy, HH:mm").format(
-                  DateTime.fromMicrosecondsSinceEpoch(house.includedAt)),
-              false
+                  DateTime.fromMicrosecondsSinceEpoch(person.includedAt)),
+              false,
+              () => navigateToInterestDetail(context, person),
               // formatDate(DateTime date) => new DateFormat("MMMM d").format(date)
               ),
           actions: [
@@ -129,7 +132,7 @@ class PersonItem extends StatelessWidget {
                 color: redAirbnb,
                 icon: Icons.delete,
                 onTap: () {
-                  onDelete(house.key);
+                  onDelete(person.key);
                 }),
           ],
         ),

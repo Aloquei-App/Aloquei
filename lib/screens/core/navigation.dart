@@ -1,3 +1,4 @@
+import 'package:aloquei_app/core/models/interest_offer_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/models/house_offer_model.dart';
@@ -56,4 +57,8 @@ void navigateToHelpPage(BuildContext context) {
 
 void navigateToOfferDetail(BuildContext context, HouseOfferModel model) {
   Navigator.of(context).pushNamed('/offerDetail', arguments: model);
+}
+
+void navigateToInterestDetail(BuildContext context, InterestModel model) {
+  Navigator.of(context).pushNamed('/interestDetail', arguments: model);
 }

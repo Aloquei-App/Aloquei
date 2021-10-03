@@ -1,3 +1,5 @@
+import 'package:aloquei_app/screens/core/navigation.dart';
+
 import '../../blocs/rental_list/rental_list_bloc.dart';
 import '../../core/models/house_offer_model.dart';
 import '../../core/models/user_model.dart';
@@ -123,6 +125,7 @@ class RentalItem extends StatelessWidget {
             DateFormat("dd/MM/yyyy, HH:mm")
                 .format(DateTime.fromMicrosecondsSinceEpoch(house.includedAt)),
             true,
+            () => navigateToOfferDetail(context, house),
             // formatDate(DateTime date) => new DateFormat("MMMM d").format(date)
           ),
           actions: [
