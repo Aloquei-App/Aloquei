@@ -1,22 +1,58 @@
+import 'package:aloquei_app/blocs/register_home/register_home_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../host_page_desc.dart';
 import 'host_text_image_button.dart';
 
 class HostSelectMenuOne extends StatelessWidget {
-  final VoidCallback onpressed;
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => RegisterHomeBloc()..add(ScreenStarted()),
+      child: AddHomePage(),
+    );
+  }
+}
 
-  const HostSelectMenuOne({Key key, this.onpressed}) : super(key: key);
+class AddHomePage extends StatefulWidget {
+  @override
+  _AddHomePageState createState() => _AddHomePageState();
+}
+
+class _AddHomePageState extends State<AddHomePage> {
+  RegisterHomeBloc registerHomeBloc;
+
+  //0 => república
+  //1 => casa
+  //2 => ap
+  //3 => quarto
+
+  /*@override
+  void dispose() {
+    //registerHomeBloc.add(DisposeEvent());
+    registerHomeBloc.close();
+    super.dispose();
+  }*/
 
   @override
   Widget build(BuildContext context) {
+    registerHomeBloc = BlocProvider.of<RegisterHomeBloc>(context);
+
     return Expanded(
-        child: ListView(
-            padding: EdgeInsets.only(left: 20, right: 20, top: 20),
-            children: [
+      child: ListView(
+        padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+        children: [
           HostTextImageButton(
             text: 'Apartamento',
             image: 'assets/apartment.jpg',
-            ontap: () {},
+            ontap: () {
+              registerHomeBloc.setHouseType(2);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HostPageDesc()),
+              );
+            },
           ),
           HostTextImageButton(
             text: 'Casa',
@@ -48,6 +84,8 @@ class HostSelectMenuOne extends StatelessWidget {
             image: 'assets/boutiqueHotel.jpg',
             ontap: () {},
           ),
-        ]));
+        ],
+      ),
+    );
   }
 }

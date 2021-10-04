@@ -32,8 +32,8 @@ class HostPageType extends StatelessWidget {
               text2: 'vai hospedar?',
             ),
             HostSelectMenuOne(
-              onpressed: () {},
-            )
+                //onpressed: () {},
+                )
           ],
         ));
   }

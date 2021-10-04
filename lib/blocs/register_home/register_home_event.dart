@@ -9,4 +9,4 @@ abstract class RegisterHomeEvent extends Equatable {
 
 class SubmitEvent extends RegisterHomeEvent {}
 
-class ScreenStarded extends ProfileEvent {}
+class ScreenStarted extends RegisterHomeEvent {}
