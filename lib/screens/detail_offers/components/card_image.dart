@@ -18,7 +18,7 @@ class CardImage extends StatelessWidget {
               child: Image.network(this.img,
                   height: 110,
                   width: MediaQuery.of(context).size.width * 0.4,
-                  fit: BoxFit.fill),
+                  fit: BoxFit.fitHeight),
             ),
             Padding(
               padding: EdgeInsets.only(top: 10.0),

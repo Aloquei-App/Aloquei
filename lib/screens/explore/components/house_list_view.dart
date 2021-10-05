@@ -1,3 +1,4 @@
+import 'package:aloquei_app/screens/core/navigation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/models/house_offer_model.dart';
@@ -18,7 +19,11 @@ class HouseListView extends StatelessWidget {
         itemCount: houseList.length,
         itemBuilder: (context, index) {
           return HouseItem(
-              name: houseList[index].name, img: houseList[index].images.first);
+              onTap: () {
+                navigateToOfferDetail(context, houseList[index]);
+              },
+              name: houseList[index].name,
+              img: houseList[index].images.first);
         },
       ),
     );

@@ -84,18 +84,20 @@ class _OfferDetailPageState extends State<OfferDetailPage> {
                     onSharePressed: () async {
                       await _screenshotController
                           .capture(delay: const Duration(milliseconds: 5))
-                          .then((Uint8List image) async {
-                        if (image != null) {
-                          final directory =
-                              await getApplicationDocumentsDirectory();
-                          final imagePath =
-                              await File('${directory.path}/image.png')
-                                  .create();
-                          await imagePath.writeAsBytes(image);
+                          .then(
+                        (Uint8List image) async {
+                          if (image != null) {
+                            final directory =
+                                await getApplicationDocumentsDirectory();
+                            final imagePath =
+                                await File('${directory.path}/image.png')
+                                    .create();
+                            await imagePath.writeAsBytes(image);
 
-                          await Share.shareFiles([imagePath.path]);
-                        }
-                      });
+                            await Share.shareFiles([imagePath.path]);
+                          }
+                        },
+                      );
                     },
                   ),
                 ],
@@ -153,10 +155,14 @@ class _OfferDetailPageState extends State<OfferDetailPage> {
               Divide(),
               TextOffers('Itens inclusos no valor'),
               Column(
-                  children: List.generate(
-                      widget.houseModel.includedOnValue.length,
-                      (index) => ContaimElement(Icons.star_border,
-                          widget.houseModel.includedOnValue[index])))
+                children: List.generate(
+                  widget.houseModel.includedOnValue.length,
+                  (index) => ContaimElement(
+                    Icons.star_border,
+                    widget.houseModel.includedOnValue[index],
+                  ),
+                ),
+              )
             ],
           ),
         ),

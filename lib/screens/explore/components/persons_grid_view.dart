@@ -1,3 +1,4 @@
+import 'package:aloquei_app/screens/core/navigation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/models/interest_offer_model.dart';
@@ -28,6 +29,9 @@ class PersonsGridView extends StatelessWidget {
             image:
                 'https://img.ibxk.com.br/2017/06/22/22100428046161.jpg?w=1200&h=675&mode=crop&scale=both',
             name: interestsList[index].postUserName,
+            onTap: () {
+              navigateToInterestDetail(context, interestsList[index]);
+            },
           );
         },
       ),

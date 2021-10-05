@@ -1,4 +1,4 @@
-import 'package:aloquei_app/screens/core/navigation.dart';
+import '../core/navigation.dart';
 
 import '../../blocs/person_list/person_list_bloc.dart';
 import '../../core/models/interest_offer_model.dart';
@@ -117,15 +117,15 @@ class PersonItem extends StatelessWidget {
           actionPane: SlidableDrawerActionPane(),
           actionExtentRatio: 0.25,
           child: ModelItemCard(
-              '',
-              person.city,
-              person.postUserName,
-              DateFormat("dd/MM/yyyy, HH:mm").format(
-                  DateTime.fromMicrosecondsSinceEpoch(person.includedAt)),
-              false,
-              () => navigateToInterestDetail(context, person),
-              // formatDate(DateTime date) => new DateFormat("MMMM d").format(date)
-              ),
+            '',
+            person.city,
+            person.postUserName,
+            DateFormat("dd/MM/yyyy, HH:mm")
+                .format(DateTime.fromMicrosecondsSinceEpoch(person.includedAt)),
+            false,
+            () => navigateToInterestDetail(context, person),
+            // formatDate(DateTime date) => new DateFormat("MMMM d").format(date)
+          ),
           actions: [
             IconSlideAction(
                 caption: 'Apagar',

@@ -22,11 +22,15 @@ class _ExplorePageState extends State<ExplorePage> {
   double _opc = 0.0;
   @override
   void initState() {
-    _scrollController.addListener(() {
-      setState(() {
-        _opc = (_scrollController.offset / 100.0).clamp(0.0, 1.0);
-      });
-    });
+    _scrollController.addListener(
+      () {
+        setState(
+          () {
+            _opc = (_scrollController.offset / 100.0).clamp(0.0, 1.0);
+          },
+        );
+      },
+    );
     _homeBloc = BlocProvider.of<HomeBloc>(context);
     super.initState();
   }
@@ -49,7 +53,14 @@ class _ExplorePageState extends State<ExplorePage> {
             children: [
               FlexibilitieButton(
                 onPressed: () {
-                  _homeBloc.add(OnTabChange(index: 5));
+                  navigateToSearch(
+                    context,
+                    (value) {
+                      _homeBloc.add(
+                        SearchFromSelectedEvent(exploreModel: value),
+                      );
+                    },
+                  );
                 },
               ),
               TitleModel(
@@ -67,7 +78,7 @@ class _ExplorePageState extends State<ExplorePage> {
                 img:
                     'https://diplomathotelbrasilia.com.br/wp-content/uploads/2019/12/4-motivos-para-se-hospedar-no-hotel-diplomat-em-brasilia.jpg',
                 onTap: () {
-                  // TODO DIRECIONAR PARA TELA DE CADASTRO
+                  navigateToHostPage(context);
                 },
               ),
               TitleModel(
@@ -83,7 +94,7 @@ class _ExplorePageState extends State<ExplorePage> {
                 img:
                     'https://blog.viasul.com/wp-content/uploads/2021/06/post_thumbnail-74170fbba571538e195e61dd0aef1a82.jpeg',
                 onTap: () {
-                  // TODO DIRECIONAR PARA TELA DE CADASTRO
+                  navigateToInterestPage(context);
                 },
               ),
             ],

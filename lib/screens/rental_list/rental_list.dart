@@ -1,4 +1,4 @@
-import 'package:aloquei_app/screens/core/navigation.dart';
+import '../core/navigation.dart';
 
 import '../../blocs/rental_list/rental_list_bloc.dart';
 import '../../core/models/house_offer_model.dart';
