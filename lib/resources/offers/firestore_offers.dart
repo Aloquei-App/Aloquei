@@ -237,6 +237,28 @@ class OffersRepository {
     return list;
   }
 
+  Future<List<HouseOfferModel>> getFavoriteHousesByUser(String id) async {
+    List<HouseOfferModel> list = [];
+    try {
+      QuerySnapshot snapshot = await _firestoreInstance
+          .collection('offers')
+          .where('key', isEqualTo: id)
+          .get();
+      snapshot.docs.forEach(
+        (element) {
+          list.add(
+            HouseOfferModel.fromJson(element),
+          );
+        },
+      );
+    } catch (e, stack) {
+      print(e);
+      print(stack);
+      throw e;
+    }
+    return list;
+  }
+
   //Retorna a lista de interesses em pessoas com base no id do usuario
   Future<List<InterestModel>> getInterestByIdPost(String id) async {
     List<InterestModel> list = [];

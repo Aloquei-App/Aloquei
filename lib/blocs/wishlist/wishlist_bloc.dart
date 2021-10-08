@@ -12,7 +12,12 @@ part 'wishlist_state.dart';
 class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
   final UsersRepository _userRepository = UsersRepository();
   final UserModel user;
-  List whishList = [];
+  List listaFav = [
+    [
+      'test',
+      'https://www.showmetech.com.br/wp-content/uploads//2021/02/capa-dog.png'
+    ]
+  ];
   WishlistBloc({@required this.user}) : super(WishlistInitial());
 
   @override
@@ -22,10 +27,10 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
     try {
       if (event is WishlistStartedEvent) {
         yield LoadingWishlistState();
-        whishList = user.favList;
+        listaFav = user.favList;
         yield ShowWishlistState();
       } else if (event is NewWishlistState) {
-        await _userRepository.updateFavorites(user.key, whishList);
+        await _userRepository.updateFavorites(user.key, listaFav);
         yield LoadingWishlistState();
       }
     } catch (e) {
