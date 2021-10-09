@@ -9,7 +9,7 @@ import 'detail_offers/detail_offer.dart';
 import 'explore/explore.dart';
 import 'help/help_page.dart';
 import 'home/home.dart';
-import 'hosting/host_page_type.dart';
+import 'hosting/components/host_select_menu_type.dart';
 import 'inbox/inbox.dart';
 import 'interest-detail/interest_detail.dart';
 import 'interest/components/interest_page_data.dart';
@@ -121,7 +121,8 @@ class _AppPageState extends State<AppPage> {
         '/help': (context) => HelpPage(),
         '/interestPage': (context) => InterestPageAddress(),
         '/interestPet': (context) => InterestPagePet(),
-        '/hostPage': (context) => HostPageType(),
+        '/hostPage': (context) =>
+            HostPageType(userModel: authBloc.getUserModel),
         '/personalData': (context) => PersonalInfo(
               user: authBloc.getUser,
               userModel: authBloc.getUserModel,

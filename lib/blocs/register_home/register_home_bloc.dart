@@ -1,3 +1,5 @@
+import 'package:aloquei_app/core/models/user_model.dart';
+
 import '../profile/profile_bloc.dart';
 import '../../core/errors/auth_error.dart';
 import '../../core/models/house_offer_model.dart';
@@ -10,13 +12,8 @@ part 'register_home_event.dart';
 part 'register_home_state.dart';
 
 class RegisterHomeBloc extends Bloc<RegisterHomeEvent, RegisterHomeState> {
-  HouseOfferModel offerModel;
-
-  setHouseType(int houseType) {
-    offerModel.houseType = houseType;
-  }
-
-  RegisterHomeBloc({this.offerModel}) : super(RegisterHomeInitial());
+  final UserModel userModel;
+  RegisterHomeBloc(this.userModel) : super(RegisterHomeInitial());
   final OffersRepository offersRepository = OffersRepository();
   @override
   Stream<RegisterHomeState> mapEventToState(RegisterHomeEvent event) async* {
@@ -27,7 +24,11 @@ class RegisterHomeBloc extends Bloc<RegisterHomeEvent, RegisterHomeState> {
       yield LoadingState();
       yield ShowScreen();
       try {
-        final inserted = await offersRepository.insertHouse(offerModel);
+        event.houseOfferModel.postUserId = userModel.key;
+        event.houseOfferModel.postUserName =
+            (userModel.name) + " " + (userModel.lastname);
+        final inserted =
+            await offersRepository.insertHouse(event.houseOfferModel);
         if (HouseOfferModel == inserted.runtimeType) {
           yield LoadingState();
           yield SuccessState(message: 'Moradia cadastrada!');

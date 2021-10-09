@@ -7,6 +7,10 @@ abstract class RegisterHomeEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class SubmitEvent extends RegisterHomeEvent {}
+class SubmitEvent extends RegisterHomeEvent {
+  final HouseOfferModel houseOfferModel;
+
+  SubmitEvent(this.houseOfferModel);
+}
 
 class ScreenStarted extends RegisterHomeEvent {}
