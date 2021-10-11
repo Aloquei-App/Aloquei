@@ -1,3 +1,5 @@
+import 'package:aloquei_app/core/models/interest_offer_model.dart';
+import 'package:aloquei_app/screens/core/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,7 +12,12 @@ import 'components/place_item.dart';
 class ExplorePeople extends StatelessWidget {
   final VoidCallback onBackPress;
   final ExploreModel exploreModel;
-  const ExplorePeople({Key key, @required this.onBackPress, this.exploreModel});
+
+  const ExplorePeople({
+    Key key,
+    @required this.onBackPress,
+    this.exploreModel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +84,10 @@ class _ExplorePeoplePageState extends State<ExplorePeoplePage> {
                     itemCount: _explorePeopleBloc.interest.length,
                     itemBuilder: (context, index) {
                       return PlaceItem(
-                          model: _explorePeopleBloc.interest[index]);
+                        model: _explorePeopleBloc.interest[index],
+                        onClick: () =>
+                            navigateToInterestDetail(context, _explorePeopleBloc.interest[index]),
+                      );
                     });
               }
             }),
