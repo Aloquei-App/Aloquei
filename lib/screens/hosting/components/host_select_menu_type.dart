@@ -1,5 +1,6 @@
 import 'package:aloquei_app/blocs/home/home_bloc.dart';
 import 'package:aloquei_app/blocs/register_home/register_home_bloc.dart';
+import 'package:aloquei_app/core/definitions.dart';
 import 'package:aloquei_app/core/models/house_offer_model.dart';
 import 'package:aloquei_app/core/models/user_model.dart';
 import 'package:aloquei_app/screens/core/forms/host_top_menu_gradient.dart';
@@ -7,7 +8,11 @@ import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../host_page_address.dart';
 import '../host_page_desc.dart';
+import '../host_page_guest_number.dart';
+import '../host_page_type_size.dart';
+import 'flow_builder_functions.dart';
 import 'host_bottombar.dart';
 import 'host_text_image_button.dart';
 
@@ -50,7 +55,9 @@ class _FlowPagesState extends State<FlowPages> {
     return [
       MaterialPage(child: AddHomePage()),
       if (houseOfferModel.houseType != null)
-        MaterialPage(child: HostPageDesc()),
+        MaterialPage(child: HostPageTypeSize()),
+      if (houseOfferModel.typeRoom != null)
+        MaterialPage(child: HostPageAddress()),
     ];
   }
 
@@ -71,16 +78,6 @@ class AddHomePage extends StatefulWidget {
 }
 
 class _AddHomePageState extends State<AddHomePage> {
-  void _continuePressed(int houseType) {
-    context.flow<HouseOfferModel>().update(
-        (houseOfferModel) => houseOfferModel.copyWith(houseType: houseType));
-  }
-
-  void _sendData(int houseType) {
-    context.flow<HouseOfferModel>().complete(
-        (houseOfferModel) => houseOfferModel.copyWith(houseType: houseType));
-  }
-
   //0 => república
   //1 => casa
   //2 => ap
@@ -96,58 +93,59 @@ class _AddHomePageState extends State<AddHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: HostBottomBar(
-            text: 'Avançar',
-            color: Colors.grey[900],
-            onPressedBack: () {
-              Navigator.pop(context);
-            },
-            onpressedNext: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HostPageDesc()),
-              );
-            }),
-        body: Column(
-          children: [
-            TopMenuGradient(
-              color1: 0xFF7b22b0,
-              color2: 0xFF8621ab,
-              text1: 'Em que tipo de espaço você',
-              text2: 'vai hospedar?',
-            ),
-            Expanded(
-              child: ListView(
-                padding: EdgeInsets.only(left: 20, right: 20, top: 20),
-                children: [
-                  HostTextImageButton(
-                    text: 'Apartamento',
-                    image: 'assets/apartment.jpg',
-                    ontap: () => _sendData(2),
-                    /*Navigator.push(
+      bottomNavigationBar: HostBottomBar(
+          text: 'Avançar',
+          color: Colors.grey[900],
+          onPressedBack: () {
+            Navigator.pop(context);
+          },
+          onpressedNext: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HostPageDesc()),
+            );
+          }),
+      body: Column(
+        children: [
+          TopMenuGradient(
+            color1: 0xFF7b22b0,
+            color2: 0xFF8621ab,
+            text1: 'Em que tipo de espaço você',
+            text2: 'vai hospedar?',
+          ),
+          Expanded(
+            child: ListView(
+              padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+              children: [
+                HostTextImageButton(
+                  text: 'Apartamento',
+                  image: 'assets/apartment.jpg',
+                  ontap: () => continuePressed(houseType: 2, context: context),
+                  /*Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => HostPageDesc()),
               );*/
-                  ),
-                  HostTextImageButton(
-                    text: 'Casa',
-                    image: 'assets/house.jpg',
-                    ontap: () => _continuePressed(1),
-                  ),
-                  HostTextImageButton(
-                    text: 'Quarto',
-                    image: 'assets/boutiqueHotel.jpg',
-                    ontap: () => _continuePressed(3),
-                  ),
-                  HostTextImageButton(
-                    text: 'República',
-                    image: 'assets/frat.jpg',
-                    ontap: () => _continuePressed(0),
-                  ),
-                ],
-              ),
-            )
-          ],
-        ));
+                ),
+                HostTextImageButton(
+                  text: 'Casa',
+                  image: 'assets/house.jpg',
+                  ontap: () => continuePressed(houseType: 1, context: context),
+                ),
+                HostTextImageButton(
+                  text: 'Quarto',
+                  image: 'assets/boutiqueHotel.jpg',
+                  ontap: () => continuePressed(houseType: 3, context: context),
+                ),
+                HostTextImageButton(
+                  text: 'República',
+                  image: 'assets/frat.jpg',
+                  ontap: () => continuePressed(houseType: 0, context: context),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
   }
 }

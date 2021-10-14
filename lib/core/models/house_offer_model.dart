@@ -47,6 +47,7 @@ class HouseOfferModel extends OffersModel {
       this.valueMonth,
       this.zipCode,
       this.descHouseType,
+      int qtdQuartos,
       String cidade,
       String estado,
       String email,
@@ -54,7 +55,6 @@ class HouseOfferModel extends OffersModel {
       String tele,
       String userId,
       String userName,
-      int qtdRoom,
       int tipo,
       int incluido}) {
     city = cidade;
@@ -64,7 +64,7 @@ class HouseOfferModel extends OffersModel {
     phone = tele;
     postUserId = userId;
     postUserName = userName;
-    qtdRooms = qtdRoom;
+    qtdRooms = qtdQuartos;
     type = tipo;
     includedAt = incluido;
   }
@@ -174,7 +174,7 @@ class HouseOfferModel extends OffersModel {
     String phone,
     String postUserId,
     String postUserName,
-    int qtdRooms,
+    int qtdQuartos,
     int type,
     int includedAt,
     DocumentSnapshot doc,
@@ -209,6 +209,7 @@ class HouseOfferModel extends OffersModel {
       userName: postUserName ?? this.postUserName,
       tipo: type ?? this.type,
       incluido: includedAt ?? this.includedAt,
+      qtdQuartos: qtdQuartos ?? this.qtdRooms,
     );
   }
 }

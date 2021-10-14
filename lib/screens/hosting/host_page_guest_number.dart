@@ -31,8 +31,8 @@ class HostPageGuestNum extends StatelessWidget {
                 TopMenuGradient(
                   color1: 0xFFd1156c,
                   color2: 0xFF8b1fa6,
-                  text1: 'Quantos hóspedes você',
-                  text2: 'gostaria de acomodar?',
+                  text1: 'Quantos cômodos você',
+                  text2: 'pode de oferecer?',
                 ),
                 HostSelectMenuGuestNum(
                   onpressed: () {},

@@ -19,34 +19,12 @@ class HostSelectMenuGuestNum extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Hóspedes',
+                    'Quartos',
                     style: TextStyle(fontSize: 22),
                   ),
-                  CounterView()
-                ],
-              )),
-          Padding(
-              padding: EdgeInsets.only(bottom: 25),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Camas',
-                    style: TextStyle(fontSize: 22),
-                  ),
-                  CounterView()
-                ],
-              )),
-          Padding(
-              padding: EdgeInsets.only(bottom: 25),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Banheiros',
-                    style: TextStyle(fontSize: 22),
-                  ),
-                  CounterView()
+                  CounterView(
+                    counterCallback: (value) {},
+                  )
                 ],
               )),
         ]));

@@ -1,11 +1,20 @@
+import 'package:aloquei_app/core/models/house_offer_model.dart';
 import 'package:flutter/material.dart';
 
 import '../core/forms/input_value.dart';
+import 'components/flow_builder_functions.dart';
 import 'components/host_continue_button.dart';
+import 'components/host_counter.dart';
 import 'host_page_guest_number.dart';
 
 class HostPageAddress extends StatelessWidget {
-  const HostPageAddress({Key key}) : super(key: key);
+  HostPageAddress({Key key}) : super(key: key);
+  final _formKey = GlobalKey<FormState>();
+  HouseOfferModel houseOfferModel;
+  String address;
+  String city;
+  String state;
+  int qtdRooms;
 
   @override
   Widget build(BuildContext context) {
@@ -31,21 +40,52 @@ class HostPageAddress extends StatelessWidget {
         body: Container(
           color: Colors.white,
           padding: EdgeInsets.only(top: 30),
-          child: Column(
-            children: [
-              InputValue(text: 'País/Região'),
-              InputValue(text: 'Rua'),
-              InputValue(text: 'Apt, suíte, etc.(Opcional)'),
-              InputValue(text: 'Cidade'),
-              InputValue(text: 'Estado'),
-              InputValue(text: 'Código postal'),
-              HostContinueButton(onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HostPageGuestNum()),
-                );
-              })
-            ],
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                InputValue(
+                    text: 'Rua',
+                    onChanged: (value) {
+                      address = value;
+                    }),
+                InputValue(
+                    text: 'Cidade',
+                    onChanged: (value) {
+                      city = value;
+                    }),
+                InputValue(
+                    text: 'Estado',
+                    onChanged: (value) {
+                      state = value;
+                    }),
+                Padding(
+                    padding: EdgeInsets.all(35),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Quartos',
+                          style: TextStyle(fontSize: 22),
+                        ),
+                        CounterView(
+                          counterCallback: (value) {
+                            qtdRooms = value;
+                          },
+                        )
+                      ],
+                    )),
+                HostContinueButton(onPressed: () {
+                  sendData(
+                    adress: address,
+                    city: city,
+                    state: state,
+                    qtdRooms: qtdRooms,
+                    context: context,
+                  );
+                }),
+              ],
+            ),
           ),
         ));
   }
