@@ -25,6 +25,7 @@ class HouseOfferModel extends OffersModel {
   double valueMonth;
   String zipCode;
   String descHouseType;
+  String obs;
 
   HouseOfferModel(
       {this.address,
@@ -47,14 +48,14 @@ class HouseOfferModel extends OffersModel {
       this.valueMonth,
       this.zipCode,
       this.descHouseType,
+      this.obs,
+      int qtdQuartos,
       String cidade,
       String estado,
       String email,
-      String obs,
       String tele,
       String userId,
       String userName,
-      int qtdRoom,
       int tipo,
       int incluido}) {
     city = cidade;
@@ -64,7 +65,7 @@ class HouseOfferModel extends OffersModel {
     phone = tele;
     postUserId = userId;
     postUserName = userName;
-    qtdRooms = qtdRoom;
+    qtdRooms = qtdQuartos;
     type = tipo;
     includedAt = incluido;
   }
@@ -145,6 +146,72 @@ class HouseOfferModel extends OffersModel {
     data['valueMonth'] = this.valueMonth;
     data['zipCode'] = this.zipCode;
     return data;
+  }
+
+  HouseOfferModel copyWith({
+    String address,
+    bool courtyard,
+    String furnished,
+    int garage,
+    int houseType,
+    List<String> images,
+    List<String> includedOnValue,
+    int kitchen,
+    int livinRoom,
+    int maxTenants,
+    String name,
+    NearUniversities nearUniversities,
+    Position position,
+    int restroom,
+    int roomUsersQtd,
+    String typeRoom,
+    double valueCondominium,
+    double valueMonth,
+    String zipCode,
+    String cidade,
+    String estado,
+    String email,
+    String obs,
+    String phone,
+    String postUserId,
+    String postUserName,
+    int qtdQuartos,
+    int type,
+    int includedAt,
+    DocumentSnapshot doc,
+  }) {
+    return HouseOfferModel(
+      address: address ?? this.address,
+      courtyard: courtyard ?? this.courtyard,
+      furnished: furnished ?? this.furnished,
+      garage: garage ?? this.garage,
+      houseType: houseType ?? this.houseType,
+      images: images ?? this.images,
+      includedOnValue: includedOnValue ?? this.includedOnValue,
+      kitchen: kitchen ?? this.kitchen,
+      livinRoom: livinRoom ?? this.livinRoom,
+      maxTenants: maxTenants ?? this.maxTenants,
+      name: name ?? this.name,
+      nearUniversities: nearUniversities ?? this.nearUniversities,
+      position: position ?? this.position,
+      restroom: restroom ?? this.restroom,
+      roomUsersQtd: roomUsersQtd ?? this.roomUsersQtd,
+      typeRoom: typeRoom ?? this.typeRoom,
+      valueCondominium: valueCondominium ?? this.valueCondominium,
+      valueMonth: valueMonth ?? this.valueMonth,
+      zipCode: zipCode ?? this.zipCode,
+      descHouseType: descHouseType ?? this.descHouseType,
+      cidade: cidade ?? this.city,
+      estado: estado ?? this.state,
+      email: email ?? this.mail,
+      obs: obs ?? this.observations,
+      tele: phone ?? this.phone,
+      userId: postUserId ?? this.postUserId,
+      userName: postUserName ?? this.postUserName,
+      tipo: type ?? this.type,
+      incluido: includedAt ?? this.includedAt,
+      qtdQuartos: qtdQuartos ?? this.qtdRooms,
+    );
   }
 }
 

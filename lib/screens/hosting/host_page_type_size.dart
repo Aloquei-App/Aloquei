@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-
 import '../core/forms/host_top_menu_gradient.dart';
+import 'components/flow_builder_functions.dart';
 import 'components/host_bottombar.dart';
-import 'components/host_select_menu_type_size.dart';
+import 'components/host_select_menu_type.dart';
+import 'components/host_title_button.dart';
 import 'host_page_address.dart';
 
 class HostPageTypeSize extends StatelessWidget {
@@ -32,9 +33,26 @@ class HostPageTypeSize extends StatelessWidget {
               text1: 'Que tipo de lugar você está',
               text2: 'oferecendo aos hóspedes?',
             ),
-            HostSelectMenuTypeSize(
-              onpressed: () {},
-            )
+            Expanded(
+                child: ListView(
+                    padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+                    children: [
+                  HostTitleButton(
+                    title: 'Um lugar inteiro',
+                    onpressed: () => continuePressed(
+                        typeRoom: "Um lugar inteiro", context: context),
+                  ),
+                  HostTitleButton(
+                    title: 'Um quarto inteiro',
+                    onpressed: () => continuePressed(
+                        typeRoom: "Um quarto inteiro", context: context),
+                  ),
+                  HostTitleButton(
+                    title: 'Um quarto compartilhado',
+                    onpressed: () => continuePressed(
+                        typeRoom: "Um quarto compartilhado", context: context),
+                  ),
+                ])),
           ],
         ));
   }
