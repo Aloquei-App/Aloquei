@@ -5,7 +5,6 @@ import '../core/forms/input_value.dart';
 import 'components/flow_builder_functions.dart';
 import 'components/host_continue_button.dart';
 import 'components/host_counter.dart';
-import 'host_page_guest_number.dart';
 
 class HostPageAddress extends StatelessWidget {
   HostPageAddress({Key key}) : super(key: key);
@@ -60,23 +59,24 @@ class HostPageAddress extends StatelessWidget {
                       state = value;
                     }),
                 Padding(
-                    padding: EdgeInsets.all(35),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Quartos',
-                          style: TextStyle(fontSize: 22),
-                        ),
-                        CounterView(
-                          counterCallback: (value) {
-                            qtdRooms = value;
-                          },
-                        )
-                      ],
-                    )),
+                  padding: EdgeInsets.all(35),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Quartos',
+                        style: TextStyle(fontSize: 22),
+                      ),
+                      CounterView(
+                        counterCallback: (value) {
+                          qtdRooms = value;
+                        },
+                      )
+                    ],
+                  ),
+                ),
                 HostContinueButton(onPressed: () {
-                  sendData(
+                  continuePressed(
                     adress: address,
                     city: city,
                     state: state,

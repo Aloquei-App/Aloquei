@@ -1,8 +1,8 @@
+import 'package:aloquei_app/screens/hosting/components/flow_builder_functions.dart';
 import 'package:flutter/material.dart';
 
 import '../core/forms/top_menu_image.dart';
 import 'components/host_bottombar.dart';
-import 'components/host_select_menu_title.dart';
 import 'host_page_description.dart';
 
 class HostPageTitle extends StatelessWidget {
@@ -10,6 +10,7 @@ class HostPageTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String title;
     return Scaffold(
         bottomNavigationBar: HostBottomBar(
           text: 'Avançar',
@@ -17,12 +18,7 @@ class HostPageTitle extends StatelessWidget {
           onPressedBack: () {
             Navigator.pop(context);
           },
-          onpressedNext: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HostPageDescription()),
-            );
-          },
+          onpressedNext: () => continuePressed(name: title, context: context),
         ),
         body: Container(
             color: Colors.white,
@@ -33,9 +29,30 @@ class HostPageTitle extends StatelessWidget {
                   text1: 'Vamos dar um nome ao',
                   text2: 'seu espaço',
                 ),
-                HostSelectMenuTitle(
-                  onpressed: () {},
-                ),
+                Expanded(
+                    child: ListView(
+                        padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+                        children: [
+                      Container(
+                          margin: EdgeInsets.all(15),
+                          height: 150,
+                          child: TextField(
+                            maxLines: 7,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 30,
+                                fontWeight: FontWeight.w800),
+                            onChanged: (value) => (title = value),
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: 'Casa de hóspedes adorável em Varanasi',
+                              hintStyle: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w800),
+                            ),
+                          ))
+                    ])),
               ],
             )));
   }

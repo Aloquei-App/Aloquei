@@ -4,13 +4,18 @@ import 'package:aloquei_app/core/definitions.dart';
 import 'package:aloquei_app/core/models/house_offer_model.dart';
 import 'package:aloquei_app/core/models/user_model.dart';
 import 'package:aloquei_app/screens/core/forms/host_top_menu_gradient.dart';
+import 'package:aloquei_app/screens/explore/explore.dart';
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../host_page_address.dart';
+import '../host_page_amenities.dart';
 import '../host_page_desc.dart';
-import '../host_page_guest_number.dart';
+import '../host_page_description.dart';
+import '../host_page_price.dart';
+import '../host_page_review.dart';
+import '../host_page_title.dart';
 import '../host_page_type_size.dart';
 import 'flow_builder_functions.dart';
 import 'host_bottombar.dart';
@@ -58,6 +63,20 @@ class _FlowPagesState extends State<FlowPages> {
         MaterialPage(child: HostPageTypeSize()),
       if (houseOfferModel.typeRoom != null)
         MaterialPage(child: HostPageAddress()),
+      if (houseOfferModel.address != null)
+        MaterialPage(child: HostPageAmenities()),
+      if ((houseOfferModel.garage ??
+              houseOfferModel.courtyard ??
+              houseOfferModel.kitchen ??
+              houseOfferModel.livinRoom ??
+              houseOfferModel.furnished) !=
+          null)
+        MaterialPage(child: HostPageTitle()),
+      if (houseOfferModel.name != null)
+        MaterialPage(child: HostPageDescription()),
+      if (houseOfferModel.obs != null) MaterialPage(child: HostPagePrice()),
+      if (houseOfferModel.valueMonth != null)
+        MaterialPage(child: ExplorePage()),
     ];
   }
 

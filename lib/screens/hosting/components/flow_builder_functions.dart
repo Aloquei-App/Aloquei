@@ -9,15 +9,33 @@ continuePressed(
     String city,
     String state,
     int qtdRooms,
+    bool courtyard,
+    String furnished,
+    int garage,
+    int kitchen,
+    int livinRoom,
+    String name,
+    String obs,
+    double valueMonth,
     BuildContext context}) {
-  context.flow<HouseOfferModel>().update((houseOfferModel) =>
-      houseOfferModel.copyWith(
+  context.flow<HouseOfferModel>().update(
+        (houseOfferModel) => houseOfferModel.copyWith(
           houseType: houseType,
           typeRoom: typeRoom,
           address: adress,
           cidade: city,
           estado: state,
-          qtdQuartos: qtdRooms));
+          qtdQuartos: qtdRooms,
+          courtyard: courtyard,
+          furnished: furnished,
+          garage: garage,
+          kitchen: kitchen,
+          livinRoom: livinRoom,
+          name: name,
+          obs: obs,
+          valueMonth: valueMonth,
+        ),
+      );
 }
 
 sendData(
@@ -27,13 +45,31 @@ sendData(
     String city,
     String state,
     int qtdRooms,
+    bool courtyard,
+    String furnished,
+    int garage,
+    int kitchen,
+    int livinRoom,
+    String name,
+    String obs,
+    double valueMonth,
     BuildContext context}) {
-  context.flow<HouseOfferModel>().complete((houseOfferModel) =>
-      houseOfferModel.copyWith(
+  context.flow<HouseOfferModel>().complete(
+        (houseOfferModel) => houseOfferModel.copyWith(
           houseType: houseType,
           typeRoom: typeRoom,
           address: adress,
           cidade: city,
           estado: state,
-          qtdQuartos: qtdRooms));
+          qtdQuartos: qtdRooms,
+          courtyard: courtyard,
+          furnished: furnished,
+          garage: garage,
+          kitchen: kitchen,
+          livinRoom: livinRoom,
+          name: name,
+          obs: obs,
+          valueMonth: valueMonth,
+        ),
+      );
 }

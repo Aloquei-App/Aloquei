@@ -25,6 +25,7 @@ class HouseOfferModel extends OffersModel {
   double valueMonth;
   String zipCode;
   String descHouseType;
+  String obs;
 
   HouseOfferModel(
       {this.address,
@@ -47,11 +48,11 @@ class HouseOfferModel extends OffersModel {
       this.valueMonth,
       this.zipCode,
       this.descHouseType,
+      this.obs,
       int qtdQuartos,
       String cidade,
       String estado,
       String email,
-      String obs,
       String tele,
       String userId,
       String userName,
@@ -149,8 +150,8 @@ class HouseOfferModel extends OffersModel {
 
   HouseOfferModel copyWith({
     String address,
-    int courtyard,
-    int furnished,
+    bool courtyard,
+    String furnished,
     int garage,
     int houseType,
     List<String> images,
