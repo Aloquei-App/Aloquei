@@ -1,3 +1,4 @@
+import 'package:aloquei_app/core/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/forms/input_value.dart';
@@ -5,7 +6,9 @@ import '../../hosting/components/host_continue_button.dart';
 import '../interest_page_gender.dart';
 
 class InterestPageAddress extends StatelessWidget {
-  const InterestPageAddress({Key key}) : super(key: key);
+  final UserModel userModel;
+  const InterestPageAddress({Key key, @required this.userModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

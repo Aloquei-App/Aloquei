@@ -1,3 +1,5 @@
+import 'package:aloquei_app/core/models/user_model.dart';
+
 import '../profile/profile_bloc.dart';
 import '../../core/errors/auth_error.dart';
 import '../../core/models/interest_offer_model.dart';
@@ -11,8 +13,8 @@ part 'interest_state.dart';
 
 class InterestBloc extends Bloc<InterestEvent, InterestState> {
   final InterestModel interestModel;
-
-  InterestBloc({this.interestModel}) : super(InterestInitial());
+  final UserModel userModel;
+  InterestBloc(this.userModel, {this.interestModel}) : super(InterestInitial());
   final OffersRepository offersRepository = OffersRepository();
   @override
   Stream<InterestState> mapEventToState(InterestEvent event) async* {
@@ -20,8 +22,13 @@ class InterestBloc extends Bloc<InterestEvent, InterestState> {
       yield LoadingState();
     } else if (event is SubmitEvent) {
       yield LoadingState();
+      yield ShowScreen();
       try {
-        final inserted = await offersRepository.insertInterest(interestModel);
+        event.interestModel.postUserId = userModel.key;
+        event.interestModel.postUserName =
+            (userModel.name) + " " + (userModel.lastname);
+        final inserted =
+            await offersRepository.insertInterest(event.interestModel);
         if (InterestModel == inserted.runtimeType) {
           yield LoadingState();
           yield SuccessState(message: 'Interesse cadastrado!');
