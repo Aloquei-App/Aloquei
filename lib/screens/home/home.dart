@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
             if (state is ExploreState) {
               return ExplorePage();
             } else if (state is WhishListState) {
-              return WishlistPage();
+              return WishlistPage(userModel: _homeBloc.user);
             } else if (state is HousesState) {
               return RentalList(
                 user: _homeBloc.user,

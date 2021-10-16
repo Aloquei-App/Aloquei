@@ -1,8 +1,6 @@
-import 'package:aloquei_app/blocs/profile/profile_bloc.dart';
-import 'package:aloquei_app/blocs/wishlist/wishlist_bloc.dart';
-import 'package:aloquei_app/core/models/user_model.dart';
-import 'package:aloquei_app/screens/core/loading.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import '../../blocs/wishlist/wishlist_bloc.dart';
+import '../../core/models/user_model.dart';
+import '../core/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

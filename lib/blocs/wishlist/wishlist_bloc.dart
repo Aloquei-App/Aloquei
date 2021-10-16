@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import '../../resources/offers/firestore_offers.dart';
+
 import '../../core/models/user_model.dart';
 import '../../resources/user/firebase_user.dart';
 import 'package:bloc/bloc.dart';
@@ -11,7 +13,11 @@ part 'wishlist_state.dart';
 
 class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
   final UsersRepository _userRepository = UsersRepository();
+
+  final OffersRepository _offersRepository = OffersRepository();
   final UserModel user;
+  List<dynamic> favorites = [];
+  List<String> listaTemp = [];
   List listaFav = [
     [
       'test',
@@ -27,10 +33,10 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
     try {
       if (event is WishlistStartedEvent) {
         yield LoadingWishlistState();
-        listaFav = user.favList;
+        favorites = await _offersRepository.getFavoritesId(user.favList);
         yield ShowWishlistState();
       } else if (event is NewWishlistState) {
-        await _userRepository.updateFavorites(user.key, listaFav);
+        await _userRepository.updateFavorites(user.key, listaTemp);
         yield LoadingWishlistState();
       }
     } catch (e) {

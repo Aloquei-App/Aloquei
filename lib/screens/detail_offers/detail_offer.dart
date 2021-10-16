@@ -1,15 +1,15 @@
 import 'dart:io';
 import 'dart:typed_data';
 
-import '../../blocs/offer_detail/offer_detail_bloc.dart';
-import '../../core/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share/share.dart';
 
+import '../../blocs/offer_detail/offer_detail_bloc.dart';
 import '../../core/models/house_offer_model.dart';
+import '../../core/models/user_model.dart';
 import '../core/colors.dart';
 import '../login/components/title_offers.dart';
 import 'components/bottom_navigation.dart';
