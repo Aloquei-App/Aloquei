@@ -13,4 +13,4 @@ class SubmitEvent extends InterestEvent {
   SubmitEvent(this.interestModel);
 }
 
-class ScreenStarded extends ProfileEvent {}
+class ScreenStarted extends InterestEvent {}

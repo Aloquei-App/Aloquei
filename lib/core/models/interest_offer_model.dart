@@ -15,6 +15,8 @@ class InterestModel extends OffersModel {
   String socialNetworkLink;
   String university;
   Color color;
+  String city;
+  int qtdRooms;
 
   InterestModel(
       {this.desiredCourse,
@@ -25,6 +27,9 @@ class InterestModel extends OffersModel {
       this.likesPets,
       this.socialNetworkLink,
       this.university,
+      this.color,
+      this.city,
+      this.qtdRooms,
       String cidade,
       String estado,
       String email,
@@ -95,7 +100,34 @@ class InterestModel extends OffersModel {
     data['socialNetworkLink'] = this.socialNetworkLink;
     data['type'] = this.type;
     data['university'] = this.university;
-    
+
     return data;
+  }
+
+  InterestModel copyWith(
+      {String desiredCourse,
+      int desiredEndAge,
+      String desiredGender,
+      int desiredStartAge,
+      bool hasHouse,
+      bool likesPets,
+      String socialNetworkLink,
+      String university,
+      Color color,
+      String city,
+      int qtdRooms}) {
+    return InterestModel(
+      desiredCourse: desiredCourse ?? this.desiredCourse,
+      desiredEndAge: desiredEndAge ?? this.desiredEndAge,
+      desiredGender: desiredGender ?? this.desiredGender,
+      desiredStartAge: desiredStartAge ?? this.desiredStartAge,
+      hasHouse: hasHouse ?? this.hasHouse,
+      likesPets: likesPets ?? this.likesPets,
+      socialNetworkLink: socialNetworkLink ?? this.socialNetworkLink,
+      university: university ?? this.university,
+      color: color ?? this.color,
+      city: city ?? this.city,
+      qtdRooms: qtdRooms ?? this.qtdRooms,
+    );
   }
 }

@@ -28,9 +28,3 @@ class SuccessState extends InterestState {
 class LoadingState extends InterestState {}
 
 class ShowScreen extends InterestState {}
-
-class SubmitEvent extends InterestState {
-  final InterestModel interestModel;
-
-  SubmitEvent(this.interestModel);
-}
