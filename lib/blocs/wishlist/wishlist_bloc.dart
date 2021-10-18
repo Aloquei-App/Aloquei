@@ -1,7 +1,10 @@
 import 'dart:async';
 
+import 'package:aloquei_app/core/models/house_offer_model.dart';
+
+import '../../resources/offers/firestore_offers.dart';
+
 import '../../core/models/user_model.dart';
-import '../../resources/user/firebase_user.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
@@ -10,9 +13,13 @@ part 'wishlist_event.dart';
 part 'wishlist_state.dart';
 
 class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
-  final UsersRepository _userRepository = UsersRepository();
+  //final UsersRepository _userRepository = UsersRepository();
+
+  final OffersRepository _offersRepository = OffersRepository();
   final UserModel user;
-  List whishList = [];
+  List<HouseOfferModel> favorites = [];
+  List<String> listaTemp = [];
+
   WishlistBloc({@required this.user}) : super(WishlistInitial());
 
   @override
@@ -22,10 +29,10 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
     try {
       if (event is WishlistStartedEvent) {
         yield LoadingWishlistState();
-        whishList = user.favList;
+        favorites = await _offersRepository.getFavoritesId(user.favList);
         yield ShowWishlistState();
       } else if (event is NewWishlistState) {
-        await _userRepository.updateFavorites(user.key, whishList);
+        //await _userRepository.updateFavorites(user.key, listaTemp);
         yield LoadingWishlistState();
       }
     } catch (e) {

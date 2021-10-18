@@ -114,7 +114,7 @@ class _AppPageState extends State<AppPage> {
       ),
       routes: {
         '/explore': (context) => ExplorePage(),
-        '/wishlists': (context) => WishlistsPage(),
+        '/wishlists': (context) => WishlistPage(),
         '/inbox': (context) => InboxPage(),
         '/profile': (context) => ProfilePage(),
         '/search': (context) => Search(),

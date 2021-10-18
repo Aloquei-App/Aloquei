@@ -1,4 +1,4 @@
-import 'package:aloquei_app/screens/core/navigation.dart';
+import '../../core/navigation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/models/house_offer_model.dart';
