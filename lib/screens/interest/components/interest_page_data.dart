@@ -7,6 +7,7 @@ import '../../core/forms/input_value.dart';
 import '../../hosting/components/host_continue_button.dart';
 import '../../../blocs/interest/interest_bloc.dart';
 import '../interest_page_gender.dart';
+import '../interest_page_pet.dart';
 import 'flow_builder_functions.dart';
 
 class InterestPageAddress extends StatelessWidget {
@@ -55,6 +56,8 @@ class _FlowPagesInterestState extends State<FlowPagesInterest> {
               interestModel.desiredStartAge) !=
           null)
         MaterialPage(child: InterestPageGender()),
+      if (interestModel.desiredGender != null)
+        MaterialPage(child: InterestPagePet()),
     ];
   }
 
@@ -137,7 +140,7 @@ class InterestForm extends StatelessWidget {
                   }),
               SizedBox(height: 20),
               HostContinueButton(onPressed: () {
-                sendData(
+                continuePressed(
                   city: city,
                   qtdRooms: qtdRooms,
                   university: university,
