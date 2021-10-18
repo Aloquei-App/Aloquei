@@ -237,20 +237,23 @@ class OffersRepository {
     return list;
   }
 
-  Future<List<HouseOfferModel>> getFavoriteHousesByUser(String id) async {
+  Future<List<HouseOfferModel>> getFavoritesId(List<String> ids) async {
     List<HouseOfferModel> list = [];
     try {
-      QuerySnapshot snapshot = await _firestoreInstance
+      QuerySnapshot<Map<String, dynamic>> snapshot = await _firestoreInstance
           .collection('offers')
-          .where('key', isEqualTo: id)
+          .where(FieldPath.documentId, whereIn: ids)
           .get();
-      snapshot.docs.forEach(
-        (element) {
-          list.add(
-            HouseOfferModel.fromJson(element),
-          );
-        },
-      );
+
+      if (snapshot.docs.length > 0) {
+        snapshot.docs.forEach(
+          (element) {
+            list.add(
+              HouseOfferModel.fromJson(element),
+            );
+          },
+        );
+      }
     } catch (e, stack) {
       print(e);
       print(stack);

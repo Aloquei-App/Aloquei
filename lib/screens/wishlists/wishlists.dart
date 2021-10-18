@@ -1,8 +1,8 @@
-import 'package:aloquei_app/blocs/profile/profile_bloc.dart';
-import 'package:aloquei_app/blocs/wishlist/wishlist_bloc.dart';
-import 'package:aloquei_app/core/models/user_model.dart';
-import 'package:aloquei_app/screens/core/loading.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:aloquei_app/screens/core/navigation.dart';
+
+import '../../blocs/wishlist/wishlist_bloc.dart';
+import '../../core/models/user_model.dart';
+import '../core/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -62,12 +62,17 @@ class _WishlistState extends State<Wishlist> {
                     return Loading();
                   } else {
                     return ListView.builder(
-                      itemCount: wishList.listaFav.length,
+                      itemCount: wishList.favorites.length,
                       itemBuilder: (context, index) {
                         return ItemWishList(
-                            onTap: () {},
-                            name: wishList.listaFav[index][0],
-                            url: wishList.listaFav[index][1]);
+                            onTap: () {
+                              navigateToOfferDetail(
+                                context,
+                                wishList.favorites[index],
+                              );
+                            },
+                            name: wishList.favorites[index].name,
+                            url: wishList.favorites[index].images[0]);
                       },
                     );
                   }
