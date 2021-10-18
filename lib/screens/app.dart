@@ -119,7 +119,8 @@ class _AppPageState extends State<AppPage> {
         '/profile': (context) => ProfilePage(),
         '/search': (context) => Search(),
         '/help': (context) => HelpPage(),
-        '/interestPage': (context) => InterestPageAddress(),
+        '/interestPage': (context) =>
+            InterestPageAddress(userModel: authBloc.getUserModel),
         '/interestPet': (context) => InterestPagePet(),
         '/hostPage': (context) =>
             HostPageType(userModel: authBloc.getUserModel),

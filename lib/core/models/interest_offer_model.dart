@@ -37,9 +37,10 @@ class InterestModel extends OffersModel {
       String tele,
       String userId,
       String userName,
-      int qtdRoom,
+      int qntquartos,
       int tipo,
-      int incluido}) {
+      int incluido,
+      int idadeInicial}) {
     city = cidade;
     state = estado;
     mail = email;
@@ -47,9 +48,10 @@ class InterestModel extends OffersModel {
     phone = tele;
     postUserId = userId;
     postUserName = userName;
-    qtdRooms = qtdRoom;
+    qtdRooms = qntquartos;
     type = tipo;
     includedAt = incluido;
+    desiredStartAge = idadeInicial;
   }
 
   InterestModel.fromJson(DocumentSnapshot doc) {
@@ -108,26 +110,26 @@ class InterestModel extends OffersModel {
       {String desiredCourse,
       int desiredEndAge,
       String desiredGender,
-      int desiredStartAge,
+      int idadeInicial,
       bool hasHouse,
       bool likesPets,
       String socialNetworkLink,
       String university,
       Color color,
-      String city,
-      int qtdRooms}) {
+      String cidade,
+      int qntquartos}) {
     return InterestModel(
       desiredCourse: desiredCourse ?? this.desiredCourse,
       desiredEndAge: desiredEndAge ?? this.desiredEndAge,
       desiredGender: desiredGender ?? this.desiredGender,
-      desiredStartAge: desiredStartAge ?? this.desiredStartAge,
+      idadeInicial: idadeInicial ?? this.desiredStartAge,
       hasHouse: hasHouse ?? this.hasHouse,
       likesPets: likesPets ?? this.likesPets,
       socialNetworkLink: socialNetworkLink ?? this.socialNetworkLink,
       university: university ?? this.university,
       color: color ?? this.color,
-      city: city ?? this.city,
-      qtdRooms: qtdRooms ?? this.qtdRooms,
+      cidade: cidade ?? this.city,
+      qntquartos: qntquartos ?? this.qtdRooms,
     );
   }
 }

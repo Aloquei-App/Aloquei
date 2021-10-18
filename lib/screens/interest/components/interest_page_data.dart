@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../core/forms/input_value.dart';
 import '../../hosting/components/host_continue_button.dart';
 import '../../../blocs/interest/interest_bloc.dart';
+import '../interest_page_gender.dart';
 import 'flow_builder_functions.dart';
 
 class InterestPageAddress extends StatelessWidget {
@@ -47,6 +48,13 @@ class _FlowPagesInterestState extends State<FlowPagesInterest> {
   List<Page> onGeneratePages(InterestModel interestModel, List<Page> page) {
     return [
       MaterialPage(child: InterestForm()),
+      if ((interestModel.city ??
+              interestModel.qtdRooms ??
+              interestModel.university ??
+              interestModel.desiredCourse ??
+              interestModel.desiredStartAge) !=
+          null)
+        MaterialPage(child: InterestPageGender()),
     ];
   }
 
@@ -99,17 +107,37 @@ class InterestForm extends StatelessWidget {
           key: _formKey,
           child: ListView(
             children: [
-              InputValue(text: 'Cidade'),
-              InputValue(text: 'Quantidade'),
-              InputValue(text: 'Universidade'),
+              InputValue(
+                  text: 'Cidade',
+                  onChanged: (value) {
+                    city = value;
+                  }),
+              InputValue(
+                  text: 'Quantidade',
+                  onChanged: (value) {
+                    qtdRooms = int.parse(value);
+                  }),
+              InputValue(
+                  text: 'Universidade',
+                  onChanged: (value) {
+                    university = value;
+                  }),
               // InputValue(text: 'Telefone'),
               //InputValue(text: 'Email'),
               // InputValue(text: 'Link de rede social'),
-              InputValue(text: 'Curso'),
-              InputValue(text: 'Faixa etária'),
+              InputValue(
+                  text: 'Curso',
+                  onChanged: (value) {
+                    desiredCourse = value;
+                  }),
+              InputValue(
+                  text: 'Faixa etária inicial',
+                  onChanged: (value) {
+                    desiredStartAge = int.parse(value);
+                  }),
               SizedBox(height: 20),
               HostContinueButton(onPressed: () {
-                continuePressed(
+                sendData(
                   city: city,
                   qtdRooms: qtdRooms,
                   university: university,

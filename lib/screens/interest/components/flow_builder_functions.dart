@@ -16,7 +16,7 @@ continuePressed(
     Color color,
     BuildContext context}) {
   context.flow<InterestModel>().update(
-        (houseOfferModel) => houseOfferModel.copyWith(
+        (interestOfferModel) => interestOfferModel.copyWith(
           desiredCourse: desiredCourse,
           desiredEndAge: desiredEndAge,
           desiredGender: desiredGender,
@@ -25,8 +25,9 @@ continuePressed(
           socialNetworkLink: socialNetworkLink,
           university: university,
           color: color,
-          city: city,
-          qtdRooms: qtdRooms,
+          cidade: city,
+          qntquartos: qtdRooms,
+          idadeInicial: desiredStartAge,
         ),
       );
 }
@@ -45,7 +46,7 @@ sendData(
     Color color,
     BuildContext context}) {
   context.flow<InterestModel>().complete(
-        (houseOfferModel) => houseOfferModel.copyWith(
+        (interestOfferModel) => interestOfferModel.copyWith(
           desiredCourse: desiredCourse,
           desiredEndAge: desiredEndAge,
           desiredGender: desiredGender,
@@ -54,8 +55,9 @@ sendData(
           socialNetworkLink: socialNetworkLink,
           university: university,
           color: color,
-          city: city,
-          qtdRooms: qtdRooms,
+          cidade: city,
+          idadeInicial: desiredStartAge,
+          qntquartos: qtdRooms,
         ),
       );
 }
