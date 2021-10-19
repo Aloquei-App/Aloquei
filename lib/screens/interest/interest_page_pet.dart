@@ -1,4 +1,5 @@
 import 'package:aloquei_app/screens/core/forms/title_subtitle_button.dart';
+import 'package:aloquei_app/screens/explore/explore.dart';
 import 'package:aloquei_app/screens/interest/components/flow_builder_functions.dart';
 import 'package:flutter/material.dart';
 
@@ -35,17 +36,19 @@ class InterestPagePet extends StatelessWidget {
                 padding: EdgeInsets.only(left: 20, right: 20, top: 20),
                 children: [
                   TitleSubtitleButton(
-                    title: 'Sim',
-                    subtitle: 'Sim, gosto de animais',
-                    onpressed: () =>
-                        sendData(likesPets: true, context: context),
-                  ),
+                      title: 'Sim',
+                      subtitle: 'Sim, gosto de animais',
+                      onpressed: () {
+                        Navigator.of(context, rootNavigator: true).pop(context);
+                        sendData(likesPets: true, context: context);
+                      }),
                   TitleSubtitleButton(
-                    title: 'Não',
-                    subtitle: 'Prefiro ambientes sem animais',
-                    onpressed: () =>
-                        sendData(likesPets: false, context: context),
-                  ),
+                      title: 'Não',
+                      subtitle: 'Prefiro ambientes sem animais',
+                      onpressed: () {
+                        Navigator.of(context, rootNavigator: true).pop(context);
+                        sendData(likesPets: false, context: context);
+                      }),
                   /*TitleSubtitleButton(
                       title: 'Tanto faz',
                       subtitle: 'Não tenho preferência',

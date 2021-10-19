@@ -75,8 +75,6 @@ class _FlowPagesState extends State<FlowPages> {
       if (houseOfferModel.name != null)
         MaterialPage(child: HostPageDescription()),
       if (houseOfferModel.obs != null) MaterialPage(child: HostPagePrice()),
-      if (houseOfferModel.valueMonth != null)
-        MaterialPage(child: ExplorePage()),
     ];
   }
 
