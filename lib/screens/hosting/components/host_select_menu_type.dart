@@ -116,7 +116,7 @@ class _AddHomePageState extends State<AddHomePage> {
           text: 'Avançar',
           color: Colors.grey[900],
           onPressedBack: () {
-            Navigator.pop(context);
+            Navigator.of(context, rootNavigator: true).pop(context);
           },
           onpressedNext: () {
             Navigator.push(

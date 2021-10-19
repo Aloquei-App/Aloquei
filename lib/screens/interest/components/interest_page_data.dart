@@ -1,5 +1,7 @@
 import 'package:aloquei_app/core/models/interest_offer_model.dart';
 import 'package:aloquei_app/core/models/user_model.dart';
+import 'package:aloquei_app/screens/core/navigation.dart';
+import 'package:aloquei_app/screens/explore/explore.dart';
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -98,7 +100,7 @@ class InterestForm extends StatelessWidget {
             icon: Icon(Icons.arrow_back, size: 30),
             color: Colors.black,
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.of(context, rootNavigator: true).pop(context);
             },
           ),
         ),

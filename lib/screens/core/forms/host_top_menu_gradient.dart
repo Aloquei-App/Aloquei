@@ -27,9 +27,9 @@ class TopMenuGradient extends StatelessWidget {
         Container(
             padding: EdgeInsets.only(top: 30, left: 10, right: 10),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                TextButton(
+                /*TextButton(
                   style: TextButton.styleFrom(
                     backgroundColor: Color.fromRGBO(16, 19, 11, 0.5),
                     shape: CircleBorder(),
@@ -41,7 +41,7 @@ class TopMenuGradient extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                ),
+                ),*/
                 TextButton(
                   style: TextButton.styleFrom(
                       minimumSize: Size(80, 45),
