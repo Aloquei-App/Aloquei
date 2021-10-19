@@ -13,16 +13,18 @@ class HostPagePrice extends StatelessWidget {
     double price;
     return Scaffold(
         bottomNavigationBar: HostBottomBar(
-          text: 'Salve seu anúncio',
-          color: Colors.pink,
-          onPressedBack: () {
-            Navigator.pop(context);
-          },
-          onpressedNext: () => sendData(
-            valueMonth: price,
-            context: context,
-          ),
-        ),
+            text: 'Salve seu anúncio',
+            color: Colors.pink,
+            onPressedBack: () {
+              Navigator.pop(context);
+            },
+            onpressedNext: () {
+              Navigator.of(context, rootNavigator: true).pop(context);
+              sendData(
+                valueMonth: price,
+                context: context,
+              );
+            }),
         body: Container(
             color: Colors.white,
             child: Column(

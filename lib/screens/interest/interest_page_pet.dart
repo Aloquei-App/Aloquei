@@ -1,9 +1,11 @@
+import 'package:aloquei_app/screens/core/forms/title_subtitle_button.dart';
+import 'package:aloquei_app/screens/explore/explore.dart';
+import 'package:aloquei_app/screens/interest/components/flow_builder_functions.dart';
 import 'package:flutter/material.dart';
 
 import '../core/forms/host_top_menu_gradient.dart';
 import '../core/navigation.dart';
 import '../hosting/components/host_bottombar.dart';
-import 'components/interest_select_menu_pet.dart';
 
 class InterestPagePet extends StatelessWidget {
   const InterestPagePet({Key key}) : super(key: key);
@@ -29,9 +31,31 @@ class InterestPagePet extends StatelessWidget {
               text1: 'Preferência ',
               text2: 'por pets no ambiente?',
             ),
-            InterestSelectPet(
-              onpressed: () {},
-            )
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+                children: [
+                  TitleSubtitleButton(
+                      title: 'Sim',
+                      subtitle: 'Sim, gosto de animais',
+                      onpressed: () {
+                        Navigator.of(context, rootNavigator: true).pop(context);
+                        sendData(likesPets: true, context: context);
+                      }),
+                  TitleSubtitleButton(
+                      title: 'Não',
+                      subtitle: 'Prefiro ambientes sem animais',
+                      onpressed: () {
+                        Navigator.of(context, rootNavigator: true).pop(context);
+                        sendData(likesPets: false, context: context);
+                      }),
+                  /*TitleSubtitleButton(
+                      title: 'Tanto faz',
+                      subtitle: 'Não tenho preferência',
+                      onpressed: () {}),*/
+                ],
+              ),
+            ),
           ],
         ));
   }

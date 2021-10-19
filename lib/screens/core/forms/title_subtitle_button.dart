@@ -26,7 +26,7 @@ class TitleSubtitleButton extends StatelessWidget {
             tileColor: Colors.white,
             selectedTileColor: Color(0xFFf7f7f7),
             selected: true,
-            onTap: () {},
+            onTap: onpressed,
             minVerticalPadding: 30,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10)),

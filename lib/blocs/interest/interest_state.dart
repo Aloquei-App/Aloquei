@@ -26,3 +26,5 @@ class SuccessState extends InterestState {
 }
 
 class LoadingState extends InterestState {}
+
+class ShowScreen extends InterestState {}

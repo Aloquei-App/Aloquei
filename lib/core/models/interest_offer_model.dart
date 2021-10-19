@@ -15,6 +15,8 @@ class InterestModel extends OffersModel {
   String socialNetworkLink;
   String university;
   Color color;
+  String city;
+  int qtdRooms;
 
   InterestModel(
       {this.desiredCourse,
@@ -25,6 +27,9 @@ class InterestModel extends OffersModel {
       this.likesPets,
       this.socialNetworkLink,
       this.university,
+      this.color,
+      this.city,
+      this.qtdRooms,
       String cidade,
       String estado,
       String email,
@@ -32,9 +37,10 @@ class InterestModel extends OffersModel {
       String tele,
       String userId,
       String userName,
-      int qtdRoom,
+      int qntquartos,
       int tipo,
-      int incluido}) {
+      int incluido,
+      int idadeInicial}) {
     city = cidade;
     state = estado;
     mail = email;
@@ -42,9 +48,10 @@ class InterestModel extends OffersModel {
     phone = tele;
     postUserId = userId;
     postUserName = userName;
-    qtdRooms = qtdRoom;
+    qtdRooms = qntquartos;
     type = tipo;
     includedAt = incluido;
+    desiredStartAge = idadeInicial;
   }
 
   InterestModel.fromJson(DocumentSnapshot doc) {
@@ -95,7 +102,34 @@ class InterestModel extends OffersModel {
     data['socialNetworkLink'] = this.socialNetworkLink;
     data['type'] = this.type;
     data['university'] = this.university;
-    
+
     return data;
+  }
+
+  InterestModel copyWith(
+      {String desiredCourse,
+      int desiredEndAge,
+      String desiredGender,
+      int idadeInicial,
+      bool hasHouse,
+      bool likesPets,
+      String socialNetworkLink,
+      String university,
+      Color color,
+      String cidade,
+      int qntquartos}) {
+    return InterestModel(
+      desiredCourse: desiredCourse ?? this.desiredCourse,
+      desiredEndAge: desiredEndAge ?? this.desiredEndAge,
+      desiredGender: desiredGender ?? this.desiredGender,
+      idadeInicial: idadeInicial ?? this.desiredStartAge,
+      hasHouse: hasHouse ?? this.hasHouse,
+      likesPets: likesPets ?? this.likesPets,
+      socialNetworkLink: socialNetworkLink ?? this.socialNetworkLink,
+      university: university ?? this.university,
+      color: color ?? this.color,
+      cidade: cidade ?? this.city,
+      qntquartos: qntquartos ?? this.qtdRooms,
+    );
   }
 }

@@ -7,6 +7,10 @@ abstract class InterestEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class SubmitEvent extends InterestEvent {}
+class SubmitEvent extends InterestEvent {
+  final InterestModel interestModel;
 
-class ScreenStarded extends ProfileEvent {}
+  SubmitEvent(this.interestModel);
+}
+
+class ScreenStarted extends InterestEvent {}

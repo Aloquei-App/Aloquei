@@ -1,9 +1,10 @@
+import 'package:aloquei_app/screens/core/forms/title_subtitle_button.dart';
 import 'package:flutter/material.dart';
 
 import '../core/forms/host_top_menu_gradient.dart';
 import '../core/navigation.dart';
 import '../hosting/components/host_bottombar.dart';
-import 'components/interest_select_menu_gender.dart';
+import 'components/flow_builder_functions.dart';
 
 class InterestPageGender extends StatelessWidget {
   const InterestPageGender({Key key}) : super(key: key);
@@ -29,9 +30,32 @@ class InterestPageGender extends StatelessWidget {
               text1: 'Preferência',
               text2: 'por gênero?',
             ),
-            InterestSelectGender(
-              onpressed: () {},
-            )
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+                children: [
+                  TitleSubtitleButton(
+                    title: 'Masculino',
+                    subtitle: 'Preferência pelo gênero masculino',
+                    onpressed: () => continuePressed(
+                        desiredGender: "Masculino", context: context),
+                  ),
+                  TitleSubtitleButton(
+                    title: 'Feminino',
+                    subtitle: 'Preferência pelo gênero feminino',
+                    onpressed: () => continuePressed(
+                        desiredGender: "Feminino", context: context),
+                  ),
+                  TitleSubtitleButton(
+                    title: 'Outros',
+                    subtitle: 'Não tenho preferência por gêneros',
+                    onpressed: () => continuePressed(
+                        desiredGender: "Não tenho preferência por gêneros",
+                        context: context),
+                  ),
+                ],
+              ),
+            ),
           ],
         ));
   }

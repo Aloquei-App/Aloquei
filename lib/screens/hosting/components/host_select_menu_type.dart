@@ -75,8 +75,6 @@ class _FlowPagesState extends State<FlowPages> {
       if (houseOfferModel.name != null)
         MaterialPage(child: HostPageDescription()),
       if (houseOfferModel.obs != null) MaterialPage(child: HostPagePrice()),
-      if (houseOfferModel.valueMonth != null)
-        MaterialPage(child: ExplorePage()),
     ];
   }
 
@@ -116,7 +114,7 @@ class _AddHomePageState extends State<AddHomePage> {
           text: 'Avançar',
           color: Colors.grey[900],
           onPressedBack: () {
-            Navigator.pop(context);
+            Navigator.of(context, rootNavigator: true).pop(context);
           },
           onpressedNext: () {
             Navigator.push(
