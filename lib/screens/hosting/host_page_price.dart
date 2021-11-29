@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../core/forms/host_top_menu_gradient.dart';
 import 'components/flow_builder_functions.dart';
 import 'components/host_bottombar.dart';
-import 'host_page_review.dart';
 
 class HostPagePrice extends StatelessWidget {
   const HostPagePrice({Key key}) : super(key: key);

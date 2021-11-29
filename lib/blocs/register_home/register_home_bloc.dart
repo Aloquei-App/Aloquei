@@ -1,6 +1,5 @@
 import 'package:aloquei_app/core/models/user_model.dart';
 
-import '../profile/profile_bloc.dart';
 import '../../core/errors/auth_error.dart';
 import '../../core/models/house_offer_model.dart';
 import '../../resources/offers/firestore_offers.dart';

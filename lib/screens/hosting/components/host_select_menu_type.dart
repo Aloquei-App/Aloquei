@@ -1,10 +1,9 @@
-import 'package:aloquei_app/blocs/home/home_bloc.dart';
 import 'package:aloquei_app/blocs/register_home/register_home_bloc.dart';
-import 'package:aloquei_app/core/definitions.dart';
+
 import 'package:aloquei_app/core/models/house_offer_model.dart';
 import 'package:aloquei_app/core/models/user_model.dart';
 import 'package:aloquei_app/screens/core/forms/host_top_menu_gradient.dart';
-import 'package:aloquei_app/screens/explore/explore.dart';
+
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +13,7 @@ import '../host_page_amenities.dart';
 import '../host_page_desc.dart';
 import '../host_page_description.dart';
 import '../host_page_price.dart';
-import '../host_page_review.dart';
+
 import '../host_page_title.dart';
 import '../host_page_type_size.dart';
 import 'flow_builder_functions.dart';

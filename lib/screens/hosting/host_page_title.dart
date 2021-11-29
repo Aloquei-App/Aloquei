@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../core/forms/top_menu_image.dart';
 import 'components/host_bottombar.dart';
-import 'host_page_description.dart';
 
 class HostPageTitle extends StatelessWidget {
   const HostPageTitle({Key key}) : super(key: key);

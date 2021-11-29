@@ -1,4 +1,3 @@
-import 'package:aloquei_app/core/models/interest_offer_model.dart';
 import 'package:aloquei_app/screens/core/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -85,8 +84,8 @@ class _ExplorePeoplePageState extends State<ExplorePeoplePage> {
                     itemBuilder: (context, index) {
                       return PlaceItem(
                         model: _explorePeopleBloc.interest[index],
-                        onClick: () =>
-                            navigateToInterestDetail(context, _explorePeopleBloc.interest[index]),
+                        onClick: () => navigateToInterestDetail(
+                            context, _explorePeopleBloc.interest[index]),
                       );
                     });
               }
