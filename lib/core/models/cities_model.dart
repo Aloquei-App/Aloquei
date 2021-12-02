@@ -1,5 +1,5 @@
 class CitiesModel {
-  int id;
+  String id;
   String nome;
   Microrregiao microrregiao;
   RegiaoImediata regiaoImediata;
