@@ -1,10 +1,11 @@
 import 'dart:async';
 
-import '../../core/models/user_model.dart';
-import '../../resources/user/firebase_user.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+
+import '../../core/models/user_model.dart';
+import '../../resources/user/firebase_user.dart';
 
 part 'offer_detail_event.dart';
 part 'offer_detail_state.dart';

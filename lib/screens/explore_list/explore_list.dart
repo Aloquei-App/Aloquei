@@ -5,9 +5,9 @@ import '../../../../core/models/explore_model.dart';
 import '../../blocs/explore_list/explore_list_bloc.dart';
 import '../../core/models/user_model.dart';
 import '../core/loading.dart';
+import '../filter/filter_page.dart';
 import 'components/explore_app_bar.dart';
 import 'components/list_places.dart';
-import '../filter/filter_page.dart';
 
 class ExploreList extends StatelessWidget {
   final VoidCallback onBackPress;

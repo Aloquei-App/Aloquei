@@ -1,8 +1,7 @@
-import '../core/forms/title_subtitle_button.dart';
 import 'package:flutter/material.dart';
 
 import '../core/forms/host_top_menu_gradient.dart';
-import '../core/navigation.dart';
+import '../core/forms/title_subtitle_button.dart';
 import '../hosting/components/host_bottombar.dart';
 import 'components/flow_builder_functions.dart';
 
@@ -17,9 +16,6 @@ class InterestPageGender extends StatelessWidget {
           color: Colors.grey[900],
           onPressedBack: () {
             Navigator.pop(context);
-          },
-          onpressedNext: () {
-            navigateToInterestPet(context);
           },
         ),
         body: Column(

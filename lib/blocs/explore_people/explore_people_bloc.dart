@@ -58,7 +58,7 @@ class ExplorePeopleBloc extends Bloc<ExplorePeopleEvent, ExplorePeopleState> {
           _interestBaseList += await _offersRepository.getInterestsFilteredMore(
               exploreModel.estado.sigla,
               exploreModel.city.nome,
-              _interestBaseList.last.doc);
+              _interestBaseList.last.document);
           _interestList = _interestBaseList;
           if (_interestBaseList.length == ini) {
             _noMore = true;

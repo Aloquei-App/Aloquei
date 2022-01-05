@@ -1,7 +1,7 @@
-import '../../../blocs/offer_detail/offer_detail_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../blocs/offer_detail/offer_detail_bloc.dart';
 import 'circle_back_Button.dart';
 import 'circle_favorite_Button.dart';
 import 'circle_share_Button.dart';

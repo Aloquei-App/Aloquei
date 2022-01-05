@@ -14,3 +14,14 @@ class SubmitEvent extends InterestEvent {
 }
 
 class ScreenStarted extends InterestEvent {}
+
+class StateSelectedEvent extends InterestEvent {
+  final EstadosModel estado;
+
+  StateSelectedEvent({this.estado});
+
+  @override
+  List<Object> get props => [estado];
+}
+
+class CitySelectedEvent extends InterestEvent {}

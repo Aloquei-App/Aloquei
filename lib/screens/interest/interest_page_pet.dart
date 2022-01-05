@@ -39,15 +39,13 @@ class InterestPagePet extends StatelessWidget {
                       title: 'Sim',
                       subtitle: 'Sim, gosto de animais',
                       onpressed: () {
-                        Navigator.of(context, rootNavigator: true).pop(context);
-                        sendData(likesPets: true, context: context);
+                        continuePressed(likesPets: true, context: context);
                       }),
                   TitleSubtitleButton(
                       title: 'Não',
                       subtitle: 'Prefiro ambientes sem animais',
                       onpressed: () {
-                        Navigator.of(context, rootNavigator: true).pop(context);
-                        sendData(likesPets: false, context: context);
+                        continuePressed(likesPets: false, context: context);
                       }),
                   /*TitleSubtitleButton(
                       title: 'Tanto faz',

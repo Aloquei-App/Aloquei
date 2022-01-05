@@ -42,18 +42,18 @@ class TopMenuGradient extends StatelessWidget {
                     Navigator.pop(context);
                   },
                 ),*/
-                TextButton(
-                  style: TextButton.styleFrom(
-                      minimumSize: Size(80, 45),
-                      backgroundColor: Color.fromRGBO(16, 19, 11, 0.5),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(40)))),
-                  child: Text('Ajuda',
-                      style: TextStyle(fontSize: 17, color: Colors.white)),
-                  onPressed: () {
-                    navigateToHelp(context);
-                  },
-                ),
+                // TextButton(
+                //   style: TextButton.styleFrom(
+                //       minimumSize: Size(80, 45),
+                //       backgroundColor: Color.fromRGBO(16, 19, 11, 0.5),
+                //       shape: RoundedRectangleBorder(
+                //           borderRadius: BorderRadius.all(Radius.circular(40)))),
+                //   child: Text('Ajuda',
+                //       style: TextStyle(fontSize: 17, color: Colors.white)),
+                //   onPressed: () {
+                //     navigateToHelp(context);
+                //   },
+                // ),
               ],
             )),
         Expanded(child: SizedBox()),

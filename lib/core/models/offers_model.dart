@@ -12,7 +12,7 @@ class OffersModel {
   int qtdRooms;
   int type;
   int includedAt;
-  DocumentSnapshot doc;
+  DocumentSnapshot document;
 
   OffersModel(
       {this.city,

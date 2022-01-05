@@ -155,9 +155,9 @@ class OffersRepository {
           .where('state', isEqualTo: estadoSigla)
           .where('city', isEqualTo: cidade)
           .where('houseType', isEqualTo: houseType)
-          .startAfterDocument(doc)
           .limit(10)
           .orderBy('includedAt', descending: true)
+          .startAfterDocument(doc)
           .get();
       snapshot.docs.forEach((element) {
         list.add(HouseOfferModel.fromJson(element));

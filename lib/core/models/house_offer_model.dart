@@ -72,7 +72,7 @@ class HouseOfferModel extends OffersModel {
 
   HouseOfferModel.fromJson(DocumentSnapshot doc) {
     Map<String, dynamic> json = doc.data();
-    doc = doc;
+    document = doc;
     key = doc.id;
     address = json['address'] ?? "";
     courtyard = json['courtyard'] ?? false;
