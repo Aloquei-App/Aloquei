@@ -1,6 +1,6 @@
-import 'package:aloquei_app/screens/core/forms/title_subtitle_button.dart';
+import '../core/forms/title_subtitle_button.dart';
 
-import 'package:aloquei_app/screens/interest/components/flow_builder_functions.dart';
+import 'components/flow_builder_functions.dart';
 import 'package:flutter/material.dart';
 
 import '../core/forms/host_top_menu_gradient.dart';

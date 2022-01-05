@@ -13,6 +13,6 @@ class WishlistYetState extends WishlistState {}
 
 class LoadingWishlistState extends WishlistState {}
 
-class NewWishlistState extends WishlistState {}
+class EmptyWishlistState extends WishlistState {}
 
 class ShowWishlistState extends WishlistState {}

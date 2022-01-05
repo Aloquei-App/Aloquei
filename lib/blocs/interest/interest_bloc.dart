@@ -1,4 +1,4 @@
-import 'package:aloquei_app/core/models/user_model.dart';
+import '../../core/models/user_model.dart';
 
 import '../profile/profile_bloc.dart';
 import '../../core/errors/auth_error.dart';

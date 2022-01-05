@@ -1,19 +1,18 @@
 import 'dart:io';
 import 'dart:typed_data';
 
-import '../../blocs/interest-detail/interest_detail_bloc.dart';
-import '../../core/models/interest_offer_model.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:random_color/random_color.dart';
-
-import '../../core/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:random_color/random_color.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share/share.dart';
-import '../core/colors.dart';
 
+import '../../blocs/interest-detail/interest_detail_bloc.dart';
+import '../../core/models/interest_offer_model.dart';
+import '../../core/models/user_model.dart';
+import '../core/colors.dart';
 import 'components/card_image.dart';
 import 'components/custom_app_bar.dart';
 import 'components/description_offers.dart';

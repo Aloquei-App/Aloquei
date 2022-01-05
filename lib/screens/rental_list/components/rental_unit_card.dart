@@ -1,6 +1,7 @@
 import 'dart:ui';
-import 'package:random_color/random_color.dart';
+
 import 'package:flutter/material.dart';
+import 'package:random_color/random_color.dart';
 
 class ModelItemCard extends StatelessWidget {
   final RandomColor _randomColor = RandomColor();

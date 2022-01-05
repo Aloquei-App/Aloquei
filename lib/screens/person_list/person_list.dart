@@ -52,31 +52,41 @@ class _PersonListPageState extends State<PersonListPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: BlocBuilder<PersonListBloc, PersonListState>(
-      buildWhen: (previous, current) =>
-          current is LoadingPersonListState || current is ShowPersonListState,
-      builder: (context, state) {
-        if (state is LoadingPersonListState) {
-          return Loading();
-        } else if (state is NothingToShowState) {
-          return NotFound();
-        } else {
-          return ListView.builder(
-            itemCount: _personListBloc.getApCasa.length,
-            shrinkWrap: true,
-            itemBuilder: (context, index) {
-              return PersonItem(
-                index: index,
-                person: _personListBloc.getApCasa[index],
-                onDelete: (value) {
-                  _personListBloc.add(DeletePersonEvent(value));
-                },
-              );
-            },
-          );
-        }
-      },
-    ));
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Padding(
+        padding: EdgeInsets.only(left: 30, top: 25),
+        child: Text(
+          'Pessoas',
+          style: TextStyle(
+            fontSize: 35,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      Expanded(child: BlocBuilder<PersonListBloc, PersonListState>(
+        builder: (context, state) {
+          if (state is LoadingPersonListState) {
+            return Loading();
+          } else if (state is NothingToShowState) {
+            return NotFound();
+          } else {
+            return ListView.builder(
+              itemCount: _personListBloc.getApCasa.length,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return PersonItem(
+                  index: index,
+                  person: _personListBloc.getApCasa[index],
+                  onDelete: (value) {
+                    _personListBloc.add(DeletePersonEvent(value));
+                  },
+                );
+              },
+            );
+          }
+        },
+      ))
+    ]));
   }
 }
 

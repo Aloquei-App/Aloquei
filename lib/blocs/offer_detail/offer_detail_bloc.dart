@@ -22,7 +22,9 @@ class OfferDetailBloc extends Bloc<OfferDetailEvent, OfferDetailState> {
     OfferDetailEvent event,
   ) async* {
     if (event is ScreenStarted) {
-      exist = user.favList.contains(offerKey);
+      if (user.favList != null) {
+        exist = user.favList.contains(offerKey);
+      }
       yield ShowState();
     } else if (event is UpdateFavoriteEvent) {
       if (exist) {

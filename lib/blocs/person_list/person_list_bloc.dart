@@ -46,6 +46,7 @@ class PersonListBloc extends Bloc<PersonListEvent, PersonListState> {
       }
     } catch (e) {
       print(e.toString());
+      yield NothingToShowState();
     }
   }
 }

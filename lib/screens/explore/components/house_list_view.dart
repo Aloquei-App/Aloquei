@@ -1,7 +1,7 @@
-import '../../core/navigation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/models/house_offer_model.dart';
+import '../../core/navigation.dart';
 import 'house_item.dart';
 
 class HouseListView extends StatelessWidget {

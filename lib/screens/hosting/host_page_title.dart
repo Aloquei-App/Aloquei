@@ -1,4 +1,4 @@
-import 'package:aloquei_app/screens/hosting/components/flow_builder_functions.dart';
+import 'components/flow_builder_functions.dart';
 import 'package:flutter/material.dart';
 
 import '../core/forms/top_menu_image.dart';
