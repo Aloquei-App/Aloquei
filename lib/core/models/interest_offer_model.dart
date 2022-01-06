@@ -15,7 +15,6 @@ class InterestModel extends OffersModel {
   String socialNetworkLink;
   String university;
   Color color;
-  String city;
   int qtdRooms;
 
   InterestModel(
@@ -28,7 +27,6 @@ class InterestModel extends OffersModel {
       this.socialNetworkLink,
       this.university,
       this.color,
-      this.city,
       this.qtdRooms,
       String cidade,
       String estado,
@@ -39,8 +37,7 @@ class InterestModel extends OffersModel {
       String userName,
       int qntquartos,
       int tipo,
-      int incluido,
-      int idadeInicial}) {
+      int incluido}) {
     city = cidade;
     state = estado;
     mail = email;
@@ -51,7 +48,6 @@ class InterestModel extends OffersModel {
     qtdRooms = qntquartos;
     type = tipo;
     includedAt = incluido;
-    desiredStartAge = idadeInicial;
   }
 
   InterestModel.fromJson(DocumentSnapshot doc) {
@@ -72,7 +68,7 @@ class InterestModel extends OffersModel {
     city = json['city'] ?? "";
     state = json['state'] ?? "";
     mail = json['mail'] ?? "";
-    observations = json['observations'];
+    observations = json['observations'] ?? "";
     phone = json['phone'] ?? "";
     postUserId = json['postUserId'] ?? "";
     postUserName = json['postUserName'] ?? "";
@@ -117,19 +113,25 @@ class InterestModel extends OffersModel {
       String university,
       Color color,
       String cidade,
-      int qntquartos}) {
+      String estado,
+      int tipo,
+      int qntquartos,
+      String observacoes}) {
     return InterestModel(
       desiredCourse: desiredCourse ?? this.desiredCourse,
       desiredEndAge: desiredEndAge ?? this.desiredEndAge,
       desiredGender: desiredGender ?? this.desiredGender,
-      idadeInicial: idadeInicial ?? this.desiredStartAge,
+      desiredStartAge: idadeInicial ?? this.desiredStartAge,
       hasHouse: hasHouse ?? this.hasHouse,
       likesPets: likesPets ?? this.likesPets,
       socialNetworkLink: socialNetworkLink ?? this.socialNetworkLink,
       university: university ?? this.university,
       color: color ?? this.color,
       cidade: cidade ?? this.city,
+      estado: estado ?? this.state,
+      tipo: tipo ?? this.type,
       qntquartos: qntquartos ?? this.qtdRooms,
+      obs: observacoes ?? this.observations,
     );
   }
 }

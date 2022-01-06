@@ -51,33 +51,46 @@ class _RentalListPageState extends State<RentalListPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: BlocBuilder<RentalListBloc, RentalListState>(
-      buildWhen: (previous, current) =>
-          current is LoadingRentalState ||
-          current is ShowRentalState ||
-          current is NothingToShowState,
-      builder: (context, state) {
-        if (state is LoadingRentalState) {
-          return Loading();
-        } else if (state is NothingToShowState) {
-          return NotFound();
-        } else {
-          return ListView.builder(
-            itemCount: _rentalListBloc.getApCasa.length,
-            shrinkWrap: true,
-            itemBuilder: (context, index) {
-              return RentalItem(
-                index: index,
-                house: _rentalListBloc.getApCasa[index],
-                onDelete: (value) {
-                  _rentalListBloc.add(DeleteRentalEvent(value));
-                },
-              );
-            },
-          );
-        }
-      },
-    ));
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Padding(
+        padding: EdgeInsets.only(left: 30, top: 25),
+        child: Text(
+          'Moradias',
+          style: TextStyle(
+            fontSize: 35,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      Expanded(
+          child: BlocBuilder<RentalListBloc, RentalListState>(
+        buildWhen: (previous, current) =>
+            current is LoadingRentalState ||
+            current is ShowRentalState ||
+            current is NothingToShowState,
+        builder: (context, state) {
+          if (state is LoadingRentalState) {
+            return Loading();
+          } else if (state is NothingToShowState) {
+            return NotFound();
+          } else {
+            return ListView.builder(
+              itemCount: _rentalListBloc.getApCasa.length,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return RentalItem(
+                  index: index,
+                  house: _rentalListBloc.getApCasa[index],
+                  onDelete: (value) {
+                    _rentalListBloc.add(DeleteRentalEvent(value));
+                  },
+                );
+              },
+            );
+          }
+        },
+      ))
+    ]));
   }
 }
 

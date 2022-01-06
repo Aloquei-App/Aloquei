@@ -1,4 +1,4 @@
-import 'package:aloquei_app/core/models/user_model.dart';
+import '../../core/models/user_model.dart';
 
 import '../../core/errors/auth_error.dart';
 import '../../core/models/house_offer_model.dart';

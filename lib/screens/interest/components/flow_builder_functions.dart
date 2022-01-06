@@ -1,9 +1,11 @@
-import 'package:aloquei_app/core/models/interest_offer_model.dart';
+import '../../../core/models/interest_offer_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flow_builder/flow_builder.dart';
 
 continuePressed(
-    {String city,
+    {int type,
+    String state,
+    String city,
     int qtdRooms,
     String desiredCourse,
     int desiredEndAge,
@@ -14,6 +16,7 @@ continuePressed(
     String socialNetworkLink,
     String university,
     Color color,
+    String observations,
     BuildContext context}) {
   context.flow<InterestModel>().update(
         (interestOfferModel) => interestOfferModel.copyWith(
@@ -26,6 +29,9 @@ continuePressed(
           university: university,
           color: color,
           cidade: city,
+          tipo: type,
+          observacoes: observations,
+          estado: state,
           qntquartos: qtdRooms,
           idadeInicial: desiredStartAge,
         ),
@@ -33,7 +39,9 @@ continuePressed(
 }
 
 sendData(
-    {String city,
+    {String state,
+    int type,
+    String city,
     int qtdRooms,
     String desiredCourse,
     int desiredEndAge,
@@ -44,6 +52,7 @@ sendData(
     String socialNetworkLink,
     String university,
     Color color,
+    String observations,
     BuildContext context}) {
   context.flow<InterestModel>().complete(
         (interestOfferModel) => interestOfferModel.copyWith(
@@ -56,8 +65,11 @@ sendData(
           university: university,
           color: color,
           cidade: city,
-          idadeInicial: desiredStartAge,
+          observacoes: observations,
+          tipo: type,
+          estado: state,
           qntquartos: qtdRooms,
+          idadeInicial: desiredStartAge,
         ),
       );
 }

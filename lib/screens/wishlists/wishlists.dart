@@ -1,4 +1,5 @@
-import 'package:aloquei_app/screens/core/navigation.dart';
+import '../core/navigation.dart';
+import '../core/notFound.dart';
 
 import '../../blocs/wishlist/wishlist_bloc.dart';
 import '../../core/models/user_model.dart';
@@ -60,7 +61,7 @@ class _WishlistState extends State<Wishlist> {
                 builder: (context, state) {
                   if (state is LoadingWishlistState) {
                     return Loading();
-                  } else {
+                  } else if (state is ShowWishlistState) {
                     return ListView.builder(
                       itemCount: wishList.favorites.length,
                       itemBuilder: (context, index) {
@@ -75,6 +76,8 @@ class _WishlistState extends State<Wishlist> {
                             url: wishList.favorites[index].images[0]);
                       },
                     );
+                  } else {
+                    return NotFound();
                   }
                 },
               ),

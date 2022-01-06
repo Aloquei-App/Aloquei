@@ -111,38 +111,56 @@ class ExploreListBloc extends Bloc<ExploreListEvent, ExploreListState> {
         if (event.tabIndex == 0 && !_noMoreRepu && !_runningRepu) {
           _runningRepu = true;
           int ini = _republicBaseList.length;
-          _republicBaseList += await _offersRepository.getHousesFilteredMore(
-              exploreModel.estado.sigla,
-              exploreModel.city.nome,
-              0,
-              _republicBaseList.last.doc);
+          if (_republicBaseList.length == 0)
+            _noMoreQuar = true;
+          else
+            _republicBaseList += await _offersRepository.getHousesFilteredMore(
+                exploreModel.estado.sigla,
+                exploreModel.city.nome,
+                0,
+                _republicBaseList.last.document);
           _republicList = _republicBaseList;
           if (ini == _republicBaseList.length) _noMoreRepu = true;
           _runningRepu = false;
         } else if (event.tabIndex == 1 && !_noMoreCasa && !_runningCasa) {
           _runningCasa = true;
           int ini = _casaBaseList.length;
-          _casaBaseList += await _offersRepository.getHousesFilteredMore(
-              exploreModel.estado.sigla,
-              exploreModel.city.nome,
-              1,
-              _casaBaseList.last.doc);
+          if (_casaBaseList.length == 0)
+            _noMoreQuar = true;
+          else
+            _casaBaseList += await _offersRepository.getHousesFilteredMore(
+                exploreModel.estado.sigla,
+                exploreModel.city.nome,
+                1,
+                _casaBaseList.last.document);
           _casaList = _casaBaseList;
           if (ini == _casaBaseList.length) _noMoreCasa = true;
           _runningCasa = false;
         } else if (event.tabIndex == 2 && !_noMoreAp && !_runningAp) {
           _runningAp = true;
           int ini = _apBaseList.length;
-          _apBaseList = await _offersRepository.getHousesFiltered(
-              exploreModel.estado.sigla, exploreModel.city.nome, 2);
+          if (_apBaseList.length == 0)
+            _noMoreQuar = true;
+          else
+            _apBaseList += await _offersRepository.getHousesFilteredMore(
+                exploreModel.estado.sigla,
+                exploreModel.city.nome,
+                2,
+                _apBaseList.last.document);
           _apList = _apBaseList;
           if (ini == _apBaseList.length) _noMoreAp = true;
           _runningAp = false;
         } else if (event.tabIndex == 3 && !_noMoreQuar && !_runningQuar) {
           _runningQuar = true;
           int ini = _quartoBaseList.length;
-          _quartoBaseList = await _offersRepository.getHousesFiltered(
-              exploreModel.estado.sigla, exploreModel.city.nome, 3);
+          if (_quartoBaseList.length == 0)
+            _noMoreQuar = true;
+          else
+            _quartoBaseList += await _offersRepository.getHousesFilteredMore(
+                exploreModel.estado.sigla,
+                exploreModel.city.nome,
+                3,
+                _quartoBaseList.last.document);
           _quartoList = _quartoBaseList;
           if (ini == _quartoBaseList.length) _noMoreQuar = true;
           _runningQuar = false;
@@ -163,6 +181,10 @@ class ExploreListBloc extends Bloc<ExploreListEvent, ExploreListState> {
         if (_quartoList.length == 0) {
           _quartoList = _quartoBaseList;
         }
+        yield ShowListState();
+      } else if (event is UpdateFav) {
+        yield UpdateListState();
+        favorite(event.key);
         yield ShowListState();
       }
     } catch (e, stack) {

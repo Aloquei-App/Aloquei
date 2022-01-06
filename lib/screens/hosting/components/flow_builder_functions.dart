@@ -1,6 +1,7 @@
-import 'package:aloquei_app/core/models/house_offer_model.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flow_builder/flow_builder.dart';
+import 'package:flutter/cupertino.dart';
+
+import '../../../core/models/house_offer_model.dart';
 
 continuePressed(
     {int houseType,

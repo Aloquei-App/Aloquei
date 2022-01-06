@@ -1,15 +1,21 @@
-import 'package:aloquei_app/core/models/interest_offer_model.dart';
-import 'package:aloquei_app/core/models/user_model.dart';
+import '../../core/models/cities_model.dart';
+import '../../core/models/estados_model.dart';
+
+import '../../core/models/interest_offer_model.dart';
+import '../../core/models/user_model.dart';
 
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../core/forms/input_value.dart';
-import '../../hosting/components/host_continue_button.dart';
-import '../../../blocs/interest/interest_bloc.dart';
-import '../interest_page_gender.dart';
-import '../interest_page_pet.dart';
-import 'flow_builder_functions.dart';
+import '../core/forms/input_value.dart';
+import '../hosting/components/host_continue_button.dart';
+import '../../blocs/interest/interest_bloc.dart';
+import 'components/drop_down.dart';
+import 'components/interest_select_menu_desc_house.dart';
+import 'components/interest_select_menu_nine.dart';
+import 'interest_page_gender.dart';
+import 'interest_page_pet.dart';
+import 'components/flow_builder_functions.dart';
 
 class InterestPageAddress extends StatelessWidget {
   final UserModel userModel;
@@ -50,7 +56,8 @@ class _FlowPagesInterestState extends State<FlowPagesInterest> {
   List<Page> onGeneratePages(InterestModel interestModel, List<Page> page) {
     return [
       MaterialPage(child: InterestForm()),
-      if ((interestModel.city ??
+      if ((interestModel.state ??
+              interestModel.city ??
               interestModel.qtdRooms ??
               interestModel.university ??
               interestModel.desiredCourse ??
@@ -59,6 +66,10 @@ class _FlowPagesInterestState extends State<FlowPagesInterest> {
         MaterialPage(child: InterestPageGender()),
       if (interestModel.desiredGender != null)
         MaterialPage(child: InterestPagePet()),
+      if (interestModel.likesPets != null)
+        MaterialPage(child: InterestSelectMenuDescHouse()),
+      if (interestModel.hasHouse != null)
+        MaterialPage(child: InterestSelectMenuDescription()),
     ];
   }
 
@@ -75,16 +86,17 @@ class _FlowPagesInterestState extends State<FlowPagesInterest> {
 
 class InterestForm extends StatelessWidget {
   InterestForm({Key key}) : super(key: key);
-  final _formKey = GlobalKey<FormState>();
-  InterestModel interestModel;
   String city;
+  String estado;
   int qtdRooms;
   String university;
   String desiredCourse;
   int desiredStartAge;
+  int desiredEndAge;
 
   @override
   Widget build(BuildContext context) {
+    final InterestBloc interestBloc = BlocProvider.of<InterestBloc>(context);
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -104,20 +116,37 @@ class InterestForm extends StatelessWidget {
           ),
         ),
       ),
-      body: Container(
-        color: Colors.white,
-        padding: EdgeInsets.only(top: 30),
-        child: Form(
-          key: _formKey,
+      body: Column(children: [
+        Container(
+          color: Colors.white,
+          padding: EdgeInsets.only(top: 30),
+        ),
+        Expanded(
           child: ListView(
             children: [
-              InputValue(
-                  text: 'Cidade',
-                  onChanged: (value) {
-                    city = value;
-                  }),
+              BlocBuilder<InterestBloc, InterestState>(
+                  builder: (context, state) {
+                return DropDownButton(
+                    hint: estado == null ? 'Estado' : estado,
+                    items: interestBloc.estados,
+                    onChanged: (EstadosModel value) {
+                      interestBloc.add(StateSelectedEvent(estado: value));
+                      estado = value.nome;
+                    });
+              }),
+              BlocBuilder<InterestBloc, InterestState>(
+                  builder: (context, state) {
+                return DropDownButton(
+                    hint: city == null ? 'Cidade' : city,
+                    items: interestBloc.cities,
+                    onChanged: (CitiesModel value) {
+                      interestBloc.add(CitySelectedEvent());
+                      city = value.nome;
+                    });
+              }),
               InputValue(
                   text: 'Quantidade',
+                  isNumber: true,
                   onChanged: (value) {
                     qtdRooms = int.parse(value);
                   }),
@@ -127,7 +156,6 @@ class InterestForm extends StatelessWidget {
                     university = value;
                   }),
               // InputValue(text: 'Telefone'),
-              //InputValue(text: 'Email'),
               // InputValue(text: 'Link de rede social'),
               InputValue(
                   text: 'Curso',
@@ -136,24 +164,33 @@ class InterestForm extends StatelessWidget {
                   }),
               InputValue(
                   text: 'Faixa etária inicial',
+                  isNumber: true,
                   onChanged: (value) {
                     desiredStartAge = int.parse(value);
+                  }),
+              InputValue(
+                  text: 'Faixa etária final',
+                  isNumber: true,
+                  onChanged: (value) {
+                    desiredEndAge = int.parse(value);
                   }),
               SizedBox(height: 20),
               HostContinueButton(onPressed: () {
                 continuePressed(
+                  state: estado,
                   city: city,
                   qtdRooms: qtdRooms,
                   university: university,
                   desiredCourse: desiredCourse,
                   desiredStartAge: desiredStartAge,
+                  desiredEndAge: desiredEndAge,
                   context: context,
                 );
               })
             ],
           ),
-        ),
-      ),
+        )
+      ]),
     );
   }
 }
