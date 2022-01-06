@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:aloquei_app/core/models/offer_detail_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
@@ -31,13 +32,15 @@ class OfferDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final HouseOfferModel houseModel =
+    final OfferDetailModel houseModel =
         ModalRoute.of(context).settings.arguments;
     return BlocProvider(
-      create: (context) =>
-          OfferDetailBloc(user: userModel, offerKey: houseModel.key)
-            ..add(ScreenStarted()),
-      child: OfferDetailPage(houseModel: houseModel),
+      create: (context) => OfferDetailBloc(
+          user: userModel,
+          offerKey: houseModel.houseOffer.key,
+          updateFav: houseModel.updateFavorite)
+        ..add(ScreenStarted()),
+      child: OfferDetailPage(houseModel: houseModel.houseOffer),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:aloquei_app/core/models/offer_detail_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/models/house_offer_model.dart';
@@ -55,8 +56,10 @@ void navigateToHelpPage(BuildContext context) {
   Navigator.of(context).pushNamed('/helpPage');
 }
 
-void navigateToOfferDetail(BuildContext context, HouseOfferModel model) {
-  Navigator.of(context).pushNamed('/offerDetail', arguments: model);
+void navigateToOfferDetail(BuildContext context, HouseOfferModel model,
+    {Function update}) {
+  Navigator.of(context).pushNamed('/offerDetail',
+      arguments: OfferDetailModel(houseOffer: model, updateFavorite: update));
 }
 
 void navigateToInterestDetail(BuildContext context, InterestModel model) {

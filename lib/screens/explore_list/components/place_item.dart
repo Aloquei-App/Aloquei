@@ -25,7 +25,9 @@ class _PlaceItemState extends State<PlaceItem> {
     bool _isfavorited = exploreList.user.favList.contains(widget.model.key);
     return GestureDetector(
       onTap: () {
-        navigateToOfferDetail(context, widget.model);
+        navigateToOfferDetail(context, widget.model, update: (value) {
+          exploreList.add(UpdateFav(key: value));
+        });
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

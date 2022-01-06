@@ -18,6 +18,15 @@ class SearchEvent extends ExploreListEvent {
   List<Object> get props => [search];
 }
 
+class UpdateFav extends ExploreListEvent {
+  final String key;
+
+  UpdateFav({this.key});
+
+  @override
+  List<Object> get props => [key];
+}
+
 class GetMoreItensEvent extends ExploreListEvent {
   final int tabIndex;
 

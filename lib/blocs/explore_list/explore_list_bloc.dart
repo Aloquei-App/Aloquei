@@ -182,6 +182,10 @@ class ExploreListBloc extends Bloc<ExploreListEvent, ExploreListState> {
           _quartoList = _quartoBaseList;
         }
         yield ShowListState();
+      } else if (event is UpdateFav) {
+        yield UpdateListState();
+        favorite(event.key);
+        yield ShowListState();
       }
     } catch (e, stack) {
       print(e);
