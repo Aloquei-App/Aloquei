@@ -1,8 +1,8 @@
+import '../core/bottom_bars/bottom_bar.dart';
 import 'package:flutter/material.dart';
 
 import '../core/forms/top_menu_gradient.dart';
 import 'components/flow_builder_functions.dart';
-import 'components/host_bottombar.dart';
 
 class HostPageReview extends StatelessWidget {
   const HostPageReview({Key key}) : super(key: key);
@@ -10,7 +10,7 @@ class HostPageReview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: HostBottomBar(
+      bottomNavigationBar: BottomBar(
         text: 'Salve seu anúncio',
         color: Colors.pink,
         onPressedBack: () {

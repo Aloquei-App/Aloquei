@@ -1,3 +1,5 @@
+import '../../core/bottom_bars/bottom_bar.dart';
+
 import '../../../blocs/register_home/register_home_bloc.dart';
 
 import '../../../core/models/house_offer_model.dart';
@@ -17,7 +19,6 @@ import '../host_page_price.dart';
 import '../host_page_title.dart';
 import '../host_page_type_size.dart';
 import 'flow_builder_functions.dart';
-import 'host_bottombar.dart';
 import 'host_text_image_button.dart';
 
 class HostPageType extends StatelessWidget {
@@ -109,7 +110,7 @@ class _AddHomePageState extends State<AddHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: HostBottomBar(
+      bottomNavigationBar: BottomBar(
           text: 'Avançar',
           color: Colors.grey[900],
           onPressedBack: () {

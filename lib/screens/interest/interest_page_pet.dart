@@ -1,3 +1,5 @@
+import '../core/bottom_bars/bottom_bar.dart';
+
 import '../core/forms/title_subtitle_button.dart';
 
 import 'components/flow_builder_functions.dart';
@@ -5,7 +7,6 @@ import 'package:flutter/material.dart';
 
 import '../core/forms/top_menu_gradient.dart';
 import '../core/navigation.dart';
-import '../hosting/components/host_bottombar.dart';
 
 class InterestPagePet extends StatelessWidget {
   const InterestPagePet({Key key}) : super(key: key);
@@ -13,7 +14,7 @@ class InterestPagePet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: HostBottomBar(
+        bottomNavigationBar: BottomBar(
           text: 'Avançar',
           color: Colors.grey[900],
           onPressedBack: () {

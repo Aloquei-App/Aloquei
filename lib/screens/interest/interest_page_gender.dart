@@ -1,8 +1,8 @@
+import '../core/bottom_bars/bottom_bar.dart';
 import 'package:flutter/material.dart';
 
 import '../core/forms/top_menu_gradient.dart';
 import '../core/forms/title_subtitle_button.dart';
-import '../hosting/components/host_bottombar.dart';
 import 'components/flow_builder_functions.dart';
 
 class InterestPageGender extends StatelessWidget {
@@ -11,7 +11,7 @@ class InterestPageGender extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: HostBottomBar(
+        bottomNavigationBar: BottomBar(
           text: 'Avançar',
           color: Colors.grey[900],
           onPressedBack: () {

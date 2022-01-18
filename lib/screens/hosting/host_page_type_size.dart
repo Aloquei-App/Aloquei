@@ -1,7 +1,7 @@
+import '../core/bottom_bars/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import '../core/forms/top_menu_gradient.dart';
 import 'components/flow_builder_functions.dart';
-import 'components/host_bottombar.dart';
 
 import 'components/host_title_button.dart';
 import 'host_page_address.dart';
@@ -12,7 +12,7 @@ class HostPageTypeSize extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: HostBottomBar(
+        bottomNavigationBar: BottomBar(
           text: 'Next',
           color: Colors.grey[900],
           onPressedBack: () {

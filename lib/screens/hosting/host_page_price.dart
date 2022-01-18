@@ -1,8 +1,8 @@
+import '../core/bottom_bars/bottom_bar.dart';
 import 'package:flutter/material.dart';
 
 import '../core/forms/top_menu_gradient.dart';
 import 'components/flow_builder_functions.dart';
-import 'components/host_bottombar.dart';
 
 class HostPagePrice extends StatelessWidget {
   const HostPagePrice({Key key}) : super(key: key);
@@ -11,7 +11,7 @@ class HostPagePrice extends StatelessWidget {
   Widget build(BuildContext context) {
     double price;
     return Scaffold(
-        bottomNavigationBar: HostBottomBar(
+        bottomNavigationBar: BottomBar(
             text: 'Salve seu anúncio',
             color: Colors.pink,
             onPressedBack: () {

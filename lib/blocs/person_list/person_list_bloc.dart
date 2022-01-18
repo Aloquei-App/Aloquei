@@ -1,9 +1,12 @@
-import '../../core/models/interest_offer_model.dart';
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../core/models/interest_offer_model.dart';
 import '../../core/models/user_model.dart';
 import '../../resources/offers/firestore_offers.dart';
-import 'dart:async';
+
 part 'person_list_event.dart';
 part 'person_list_state.dart';
 

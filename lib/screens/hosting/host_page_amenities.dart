@@ -1,9 +1,9 @@
+import '../core/bottom_bars/bottom_bar.dart';
 import 'package:flutter/material.dart';
 
 import '../core/forms/top_menu_gradient.dart';
 import 'components/flow_builder_functions.dart';
 import 'components/host_big_iconbutton.dart';
-import 'components/host_bottombar.dart';
 import 'host_page_photos.dart';
 
 class HostPageAmenities extends StatelessWidget {
@@ -12,7 +12,7 @@ class HostPageAmenities extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: HostBottomBar(
+        bottomNavigationBar: BottomBar(
           text: 'Avançar',
           color: Colors.grey[900],
           onPressedBack: () {

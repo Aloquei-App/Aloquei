@@ -1,6 +1,7 @@
+import '../../core/bottom_bars/bottom_bar.dart';
+
 import '../../core/forms/top_menu_gradient.dart';
 import '../../core/snack_bar.dart';
-import '../../hosting/components/host_bottombar.dart';
 import 'flow_builder_functions.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ class InterestSelectMenuDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     String text;
     return Scaffold(
-        bottomNavigationBar: HostBottomBar(
+        bottomNavigationBar: BottomBar(
           text: 'Avançar',
           color: Colors.grey[900],
           onPressedBack: () {

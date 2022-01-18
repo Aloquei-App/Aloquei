@@ -1,7 +1,7 @@
+import '../core/bottom_bars/bottom_bar.dart';
 import 'package:flutter/material.dart';
 
 import '../core/forms/top_menu_gradient.dart';
-import 'components/host_bottombar.dart';
 import 'components/host_select_menu_desc_house.dart';
 import 'host_page_type_size.dart';
 
@@ -11,7 +11,7 @@ class HostPageDesc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: HostBottomBar(
+        bottomNavigationBar: BottomBar(
           text: 'Avançar',
           color: Colors.grey[900],
           onPressedBack: () {

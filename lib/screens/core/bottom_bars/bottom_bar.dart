@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class HostBottomBar extends StatelessWidget {
+class BottomBar extends StatelessWidget {
   final VoidCallback onPressedBack;
   final VoidCallback onpressedNext;
   final String text;
   final Color color;
 
-  const HostBottomBar(
+  const BottomBar(
       {Key key, this.onPressedBack, this.onpressedNext, this.text, this.color})
       : super(key: key);
 

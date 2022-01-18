@@ -1,8 +1,9 @@
+import '../core/bottom_bars/bottom_bar.dart';
+
 import 'components/flow_builder_functions.dart';
 import 'package:flutter/material.dart';
 
 import '../core/forms/top_menu_image.dart';
-import 'components/host_bottombar.dart';
 
 class HostPageTitle extends StatelessWidget {
   const HostPageTitle({Key key}) : super(key: key);
@@ -11,7 +12,7 @@ class HostPageTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     String title;
     return Scaffold(
-        bottomNavigationBar: HostBottomBar(
+        bottomNavigationBar: BottomBar(
           text: 'Avançar',
           color: Colors.grey[900],
           onPressedBack: () {
