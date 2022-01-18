@@ -11,7 +11,7 @@ class InputValue extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.only(left: 30, right: 30),
+        padding: EdgeInsets.only(top: 5, bottom: 5, left: 30, right: 30),
         child: TextFormField(
           keyboardType: isNumber ? TextInputType.number : TextInputType.text,
           onChanged: onChanged,

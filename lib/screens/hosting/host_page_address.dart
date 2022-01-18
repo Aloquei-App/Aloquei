@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../core/forms/input_value.dart';
 import 'components/flow_builder_functions.dart';
-import 'components/host_continue_button.dart';
+import '../core/buttons/continue_button.dart';
 import 'components/host_counter.dart';
 
 class HostPageAddress extends StatelessWidget {
@@ -75,7 +75,7 @@ class HostPageAddress extends StatelessWidget {
                     ],
                   ),
                 ),
-                HostContinueButton(onPressed: () {
+                ContinueButton(onPressed: () {
                   continuePressed(
                     adress: address,
                     city: city,

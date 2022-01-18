@@ -1,4 +1,4 @@
-import 'package:aloquei_app/screens/core/forms/host_top_menu_gradient.dart';
+import 'package:aloquei_app/screens/core/forms/top_menu_gradient.dart';
 import 'package:aloquei_app/screens/hosting/components/host_bottombar.dart';
 import 'package:aloquei_app/screens/interest/components/flow_builder_functions.dart';
 import 'package:flutter/material.dart';

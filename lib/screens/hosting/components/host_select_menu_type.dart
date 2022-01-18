@@ -2,7 +2,7 @@ import '../../../blocs/register_home/register_home_bloc.dart';
 
 import '../../../core/models/house_offer_model.dart';
 import '../../../core/models/user_model.dart';
-import '../../core/forms/host_top_menu_gradient.dart';
+import '../../core/forms/top_menu_gradient.dart';
 
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';

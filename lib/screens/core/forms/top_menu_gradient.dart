@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../navigation.dart';
-
 class TopMenuGradient extends StatelessWidget {
   final String text1;
   final String text2;
