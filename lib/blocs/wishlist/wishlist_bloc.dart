@@ -1,13 +1,12 @@
 import 'dart:async';
 
-import '../../core/models/house_offer_model.dart';
-
-import '../../resources/offers/firestore_offers.dart';
-
-import '../../core/models/user_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+
+import '../../core/models/house_offer_model.dart';
+import '../../core/models/user_model.dart';
+import '../../resources/offers/firestore_offers.dart';
 
 part 'wishlist_event.dart';
 part 'wishlist_state.dart';
