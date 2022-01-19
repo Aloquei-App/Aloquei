@@ -1,7 +1,7 @@
-import '../../core/navigation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/models/interest_offer_model.dart';
+import '../../core/navigation.dart';
 import 'person_item.dart';
 
 class PersonsGridView extends StatelessWidget {

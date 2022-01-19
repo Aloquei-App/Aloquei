@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:aloquei_app/core/models/offer_detail_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
@@ -10,6 +9,7 @@ import 'package:share/share.dart';
 
 import '../../blocs/offer_detail/offer_detail_bloc.dart';
 import '../../core/models/house_offer_model.dart';
+import '../../core/models/offer_detail_model.dart';
 import '../../core/models/user_model.dart';
 import '../core/colors.dart';
 import '../login/components/title_offers.dart';
@@ -130,9 +130,9 @@ class _OfferDetailPageState extends State<OfferDetailPage> {
                   'A casa tem ${widget.houseModel.kitchen} cozinha(s)'),
               Elements(Icons.living_outlined, 'Sala',
                   'A casa tem ${widget.houseModel.livinRoom} sala(s)'),
-              widget.houseModel.courtyard
+              widget.houseModel.courtyard > 0
                   ? Elements(Icons.grass_sharp, 'Pátio',
-                      'Você tem um pátio para apreciar')
+                      'Você tem ${widget.houseModel.courtyard} pátio(s) para apreciar')
                   : Container(),
               Elements(Icons.chair_outlined, 'Mobília',
                   'A casa se encontra ${widget.houseModel.furnished}'),

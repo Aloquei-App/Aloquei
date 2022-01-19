@@ -9,7 +9,7 @@ import 'detail_offers/detail_offer.dart';
 import 'explore/explore.dart';
 import 'help/help_page.dart';
 import 'home/home.dart';
-import 'hosting/components/host_select_menu_type.dart';
+import 'hosting/host_select_menu_type.dart';
 import 'inbox/inbox.dart';
 import 'interest-detail/interest_detail.dart';
 import 'interest/interest_page_data.dart';

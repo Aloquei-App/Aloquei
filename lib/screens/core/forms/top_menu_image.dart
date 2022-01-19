@@ -22,31 +22,31 @@ class TopMenuImage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextButton(
-                  style: TextButton.styleFrom(
-                    backgroundColor: Color.fromRGBO(16, 19, 11, 0.5),
-                    shape: CircleBorder(),
-                  ),
-                  child: Icon(
-                    Icons.close_sharp,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-                TextButton(
-                  style: TextButton.styleFrom(
-                      minimumSize: Size(80, 45),
-                      backgroundColor: Color.fromRGBO(16, 19, 11, 0.5),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(40)))),
-                  child: Text('Ajuda',
-                      style: TextStyle(fontSize: 17, color: Colors.white)),
-                  onPressed: () {
-                    navigateToHelp(context);
-                  },
-                ),
+                // TextButton(
+                //   style: TextButton.styleFrom(
+                //     backgroundColor: Color.fromRGBO(16, 19, 11, 0.5),
+                //     shape: CircleBorder(),
+                //   ),
+                //   child: Icon(
+                //     Icons.close_sharp,
+                //     color: Colors.white,
+                //   ),
+                //   onPressed: () {
+                //     Navigator.pop(context);
+                //   },
+                // ),
+                // TextButton(
+                //   style: TextButton.styleFrom(
+                //       minimumSize: Size(80, 45),
+                //       backgroundColor: Color.fromRGBO(16, 19, 11, 0.5),
+                //       shape: RoundedRectangleBorder(
+                //           borderRadius: BorderRadius.all(Radius.circular(40)))),
+                //   child: Text('Ajuda',
+                //       style: TextStyle(fontSize: 17, color: Colors.white)),
+                //   onPressed: () {
+                //     navigateToHelp(context);
+                //   },
+                // ),
               ],
             )),
         Expanded(child: SizedBox()),

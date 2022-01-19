@@ -1,9 +1,8 @@
+import '../core/bottom_bars/bottom_bar.dart';
 import 'package:flutter/material.dart';
 
 import '../core/forms/top_menu_image.dart';
-import 'components/host_bottombar.dart';
 import 'components/host_select_menu_photos.dart';
-import 'host_page_title.dart';
 
 class HostPagePhotos extends StatelessWidget {
   const HostPagePhotos({Key key}) : super(key: key);
@@ -11,17 +10,11 @@ class HostPagePhotos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: HostBottomBar(
+        bottomNavigationBar: BottomBar(
           text: 'Avançar',
           color: Colors.grey[900],
           onPressedBack: () {
             Navigator.pop(context);
-          },
-          onpressedNext: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HostPageTitle()),
-            );
           },
         ),
         body: Container(

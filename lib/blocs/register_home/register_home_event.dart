@@ -14,3 +14,14 @@ class SubmitEvent extends RegisterHomeEvent {
 }
 
 class ScreenStarted extends RegisterHomeEvent {}
+
+class StateSelectedEvent extends RegisterHomeEvent {
+  final EstadosModel estado;
+
+  StateSelectedEvent({this.estado});
+
+  @override
+  List<Object> get props => [estado];
+}
+
+class CitySelectedEvent extends RegisterHomeEvent {}

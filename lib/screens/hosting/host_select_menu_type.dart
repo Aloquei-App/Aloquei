@@ -1,24 +1,24 @@
-import '../../../blocs/register_home/register_home_bloc.dart';
+import '../../blocs/register_home/register_home_bloc.dart';
 
-import '../../../core/models/house_offer_model.dart';
-import '../../../core/models/user_model.dart';
-import '../../core/forms/host_top_menu_gradient.dart';
+import '../../core/models/house_offer_model.dart';
+import '../../core/models/user_model.dart';
+import '../core/forms/top_menu_gradient.dart';
 
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../host_page_address.dart';
-import '../host_page_amenities.dart';
-import '../host_page_desc.dart';
-import '../host_page_description.dart';
-import '../host_page_price.dart';
+import 'host_page_address.dart';
+import 'host_page_amenities.dart';
+import 'host_page_description.dart';
+import 'host_page_furnished.dart';
+import 'host_page_photos.dart';
+import 'host_page_price.dart';
 
-import '../host_page_title.dart';
-import '../host_page_type_size.dart';
-import 'flow_builder_functions.dart';
-import 'host_bottombar.dart';
-import 'host_text_image_button.dart';
+import 'host_page_title.dart';
+import 'host_page_type_size.dart';
+import 'components/flow_builder_functions.dart';
+import 'components/host_text_image_button.dart';
 
 class HostPageType extends StatelessWidget {
   final UserModel userModel;
@@ -61,17 +61,25 @@ class _FlowPagesState extends State<FlowPages> {
       if (houseOfferModel.houseType != null)
         MaterialPage(child: HostPageTypeSize()),
       if (houseOfferModel.typeRoom != null)
+        MaterialPage(child: HostPageFurnished()),
+      if (houseOfferModel.furnished != null)
         MaterialPage(child: HostPageAddress()),
-      if (houseOfferModel.address != null)
+      if ((houseOfferModel.address ??
+              houseOfferModel.zipCode ??
+              houseOfferModel.state ??
+              houseOfferModel.city) !=
+          null)
         MaterialPage(child: HostPageAmenities()),
       if ((houseOfferModel.garage ??
-              houseOfferModel.courtyard ??
-              houseOfferModel.kitchen ??
-              houseOfferModel.livinRoom ??
-              houseOfferModel.furnished) !=
-          null)
+                  houseOfferModel.courtyard ??
+                  houseOfferModel.kitchen ??
+                  houseOfferModel.livinRoom ??
+                  houseOfferModel.restroom) !=
+              null &&
+          houseOfferModel.qtdRooms != null)
         MaterialPage(child: HostPageTitle()),
-      if (houseOfferModel.name != null)
+      if (houseOfferModel.name != null) //MaterialPage(child: HostPagePhotos()),
+        //if (houseOfferModel.images != null)
         MaterialPage(child: HostPageDescription()),
       if (houseOfferModel.obs != null) MaterialPage(child: HostPagePrice()),
     ];
@@ -99,36 +107,29 @@ class _AddHomePageState extends State<AddHomePage> {
   //2 => ap
   //3 => quarto
 
-  /*@override
-  void dispose() {
-    //registerHomeBloc.add(DisposeEvent());
-    registerHomeBloc.close();
-    super.dispose();
-  }*/
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: HostBottomBar(
-          text: 'Avançar',
-          color: Colors.grey[900],
-          onPressedBack: () {
-            Navigator.of(context, rootNavigator: true).pop(context);
-          },
-          onpressedNext: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HostPageDesc()),
-            );
-          }),
       body: Column(
         children: [
-          TopMenuGradient(
-            color1: 0xFF7b22b0,
-            color2: 0xFF8621ab,
-            text1: 'Em que tipo de espaço você',
-            text2: 'vai hospedar?',
-          ),
+          Stack(children: [
+            TopMenuGradient(
+              color1: 0xFF7b22b0,
+              color2: 0xFF8621ab,
+              text1: 'Em que tipo de espaço você',
+              text2: 'vai hospedar?',
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 30, left: 8.0),
+              child: IconButton(
+                icon: Icon(Icons.arrow_back, size: 30),
+                color: Colors.white,
+                onPressed: () {
+                  Navigator.of(context, rootNavigator: true).pop(context);
+                },
+              ),
+            ),
+          ]),
           Expanded(
             child: ListView(
               padding: EdgeInsets.only(left: 20, right: 20, top: 20),
@@ -137,10 +138,6 @@ class _AddHomePageState extends State<AddHomePage> {
                   text: 'Apartamento',
                   image: 'assets/apartment.jpg',
                   ontap: () => continuePressed(houseType: 2, context: context),
-                  /*Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HostPageDesc()),
-              );*/
                 ),
                 HostTextImageButton(
                   text: 'Casa',

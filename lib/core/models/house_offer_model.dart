@@ -6,7 +6,7 @@ import 'offers_model.dart';
 
 class HouseOfferModel extends OffersModel {
   String address;
-  bool courtyard;
+  int courtyard;
   String furnished;
   int garage;
   int houseType;
@@ -150,7 +150,7 @@ class HouseOfferModel extends OffersModel {
 
   HouseOfferModel copyWith({
     String address,
-    bool courtyard,
+    int courtyard,
     String furnished,
     int garage,
     int houseType,

@@ -1,10 +1,16 @@
+import '../../blocs/register_home/register_home_bloc.dart';
+import '../../core/models/cities_model.dart';
+import '../../core/models/estados_model.dart';
+import '../core/bottom_bars/bottom_bar.dart';
+import '../core/forms/top_menu_gradient.dart';
+import '../interest/components/drop_down.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../core/models/house_offer_model.dart';
 import 'package:flutter/material.dart';
 
 import '../core/forms/input_value.dart';
 import 'components/flow_builder_functions.dart';
-import 'components/host_continue_button.dart';
-import 'components/host_counter.dart';
 
 class HostPageAddress extends StatelessWidget {
   HostPageAddress({Key key}) : super(key: key);
@@ -12,78 +18,80 @@ class HostPageAddress extends StatelessWidget {
   HouseOfferModel houseOfferModel;
   String address;
   String city;
-  String state;
-  int qtdRooms;
+  String estado;
+  String cep;
+  RegisterHomeBloc registerHomeBloc;
 
   @override
   Widget build(BuildContext context) {
+    registerHomeBloc = BlocProvider.of<RegisterHomeBloc>(context);
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          title: Text(
-            'Confirme seu endereço',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700),
-          ),
-          leading: Padding(
-            padding: EdgeInsets.only(left: 8.0),
-            child: IconButton(
-              icon: Icon(Icons.arrow_back, size: 30),
-              color: Colors.black,
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ),
+        bottomNavigationBar: BottomBar(
+          text: 'Avançar',
+          color: Colors.grey[900],
+          onPressedBack: () {
+            Navigator.pop(context);
+          },
+          showNext: true,
+          onpressedNext: () {
+            continuePressed(
+              adress: address,
+              city: city,
+              state: estado,
+              zipcode: cep,
+              context: context,
+            );
+          },
         ),
         body: Container(
-          color: Colors.white,
-          padding: EdgeInsets.only(top: 30),
           child: Form(
             key: _formKey,
             child: Column(
               children: [
-                InputValue(
-                    text: 'Rua',
-                    onChanged: (value) {
-                      address = value;
-                    }),
-                InputValue(
-                    text: 'Cidade',
-                    onChanged: (value) {
-                      city = value;
-                    }),
-                InputValue(
-                    text: 'Estado',
-                    onChanged: (value) {
-                      state = value;
-                    }),
-                Padding(
-                  padding: EdgeInsets.all(35),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Quartos',
-                        style: TextStyle(fontSize: 22),
-                      ),
-                      CounterView(
-                        counterCallback: (value) {
-                          qtdRooms = value;
-                        },
-                      )
-                    ],
-                  ),
+                TopMenuGradient(
+                  color1: 0xFF7b30b0,
+                  color2: 0xFF8621ab,
+                  text1: 'Confirme seu endereço',
+                  text2: '',
                 ),
-                HostContinueButton(onPressed: () {
-                  continuePressed(
-                    adress: address,
-                    city: city,
-                    state: state,
-                    qtdRooms: qtdRooms,
-                    context: context,
-                  );
-                }),
+                Expanded(
+                  child: ListView(
+                      padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+                      children: [
+                        InputValue(
+                            text: 'Endereço',
+                            onChanged: (value) {
+                              address = value;
+                            }),
+                        InputValue(
+                            text: 'CEP',
+                            isNumber: true,
+                            onChanged: (value) {
+                              cep = value;
+                            }),
+                        BlocBuilder<RegisterHomeBloc, RegisterHomeState>(
+                            builder: (context, state) {
+                          return DropDownButton(
+                              hint: estado == null ? 'Estado' : estado,
+                              items: registerHomeBloc.estados,
+                              onChanged: (EstadosModel value) {
+                                registerHomeBloc
+                                    .add(StateSelectedEvent(estado: value));
+                                estado = value.nome;
+                              });
+                        }),
+                        BlocBuilder<RegisterHomeBloc, RegisterHomeState>(
+                            builder: (context, state) {
+                          return DropDownButton(
+                              hint: city == null ? 'Cidade' : city,
+                              items: registerHomeBloc.cities,
+                              onChanged: (CitiesModel value) {
+                                registerHomeBloc.add(CitySelectedEvent());
+                                city = value.nome;
+                              });
+                        }),
+                      ]),
+                ),
               ],
             ),
           ),

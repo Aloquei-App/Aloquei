@@ -1,16 +1,15 @@
-import '../../core/models/cities_model.dart';
-import '../../core/models/estados_model.dart';
-import '../../resources/apis/ibge.dart';
-import 'package:flutter/material.dart';
-
-import '../../core/models/user_model.dart';
-
-import '../../core/errors/auth_error.dart';
-import '../../core/models/interest_offer_model.dart';
-import '../../resources/offers/firestore_offers.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
+
+import '../../core/errors/auth_error.dart';
+import '../../core/models/cities_model.dart';
+import '../../core/models/estados_model.dart';
+import '../../core/models/interest_offer_model.dart';
+import '../../core/models/user_model.dart';
+import '../../resources/apis/ibge.dart';
+import '../../resources/offers/firestore_offers.dart';
 
 part 'interest_event.dart';
 part 'interest_state.dart';

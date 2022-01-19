@@ -16,7 +16,7 @@ class _DropDownButtonState<T> extends State<DropDownButton> {
   Widget build(BuildContext context) {
     T value = widget.value ?? null;
     return Padding(
-        padding: EdgeInsets.only(left: 30, right: 30),
+        padding: EdgeInsets.only(top: 5, bottom: 5, left: 30, right: 30),
         child: Container(
           padding: EdgeInsets.only(left: 10, right: 10),
           decoration: BoxDecoration(

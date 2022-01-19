@@ -1,6 +1,7 @@
-import 'package:aloquei_app/screens/core/forms/host_top_menu_gradient.dart';
-import 'package:aloquei_app/screens/hosting/components/host_bottombar.dart';
-import 'package:aloquei_app/screens/interest/components/flow_builder_functions.dart';
+import '../../core/bottom_bars/bottom_bar.dart';
+
+import '../../core/forms/top_menu_gradient.dart';
+import 'flow_builder_functions.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/forms/title_subtitle_button.dart';
@@ -11,12 +12,9 @@ class InterestSelectMenuDescHouse extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: HostBottomBar(
+        bottomNavigationBar: BottomBar(
           text: 'Avançar',
           color: Colors.grey[900],
-          onPressedBack: () {
-            Navigator.pop(context);
-          },
         ),
         body: Column(children: [
           TopMenuGradient(

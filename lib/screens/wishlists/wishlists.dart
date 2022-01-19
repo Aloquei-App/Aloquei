@@ -1,11 +1,11 @@
-import '../core/navigation.dart';
-import '../core/notFound.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../blocs/wishlist/wishlist_bloc.dart';
 import '../../core/models/user_model.dart';
 import '../core/loading.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import '../core/navigation.dart';
+import '../core/notFound.dart';
 
 class WishlistPage extends StatelessWidget {
   final UserModel userModel;

@@ -39,7 +39,7 @@ class _CounterViewState extends State<CounterView> {
       padding: EdgeInsets.zero,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        color: Colors.white,
+        color: Colors.grey[50],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

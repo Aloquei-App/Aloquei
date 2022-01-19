@@ -1,8 +1,10 @@
+import '../core/snack_bar.dart';
+
+import '../core/bottom_bars/bottom_bar.dart';
 import 'package:flutter/material.dart';
 
-import '../core/forms/host_top_menu_gradient.dart';
+import '../core/forms/top_menu_gradient.dart';
 import 'components/flow_builder_functions.dart';
-import 'components/host_bottombar.dart';
 
 class HostPagePrice extends StatelessWidget {
   const HostPagePrice({Key key}) : super(key: key);
@@ -11,18 +13,20 @@ class HostPagePrice extends StatelessWidget {
   Widget build(BuildContext context) {
     double price;
     return Scaffold(
-        bottomNavigationBar: HostBottomBar(
+        bottomNavigationBar: BottomBar(
             text: 'Salve seu anúncio',
             color: Colors.pink,
             onPressedBack: () {
               Navigator.pop(context);
             },
+            showNext: true,
             onpressedNext: () {
-              Navigator.of(context, rootNavigator: true).pop(context);
               sendData(
                 valueMonth: price,
                 context: context,
               );
+              buildSuccesSnackBar(context, 'Incluido com sucesso');
+              Navigator.of(context, rootNavigator: true).pop(context);
             }),
         body: Container(
             color: Colors.white,

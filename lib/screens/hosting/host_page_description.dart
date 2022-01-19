@@ -1,8 +1,8 @@
+import '../core/bottom_bars/bottom_bar.dart';
 import 'package:flutter/material.dart';
 
 import '../core/forms/top_menu_image.dart';
 import 'components/flow_builder_functions.dart';
-import 'components/host_bottombar.dart';
 
 class HostPageDescription extends StatelessWidget {
   const HostPageDescription({Key key}) : super(key: key);
@@ -11,12 +11,13 @@ class HostPageDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     String description;
     return Scaffold(
-      bottomNavigationBar: HostBottomBar(
+      bottomNavigationBar: BottomBar(
         text: 'Avançar',
         color: Colors.grey[900],
         onPressedBack: () {
           Navigator.pop(context);
         },
+        showNext: true,
         onpressedNext: () =>
             continuePressed(obs: description, context: context),
       ),

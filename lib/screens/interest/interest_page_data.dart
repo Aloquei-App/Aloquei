@@ -8,7 +8,7 @@ import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../core/forms/input_value.dart';
-import '../hosting/components/host_continue_button.dart';
+import '../core/buttons/continue_button.dart';
 import '../../blocs/interest/interest_bloc.dart';
 import 'components/drop_down.dart';
 import 'components/interest_select_menu_desc_house.dart';
@@ -175,7 +175,7 @@ class InterestForm extends StatelessWidget {
                     desiredEndAge = int.parse(value);
                   }),
               SizedBox(height: 20),
-              HostContinueButton(onPressed: () {
+              ContinueButton(onPressed: () {
                 continuePressed(
                   state: estado,
                   city: city,
