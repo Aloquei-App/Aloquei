@@ -28,3 +28,7 @@ class SuccessState extends RegisterHomeState {
 class LoadingState extends RegisterHomeState {}
 
 class ShowScreen extends RegisterHomeState {}
+
+class ShowStatesDrop extends RegisterHomeState {}
+
+class ShowCities extends RegisterHomeState {}

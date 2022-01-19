@@ -1,16 +1,16 @@
-import '../core/navigation.dart';
-
-import '../../blocs/person_list/person_list_bloc.dart';
-import '../../core/models/interest_offer_model.dart';
-import '../../core/models/user_model.dart';
-import '../core/loading.dart';
-import '../core/notFound.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+
+import '../../blocs/person_list/person_list_bloc.dart';
+import '../../core/models/interest_offer_model.dart';
+import '../../core/models/user_model.dart';
 import '../core/colors.dart';
+import '../core/loading.dart';
+import '../core/navigation.dart';
+import '../core/notFound.dart';
 import '../rental_list/components/list_title.dart';
 import '../rental_list/components/present_card.dart';
 import '../rental_list/components/rental_unit_card.dart';

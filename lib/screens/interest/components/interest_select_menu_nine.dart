@@ -18,6 +18,7 @@ class InterestSelectMenuDescription extends StatelessWidget {
           onPressedBack: () {
             Navigator.pop(context);
           },
+          showNext: true,
           onpressedNext: () {
             sendData(observations: text, context: context);
             buildSuccesSnackBar(context, 'Incluido com sucesso');

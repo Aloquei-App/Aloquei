@@ -17,6 +17,7 @@ class HostPageDescription extends StatelessWidget {
         onPressedBack: () {
           Navigator.pop(context);
         },
+        showNext: true,
         onpressedNext: () =>
             continuePressed(obs: description, context: context),
       ),

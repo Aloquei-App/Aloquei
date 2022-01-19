@@ -5,8 +5,8 @@ import 'components/flow_builder_functions.dart';
 
 import 'components/host_title_button.dart';
 
-class HostPageTypeSize extends StatelessWidget {
-  const HostPageTypeSize({Key key}) : super(key: key);
+class HostPageFurnished extends StatelessWidget {
+  const HostPageFurnished({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +22,9 @@ class HostPageTypeSize extends StatelessWidget {
         body: Column(
           children: [
             TopMenuGradient(
-              color1: 0xFFae1a88,
+              color1: 0xFFae1a90,
               color2: 0xFF8b1fa6,
-              text1: 'Que tipo de lugar você está',
+              text1: 'Quanto a mobilia que está',
               text2: 'oferecendo aos hóspedes?',
             ),
             Expanded(
@@ -32,19 +32,19 @@ class HostPageTypeSize extends StatelessWidget {
                     padding: EdgeInsets.only(left: 20, right: 20, top: 20),
                     children: [
                   HostTitleButton(
-                    title: 'Um lugar inteiro',
+                    title: 'Mobiliado',
                     onpressed: () => continuePressed(
-                        typeRoom: "Um lugar inteiro", context: context),
+                        furnished: "Mobiliado", context: context),
                   ),
                   HostTitleButton(
-                    title: 'Um quarto inteiro',
+                    title: 'Semi-mobiliado',
                     onpressed: () => continuePressed(
-                        typeRoom: "Um quarto inteiro", context: context),
+                        furnished: "Semi-mobiliad", context: context),
                   ),
                   HostTitleButton(
-                    title: 'Um quarto compartilhado',
+                    title: 'Não mobiliado',
                     onpressed: () => continuePressed(
-                        typeRoom: "Um quarto compartilhado", context: context),
+                        furnished: "Não mobiliado", context: context),
                   ),
                 ])),
           ],

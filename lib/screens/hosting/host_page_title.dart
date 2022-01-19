@@ -18,6 +18,7 @@ class HostPageTitle extends StatelessWidget {
           onPressedBack: () {
             Navigator.pop(context);
           },
+          showNext: true,
           onpressedNext: () => continuePressed(name: title, context: context),
         ),
         body: Container(

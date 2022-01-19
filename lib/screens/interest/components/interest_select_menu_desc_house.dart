@@ -15,9 +15,6 @@ class InterestSelectMenuDescHouse extends StatelessWidget {
         bottomNavigationBar: BottomBar(
           text: 'Avançar',
           color: Colors.grey[900],
-          onPressedBack: () {
-            Navigator.pop(context);
-          },
         ),
         body: Column(children: [
           TopMenuGradient(

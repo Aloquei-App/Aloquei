@@ -1,3 +1,5 @@
+import '../core/snack_bar.dart';
+
 import '../core/bottom_bars/bottom_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -17,12 +19,14 @@ class HostPagePrice extends StatelessWidget {
             onPressedBack: () {
               Navigator.pop(context);
             },
+            showNext: true,
             onpressedNext: () {
-              Navigator.of(context, rootNavigator: true).pop(context);
               sendData(
                 valueMonth: price,
                 context: context,
               );
+              buildSuccesSnackBar(context, 'Incluido com sucesso');
+              Navigator.of(context, rootNavigator: true).pop(context);
             }),
         body: Container(
             color: Colors.white,

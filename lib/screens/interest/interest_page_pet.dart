@@ -6,7 +6,6 @@ import 'components/flow_builder_functions.dart';
 import 'package:flutter/material.dart';
 
 import '../core/forms/top_menu_gradient.dart';
-import '../core/navigation.dart';
 
 class InterestPagePet extends StatelessWidget {
   const InterestPagePet({Key key}) : super(key: key);
@@ -19,9 +18,6 @@ class InterestPagePet extends StatelessWidget {
           color: Colors.grey[900],
           onPressedBack: () {
             Navigator.pop(context);
-          },
-          onpressedNext: () {
-            navigateToInterestPage(context);
           },
         ),
         body: Column(
