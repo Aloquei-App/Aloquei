@@ -75,13 +75,13 @@ class OffersRepository {
   }
 
   Future<List<InterestModel>> getInterestsFiltered(
-      String estadoSigla, String cidade) async {
+      String estadoSigla, String estadoNome, String cidade) async {
     List<InterestModel> list = [];
     try {
       QuerySnapshot snapshot = await _firestoreInstance
           .collection('offers')
           .where('type', isEqualTo: 0)
-          .where('state', isEqualTo: estadoSigla)
+          .where('state', whereIn: [estadoSigla, estadoNome])
           .where('city', isEqualTo: cidade)
           .limit(10)
           .get();
@@ -96,14 +96,14 @@ class OffersRepository {
     return list;
   }
 
-  Future<List<InterestModel>> getInterestsFilteredMore(
-      String estadoSigla, String cidade, DocumentSnapshot doc) async {
+  Future<List<InterestModel>> getInterestsFilteredMore(String estadoSigla,
+      String estadoNome, String cidade, DocumentSnapshot doc) async {
     List<InterestModel> list = [];
     try {
       QuerySnapshot snapshot = await _firestoreInstance
           .collection('offers')
           .where('type', isEqualTo: 0)
-          .where('state', isEqualTo: estadoSigla)
+          .where('state', whereIn: [estadoSigla, estadoNome])
           .where('city', isEqualTo: cidade)
           .startAfterDocument(doc)
           .limit(10)
@@ -120,14 +120,14 @@ class OffersRepository {
     return list;
   }
 
-  Future<List<HouseOfferModel>> getHousesFiltered(
-      String estadoSigla, String cidade, int houseType) async {
+  Future<List<HouseOfferModel>> getHousesFiltered(String estadoSigla,
+      String estadoNome, String cidade, int houseType) async {
     List<HouseOfferModel> list = [];
     try {
       QuerySnapshot snapshot = await _firestoreInstance
           .collection('offers')
           .where('type', isEqualTo: 1)
-          .where('state', isEqualTo: estadoSigla)
+          .where('state', whereIn: [estadoSigla, estadoNome])
           .where('city', isEqualTo: cidade)
           .where('houseType', isEqualTo: houseType)
           .limit(10)

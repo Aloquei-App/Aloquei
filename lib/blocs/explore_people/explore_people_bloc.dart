@@ -47,7 +47,9 @@ class ExplorePeopleBloc extends Bloc<ExplorePeopleEvent, ExplorePeopleState> {
       if (event is ExploreListStartedEvent) {
         yield LoadingListState();
         _interestBaseList = await _offersRepository.getInterestsFiltered(
-            exploreModel.estado.sigla, exploreModel.city.nome);
+            exploreModel.estado.sigla,
+            exploreModel.estado.nome,
+            exploreModel.city.nome);
         _interestList = _interestBaseList;
         yield ShowListState();
       } else if (event is GetMoreItensEvent) {
@@ -57,6 +59,7 @@ class ExplorePeopleBloc extends Bloc<ExplorePeopleEvent, ExplorePeopleState> {
           _running = true;
           _interestBaseList += await _offersRepository.getInterestsFilteredMore(
               exploreModel.estado.sigla,
+              exploreModel.estado.nome,
               exploreModel.city.nome,
               _interestBaseList.last.document);
           _interestList = _interestBaseList;

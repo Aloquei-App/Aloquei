@@ -20,6 +20,7 @@ class HostPageAddress extends StatelessWidget {
   String address;
   String city;
   String estado;
+  String estadoSigla;
   String cep;
   RegisterHomeBloc registerHomeBloc;
 
@@ -38,7 +39,7 @@ class HostPageAddress extends StatelessWidget {
           continuePressed(
             adress: address,
             city: city,
-            state: estado,
+            state: estadoSigla,
             zipcode: cep,
             context: context,
           );
@@ -79,6 +80,7 @@ class HostPageAddress extends StatelessWidget {
                             registerHomeBloc
                                 .add(StateSelectedEvent(estado: value));
                             estado = value.nome;
+                            estadoSigla = value.sigla;
                           });
                     }),
                     BlocBuilder<RegisterHomeBloc, RegisterHomeState>(

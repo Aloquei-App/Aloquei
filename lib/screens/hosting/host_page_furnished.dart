@@ -39,7 +39,7 @@ class HostPageFurnished extends StatelessWidget {
                   HostTitleButton(
                     title: 'Semi-mobiliado',
                     onpressed: () => continuePressed(
-                        furnished: "Semi-mobiliad", context: context),
+                        furnished: "Semi-mobiliado", context: context),
                   ),
                   HostTitleButton(
                     title: 'Não mobiliado',

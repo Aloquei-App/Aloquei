@@ -94,16 +94,28 @@ class ExploreListBloc extends Bloc<ExploreListEvent, ExploreListState> {
       if (event is ExploreListStartedEvent) {
         yield LoadingListState();
         _republicBaseList = await _offersRepository.getHousesFiltered(
-            exploreModel.estado.sigla, exploreModel.city.nome, 0);
+            exploreModel.estado.sigla,
+            exploreModel.estado.sigla,
+            exploreModel.city.nome,
+            0);
         _republicList = _republicBaseList;
         _casaBaseList = await _offersRepository.getHousesFiltered(
-            exploreModel.estado.sigla, exploreModel.city.nome, 1);
+            exploreModel.estado.sigla,
+            exploreModel.estado.sigla,
+            exploreModel.city.nome,
+            1);
         _casaList = _casaBaseList;
         _apBaseList = await _offersRepository.getHousesFiltered(
-            exploreModel.estado.sigla, exploreModel.city.nome, 2);
+            exploreModel.estado.sigla,
+            exploreModel.estado.sigla,
+            exploreModel.city.nome,
+            2);
         _apList = _apBaseList;
         _quartoBaseList = await _offersRepository.getHousesFiltered(
-            exploreModel.estado.sigla, exploreModel.city.nome, 3);
+            exploreModel.estado.sigla,
+            exploreModel.estado.sigla,
+            exploreModel.city.nome,
+            3);
         _quartoList = _quartoBaseList;
         yield ShowListState();
       } else if (event is GetMoreItensEvent) {

@@ -90,6 +90,7 @@ class InterestForm extends StatelessWidget {
   InterestForm({Key key}) : super(key: key);
   String city;
   String estado;
+  String estadoSigla;
   int qtdRooms;
   String university;
   String desiredCourse;
@@ -134,6 +135,7 @@ class InterestForm extends StatelessWidget {
                     onChanged: (EstadosModel value) {
                       interestBloc.add(StateSelectedEvent(estado: value));
                       estado = value.nome;
+                      estadoSigla = value.sigla;
                     });
               }),
               BlocBuilder<InterestBloc, InterestState>(
@@ -179,7 +181,7 @@ class InterestForm extends StatelessWidget {
               SizedBox(height: 20),
               ContinueButton(onPressed: () {
                 continuePressed(
-                  state: estado,
+                  state: estadoSigla,
                   city: city,
                   qtdRooms: qtdRooms,
                   university: university,
