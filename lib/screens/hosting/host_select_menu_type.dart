@@ -12,7 +12,6 @@ import 'host_page_address.dart';
 import 'host_page_amenities.dart';
 import 'host_page_description.dart';
 import 'host_page_furnished.dart';
-import 'host_page_photos.dart';
 import 'host_page_price.dart';
 
 import 'host_page_title.dart';

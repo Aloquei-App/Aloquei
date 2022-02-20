@@ -60,8 +60,8 @@ class _HostBigIconButtonState extends State<HostBigIconButton> {
               shape: BadgeShape.square,
               badgeColor: Colors.deepPurple,
               borderRadius: BorderRadius.circular(8),
-              badgeContent:
-                  Text('${valor1}', style: TextStyle(color: Colors.white)),
+              badgeContent: Text(valor1.toString(),
+                  style: TextStyle(color: Colors.white)),
             )
           ],
         ),
@@ -94,7 +94,7 @@ class _HostBigIconButtonState extends State<HostBigIconButton> {
             badgeColor: Colors.deepPurple,
             borderRadius: BorderRadius.circular(8),
             badgeContent:
-                Text('${valor2}', style: TextStyle(color: Colors.white)),
+                Text(valor2.toString(), style: TextStyle(color: Colors.white)),
           )
         ]),
       ]),

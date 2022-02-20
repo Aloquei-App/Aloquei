@@ -6,7 +6,7 @@ import 'offers_model.dart';
 
 class HouseOfferModel extends OffersModel {
   String address;
-  int courtyard;
+  bool courtyard;
   String furnished;
   int garage;
   int houseType;

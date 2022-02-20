@@ -1,10 +1,11 @@
 import 'dart:async';
-import '../../core/models/house_offer_model.dart';
-import '../../resources/offers/firestore_offers.dart';
 
-import '../../core/models/user_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../core/models/house_offer_model.dart';
+import '../../core/models/user_model.dart';
+import '../../resources/offers/firestore_offers.dart';
 
 part 'rental_list_event.dart';
 part 'rental_list_state.dart';

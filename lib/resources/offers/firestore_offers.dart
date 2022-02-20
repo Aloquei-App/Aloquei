@@ -84,7 +84,6 @@ class OffersRepository {
           .where('state', isEqualTo: estadoSigla)
           .where('city', isEqualTo: cidade)
           .limit(10)
-          .orderBy('includedAt', descending: true)
           .get();
       snapshot.docs.forEach((element) {
         list.add(InterestModel.fromJson(element));
@@ -268,9 +267,8 @@ class OffersRepository {
     try {
       QuerySnapshot snapshot = await _firestoreInstance
           .collection('offers')
-          .where('type', isEqualTo: 0)
           .where('postUserId', isEqualTo: id)
-          .orderBy('includedAt', descending: true)
+          .where('type', isEqualTo: 0)
           .get();
       snapshot.docs.forEach(
         (element) {

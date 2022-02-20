@@ -1,11 +1,9 @@
-import '../core/bottom_bars/bottom_bar.dart';
-
-import '../core/forms/title_subtitle_button.dart';
-
-import 'components/flow_builder_functions.dart';
 import 'package:flutter/material.dart';
 
+import '../core/bottom_bars/bottom_bar.dart';
+import '../core/forms/title_subtitle_button.dart';
 import '../core/forms/top_menu_gradient.dart';
+import 'components/flow_builder_functions.dart';
 
 class InterestPagePet extends StatelessWidget {
   const InterestPagePet({Key key}) : super(key: key);

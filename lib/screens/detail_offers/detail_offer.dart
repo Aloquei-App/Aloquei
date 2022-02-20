@@ -130,7 +130,7 @@ class _OfferDetailPageState extends State<OfferDetailPage> {
                   'A casa tem ${widget.houseModel.kitchen} cozinha(s)'),
               Elements(Icons.living_outlined, 'Sala',
                   'A casa tem ${widget.houseModel.livinRoom} sala(s)'),
-              widget.houseModel.courtyard > 0
+              widget.houseModel.courtyard == true
                   ? Elements(Icons.grass_sharp, 'Pátio',
                       'Você tem ${widget.houseModel.courtyard} pátio(s) para apreciar')
                   : Container(),

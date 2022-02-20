@@ -1,6 +1,8 @@
-import '../core/bottom_bars/bottom_bar.dart';
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
+import '../core/bottom_bars/bottom_bar.dart';
 import '../core/forms/top_menu_gradient.dart';
 import 'components/flow_builder_functions.dart';
 import 'components/host_big_iconbutton.dart';

@@ -1,10 +1,10 @@
-import '../core/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/models/explore_model.dart';
 import '../../blocs/explore_people/explore_people_bloc.dart';
 import '../core/loading.dart';
+import '../core/navigation.dart';
 import 'components/explore_app_bar.dart';
 import 'components/place_item.dart';
 
