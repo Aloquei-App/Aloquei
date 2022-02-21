@@ -61,6 +61,9 @@ class RegisterHomeBloc extends Bloc<RegisterHomeEvent, RegisterHomeState> {
         event.houseOfferModel.mail = userModel.email;
         event.houseOfferModel.roomUsersQtd = 1;
         event.houseOfferModel.postUserId = userModel.key;
+        event.houseOfferModel.images = [];
+        event.houseOfferModel.includedAt =
+            DateTime.now().microsecondsSinceEpoch;
         event.houseOfferModel.postUserName =
             (userModel.name) + " " + (userModel.lastname);
         final inserted =

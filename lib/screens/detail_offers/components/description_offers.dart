@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class DescriptionOffers extends StatelessWidget {
   final String text;
   final String email;
-  final String telefone;
+  //final String telefone;
 
-  DescriptionOffers(this.text, this.email, this.telefone);
+  DescriptionOffers(this.text, this.email); //, this.telefone);
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +25,14 @@ class DescriptionOffers extends StatelessWidget {
           style: TextStyle(
               fontWeight: FontWeight.w500, fontSize: 15, fontFamily: 'Arial'),
         ),
-        SizedBox(
-          height: 5,
-        ),
-        Text(
-          "${this.email} - ${this.telefone}",
-          style: TextStyle(
-              fontWeight: FontWeight.w400, fontSize: 14, fontFamily: 'Arial'),
-        ),
+        // SizedBox(
+        //   height: 5,
+        // ),
+        // Text(
+        //   "${this.email} - ${this.telefone}",
+        //   style: TextStyle(
+        //       fontWeight: FontWeight.w400, fontSize: 14, fontFamily: 'Arial'),
+        // ),
       ]),
     );
   }

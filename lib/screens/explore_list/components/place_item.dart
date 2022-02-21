@@ -42,10 +42,16 @@ class _PlaceItemState extends State<PlaceItem> {
                   initialPage: 0,
                   indicatorColor: Colors.grey,
                   indicatorBackgroundColor: Colors.grey[300],
-                  children: List.generate(
-                      widget.model.images.length,
-                      (i) => Image.network(widget.model.images[i],
-                          fit: BoxFit.fitHeight)),
+                  children: widget.model.images.length > 0
+                      ? List.generate(
+                          widget.model.images.length,
+                          (i) => Image.network(widget.model.images[i],
+                              fit: BoxFit.fitHeight))
+                      : List.generate(
+                          1,
+                          (i) => Image.network(
+                              "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg",
+                              fit: BoxFit.fitHeight)),
                 ),
               ),
               Row(
@@ -100,16 +106,16 @@ class _PlaceItemState extends State<PlaceItem> {
               ],
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(left: 5.0, top: 3, bottom: 20),
-            child: Text(
-              "? km de distância",
-              style: TextStyle(
-                  color: Colors.black54,
-                  fontWeight: FontWeight.normal,
-                  fontSize: 20),
-            ),
-          )
+          // Padding(
+          //   padding: EdgeInsets.only(left: 5.0, top: 3, bottom: 20),
+          //   child: Text(
+          //     "? km de distância",
+          //     style: TextStyle(
+          //         color: Colors.black54,
+          //         fontWeight: FontWeight.normal,
+          //         fontSize: 20),
+          //   ),
+          // )
         ],
       ),
     );

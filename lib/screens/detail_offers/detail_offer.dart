@@ -16,7 +16,6 @@ import '../login/components/title_offers.dart';
 import 'components/bottom_navigation.dart';
 import 'components/card_image.dart';
 import 'components/carousel_options.dart';
-import 'components/contain_element.dart';
 import 'components/custom_app_bar.dart';
 import 'components/description.dart';
 import 'components/description_offers.dart';
@@ -112,9 +111,9 @@ class _OfferDetailPageState extends State<OfferDetailPage> {
               TextOffers(
                   "${widget.houseModel.descHouseType} alocado por ${widget.houseModel.postUserName}"),
               DescriptionOffers(widget.houseModel.descHouseType,
-                  widget.houseModel.mail, widget.houseModel.phone),
+                  widget.houseModel.mail), //, widget.houseModel.phone),
               Components(
-                widget.houseModel.maxTenants,
+                //widget.houseModel.maxTenants,
                 widget.houseModel.qtdRooms,
                 widget.houseModel.roomUsersQtd,
                 widget.houseModel.restroom,
@@ -130,7 +129,7 @@ class _OfferDetailPageState extends State<OfferDetailPage> {
                   'A casa tem ${widget.houseModel.kitchen} cozinha(s)'),
               Elements(Icons.living_outlined, 'Sala',
                   'A casa tem ${widget.houseModel.livinRoom} sala(s)'),
-              widget.houseModel.courtyard == true
+              widget.houseModel.courtyard > 0
                   ? Elements(Icons.grass_sharp, 'Pátio',
                       'Você tem ${widget.houseModel.courtyard} pátio(s) para apreciar')
                   : Container(),
@@ -155,23 +154,23 @@ class _OfferDetailPageState extends State<OfferDetailPage> {
                   ],
                 ),
               ),
-              Divide(),
-              TextOffers('Itens inclusos no valor'),
-              Column(
-                children: List.generate(
-                  widget.houseModel.includedOnValue.length,
-                  (index) => ContaimElement(
-                    Icons.star_border,
-                    widget.houseModel.includedOnValue[index],
-                  ),
-                ),
-              )
+              // Divide(),
+              // TextOffers('Itens inclusos no valor'),
+              // Column(
+              //   children: List.generate(
+              //     widget.houseModel.includedOnValue.length,
+              //     (index) => ContaimElement(
+              //       Icons.star_border,
+              //       widget.houseModel.includedOnValue[index],
+              //     ),
+              //   ),
+              // )
             ],
           ),
         ),
         bottomNavigationBar: BottomNavigation(
           value: widget.houseModel.valueMonth,
-          condominio: widget.houseModel.valueCondominium,
+          //condominio: widget.houseModel.valueCondominium,
         ),
       ),
     );

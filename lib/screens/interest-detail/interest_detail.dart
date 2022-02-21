@@ -131,8 +131,8 @@ class _InterestDetailPageState extends State<InterestDetailPage> {
               ),
               Divide(),
               TextOffers('Informações'),
-              DescriptionOffers("", "Email: ${widget.person.mail}",
-                  "\nFone: ${widget.person.phone}"),
+              DescriptionOffers("", "Email: ${widget.person.mail}"),
+              // "\nFone: ${widget.person.phone}"),
               Divide(),
               TextOffers('Interesses'),
               Elements(
@@ -146,8 +146,8 @@ class _InterestDetailPageState extends State<InterestDetailPage> {
                 "        ${widget.person.likesPets ? 'Sim' : 'Não'}",
               ),
               Elements(
-                FontAwesomeIcons.smoking,
-                "        Drogas:",
+                FontAwesomeIcons.info,
+                "        Observações:",
                 "        ${widget.person.observations}",
               ),
               Elements(

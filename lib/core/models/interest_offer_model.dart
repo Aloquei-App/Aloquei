@@ -12,7 +12,7 @@ class InterestModel extends OffersModel {
   int desiredStartAge;
   bool hasHouse;
   bool likesPets;
-  String socialNetworkLink;
+  //String socialNetworkLink;
   String university;
   Color color;
   int qtdRooms;
@@ -24,7 +24,7 @@ class InterestModel extends OffersModel {
       this.desiredStartAge,
       this.hasHouse,
       this.likesPets,
-      this.socialNetworkLink,
+      //this.socialNetworkLink,
       this.university,
       this.color,
       this.qtdRooms,
@@ -32,7 +32,7 @@ class InterestModel extends OffersModel {
       String estado,
       String email,
       String obs,
-      String tele,
+      //String tele,
       String userId,
       String userName,
       int qntquartos,
@@ -42,7 +42,7 @@ class InterestModel extends OffersModel {
     state = estado;
     mail = email;
     observations = obs;
-    phone = tele;
+    //phone = tele;
     postUserId = userId;
     postUserName = userName;
     qtdRooms = qntquartos;
@@ -69,11 +69,11 @@ class InterestModel extends OffersModel {
     state = json['state'] ?? "";
     mail = json['mail'] ?? "";
     observations = json['observations'] ?? "";
-    phone = json['phone'] ?? "";
+    //phone = json['phone'] ?? "";
     postUserId = json['postUserId'] ?? "";
     postUserName = json['postUserName'] ?? "";
     qtdRooms = json['qtdRooms'] ?? 0;
-    socialNetworkLink = json['socialNetworkLink'] ?? "";
+    //socialNetworkLink = json['socialNetworkLink'] ?? "";
     type = json['type'] ?? 0;
     university = json['university'] ?? "";
     includedAt = json['includedAt'] ?? 0;
@@ -91,14 +91,14 @@ class InterestModel extends OffersModel {
     data['likesPets'] = this.likesPets;
     data['mail'] = this.mail;
     data['observations'] = this.observations;
-    data['phone'] = this.phone;
+    //data['phone'] = this.phone;
     data['postUserId'] = this.postUserId;
     data['postUserName'] = this.postUserName;
     data['qtdRooms'] = this.qtdRooms;
-    data['socialNetworkLink'] = this.socialNetworkLink;
+    //data['socialNetworkLink'] = this.socialNetworkLink;
     data['type'] = this.type;
     data['university'] = this.university;
-
+    data['includedAt'] = this.includedAt;
     return data;
   }
 
@@ -124,7 +124,7 @@ class InterestModel extends OffersModel {
       desiredStartAge: idadeInicial ?? this.desiredStartAge,
       hasHouse: hasHouse ?? this.hasHouse,
       likesPets: likesPets ?? this.likesPets,
-      socialNetworkLink: socialNetworkLink ?? this.socialNetworkLink,
+      //socialNetworkLink: socialNetworkLink ?? this.socialNetworkLink,
       university: university ?? this.university,
       color: color ?? this.color,
       cidade: cidade ?? this.city,

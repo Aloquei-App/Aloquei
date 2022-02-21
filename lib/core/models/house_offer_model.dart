@@ -11,17 +11,17 @@ class HouseOfferModel extends OffersModel {
   int garage;
   int houseType;
   List<String> images;
-  List<String> includedOnValue;
+  //List<String> includedOnValue;
   int kitchen;
   int livinRoom;
-  int maxTenants;
+  //int maxTenants;
   String name;
   NearUniversities nearUniversities;
   Position position;
   int restroom;
   int roomUsersQtd;
   String typeRoom;
-  double valueCondominium;
+  //double valueCondominium;
   double valueMonth;
   String zipCode;
   String descHouseType;
@@ -34,17 +34,17 @@ class HouseOfferModel extends OffersModel {
       this.garage,
       this.houseType,
       this.images,
-      this.includedOnValue,
+      //this.includedOnValue,
       this.kitchen,
       this.livinRoom,
-      this.maxTenants,
+      //this.maxTenants,
       this.name,
       this.nearUniversities,
       this.position,
       this.restroom,
       this.roomUsersQtd,
       this.typeRoom,
-      this.valueCondominium,
+      //this.valueCondominium,
       this.valueMonth,
       this.zipCode,
       this.descHouseType,
@@ -53,7 +53,7 @@ class HouseOfferModel extends OffersModel {
       String cidade,
       String estado,
       String email,
-      String tele,
+      //String tele,
       String userId,
       String userName,
       int tipo,
@@ -62,7 +62,7 @@ class HouseOfferModel extends OffersModel {
     state = estado;
     mail = email;
     observations = obs;
-    phone = tele;
+    //phone = tele;
     postUserId = userId;
     postUserName = userName;
     qtdRooms = qtdQuartos;
@@ -75,25 +75,25 @@ class HouseOfferModel extends OffersModel {
     document = doc;
     key = doc.id;
     address = json['address'] ?? "";
-    courtyard = json['courtyard'] ?? false;
+    courtyard = json['courtyard'] ?? 0;
     furnished = json['furnished'] ?? "";
     garage = json['garage'] ?? 0;
     houseType = json['houseType'] ?? 0;
     descHouseType = houseTypes[houseType];
     images = json['images'].cast<String>() ?? [];
-    includedOnValue = json['includedOnValue'].cast<String>() ?? [];
+    //includedOnValue = json['includedOnValue'].cast<String>() ?? [];
     kitchen = json['kitchen'] ?? 0;
     livinRoom = json['livinRoom'] ?? 0;
     city = json['city'] ?? "";
     state = json['state'] ?? "";
     mail = json['mail'] ?? "";
-    maxTenants = json['maxTenants'] ?? 0;
+    //maxTenants = json['maxTenants'] ?? 0;
     name = json['name'] ?? "";
     nearUniversities = json['nearUniversities'] != null
         ? new NearUniversities.fromJson(json['nearUniversities'])
         : null;
     observations = json['observations'] ?? "";
-    phone = json['phone'] ?? "";
+    //phone = json['phone'] ?? "";
     if (json['position'] != null) {
       // TODO alterar para quando estiver funcionando o cadastro
       //position = Position.fromMap(json['position']);
@@ -105,7 +105,7 @@ class HouseOfferModel extends OffersModel {
     roomUsersQtd = json['roomUsersQtd'] ?? 0;
     type = json['type'] ?? 0;
     typeRoom = json['typeRoom'] ?? "";
-    valueCondominium = json['valueCondominium'].toDouble() ?? 0;
+    //valueCondominium = json['valueCondominium'].toDouble() ?? 0;
     includedAt = json['includedAt'] ?? 0;
     valueMonth = json['valueMonth'].toDouble() ?? 0;
     zipCode = json['zipCode'] ?? "";
@@ -121,17 +121,17 @@ class HouseOfferModel extends OffersModel {
     data['garage'] = this.garage;
     data['houseType'] = this.houseType;
     data['images'] = this.images;
-    data['includedOnValue'] = this.includedOnValue;
+    //data['includedOnValue'] = this.includedOnValue;
     data['kitchen'] = this.kitchen;
     data['livinRoom'] = this.livinRoom;
     data['mail'] = this.mail;
-    data['maxTenants'] = this.maxTenants;
+    //data['maxTenants'] = this.maxTenants;
     data['name'] = this.name;
     if (this.nearUniversities != null) {
       data['nearUniversities'] = this.nearUniversities.toJson();
     }
     data['observations'] = this.observations;
-    data['phone'] = this.phone;
+    //data['phone'] = this.phone;
     if (this.position != null) {
       data['position'] = this.position.toJson();
     }
@@ -142,9 +142,10 @@ class HouseOfferModel extends OffersModel {
     data['roomUsersQtd'] = this.roomUsersQtd;
     data['type'] = this.type;
     data['typeRoom'] = this.typeRoom;
-    data['valueCondominium'] = this.valueCondominium;
+    //data['valueCondominium'] = this.valueCondominium;
     data['valueMonth'] = this.valueMonth;
     data['zipCode'] = this.zipCode;
+    data['includedAt'] = this.includedAt;
     return data;
   }
 
@@ -155,17 +156,17 @@ class HouseOfferModel extends OffersModel {
     int garage,
     int houseType,
     List<String> images,
-    List<String> includedOnValue,
+    //List<String> includedOnValue,
     int kitchen,
     int livinRoom,
-    int maxTenants,
+    //int maxTenants,
     String name,
     NearUniversities nearUniversities,
     Position position,
     int restroom,
     int roomUsersQtd,
     String typeRoom,
-    double valueCondominium,
+    //double valueCondominium,
     double valueMonth,
     String zipCode,
     String cidade,
@@ -187,17 +188,17 @@ class HouseOfferModel extends OffersModel {
       garage: garage ?? this.garage,
       houseType: houseType ?? this.houseType,
       images: images ?? this.images,
-      includedOnValue: includedOnValue ?? this.includedOnValue,
+      //includedOnValue: includedOnValue ?? this.includedOnValue,
       kitchen: kitchen ?? this.kitchen,
       livinRoom: livinRoom ?? this.livinRoom,
-      maxTenants: maxTenants ?? this.maxTenants,
+      //maxTenants: maxTenants ?? this.maxTenants,
       name: name ?? this.name,
       nearUniversities: nearUniversities ?? this.nearUniversities,
       position: position ?? this.position,
       restroom: restroom ?? this.restroom,
       roomUsersQtd: roomUsersQtd ?? this.roomUsersQtd,
       typeRoom: typeRoom ?? this.typeRoom,
-      valueCondominium: valueCondominium ?? this.valueCondominium,
+      //valueCondominium: valueCondominium ?? this.valueCondominium,
       valueMonth: valueMonth ?? this.valueMonth,
       zipCode: zipCode ?? this.zipCode,
       descHouseType: descHouseType ?? this.descHouseType,
@@ -205,7 +206,7 @@ class HouseOfferModel extends OffersModel {
       estado: estado ?? this.state,
       email: email ?? this.mail,
       obs: obs ?? this.observations,
-      tele: phone ?? this.phone,
+      //tele: phone ?? this.phone,
       userId: postUserId ?? this.postUserId,
       userName: postUserName ?? this.postUserName,
       tipo: type ?? this.type,

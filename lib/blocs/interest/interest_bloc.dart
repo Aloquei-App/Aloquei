@@ -60,6 +60,7 @@ class InterestBloc extends Bloc<InterestEvent, InterestState> {
         event.interestModel.postUserId = userModel.key;
         event.interestModel.type = 0;
         event.interestModel.mail = userModel.email;
+        event.interestModel.includedAt = DateTime.now().microsecondsSinceEpoch;
         event.interestModel.postUserName =
             (userModel.name) + " " + (userModel.lastname);
         final inserted =

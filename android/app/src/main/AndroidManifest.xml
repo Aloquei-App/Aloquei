@@ -2,7 +2,7 @@
     package="com.example.aloquei_app">
    <application
         android:label="Aloquei"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

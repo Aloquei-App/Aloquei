@@ -6,7 +6,7 @@ class OffersModel {
   String state;
   String mail;
   String observations;
-  String phone;
+  //String phone;
   String postUserId;
   String postUserName;
   int qtdRooms;
@@ -19,7 +19,7 @@ class OffersModel {
       this.state,
       this.mail,
       this.observations,
-      this.phone,
+      //this.phone,
       this.postUserId,
       this.postUserName,
       this.qtdRooms,
@@ -31,7 +31,7 @@ class OffersModel {
     state = json['state'] ?? "";
     mail = json['mail'] ?? "";
     observations = json['observations'];
-    phone = json['phone'] ?? "";
+    //phone = json['phone'] ?? "";
     postUserId = json['postUserId'] ?? "";
     postUserName = json['postUserName'] ?? "";
     qtdRooms = json['qtdRooms'] ?? 0;
@@ -45,7 +45,7 @@ class OffersModel {
     data['state'] = this.state;
     data['mail'] = this.mail;
     data['observations'] = this.observations;
-    data['phone'] = this.phone;
+    //data['phone'] = this.phone;
     data['postUserId'] = this.postUserId;
     data['postUserName'] = this.postUserName;
     data['qtdRooms'] = this.qtdRooms;

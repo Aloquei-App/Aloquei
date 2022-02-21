@@ -29,19 +29,20 @@ class BottomNavigation extends StatelessWidget {
                       fontFamily: 'Arial'),
                 ),
               ),
-              condominio > 0
-                  ? Padding(
-                      padding: EdgeInsets.only(left: 25, top: 5.0),
-                      child: Text(
-                        'Condomínio. R\$ ${this.condominio} / mês',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w800,
-                            fontSize: 16,
-                            fontFamily: 'Arial'),
-                      ),
-                    )
-                  : Container(),
+              // condominio > 0
+              //     ? Padding(
+              //         padding: EdgeInsets.only(left: 25, top: 5.0),
+              //         child: Text(
+              //           'Condomínio. R\$ ${this.condominio} / mês',
+              //           textAlign: TextAlign.center,
+              //           style: TextStyle(
+              //               fontWeight: FontWeight.w800,
+              //               fontSize: 16,
+              //               fontFamily: 'Arial'),
+              //         ),
+              //       )
+              //     :
+              Container(),
             ],
           )),
       elevation: 0,
