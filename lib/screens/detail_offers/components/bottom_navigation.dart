@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 
 class BottomNavigation extends StatelessWidget {
   final double value;
-  final double condominio;
 
-  BottomNavigation({this.value, this.condominio});
+  BottomNavigation({this.value});
 
   @override
   Widget build(BuildContext context) {
@@ -12,8 +11,7 @@ class BottomNavigation extends StatelessWidget {
       color: Colors.white,
       child: Container(
           width: double.infinity,
-          height:
-              MediaQuery.of(context).size.height * (condominio > 0 ? 1 : 0.08),
+          height: MediaQuery.of(context).size.height * 0.08,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -29,19 +27,6 @@ class BottomNavigation extends StatelessWidget {
                       fontFamily: 'Arial'),
                 ),
               ),
-              // condominio > 0
-              //     ? Padding(
-              //         padding: EdgeInsets.only(left: 25, top: 5.0),
-              //         child: Text(
-              //           'Condomínio. R\$ ${this.condominio} / mês',
-              //           textAlign: TextAlign.center,
-              //           style: TextStyle(
-              //               fontWeight: FontWeight.w800,
-              //               fontSize: 16,
-              //               fontFamily: 'Arial'),
-              //         ),
-              //       )
-              //     :
               Container(),
             ],
           )),

@@ -196,7 +196,7 @@ class OffersRepository {
       QuerySnapshot snapshot = await _firestoreInstance
           .collection('offers')
           .where('type', isEqualTo: 1)
-          .where('houseType', arrayContainsAny: houseTipoList)
+          .where('houseType', whereIn: houseTipoList)
           .limit(4)
           .orderBy('includedAt', descending: true)
           .get();

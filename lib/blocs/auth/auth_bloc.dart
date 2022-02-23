@@ -81,6 +81,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
               email: _user.email,
               name: _user.displayName,
               lastname: _user.displayName,
+              favList: [],
               isAdmin: false);
           bool success = await _usersRepo.insertUser(_userModel);
           if (success) {

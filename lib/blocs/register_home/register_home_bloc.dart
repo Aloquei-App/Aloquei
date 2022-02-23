@@ -61,7 +61,9 @@ class RegisterHomeBloc extends Bloc<RegisterHomeEvent, RegisterHomeState> {
         event.houseOfferModel.mail = userModel.email;
         event.houseOfferModel.roomUsersQtd = 1;
         event.houseOfferModel.postUserId = userModel.key;
-        event.houseOfferModel.images = [];
+        event.houseOfferModel.images = [
+          'https://images.adsttc.com/media/images/5cf1/f20a/284d/d14f/3800/0264/large_jpg/CASA_FRENTE_MAR_2027.jpg?1559360001'
+        ];
         event.houseOfferModel.includedAt =
             DateTime.now().microsecondsSinceEpoch;
         event.houseOfferModel.postUserName =
